@@ -1,0 +1,386 @@
+[
+  {
+    "price": 60801.08,
+    "side": "buy",
+    "size": 0.0018,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724725.396,
+    "trade_id": 29748223
+  },
+  {
+    "price": 60802.25,
+    "side": "buy",
+    "size": 0.00148,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724725.396,
+    "trade_id": 29748224
+  },
+  {
+    "price": 60805.3,
+    "side": "sell",
+    "size": 0.0018,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724741.688,
+    "trade_id": 29748225
+  },
+  {
+    "price": 60770.97,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724751.548,
+    "trade_id": 29748226
+  },
+  {
+    "price": 60767.8,
+    "side": "buy",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724760.617,
+    "trade_id": 29748227
+  },
+  {
+    "price": 60765.7,
+    "side": "sell",
+    "size": 0.00197,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724781.901,
+    "trade_id": 29748228
+  },
+  {
+    "price": 60779.74,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724783.585,
+    "trade_id": 29748229
+  },
+  {
+    "price": 60838.79,
+    "side": "buy",
+    "size": 0.04497,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724820.967,
+    "trade_id": 29748230
+  },
+  {
+    "price": 60914.55,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724847.634,
+    "trade_id": 29748231
+  },
+  {
+    "price": 60906.33,
+    "side": "sell",
+    "size": 0.00028,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724857.551,
+    "trade_id": 29748232
+  },
+  {
+    "price": 60864.32,
+    "side": "buy",
+    "size": 0.03641,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724867.568,
+    "trade_id": 29748233
+  },
+  {
+    "price": 60856.94,
+    "side": "sell",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724867.798,
+    "trade_id": 29748234
+  },
+  {
+    "price": 60897.46,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724903.181,
+    "trade_id": 29748235
+  },
+  {
+    "price": 60915.24,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724907.35,
+    "trade_id": 29748236
+  },
+  {
+    "price": 60921.42,
+    "side": "buy",
+    "size": 0.04105,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724907.35,
+    "trade_id": 29748237
+  },
+  {
+    "price": 60929.45,
+    "side": "buy",
+    "size": 0.11119,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724907.35,
+    "trade_id": 29748238
+  },
+  {
+    "price": 60928.75,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724941.97,
+    "trade_id": 29748239
+  },
+  {
+    "price": 60953.34,
+    "side": "buy",
+    "size": 0.00085,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724945.763,
+    "trade_id": 29748240
+  },
+  {
+    "price": 60969.01,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724950.79,
+    "trade_id": 29748241
+  },
+  {
+    "price": 60985.53,
+    "side": "sell",
+    "size": 0.01956,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724950.958,
+    "trade_id": 29748242
+  },
+  {
+    "price": 61000.59,
+    "side": "buy",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724957.009,
+    "trade_id": 29748243
+  },
+  {
+    "price": 61012.99,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724958.03,
+    "trade_id": 29748244
+  },
+  {
+    "price": 61017.03,
+    "side": "buy",
+    "size": 0.00201,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724962.519,
+    "trade_id": 29748245
+  },
+  {
+    "price": 61023.1,
+    "side": "buy",
+    "size": 0.00024,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724962.562,
+    "trade_id": 29748246
+  },
+  {
+    "price": 61022.21,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724966.415,
+    "trade_id": 29748247
+  },
+  {
+    "price": 60990.98,
+    "side": "sell",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780724977.255,
+    "trade_id": 29748248
+  },
+  {
+    "price": 60963.56,
+    "side": "buy",
+    "size": 0.00024,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725000.635,
+    "trade_id": 29748249
+  },
+  {
+    "price": 60969.6,
+    "side": "buy",
+    "size": 0.00357,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725010.583,
+    "trade_id": 29748250
+  },
+  {
+    "price": 60970.82,
+    "side": "buy",
+    "size": 0.00052,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725010.583,
+    "trade_id": 29748251
+  },
+  {
+    "price": 60970.82,
+    "side": "buy",
+    "size": 0.00338,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725011.844,
+    "trade_id": 29748252
+  },
+  {
+    "price": 61018.81,
+    "side": "buy",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725038.236,
+    "trade_id": 29748253
+  },
+  {
+    "price": 61031.45,
+    "side": "sell",
+    "size": 0.02896,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725038.249,
+    "trade_id": 29748254
+  },
+  {
+    "price": 61031.46,
+    "side": "buy",
+    "size": 0.00304,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725042.506,
+    "trade_id": 29748255
+  },
+  {
+    "price": 61001.14,
+    "side": "sell",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725114.006,
+    "trade_id": 29748256
+  },
+  {
+    "price": 60958.18,
+    "side": "buy",
+    "size": 0.01134,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725114.495,
+    "trade_id": 29748257
+  },
+  {
+    "price": 60940.33,
+    "side": "buy",
+    "size": 0.00354,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725123.366,
+    "trade_id": 29748258
+  },
+  {
+    "price": 60970.32,
+    "side": "sell",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725137.908,
+    "trade_id": 29748259
+  },
+  {
+    "price": 60879.2,
+    "side": "buy",
+    "size": 0.00201,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725186.409,
+    "trade_id": 29748260
+  },
+  {
+    "price": 60853.66,
+    "side": "sell",
+    "size": 0.01623,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725268.972,
+    "trade_id": 29748261
+  },
+  {
+    "price": 60855.87,
+    "side": "buy",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725269.039,
+    "trade_id": 29748262
+  },
+  {
+    "price": 60885.78,
+    "side": "buy",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725275.912,
+    "trade_id": 29748263
+  },
+  {
+    "price": 60931.29,
+    "side": "buy",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725328.116,
+    "trade_id": 29748264
+  },
+  {
+    "price": 60940.75,
+    "side": "sell",
+    "size": 0.00356,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725385.093,
+    "trade_id": 29748265
+  },
+  {
+    "price": 60933.99,
+    "side": "buy",
+    "size": 4e-05,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725412.185,
+    "trade_id": 29748266
+  },
+  {
+    "price": 60951.13,
+    "side": "buy",
+    "size": 8e-05,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725425.386,
+    "trade_id": 29748267
+  },
+  {
+    "price": 60889.01,
+    "side": "buy",
+    "size": 0.00169,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725449.704,
+    "trade_id": 29748268
+  },
+  {
+    "price": 60970.32,
+    "side": "buy",
+    "size": 0.00032,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725550.498,
+    "trade_id": 29748269
+  },
+  {
+    "price": 60958.49,
+    "side": "buy",
+    "size": 8e-05,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780725599.294,
+    "trade_id": 29748270
+  }
+]

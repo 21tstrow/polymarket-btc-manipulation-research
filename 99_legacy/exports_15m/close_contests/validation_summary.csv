@@ -1,0 +1,2 @@
+market_slots_considered,usable_market_rows,missing_or_unusable_events,gamma_cache_files_present,rows_missing_start_price,rows_missing_any_prior_price,rows_with_duplicate_late_trades,duplicate_late_trades,price_delta_rows,max_abs_final_vs_rtds_end_delta_usd,mean_abs_final_vs_rtds_end_delta_usd
+204,202,2,204,148,161,0,0.0,54,12.539447538954846,0.41216575720574367

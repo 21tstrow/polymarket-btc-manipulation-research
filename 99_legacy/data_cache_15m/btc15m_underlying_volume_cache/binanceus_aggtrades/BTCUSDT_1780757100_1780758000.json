@@ -1,0 +1,98 @@
+[
+  {
+    "price": 60953.27,
+    "side": "sell",
+    "size": 0.00012,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757286.281,
+    "trade_id": 29749348
+  },
+  {
+    "price": 60974.78,
+    "side": "buy",
+    "size": 0.00164,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757295.384,
+    "trade_id": 29749349
+  },
+  {
+    "price": 60940.35,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757316.84,
+    "trade_id": 29749350
+  },
+  {
+    "price": 60985.02,
+    "side": "buy",
+    "size": 8e-05,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757500.095,
+    "trade_id": 29749351
+  },
+  {
+    "price": 60974.4,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757557.106,
+    "trade_id": 29749352
+  },
+  {
+    "price": 60963.55,
+    "side": "buy",
+    "size": 0.00082,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757605.393,
+    "trade_id": 29749353
+  },
+  {
+    "price": 60944.99,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757615.979,
+    "trade_id": 29749354
+  },
+  {
+    "price": 60899.93,
+    "side": "sell",
+    "size": 0.00156,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757857.821,
+    "trade_id": 29749355
+  },
+  {
+    "price": 60906.68,
+    "side": "buy",
+    "size": 0.00024,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757863.465,
+    "trade_id": 29749356
+  },
+  {
+    "price": 60866.89,
+    "side": "buy",
+    "size": 6e-05,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757908.281,
+    "trade_id": 29749357
+  },
+  {
+    "price": 60797.51,
+    "side": "sell",
+    "size": 0.00355,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757984.677,
+    "trade_id": 29749358
+  },
+  {
+    "price": 60800.61,
+    "side": "buy",
+    "size": 0.00246,
+    "source": "binanceus_aggtrades",
+    "timestamp": 1780757992.193,
+    "trade_id": 29749359
+  }
+]

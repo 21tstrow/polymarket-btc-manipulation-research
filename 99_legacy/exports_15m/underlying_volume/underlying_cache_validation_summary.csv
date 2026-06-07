@@ -1,0 +1,3 @@
+underlying_source,underlying_symbol,market_fetches,cache_files_present,missing_cache_files,empty_trade_fetches,total_trade_rows,fetch_missing_enabled
+binanceus,BTCUSDT,202,202,0,0,8830,False
+kraken,XBTUSD,202,54,148,148,63718,False

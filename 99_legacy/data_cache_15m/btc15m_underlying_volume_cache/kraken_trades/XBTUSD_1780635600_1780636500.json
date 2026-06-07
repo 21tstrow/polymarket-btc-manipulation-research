@@ -1,0 +1,8818 @@
+[
+  {
+    "price": 63529.6,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.267586,
+    "trade_id": 101604944
+  },
+  {
+    "price": 63529.6,
+    "side": "buy",
+    "size": 0.01397652,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.267586,
+    "trade_id": 101604945
+  },
+  {
+    "price": 63530.5,
+    "side": "buy",
+    "size": 1.948e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.2891326,
+    "trade_id": 101604946
+  },
+  {
+    "price": 63530.5,
+    "side": "buy",
+    "size": 3.152e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.3054795,
+    "trade_id": 101604947
+  },
+  {
+    "price": 63533.7,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.3054795,
+    "trade_id": 101604948
+  },
+  {
+    "price": 63534.2,
+    "side": "buy",
+    "size": 0.00068908,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.3054795,
+    "trade_id": 101604949
+  },
+  {
+    "price": 63548.6,
+    "side": "sell",
+    "size": 0.00038686,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.6085625,
+    "trade_id": 101604950
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 0.00050705,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.9018664,
+    "trade_id": 101604951
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 7.752e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635600.9341486,
+    "trade_id": 101604952
+  },
+  {
+    "price": 63538.7,
+    "side": "buy",
+    "size": 0.00477164,
+    "source": "kraken_trades",
+    "timestamp": 1780635601.3968346,
+    "trade_id": 101604953
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 0.0001453,
+    "source": "kraken_trades",
+    "timestamp": 1780635602.499347,
+    "trade_id": 101604954
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 0.00073873,
+    "source": "kraken_trades",
+    "timestamp": 1780635602.5038974,
+    "trade_id": 101604955
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 8.351e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635602.7225854,
+    "trade_id": 101604956
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 0.01744789,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.0687087,
+    "trade_id": 101604957
+  },
+  {
+    "price": 63548.7,
+    "side": "buy",
+    "size": 0.06993474,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.0687087,
+    "trade_id": 101604958
+  },
+  {
+    "price": 63550.1,
+    "side": "buy",
+    "size": 0.001573,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.0754619,
+    "trade_id": 101604959
+  },
+  {
+    "price": 63555.3,
+    "side": "buy",
+    "size": 0.011,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.424167,
+    "trade_id": 101604960
+  },
+  {
+    "price": 63555.3,
+    "side": "buy",
+    "size": 0.016,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.424167,
+    "trade_id": 101604961
+  },
+  {
+    "price": 63564.2,
+    "side": "sell",
+    "size": 0.00194591,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.6471088,
+    "trade_id": 101604962
+  },
+  {
+    "price": 63564.3,
+    "side": "buy",
+    "size": 0.00148114,
+    "source": "kraken_trades",
+    "timestamp": 1780635603.9279065,
+    "trade_id": 101604963
+  },
+  {
+    "price": 63564.3,
+    "side": "buy",
+    "size": 9.186e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.3670127,
+    "trade_id": 101604964
+  },
+  {
+    "price": 63575.7,
+    "side": "sell",
+    "size": 0.00157377,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.442241,
+    "trade_id": 101604965
+  },
+  {
+    "price": 63575.8,
+    "side": "buy",
+    "size": 0.00013,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.8669899,
+    "trade_id": 101604966
+  },
+  {
+    "price": 63577.7,
+    "side": "buy",
+    "size": 0.00128347,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.86699,
+    "trade_id": 101604967
+  },
+  {
+    "price": 63578.4,
+    "side": "buy",
+    "size": 0.001572,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.86699,
+    "trade_id": 101604968
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.00087138,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.86699,
+    "trade_id": 101604969
+  },
+  {
+    "price": 63579.9,
+    "side": "sell",
+    "size": 0.00019002,
+    "source": "kraken_trades",
+    "timestamp": 1780635605.8807428,
+    "trade_id": 101604970
+  },
+  {
+    "price": 63579.9,
+    "side": "buy",
+    "size": 0.00115706,
+    "source": "kraken_trades",
+    "timestamp": 1780635606.106091,
+    "trade_id": 101604971
+  },
+  {
+    "price": 63579.9,
+    "side": "buy",
+    "size": 0.00038569,
+    "source": "kraken_trades",
+    "timestamp": 1780635606.3166232,
+    "trade_id": 101604972
+  },
+  {
+    "price": 63579.9,
+    "side": "buy",
+    "size": 0.00385696,
+    "source": "kraken_trades",
+    "timestamp": 1780635606.454182,
+    "trade_id": 101604973
+  },
+  {
+    "price": 63579.9,
+    "side": "buy",
+    "size": 0.00015432,
+    "source": "kraken_trades",
+    "timestamp": 1780635606.6117811,
+    "trade_id": 101604974
+  },
+  {
+    "price": 63579.9,
+    "side": "buy",
+    "size": 0.00134568,
+    "source": "kraken_trades",
+    "timestamp": 1780635606.6417613,
+    "trade_id": 101604975
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.00015427,
+    "source": "kraken_trades",
+    "timestamp": 1780635606.8673866,
+    "trade_id": 101604976
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.00015432,
+    "source": "kraken_trades",
+    "timestamp": 1780635607.1197524,
+    "trade_id": 101604977
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.00015432,
+    "source": "kraken_trades",
+    "timestamp": 1780635607.2341523,
+    "trade_id": 101604978
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.00385801,
+    "source": "kraken_trades",
+    "timestamp": 1780635607.3420935,
+    "trade_id": 101604979
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.00077148,
+    "source": "kraken_trades",
+    "timestamp": 1780635607.9310176,
+    "trade_id": 101604980
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.11233137,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.0189743,
+    "trade_id": 101604981
+  },
+  {
+    "price": 63580.0,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.0189743,
+    "trade_id": 101604982
+  },
+  {
+    "price": 63586.3,
+    "side": "buy",
+    "size": 0.00110087,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.0197368,
+    "trade_id": 101604983
+  },
+  {
+    "price": 63592.5,
+    "side": "buy",
+    "size": 0.001572,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.0197368,
+    "trade_id": 101604984
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.00229848,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.131974,
+    "trade_id": 101604985
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.1319742,
+    "trade_id": 101604986
+  },
+  {
+    "price": 63605.4,
+    "side": "buy",
+    "size": 0.002,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.1319742,
+    "trade_id": 101604987
+  },
+  {
+    "price": 63606.7,
+    "side": "buy",
+    "size": 0.001572,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.1319742,
+    "trade_id": 101604988
+  },
+  {
+    "price": 63613.6,
+    "side": "buy",
+    "size": 0.55392389,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.1319742,
+    "trade_id": 101604989
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.0006048,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.1767926,
+    "trade_id": 101604990
+  },
+  {
+    "price": 63594.3,
+    "side": "sell",
+    "size": 0.00018997,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.233176,
+    "trade_id": 101604991
+  },
+  {
+    "price": 63594.3,
+    "side": "sell",
+    "size": 0.00314303,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.233176,
+    "trade_id": 101604992
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.3173842,
+    "trade_id": 101604993
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 4.274e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635608.3173842,
+    "trade_id": 101604994
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.00027175,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.0355678,
+    "trade_id": 101604995
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.00011825,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.0355678,
+    "trade_id": 101604996
+  },
+  {
+    "price": 63594.4,
+    "side": "buy",
+    "size": 0.0012263,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.0359197,
+    "trade_id": 101604997
+  },
+  {
+    "price": 63607.0,
+    "side": "buy",
+    "size": 0.00039,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.0359197,
+    "trade_id": 101604998
+  },
+  {
+    "price": 63606.7,
+    "side": "buy",
+    "size": 0.0658,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.1142006,
+    "trade_id": 101604999
+  },
+  {
+    "price": 63606.7,
+    "side": "buy",
+    "size": 0.00067227,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.1142006,
+    "trade_id": 101605000
+  },
+  {
+    "price": 63607.0,
+    "side": "buy",
+    "size": 0.09140705,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.1142006,
+    "trade_id": 101605001
+  },
+  {
+    "price": 63606.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.115694,
+    "trade_id": 101605002
+  },
+  {
+    "price": 63601.8,
+    "side": "buy",
+    "size": 0.00108614,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.386796,
+    "trade_id": 101605003
+  },
+  {
+    "price": 63607.5,
+    "side": "buy",
+    "size": 0.00277071,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.386796,
+    "trade_id": 101605004
+  },
+  {
+    "price": 63607.5,
+    "side": "buy",
+    "size": 0.00053998,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.5148897,
+    "trade_id": 101605005
+  },
+  {
+    "price": 63607.4,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.574419,
+    "trade_id": 101605006
+  },
+  {
+    "price": 63607.4,
+    "side": "sell",
+    "size": 0.06037864,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.574419,
+    "trade_id": 101605007
+  },
+  {
+    "price": 63604.0,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.7732131,
+    "trade_id": 101605008
+  },
+  {
+    "price": 63600.4,
+    "side": "sell",
+    "size": 0.00150005,
+    "source": "kraken_trades",
+    "timestamp": 1780635609.8614516,
+    "trade_id": 101605009
+  },
+  {
+    "price": 63603.5,
+    "side": "buy",
+    "size": 0.00093946,
+    "source": "kraken_trades",
+    "timestamp": 1780635610.096272,
+    "trade_id": 101605010
+  },
+  {
+    "price": 63597.9,
+    "side": "buy",
+    "size": 0.00280527,
+    "source": "kraken_trades",
+    "timestamp": 1780635611.0327427,
+    "trade_id": 101605011
+  },
+  {
+    "price": 63603.9,
+    "side": "sell",
+    "size": 0.00018994,
+    "source": "kraken_trades",
+    "timestamp": 1780635611.4255934,
+    "trade_id": 101605012
+  },
+  {
+    "price": 63603.9,
+    "side": "buy",
+    "size": 0.00078255,
+    "source": "kraken_trades",
+    "timestamp": 1780635612.0768619,
+    "trade_id": 101605013
+  },
+  {
+    "price": 63603.8,
+    "side": "sell",
+    "size": 0.00018994,
+    "source": "kraken_trades",
+    "timestamp": 1780635612.13049,
+    "trade_id": 101605014
+  },
+  {
+    "price": 63603.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635612.13049,
+    "trade_id": 101605015
+  },
+  {
+    "price": 63602.9,
+    "side": "sell",
+    "size": 0.00018995,
+    "source": "kraken_trades",
+    "timestamp": 1780635612.1465108,
+    "trade_id": 101605016
+  },
+  {
+    "price": 63602.9,
+    "side": "buy",
+    "size": 0.00038569,
+    "source": "kraken_trades",
+    "timestamp": 1780635612.1812131,
+    "trade_id": 101605017
+  },
+  {
+    "price": 63602.9,
+    "side": "buy",
+    "size": 0.00023362,
+    "source": "kraken_trades",
+    "timestamp": 1780635612.7600026,
+    "trade_id": 101605018
+  },
+  {
+    "price": 63602.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.1604366,
+    "trade_id": 101605019
+  },
+  {
+    "price": 63602.8,
+    "side": "sell",
+    "size": 0.00048282,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.1604366,
+    "trade_id": 101605020
+  },
+  {
+    "price": 63600.3,
+    "side": "sell",
+    "size": 0.00150003,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.18337,
+    "trade_id": 101605021
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00016069,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.2769346,
+    "trade_id": 101605022
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00547402,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.3030841,
+    "trade_id": 101605023
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00547402,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.3392777,
+    "trade_id": 101605024
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00547402,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.35667,
+    "trade_id": 101605025
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00556106,
+    "source": "kraken_trades",
+    "timestamp": 1780635613.3735032,
+    "trade_id": 101605026
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.011,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.6991491,
+    "trade_id": 101605027
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.016,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.6991491,
+    "trade_id": 101605028
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.6991491,
+    "trade_id": 101605029
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.00018996,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.6991491,
+    "trade_id": 101605030
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.01572215,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.6991491,
+    "trade_id": 101605031
+  },
+  {
+    "price": 63597.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.6991494,
+    "trade_id": 101605032
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.014051,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.708461,
+    "trade_id": 101605033
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.014051,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.7241502,
+    "trade_id": 101605034
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.21421212,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.7257895,
+    "trade_id": 101605035
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.41326312,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.7428434,
+    "trade_id": 101605036
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.21421212,
+    "source": "kraken_trades",
+    "timestamp": 1780635614.7688339,
+    "trade_id": 101605037
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00030864,
+    "source": "kraken_trades",
+    "timestamp": 1780635615.1410568,
+    "trade_id": 101605038
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00030855,
+    "source": "kraken_trades",
+    "timestamp": 1780635615.2719126,
+    "trade_id": 101605039
+  },
+  {
+    "price": 63597.7,
+    "side": "sell",
+    "size": 0.00174706,
+    "source": "kraken_trades",
+    "timestamp": 1780635615.859995,
+    "trade_id": 101605040
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00057189,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.213509,
+    "trade_id": 101605041
+  },
+  {
+    "price": 63597.8,
+    "side": "buy",
+    "size": 0.00031092,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.307327,
+    "trade_id": 101605042
+  },
+  {
+    "price": 63600.2,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.307327,
+    "trade_id": 101605043
+  },
+  {
+    "price": 63603.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.307327,
+    "trade_id": 101605044
+  },
+  {
+    "price": 63606.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.307327,
+    "trade_id": 101605045
+  },
+  {
+    "price": 63608.3,
+    "side": "buy",
+    "size": 0.00035899,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.307327,
+    "trade_id": 101605046
+  },
+  {
+    "price": 63605.4,
+    "side": "sell",
+    "size": 0.00018994,
+    "source": "kraken_trades",
+    "timestamp": 1780635617.5842237,
+    "trade_id": 101605047
+  },
+  {
+    "price": 63608.3,
+    "side": "buy",
+    "size": 0.00020108,
+    "source": "kraken_trades",
+    "timestamp": 1780635618.401957,
+    "trade_id": 101605048
+  },
+  {
+    "price": 63608.3,
+    "side": "buy",
+    "size": 0.00012452,
+    "source": "kraken_trades",
+    "timestamp": 1780635619.1495547,
+    "trade_id": 101605049
+  },
+  {
+    "price": 63608.3,
+    "side": "buy",
+    "size": 0.00079078,
+    "source": "kraken_trades",
+    "timestamp": 1780635619.592362,
+    "trade_id": 101605050
+  },
+  {
+    "price": 63608.3,
+    "side": "buy",
+    "size": 0.00026463,
+    "source": "kraken_trades",
+    "timestamp": 1780635620.597112,
+    "trade_id": 101605051
+  },
+  {
+    "price": 63608.2,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.08044,
+    "trade_id": 101605052
+  },
+  {
+    "price": 63608.2,
+    "side": "sell",
+    "size": 0.00226998,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.08044,
+    "trade_id": 101605053
+  },
+  {
+    "price": 63608.2,
+    "side": "sell",
+    "size": 0.00110049,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.08044,
+    "trade_id": 101605054
+  },
+  {
+    "price": 63608.2,
+    "side": "sell",
+    "size": 0.3558908,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.08044,
+    "trade_id": 101605055
+  },
+  {
+    "price": 63608.2,
+    "side": "sell",
+    "size": 0.019,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.0804403,
+    "trade_id": 101605056
+  },
+  {
+    "price": 63606.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.0804403,
+    "trade_id": 101605057
+  },
+  {
+    "price": 63603.5,
+    "side": "sell",
+    "size": 0.00150006,
+    "source": "kraken_trades",
+    "timestamp": 1780635621.43232,
+    "trade_id": 101605058
+  },
+  {
+    "price": 63592.6,
+    "side": "buy",
+    "size": 0.00036698,
+    "source": "kraken_trades",
+    "timestamp": 1780635622.0232847,
+    "trade_id": 101605059
+  },
+  {
+    "price": 63592.5,
+    "side": "sell",
+    "size": 0.001572,
+    "source": "kraken_trades",
+    "timestamp": 1780635622.1120503,
+    "trade_id": 101605060
+  },
+  {
+    "price": 63592.5,
+    "side": "sell",
+    "size": 0.00150013,
+    "source": "kraken_trades",
+    "timestamp": 1780635622.1120503,
+    "trade_id": 101605061
+  },
+  {
+    "price": 63592.5,
+    "side": "buy",
+    "size": 0.00011899,
+    "source": "kraken_trades",
+    "timestamp": 1780635623.0655792,
+    "trade_id": 101605062
+  },
+  {
+    "price": 63608.7,
+    "side": "buy",
+    "size": 0.00026681,
+    "source": "kraken_trades",
+    "timestamp": 1780635623.0655792,
+    "trade_id": 101605063
+  },
+  {
+    "price": 63602.3,
+    "side": "buy",
+    "size": 0.000388,
+    "source": "kraken_trades",
+    "timestamp": 1780635623.1070445,
+    "trade_id": 101605064
+  },
+  {
+    "price": 63602.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635623.9337883,
+    "trade_id": 101605065
+  },
+  {
+    "price": 63614.6,
+    "side": "buy",
+    "size": 0.00080696,
+    "source": "kraken_trades",
+    "timestamp": 1780635623.9337883,
+    "trade_id": 101605066
+  },
+  {
+    "price": 63614.6,
+    "side": "buy",
+    "size": 0.000157,
+    "source": "kraken_trades",
+    "timestamp": 1780635624.2699142,
+    "trade_id": 101605067
+  },
+  {
+    "price": 63614.5,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635624.4310906,
+    "trade_id": 101605068
+  },
+  {
+    "price": 63613.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635624.4310906,
+    "trade_id": 101605069
+  },
+  {
+    "price": 63609.3,
+    "side": "sell",
+    "size": 0.00018993,
+    "source": "kraken_trades",
+    "timestamp": 1780635624.4310906,
+    "trade_id": 101605070
+  },
+  {
+    "price": 63609.3,
+    "side": "buy",
+    "size": 0.00038532,
+    "source": "kraken_trades",
+    "timestamp": 1780635624.6463318,
+    "trade_id": 101605071
+  },
+  {
+    "price": 63609.2,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635625.2490685,
+    "trade_id": 101605072
+  },
+  {
+    "price": 63609.2,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635625.284786,
+    "trade_id": 101605073
+  },
+  {
+    "price": 63605.8,
+    "side": "buy",
+    "size": 0.0005,
+    "source": "kraken_trades",
+    "timestamp": 1780635625.496542,
+    "trade_id": 101605074
+  },
+  {
+    "price": 63591.6,
+    "side": "buy",
+    "size": 0.00372135,
+    "source": "kraken_trades",
+    "timestamp": 1780635625.9584208,
+    "trade_id": 101605075
+  },
+  {
+    "price": 63578.7,
+    "side": "sell",
+    "size": 0.0003314,
+    "source": "kraken_trades",
+    "timestamp": 1780635626.850687,
+    "trade_id": 101605076
+  },
+  {
+    "price": 63578.4,
+    "side": "sell",
+    "size": 0.001572,
+    "source": "kraken_trades",
+    "timestamp": 1780635626.850687,
+    "trade_id": 101605077
+  },
+  {
+    "price": 63578.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635626.850687,
+    "trade_id": 101605078
+  },
+  {
+    "price": 63575.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635626.850687,
+    "trade_id": 101605079
+  },
+  {
+    "price": 63571.9,
+    "side": "sell",
+    "size": 0.00019004,
+    "source": "kraken_trades",
+    "timestamp": 1780635626.850687,
+    "trade_id": 101605080
+  },
+  {
+    "price": 63564.3,
+    "side": "sell",
+    "size": 0.001573,
+    "source": "kraken_trades",
+    "timestamp": 1780635627.3187923,
+    "trade_id": 101605081
+  },
+  {
+    "price": 63562.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635627.3187923,
+    "trade_id": 101605082
+  },
+  {
+    "price": 63555.4,
+    "side": "sell",
+    "size": 0.00019009,
+    "source": "kraken_trades",
+    "timestamp": 1780635627.3187926,
+    "trade_id": 101605083
+  },
+  {
+    "price": 63551.5,
+    "side": "sell",
+    "size": 0.0001901,
+    "source": "kraken_trades",
+    "timestamp": 1780635628.053698,
+    "trade_id": 101605084
+  },
+  {
+    "price": 63551.4,
+    "side": "sell",
+    "size": 0.0001901,
+    "source": "kraken_trades",
+    "timestamp": 1780635628.198411,
+    "trade_id": 101605085
+  },
+  {
+    "price": 63550.1,
+    "side": "sell",
+    "size": 0.001573,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.4227843,
+    "trade_id": 101605086
+  },
+  {
+    "price": 63549.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.4227843,
+    "trade_id": 101605087
+  },
+  {
+    "price": 63546.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.4227843,
+    "trade_id": 101605088
+  },
+  {
+    "price": 63543.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.4227843,
+    "trade_id": 101605089
+  },
+  {
+    "price": 63539.8,
+    "side": "sell",
+    "size": 0.00019014,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.4227843,
+    "trade_id": 101605090
+  },
+  {
+    "price": 63538.5,
+    "side": "sell",
+    "size": 0.00019014,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.6494474,
+    "trade_id": 101605091
+  },
+  {
+    "price": 63539.7,
+    "side": "sell",
+    "size": 0.00019014,
+    "source": "kraken_trades",
+    "timestamp": 1780635629.888358,
+    "trade_id": 101605092
+  },
+  {
+    "price": 63539.7,
+    "side": "sell",
+    "size": 0.00019014,
+    "source": "kraken_trades",
+    "timestamp": 1780635630.2386723,
+    "trade_id": 101605093
+  },
+  {
+    "price": 63609.3,
+    "side": "buy",
+    "size": 0.00010247,
+    "source": "kraken_trades",
+    "timestamp": 1780635632.212358,
+    "trade_id": 101605094
+  },
+  {
+    "price": 63604.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635632.491751,
+    "trade_id": 101605095
+  },
+  {
+    "price": 63600.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635633.9260538,
+    "trade_id": 101605096
+  },
+  {
+    "price": 63597.2,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780635633.9901028,
+    "trade_id": 101605097
+  },
+  {
+    "price": 63595.9,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635633.9901028,
+    "trade_id": 101605098
+  },
+  {
+    "price": 63594.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635633.9901028,
+    "trade_id": 101605099
+  },
+  {
+    "price": 63590.8,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635633.9901028,
+    "trade_id": 101605100
+  },
+  {
+    "price": 63581.3,
+    "side": "sell",
+    "size": 0.00019001,
+    "source": "kraken_trades",
+    "timestamp": 1780635633.9901028,
+    "trade_id": 101605101
+  },
+  {
+    "price": 63581.3,
+    "side": "buy",
+    "size": 0.00015501,
+    "source": "kraken_trades",
+    "timestamp": 1780635634.838287,
+    "trade_id": 101605102
+  },
+  {
+    "price": 63581.2,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635634.886229,
+    "trade_id": 101605103
+  },
+  {
+    "price": 63578.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635634.886229,
+    "trade_id": 101605104
+  },
+  {
+    "price": 63575.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635634.886229,
+    "trade_id": 101605105
+  },
+  {
+    "price": 63567.8,
+    "side": "sell",
+    "size": 0.00019005,
+    "source": "kraken_trades",
+    "timestamp": 1780635634.886229,
+    "trade_id": 101605106
+  },
+  {
+    "price": 63567.7,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635635.265646,
+    "trade_id": 101605107
+  },
+  {
+    "price": 63567.7,
+    "side": "sell",
+    "size": 0.00019005,
+    "source": "kraken_trades",
+    "timestamp": 1780635635.265646,
+    "trade_id": 101605108
+  },
+  {
+    "price": 63549.3,
+    "side": "sell",
+    "size": 0.00019011,
+    "source": "kraken_trades",
+    "timestamp": 1780635635.582754,
+    "trade_id": 101605109
+  },
+  {
+    "price": 63544.1,
+    "side": "buy",
+    "size": 0.00030746,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.7527878,
+    "trade_id": 101605110
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00265341,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.820762,
+    "trade_id": 101605111
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00479593,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.850318,
+    "trade_id": 101605112
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00547409,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.8805938,
+    "trade_id": 101605113
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00406561,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.8929052,
+    "trade_id": 101605114
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00140849,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.8931987,
+    "trade_id": 101605115
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00406561,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.9051692,
+    "trade_id": 101605116
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00547409,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.9152296,
+    "trade_id": 101605117
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00547409,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.9261537,
+    "trade_id": 101605118
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00547409,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.946781,
+    "trade_id": 101605119
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00547619,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.9612691,
+    "trade_id": 101605120
+  },
+  {
+    "price": 63536.4,
+    "side": "buy",
+    "size": 0.00458903,
+    "source": "kraken_trades",
+    "timestamp": 1780635637.9700985,
+    "trade_id": 101605121
+  },
+  {
+    "price": 63536.0,
+    "side": "sell",
+    "size": 0.001573,
+    "source": "kraken_trades",
+    "timestamp": 1780635638.0086427,
+    "trade_id": 101605122
+  },
+  {
+    "price": 63533.8,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635638.0086427,
+    "trade_id": 101605123
+  },
+  {
+    "price": 63529.1,
+    "side": "sell",
+    "size": 0.002,
+    "source": "kraken_trades",
+    "timestamp": 1780635638.0086427,
+    "trade_id": 101605124
+  },
+  {
+    "price": 63526.4,
+    "side": "sell",
+    "size": 0.05754845,
+    "source": "kraken_trades",
+    "timestamp": 1780635638.4911046,
+    "trade_id": 101605125
+  },
+  {
+    "price": 63526.3,
+    "side": "buy",
+    "size": 0.00058286,
+    "source": "kraken_trades",
+    "timestamp": 1780635639.0822806,
+    "trade_id": 101605126
+  },
+  {
+    "price": 63521.9,
+    "side": "sell",
+    "size": 0.001574,
+    "source": "kraken_trades",
+    "timestamp": 1780635639.727076,
+    "trade_id": 101605127
+  },
+  {
+    "price": 63521.9,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635639.727076,
+    "trade_id": 101605128
+  },
+  {
+    "price": 63521.9,
+    "side": "buy",
+    "size": 0.00387232,
+    "source": "kraken_trades",
+    "timestamp": 1780635639.731273,
+    "trade_id": 101605129
+  },
+  {
+    "price": 63525.0,
+    "side": "buy",
+    "size": 0.00301056,
+    "source": "kraken_trades",
+    "timestamp": 1780635640.3567379,
+    "trade_id": 101605130
+  },
+  {
+    "price": 63516.3,
+    "side": "sell",
+    "size": 7.872e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635641.7931957,
+    "trade_id": 101605131
+  },
+  {
+    "price": 63509.8,
+    "side": "buy",
+    "size": 0.00472481,
+    "source": "kraken_trades",
+    "timestamp": 1780635642.7568119,
+    "trade_id": 101605132
+  },
+  {
+    "price": 63510.9,
+    "side": "buy",
+    "size": 0.04708806,
+    "source": "kraken_trades",
+    "timestamp": 1780635642.7568119,
+    "trade_id": 101605133
+  },
+  {
+    "price": 63509.7,
+    "side": "sell",
+    "size": 0.05756436,
+    "source": "kraken_trades",
+    "timestamp": 1780635643.0955744,
+    "trade_id": 101605134
+  },
+  {
+    "price": 63507.8,
+    "side": "sell",
+    "size": 0.001574,
+    "source": "kraken_trades",
+    "timestamp": 1780635645.5062132,
+    "trade_id": 101605135
+  },
+  {
+    "price": 63505.4,
+    "side": "sell",
+    "size": 0.05756826,
+    "source": "kraken_trades",
+    "timestamp": 1780635645.893033,
+    "trade_id": 101605136
+  },
+  {
+    "price": 63508.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635647.355225,
+    "trade_id": 101605137
+  },
+  {
+    "price": 63498.0,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635648.6498106,
+    "trade_id": 101605138
+  },
+  {
+    "price": 63493.7,
+    "side": "sell",
+    "size": 0.001574,
+    "source": "kraken_trades",
+    "timestamp": 1780635649.1516144,
+    "trade_id": 101605139
+  },
+  {
+    "price": 63492.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635649.1516144,
+    "trade_id": 101605140
+  },
+  {
+    "price": 63483.5,
+    "side": "buy",
+    "size": 0.00540809,
+    "source": "kraken_trades",
+    "timestamp": 1780635652.6356726,
+    "trade_id": 101605141
+  },
+  {
+    "price": 63482.3,
+    "side": "sell",
+    "size": 0.05758841,
+    "source": "kraken_trades",
+    "timestamp": 1780635652.7345967,
+    "trade_id": 101605142
+  },
+  {
+    "price": 63480.0,
+    "side": "sell",
+    "size": 0.0016,
+    "source": "kraken_trades",
+    "timestamp": 1780635652.7605205,
+    "trade_id": 101605143
+  },
+  {
+    "price": 63479.6,
+    "side": "sell",
+    "size": 0.001575,
+    "source": "kraken_trades",
+    "timestamp": 1780635653.0997534,
+    "trade_id": 101605144
+  },
+  {
+    "price": 63465.6,
+    "side": "sell",
+    "size": 0.002,
+    "source": "kraken_trades",
+    "timestamp": 1780635654.7730157,
+    "trade_id": 101605145
+  },
+  {
+    "price": 63465.4,
+    "side": "sell",
+    "size": 0.001575,
+    "source": "kraken_trades",
+    "timestamp": 1780635654.7826319,
+    "trade_id": 101605146
+  },
+  {
+    "price": 63456.5,
+    "side": "sell",
+    "size": 0.00013,
+    "source": "kraken_trades",
+    "timestamp": 1780635654.7828827,
+    "trade_id": 101605147
+  },
+  {
+    "price": 63455.1,
+    "side": "buy",
+    "size": 0.00096241,
+    "source": "kraken_trades",
+    "timestamp": 1780635655.449656,
+    "trade_id": 101605148
+  },
+  {
+    "price": 63455.0,
+    "side": "buy",
+    "size": 0.0001545,
+    "source": "kraken_trades",
+    "timestamp": 1780635656.1186733,
+    "trade_id": 101605149
+  },
+  {
+    "price": 63451.3,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635656.3184485,
+    "trade_id": 101605150
+  },
+  {
+    "price": 63448.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635656.3276029,
+    "trade_id": 101605151
+  },
+  {
+    "price": 63437.2,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.0918312,
+    "trade_id": 101605152
+  },
+  {
+    "price": 63435.4,
+    "side": "buy",
+    "size": 0.00467738,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1490235,
+    "trade_id": 101605153
+  },
+  {
+    "price": 63442.6,
+    "side": "buy",
+    "size": 2.483e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1490235,
+    "trade_id": 101605154
+  },
+  {
+    "price": 63442.6,
+    "side": "buy",
+    "size": 0.00490166,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1531477,
+    "trade_id": 101605155
+  },
+  {
+    "price": 63442.6,
+    "side": "buy",
+    "size": 0.00547625,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1567,
+    "trade_id": 101605156
+  },
+  {
+    "price": 63442.6,
+    "side": "buy",
+    "size": 0.00547625,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1611896,
+    "trade_id": 101605157
+  },
+  {
+    "price": 63442.6,
+    "side": "buy",
+    "size": 0.00547625,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1670809,
+    "trade_id": 101605158
+  },
+  {
+    "price": 63442.6,
+    "side": "buy",
+    "size": 0.00547625,
+    "source": "kraken_trades",
+    "timestamp": 1780635657.1724842,
+    "trade_id": 101605159
+  },
+  {
+    "price": 63432.8,
+    "side": "sell",
+    "size": 0.00086852,
+    "source": "kraken_trades",
+    "timestamp": 1780635660.1122391,
+    "trade_id": 101605160
+  },
+  {
+    "price": 63432.9,
+    "side": "buy",
+    "size": 3.06e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635660.2580895,
+    "trade_id": 101605161
+  },
+  {
+    "price": 63439.6,
+    "side": "buy",
+    "size": 0.00023488,
+    "source": "kraken_trades",
+    "timestamp": 1780635660.3737006,
+    "trade_id": 101605162
+  },
+  {
+    "price": 63430.1,
+    "side": "sell",
+    "size": 0.00042,
+    "source": "kraken_trades",
+    "timestamp": 1780635661.6739,
+    "trade_id": 101605163
+  },
+  {
+    "price": 63430.1,
+    "side": "sell",
+    "size": 0.00024234,
+    "source": "kraken_trades",
+    "timestamp": 1780635661.759851,
+    "trade_id": 101605164
+  },
+  {
+    "price": 63430.2,
+    "side": "buy",
+    "size": 0.00157377,
+    "source": "kraken_trades",
+    "timestamp": 1780635661.9090092,
+    "trade_id": 101605165
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635663.384549,
+    "trade_id": 101605166
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635663.384549,
+    "trade_id": 101605167
+  },
+  {
+    "price": 63422.0,
+    "side": "buy",
+    "size": 0.00077631,
+    "source": "kraken_trades",
+    "timestamp": 1780635663.5287619,
+    "trade_id": 101605168
+  },
+  {
+    "price": 63411.1,
+    "side": "buy",
+    "size": 0.00124252,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605169
+  },
+  {
+    "price": 63411.1,
+    "side": "buy",
+    "size": 0.0003154,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605170
+  },
+  {
+    "price": 63413.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605171
+  },
+  {
+    "price": 63415.1,
+    "side": "buy",
+    "size": 0.00077203,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605172
+  },
+  {
+    "price": 63422.3,
+    "side": "buy",
+    "size": 0.06287941,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605173
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 1.259988,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605174
+  },
+  {
+    "price": 63431.9,
+    "side": "buy",
+    "size": 0.01261507,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605175
+  },
+  {
+    "price": 63433.4,
+    "side": "buy",
+    "size": 0.548542,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112514,
+    "trade_id": 101605176
+  },
+  {
+    "price": 63435.4,
+    "side": "buy",
+    "size": 0.12875465,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605177
+  },
+  {
+    "price": 63435.7,
+    "side": "buy",
+    "size": 0.692993,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605178
+  },
+  {
+    "price": 63437.2,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605179
+  },
+  {
+    "price": 63440.2,
+    "side": "buy",
+    "size": 0.10109402,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605180
+  },
+  {
+    "price": 63441.5,
+    "side": "buy",
+    "size": 0.0658,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605181
+  },
+  {
+    "price": 63441.6,
+    "side": "buy",
+    "size": 0.78812761,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605182
+  },
+  {
+    "price": 63448.3,
+    "side": "buy",
+    "size": 0.00315217,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605183
+  },
+  {
+    "price": 63449.6,
+    "side": "buy",
+    "size": 0.02836897,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605184
+  },
+  {
+    "price": 63450.4,
+    "side": "buy",
+    "size": 0.01261507,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605185
+  },
+  {
+    "price": 63450.6,
+    "side": "buy",
+    "size": 0.31905493,
+    "source": "kraken_trades",
+    "timestamp": 1780635666.0112517,
+    "trade_id": 101605186
+  },
+  {
+    "price": 63424.9,
+    "side": "sell",
+    "size": 0.00150017,
+    "source": "kraken_trades",
+    "timestamp": 1780635667.4983046,
+    "trade_id": 101605187
+  },
+  {
+    "price": 63411.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635668.2789934,
+    "trade_id": 101605188
+  },
+  {
+    "price": 63411.1,
+    "side": "buy",
+    "size": 0.0003154,
+    "source": "kraken_trades",
+    "timestamp": 1780635668.2789934,
+    "trade_id": 101605189
+  },
+  {
+    "price": 63418.6,
+    "side": "buy",
+    "size": 0.063006,
+    "source": "kraken_trades",
+    "timestamp": 1780635668.2789934,
+    "trade_id": 101605190
+  },
+  {
+    "price": 63418.7,
+    "side": "buy",
+    "size": 0.44545318,
+    "source": "kraken_trades",
+    "timestamp": 1780635668.2789934,
+    "trade_id": 101605191
+  },
+  {
+    "price": 63413.0,
+    "side": "buy",
+    "size": 0.00028857,
+    "source": "kraken_trades",
+    "timestamp": 1780635669.617229,
+    "trade_id": 101605192
+  },
+  {
+    "price": 63413.0,
+    "side": "buy",
+    "size": 0.00121143,
+    "source": "kraken_trades",
+    "timestamp": 1780635669.6340258,
+    "trade_id": 101605193
+  },
+  {
+    "price": 63413.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635669.6340258,
+    "trade_id": 101605194
+  },
+  {
+    "price": 63413.6,
+    "side": "buy",
+    "size": 0.00080216,
+    "source": "kraken_trades",
+    "timestamp": 1780635669.6340258,
+    "trade_id": 101605195
+  },
+  {
+    "price": 63413.6,
+    "side": "buy",
+    "size": 0.00206459,
+    "source": "kraken_trades",
+    "timestamp": 1780635669.642097,
+    "trade_id": 101605196
+  },
+  {
+    "price": 63413.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635671.2946708,
+    "trade_id": 101605197
+  },
+  {
+    "price": 63424.2,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.509297,
+    "trade_id": 101605198
+  },
+  {
+    "price": 63430.1,
+    "side": "buy",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.5871856,
+    "trade_id": 101605199
+  },
+  {
+    "price": 63430.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.5871856,
+    "trade_id": 101605200
+  },
+  {
+    "price": 63436.7,
+    "side": "buy",
+    "size": 2.654e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.5871856,
+    "trade_id": 101605201
+  },
+  {
+    "price": 63425.6,
+    "side": "sell",
+    "size": 0.00150006,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.8328903,
+    "trade_id": 101605202
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.8328903,
+    "trade_id": 101605203
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.8328903,
+    "trade_id": 101605204
+  },
+  {
+    "price": 63416.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635672.8328903,
+    "trade_id": 101605205
+  },
+  {
+    "price": 63413.1,
+    "side": "buy",
+    "size": 0.00480953,
+    "source": "kraken_trades",
+    "timestamp": 1780635673.55248,
+    "trade_id": 101605206
+  },
+  {
+    "price": 63412.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635674.1179285,
+    "trade_id": 101605207
+  },
+  {
+    "price": 63411.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635675.5297186,
+    "trade_id": 101605208
+  },
+  {
+    "price": 63428.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635677.7350247,
+    "trade_id": 101605209
+  },
+  {
+    "price": 63428.8,
+    "side": "buy",
+    "size": 0.05155288,
+    "source": "kraken_trades",
+    "timestamp": 1780635677.7350247,
+    "trade_id": 101605210
+  },
+  {
+    "price": 63428.7,
+    "side": "sell",
+    "size": 0.00150002,
+    "source": "kraken_trades",
+    "timestamp": 1780635677.7750666,
+    "trade_id": 101605211
+  },
+  {
+    "price": 63426.1,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635677.7750666,
+    "trade_id": 101605212
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635677.7750669,
+    "trade_id": 101605213
+  },
+  {
+    "price": 63420.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635679.9887354,
+    "trade_id": 101605214
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635679.9887354,
+    "trade_id": 101605215
+  },
+  {
+    "price": 63417.7,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635680.9972882,
+    "trade_id": 101605216
+  },
+  {
+    "price": 63416.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635680.9972882,
+    "trade_id": 101605217
+  },
+  {
+    "price": 63413.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635680.9972882,
+    "trade_id": 101605218
+  },
+  {
+    "price": 63411.0,
+    "side": "sell",
+    "size": 0.0335681,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.447683,
+    "trade_id": 101605219
+  },
+  {
+    "price": 63411.0,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.4476833,
+    "trade_id": 101605220
+  },
+  {
+    "price": 63411.0,
+    "side": "sell",
+    "size": 0.00110391,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.4476833,
+    "trade_id": 101605221
+  },
+  {
+    "price": 63410.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.4476833,
+    "trade_id": 101605222
+  },
+  {
+    "price": 63409.0,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.4476833,
+    "trade_id": 101605223
+  },
+  {
+    "price": 63407.1,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.4476833,
+    "trade_id": 101605224
+  },
+  {
+    "price": 63405.1,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.6013186,
+    "trade_id": 101605225
+  },
+  {
+    "price": 63402.2,
+    "side": "sell",
+    "size": 0.002,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.6839883,
+    "trade_id": 101605226
+  },
+  {
+    "price": 63402.2,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.6839883,
+    "trade_id": 101605227
+  },
+  {
+    "price": 63400.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.6839883,
+    "trade_id": 101605228
+  },
+  {
+    "price": 63400.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635683.8765242,
+    "trade_id": 101605229
+  },
+  {
+    "price": 63395.0,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635684.0059452,
+    "trade_id": 101605230
+  },
+  {
+    "price": 63380.9,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635684.0697174,
+    "trade_id": 101605231
+  },
+  {
+    "price": 63394.2,
+    "side": "buy",
+    "size": 0.00023427,
+    "source": "kraken_trades",
+    "timestamp": 1780635687.1508975,
+    "trade_id": 101605232
+  },
+  {
+    "price": 63395.5,
+    "side": "buy",
+    "size": 0.00077325,
+    "source": "kraken_trades",
+    "timestamp": 1780635693.3765202,
+    "trade_id": 101605233
+  },
+  {
+    "price": 63395.5,
+    "side": "buy",
+    "size": 0.00072675,
+    "source": "kraken_trades",
+    "timestamp": 1780635695.3669875,
+    "trade_id": 101605234
+  },
+  {
+    "price": 63397.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635695.3669875,
+    "trade_id": 101605235
+  },
+  {
+    "price": 63400.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635695.3669875,
+    "trade_id": 101605236
+  },
+  {
+    "price": 63403.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635695.3669875,
+    "trade_id": 101605237
+  },
+  {
+    "price": 63407.0,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635695.3669875,
+    "trade_id": 101605238
+  },
+  {
+    "price": 63418.1,
+    "side": "buy",
+    "size": 4.04e-06,
+    "source": "kraken_trades",
+    "timestamp": 1780635695.3669875,
+    "trade_id": 101605239
+  },
+  {
+    "price": 63409.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635698.8644147,
+    "trade_id": 101605240
+  },
+  {
+    "price": 63409.6,
+    "side": "sell",
+    "size": 0.00543068,
+    "source": "kraken_trades",
+    "timestamp": 1780635698.8644147,
+    "trade_id": 101605241
+  },
+  {
+    "price": 63409.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635702.2491693,
+    "trade_id": 101605242
+  },
+  {
+    "price": 63419.9,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780635702.650871,
+    "trade_id": 101605243
+  },
+  {
+    "price": 63410.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635702.650871,
+    "trade_id": 101605244
+  },
+  {
+    "price": 63410.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635705.2153044,
+    "trade_id": 101605245
+  },
+  {
+    "price": 63419.5,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635706.9550495,
+    "trade_id": 101605246
+  },
+  {
+    "price": 63417.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635707.3629477,
+    "trade_id": 101605247
+  },
+  {
+    "price": 63417.8,
+    "side": "sell",
+    "size": 0.00662459,
+    "source": "kraken_trades",
+    "timestamp": 1780635707.3629477,
+    "trade_id": 101605248
+  },
+  {
+    "price": 63415.6,
+    "side": "sell",
+    "size": 0.00042,
+    "source": "kraken_trades",
+    "timestamp": 1780635707.8543093,
+    "trade_id": 101605249
+  },
+  {
+    "price": 63418.0,
+    "side": "buy",
+    "size": 0.001264,
+    "source": "kraken_trades",
+    "timestamp": 1780635708.3644545,
+    "trade_id": 101605250
+  },
+  {
+    "price": 63418.0,
+    "side": "buy",
+    "size": 0.000236,
+    "source": "kraken_trades",
+    "timestamp": 1780635709.0041769,
+    "trade_id": 101605251
+  },
+  {
+    "price": 63421.3,
+    "side": "buy",
+    "size": 0.00110373,
+    "source": "kraken_trades",
+    "timestamp": 1780635710.1229475,
+    "trade_id": 101605252
+  },
+  {
+    "price": 63421.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635710.1229475,
+    "trade_id": 101605253
+  },
+  {
+    "price": 63422.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635710.1287444,
+    "trade_id": 101605254
+  },
+  {
+    "price": 63423.1,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635710.2166874,
+    "trade_id": 101605255
+  },
+  {
+    "price": 63437.2,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635710.3182914,
+    "trade_id": 101605256
+  },
+  {
+    "price": 63437.2,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635710.3182914,
+    "trade_id": 101605257
+  },
+  {
+    "price": 63451.3,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635712.745091,
+    "trade_id": 101605258
+  },
+  {
+    "price": 63465.4,
+    "side": "buy",
+    "size": 0.00069,
+    "source": "kraken_trades",
+    "timestamp": 1780635712.753398,
+    "trade_id": 101605259
+  },
+  {
+    "price": 63465.4,
+    "side": "buy",
+    "size": 0.000885,
+    "source": "kraken_trades",
+    "timestamp": 1780635712.8468785,
+    "trade_id": 101605260
+  },
+  {
+    "price": 63469.6,
+    "side": "sell",
+    "size": 0.0015001,
+    "source": "kraken_trades",
+    "timestamp": 1780635717.459059,
+    "trade_id": 101605261
+  },
+  {
+    "price": 63468.9,
+    "side": "buy",
+    "size": 0.00015447,
+    "source": "kraken_trades",
+    "timestamp": 1780635718.1357846,
+    "trade_id": 101605262
+  },
+  {
+    "price": 63468.8,
+    "side": "sell",
+    "size": 0.00121914,
+    "source": "kraken_trades",
+    "timestamp": 1780635720.357431,
+    "trade_id": 101605263
+  },
+  {
+    "price": 63468.8,
+    "side": "sell",
+    "size": 0.00028087,
+    "source": "kraken_trades",
+    "timestamp": 1780635720.850931,
+    "trade_id": 101605264
+  },
+  {
+    "price": 63468.8,
+    "side": "sell",
+    "size": 0.0011029,
+    "source": "kraken_trades",
+    "timestamp": 1780635720.850931,
+    "trade_id": 101605265
+  },
+  {
+    "price": 63467.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635720.850931,
+    "trade_id": 101605266
+  },
+  {
+    "price": 63464.1,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635720.850931,
+    "trade_id": 101605267
+  },
+  {
+    "price": 63462.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635722.2032342,
+    "trade_id": 101605268
+  },
+  {
+    "price": 63457.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635722.8489301,
+    "trade_id": 101605269
+  },
+  {
+    "price": 63454.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635722.8489301,
+    "trade_id": 101605270
+  },
+  {
+    "price": 63457.9,
+    "side": "buy",
+    "size": 0.00134553,
+    "source": "kraken_trades",
+    "timestamp": 1780635724.9501195,
+    "trade_id": 101605271
+  },
+  {
+    "price": 63464.0,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635724.9501195,
+    "trade_id": 101605272
+  },
+  {
+    "price": 63465.9,
+    "side": "buy",
+    "size": 2.083e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635724.9501195,
+    "trade_id": 101605273
+  },
+  {
+    "price": 63470.2,
+    "side": "buy",
+    "size": 0.00172888,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.006905,
+    "trade_id": 101605274
+  },
+  {
+    "price": 63478.3,
+    "side": "buy",
+    "size": 0.00135692,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.0590732,
+    "trade_id": 101605275
+  },
+  {
+    "price": 63478.3,
+    "side": "buy",
+    "size": 0.00037164,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.0592391,
+    "trade_id": 101605276
+  },
+  {
+    "price": 63478.3,
+    "side": "buy",
+    "size": 0.00027144,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.0824852,
+    "trade_id": 101605277
+  },
+  {
+    "price": 63478.3,
+    "side": "buy",
+    "size": 0.00108548,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.0824852,
+    "trade_id": 101605278
+  },
+  {
+    "price": 63478.2,
+    "side": "buy",
+    "size": 0.00172855,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.1070275,
+    "trade_id": 101605279
+  },
+  {
+    "price": 63477.9,
+    "side": "buy",
+    "size": 0.00172855,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.1441185,
+    "trade_id": 101605280
+  },
+  {
+    "price": 63470.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635725.9274747,
+    "trade_id": 101605281
+  },
+  {
+    "price": 63462.4,
+    "side": "sell",
+    "size": 0.00136136,
+    "source": "kraken_trades",
+    "timestamp": 1780635726.3343885,
+    "trade_id": 101605282
+  },
+  {
+    "price": 63460.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635726.3343885,
+    "trade_id": 101605283
+  },
+  {
+    "price": 63460.7,
+    "side": "sell",
+    "size": 0.0006807,
+    "source": "kraken_trades",
+    "timestamp": 1780635727.3754642,
+    "trade_id": 101605284
+  },
+  {
+    "price": 63451.3,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635729.3498697,
+    "trade_id": 101605285
+  },
+  {
+    "price": 63449.9,
+    "side": "sell",
+    "size": 0.06,
+    "source": "kraken_trades",
+    "timestamp": 1780635729.4427183,
+    "trade_id": 101605286
+  },
+  {
+    "price": 63437.2,
+    "side": "sell",
+    "size": 0.00042,
+    "source": "kraken_trades",
+    "timestamp": 1780635732.5305858,
+    "trade_id": 101605287
+  },
+  {
+    "price": 63437.2,
+    "side": "sell",
+    "size": 0.001156,
+    "source": "kraken_trades",
+    "timestamp": 1780635732.6586578,
+    "trade_id": 101605288
+  },
+  {
+    "price": 63435.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635732.6586578,
+    "trade_id": 101605289
+  },
+  {
+    "price": 63432.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635732.6586578,
+    "trade_id": 101605290
+  },
+  {
+    "price": 63430.4,
+    "side": "buy",
+    "size": 0.0008926,
+    "source": "kraken_trades",
+    "timestamp": 1780635733.4719121,
+    "trade_id": 101605291
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.177976,
+    "trade_id": 101605292
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.177976,
+    "trade_id": 101605293
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.1779761,
+    "trade_id": 101605294
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.1779761,
+    "trade_id": 101605295
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00123781,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2311738,
+    "trade_id": 101605296
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2344418,
+    "trade_id": 101605297
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2374861,
+    "trade_id": 101605298
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00031993,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2407277,
+    "trade_id": 101605299
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00140824,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2407277,
+    "trade_id": 101605300
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2441127,
+    "trade_id": 101605301
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.247019,
+    "trade_id": 101605302
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.250685,
+    "trade_id": 101605303
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.25405,
+    "trade_id": 101605304
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2571983,
+    "trade_id": 101605305
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2609076,
+    "trade_id": 101605306
+  },
+  {
+    "price": 63416.9,
+    "side": "buy",
+    "size": 0.00172817,
+    "source": "kraken_trades",
+    "timestamp": 1780635734.2680762,
+    "trade_id": 101605307
+  },
+  {
+    "price": 63432.6,
+    "side": "buy",
+    "size": 0.00110353,
+    "source": "kraken_trades",
+    "timestamp": 1780635736.3513172,
+    "trade_id": 101605308
+  },
+  {
+    "price": 63432.9,
+    "side": "buy",
+    "size": 0.00588267,
+    "source": "kraken_trades",
+    "timestamp": 1780635736.3513172,
+    "trade_id": 101605309
+  },
+  {
+    "price": 63431.0,
+    "side": "buy",
+    "size": 5.053e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635737.2009296,
+    "trade_id": 101605310
+  },
+  {
+    "price": 63430.9,
+    "side": "sell",
+    "size": 0.00034051,
+    "source": "kraken_trades",
+    "timestamp": 1780635737.9045424,
+    "trade_id": 101605311
+  },
+  {
+    "price": 63429.9,
+    "side": "buy",
+    "size": 0.00012544,
+    "source": "kraken_trades",
+    "timestamp": 1780635738.0826063,
+    "trade_id": 101605312
+  },
+  {
+    "price": 63429.8,
+    "side": "sell",
+    "size": 0.00017026,
+    "source": "kraken_trades",
+    "timestamp": 1780635738.4307513,
+    "trade_id": 101605313
+  },
+  {
+    "price": 63429.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635738.4307513,
+    "trade_id": 101605314
+  },
+  {
+    "price": 63428.1,
+    "side": "buy",
+    "size": 0.00137456,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.849342,
+    "trade_id": 101605315
+  },
+  {
+    "price": 63429.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.8663974,
+    "trade_id": 101605316
+  },
+  {
+    "price": 63432.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.8786058,
+    "trade_id": 101605317
+  },
+  {
+    "price": 63434.0,
+    "side": "buy",
+    "size": 0.00110351,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.8836021,
+    "trade_id": 101605318
+  },
+  {
+    "price": 63435.5,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.8836021,
+    "trade_id": 101605319
+  },
+  {
+    "price": 63437.2,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.8836021,
+    "trade_id": 101605320
+  },
+  {
+    "price": 63438.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635744.8836021,
+    "trade_id": 101605321
+  },
+  {
+    "price": 63451.3,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635745.4737637,
+    "trade_id": 101605322
+  },
+  {
+    "price": 63451.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635745.4737637,
+    "trade_id": 101605323
+  },
+  {
+    "price": 63465.4,
+    "side": "buy",
+    "size": 0.001575,
+    "source": "kraken_trades",
+    "timestamp": 1780635747.3370104,
+    "trade_id": 101605324
+  },
+  {
+    "price": 63472.3,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635748.6024709,
+    "trade_id": 101605325
+  },
+  {
+    "price": 63470.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635748.6024709,
+    "trade_id": 101605326
+  },
+  {
+    "price": 63467.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635748.6024709,
+    "trade_id": 101605327
+  },
+  {
+    "price": 63464.1,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635748.6024709,
+    "trade_id": 101605328
+  },
+  {
+    "price": 63461.6,
+    "side": "sell",
+    "size": 0.00083444,
+    "source": "kraken_trades",
+    "timestamp": 1780635749.6252718,
+    "trade_id": 101605329
+  },
+  {
+    "price": 63450.0,
+    "side": "sell",
+    "size": 0.00157605,
+    "source": "kraken_trades",
+    "timestamp": 1780635749.8239846,
+    "trade_id": 101605330
+  },
+  {
+    "price": 63450.0,
+    "side": "sell",
+    "size": 0.00041729,
+    "source": "kraken_trades",
+    "timestamp": 1780635749.8239846,
+    "trade_id": 101605331
+  },
+  {
+    "price": 63434.4,
+    "side": "sell",
+    "size": 0.0011035,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605332
+  },
+  {
+    "price": 63434.3,
+    "side": "sell",
+    "size": 0.0002087,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605333
+  },
+  {
+    "price": 63432.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605334
+  },
+  {
+    "price": 63429.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605335
+  },
+  {
+    "price": 63426.1,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605336
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605337
+  },
+  {
+    "price": 63413.4,
+    "side": "sell",
+    "size": 0.01575858,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605338
+  },
+  {
+    "price": 63413.0,
+    "side": "sell",
+    "size": 0.00389333,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605339
+  },
+  {
+    "price": 63410.9,
+    "side": "sell",
+    "size": 0.02882945,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299735,
+    "trade_id": 101605340
+  },
+  {
+    "price": 63410.9,
+    "side": "sell",
+    "size": 0.04814705,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299737,
+    "trade_id": 101605341
+  },
+  {
+    "price": 63410.8,
+    "side": "sell",
+    "size": 0.0658,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299737,
+    "trade_id": 101605342
+  },
+  {
+    "price": 63409.7,
+    "side": "sell",
+    "size": 0.08605539,
+    "source": "kraken_trades",
+    "timestamp": 1780635752.8299737,
+    "trade_id": 101605343
+  },
+  {
+    "price": 63415.5,
+    "side": "buy",
+    "size": 0.03396653,
+    "source": "kraken_trades",
+    "timestamp": 1780635755.3613389,
+    "trade_id": 101605344
+  },
+  {
+    "price": 63422.4,
+    "side": "sell",
+    "size": 0.00196345,
+    "source": "kraken_trades",
+    "timestamp": 1780635756.3266642,
+    "trade_id": 101605345
+  },
+  {
+    "price": 63417.0,
+    "side": "sell",
+    "size": 0.00042,
+    "source": "kraken_trades",
+    "timestamp": 1780635756.5713005,
+    "trade_id": 101605346
+  },
+  {
+    "price": 63422.6,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635757.3364985,
+    "trade_id": 101605347
+  },
+  {
+    "price": 63422.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635757.3364985,
+    "trade_id": 101605348
+  },
+  {
+    "price": 63425.7,
+    "side": "buy",
+    "size": 0.00439942,
+    "source": "kraken_trades",
+    "timestamp": 1780635757.3364985,
+    "trade_id": 101605349
+  },
+  {
+    "price": 63423.6,
+    "side": "buy",
+    "size": 0.00028081,
+    "source": "kraken_trades",
+    "timestamp": 1780635761.271966,
+    "trade_id": 101605350
+  },
+  {
+    "price": 63419.3,
+    "side": "buy",
+    "size": 0.00061829,
+    "source": "kraken_trades",
+    "timestamp": 1780635764.8694594,
+    "trade_id": 101605351
+  },
+  {
+    "price": 63425.2,
+    "side": "buy",
+    "size": 0.00110366,
+    "source": "kraken_trades",
+    "timestamp": 1780635766.3604064,
+    "trade_id": 101605352
+  },
+  {
+    "price": 63425.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635766.375466,
+    "trade_id": 101605353
+  },
+  {
+    "price": 63435.5,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635772.4713395,
+    "trade_id": 101605354
+  },
+  {
+    "price": 63438.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635772.4713395,
+    "trade_id": 101605355
+  },
+  {
+    "price": 63441.4,
+    "side": "buy",
+    "size": 0.00609077,
+    "source": "kraken_trades",
+    "timestamp": 1780635772.4713395,
+    "trade_id": 101605356
+  },
+  {
+    "price": 63437.7,
+    "side": "buy",
+    "size": 0.00074366,
+    "source": "kraken_trades",
+    "timestamp": 1780635779.2037895,
+    "trade_id": 101605357
+  },
+  {
+    "price": 63437.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.164651,
+    "trade_id": 101605358
+  },
+  {
+    "price": 63437.6,
+    "side": "sell",
+    "size": 0.00030566,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.164651,
+    "trade_id": 101605359
+  },
+  {
+    "price": 63437.2,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.164651,
+    "trade_id": 101605360
+  },
+  {
+    "price": 63435.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.164651,
+    "trade_id": 101605361
+  },
+  {
+    "price": 63432.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.164651,
+    "trade_id": 101605362
+  },
+  {
+    "price": 63429.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.164651,
+    "trade_id": 101605363
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.00042,
+    "source": "kraken_trades",
+    "timestamp": 1780635781.50993,
+    "trade_id": 101605364
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.001156,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.576488,
+    "trade_id": 101605365
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.00150006,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.576488,
+    "trade_id": 101605366
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.576488,
+    "trade_id": 101605367
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.5764883,
+    "trade_id": 101605368
+  },
+  {
+    "price": 63416.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.5764883,
+    "trade_id": 101605369
+  },
+  {
+    "price": 63413.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.5764883,
+    "trade_id": 101605370
+  },
+  {
+    "price": 63411.9,
+    "side": "sell",
+    "size": 0.00122646,
+    "source": "kraken_trades",
+    "timestamp": 1780635783.8838248,
+    "trade_id": 101605371
+  },
+  {
+    "price": 63409.0,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635784.0160856,
+    "trade_id": 101605372
+  },
+  {
+    "price": 63409.0,
+    "side": "sell",
+    "size": 0.00061326,
+    "source": "kraken_trades",
+    "timestamp": 1780635784.0160856,
+    "trade_id": 101605373
+  },
+  {
+    "price": 63402.1,
+    "side": "sell",
+    "size": 0.002,
+    "source": "kraken_trades",
+    "timestamp": 1780635784.8573127,
+    "trade_id": 101605374
+  },
+  {
+    "price": 63395.0,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635785.243079,
+    "trade_id": 101605375
+  },
+  {
+    "price": 63394.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635785.243079,
+    "trade_id": 101605376
+  },
+  {
+    "price": 63389.1,
+    "side": "sell",
+    "size": 0.02388,
+    "source": "kraken_trades",
+    "timestamp": 1780635786.394582,
+    "trade_id": 101605377
+  },
+  {
+    "price": 63389.1,
+    "side": "buy",
+    "size": 4.14e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635786.8823586,
+    "trade_id": 101605378
+  },
+  {
+    "price": 63387.2,
+    "side": "sell",
+    "size": 0.159032,
+    "source": "kraken_trades",
+    "timestamp": 1780635787.5726013,
+    "trade_id": 101605379
+  },
+  {
+    "price": 63387.1,
+    "side": "sell",
+    "size": 0.15631051,
+    "source": "kraken_trades",
+    "timestamp": 1780635787.5726013,
+    "trade_id": 101605380
+  },
+  {
+    "price": 63383.6,
+    "side": "sell",
+    "size": 0.00030676,
+    "source": "kraken_trades",
+    "timestamp": 1780635794.815795,
+    "trade_id": 101605381
+  },
+  {
+    "price": 63383.6,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635794.815795,
+    "trade_id": 101605382
+  },
+  {
+    "price": 63381.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635794.815795,
+    "trade_id": 101605383
+  },
+  {
+    "price": 63380.9,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635794.815795,
+    "trade_id": 101605384
+  },
+  {
+    "price": 63378.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635794.815795,
+    "trade_id": 101605385
+  },
+  {
+    "price": 63375.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635794.815795,
+    "trade_id": 101605386
+  },
+  {
+    "price": 63371.2,
+    "side": "sell",
+    "size": 0.00015339,
+    "source": "kraken_trades",
+    "timestamp": 1780635798.7400956,
+    "trade_id": 101605387
+  },
+  {
+    "price": 63366.8,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780635798.7452862,
+    "trade_id": 101605388
+  },
+  {
+    "price": 63365.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635798.7452862,
+    "trade_id": 101605389
+  },
+  {
+    "price": 63362.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635798.7452862,
+    "trade_id": 101605390
+  },
+  {
+    "price": 63359.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635798.7452862,
+    "trade_id": 101605391
+  },
+  {
+    "price": 63355.2,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780635799.1119082,
+    "trade_id": 101605392
+  },
+  {
+    "price": 63352.7,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780635799.478515,
+    "trade_id": 101605393
+  },
+  {
+    "price": 63369.1,
+    "side": "buy",
+    "size": 0.00025044,
+    "source": "kraken_trades",
+    "timestamp": 1780635799.8559203,
+    "trade_id": 101605394
+  },
+  {
+    "price": 63369.1,
+    "side": "buy",
+    "size": 0.0005059,
+    "source": "kraken_trades",
+    "timestamp": 1780635799.967204,
+    "trade_id": 101605395
+  },
+  {
+    "price": 63369.1,
+    "side": "buy",
+    "size": 0.00027798,
+    "source": "kraken_trades",
+    "timestamp": 1780635799.967204,
+    "trade_id": 101605396
+  },
+  {
+    "price": 63369.0,
+    "side": "sell",
+    "size": 0.00042,
+    "source": "kraken_trades",
+    "timestamp": 1780635801.0110168,
+    "trade_id": 101605397
+  },
+  {
+    "price": 63369.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635801.612034,
+    "trade_id": 101605398
+  },
+  {
+    "price": 63387.5,
+    "side": "buy",
+    "size": 4.706e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635801.612034,
+    "trade_id": 101605399
+  },
+  {
+    "price": 63380.4,
+    "side": "sell",
+    "size": 0.00120466,
+    "source": "kraken_trades",
+    "timestamp": 1780635810.297191,
+    "trade_id": 101605400
+  },
+  {
+    "price": 63378.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635810.297191,
+    "trade_id": 101605401
+  },
+  {
+    "price": 63375.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635810.297191,
+    "trade_id": 101605402
+  },
+  {
+    "price": 63372.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635810.297191,
+    "trade_id": 101605403
+  },
+  {
+    "price": 63365.2,
+    "side": "buy",
+    "size": 0.00209086,
+    "source": "kraken_trades",
+    "timestamp": 1780635810.7544687,
+    "trade_id": 101605404
+  },
+  {
+    "price": 63359.3,
+    "side": "sell",
+    "size": 0.00060254,
+    "source": "kraken_trades",
+    "timestamp": 1780635813.6550252,
+    "trade_id": 101605405
+  },
+  {
+    "price": 63356.5,
+    "side": "buy",
+    "size": 0.00015322,
+    "source": "kraken_trades",
+    "timestamp": 1780635818.1840806,
+    "trade_id": 101605406
+  },
+  {
+    "price": 63356.5,
+    "side": "buy",
+    "size": 2.723e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635818.3022745,
+    "trade_id": 101605407
+  },
+  {
+    "price": 63356.4,
+    "side": "sell",
+    "size": 0.00030128,
+    "source": "kraken_trades",
+    "timestamp": 1780635819.1654425,
+    "trade_id": 101605408
+  },
+  {
+    "price": 63353.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635819.1654425,
+    "trade_id": 101605409
+  },
+  {
+    "price": 63350.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635819.1654425,
+    "trade_id": 101605410
+  },
+  {
+    "price": 63346.9,
+    "side": "sell",
+    "size": 1.672e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635819.1654425,
+    "trade_id": 101605411
+  },
+  {
+    "price": 63346.3,
+    "side": "buy",
+    "size": 0.00196842,
+    "source": "kraken_trades",
+    "timestamp": 1780635820.4264107,
+    "trade_id": 101605412
+  },
+  {
+    "price": 63346.2,
+    "side": "sell",
+    "size": 0.000144,
+    "source": "kraken_trades",
+    "timestamp": 1780635822.6263154,
+    "trade_id": 101605413
+  },
+  {
+    "price": 63346.2,
+    "side": "sell",
+    "size": 0.00024091,
+    "source": "kraken_trades",
+    "timestamp": 1780635822.6263154,
+    "trade_id": 101605414
+  },
+  {
+    "price": 63343.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635822.6263154,
+    "trade_id": 101605415
+  },
+  {
+    "price": 63342.7,
+    "side": "sell",
+    "size": 0.00374409,
+    "source": "kraken_trades",
+    "timestamp": 1780635826.5437891,
+    "trade_id": 101605416
+  },
+  {
+    "price": 63342.8,
+    "side": "buy",
+    "size": 0.00131955,
+    "source": "kraken_trades",
+    "timestamp": 1780635829.7044775,
+    "trade_id": 101605417
+  },
+  {
+    "price": 63343.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635829.7044775,
+    "trade_id": 101605418
+  },
+  {
+    "price": 63346.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635829.7044775,
+    "trade_id": 101605419
+  },
+  {
+    "price": 63349.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635829.7044778,
+    "trade_id": 101605420
+  },
+  {
+    "price": 63350.4,
+    "side": "sell",
+    "size": 0.000156,
+    "source": "kraken_trades",
+    "timestamp": 1780635836.025413,
+    "trade_id": 101605421
+  },
+  {
+    "price": 63350.5,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635838.9718122,
+    "trade_id": 101605422
+  },
+  {
+    "price": 63353.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635838.9718122,
+    "trade_id": 101605423
+  },
+  {
+    "price": 63356.3,
+    "side": "buy",
+    "size": 4.668e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635838.9718122,
+    "trade_id": 101605424
+  },
+  {
+    "price": 63366.8,
+    "side": "buy",
+    "size": 0.00017661,
+    "source": "kraken_trades",
+    "timestamp": 1780635839.8740811,
+    "trade_id": 101605425
+  },
+  {
+    "price": 63366.7,
+    "side": "sell",
+    "size": 0.0005,
+    "source": "kraken_trades",
+    "timestamp": 1780635840.1090326,
+    "trade_id": 101605426
+  },
+  {
+    "price": 63366.7,
+    "side": "sell",
+    "size": 0.00041344,
+    "source": "kraken_trades",
+    "timestamp": 1780635840.4766247,
+    "trade_id": 101605427
+  },
+  {
+    "price": 63366.8,
+    "side": "buy",
+    "size": 0.00140139,
+    "source": "kraken_trades",
+    "timestamp": 1780635841.3095179,
+    "trade_id": 101605428
+  },
+  {
+    "price": 63366.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635841.309518,
+    "trade_id": 101605429
+  },
+  {
+    "price": 63380.8,
+    "side": "sell",
+    "size": 6.253e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635843.8521981,
+    "trade_id": 101605430
+  },
+  {
+    "price": 63380.8,
+    "side": "sell",
+    "size": 0.00134401,
+    "source": "kraken_trades",
+    "timestamp": 1780635846.3360317,
+    "trade_id": 101605431
+  },
+  {
+    "price": 63380.8,
+    "side": "sell",
+    "size": 0.00050064,
+    "source": "kraken_trades",
+    "timestamp": 1780635846.3360317,
+    "trade_id": 101605432
+  },
+  {
+    "price": 63366.7,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635851.316918,
+    "trade_id": 101605433
+  },
+  {
+    "price": 63366.7,
+    "side": "sell",
+    "size": 0.00110468,
+    "source": "kraken_trades",
+    "timestamp": 1780635851.316918,
+    "trade_id": 101605434
+  },
+  {
+    "price": 63365.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635851.3498304,
+    "trade_id": 101605435
+  },
+  {
+    "price": 63356.3,
+    "side": "buy",
+    "size": 0.0005,
+    "source": "kraken_trades",
+    "timestamp": 1780635855.2037,
+    "trade_id": 101605436
+  },
+  {
+    "price": 63356.1,
+    "side": "buy",
+    "size": 0.001,
+    "source": "kraken_trades",
+    "timestamp": 1780635861.4647603,
+    "trade_id": 101605437
+  },
+  {
+    "price": 63356.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635861.4647603,
+    "trade_id": 101605438
+  },
+  {
+    "price": 63359.3,
+    "side": "buy",
+    "size": 0.00885182,
+    "source": "kraken_trades",
+    "timestamp": 1780635861.4647605,
+    "trade_id": 101605439
+  },
+  {
+    "price": 63356.6,
+    "side": "buy",
+    "size": 7.775e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635865.164308,
+    "trade_id": 101605440
+  },
+  {
+    "price": 63356.6,
+    "side": "buy",
+    "size": 0.00014571,
+    "source": "kraken_trades",
+    "timestamp": 1780635867.4889817,
+    "trade_id": 101605441
+  },
+  {
+    "price": 63356.6,
+    "side": "buy",
+    "size": 0.00127654,
+    "source": "kraken_trades",
+    "timestamp": 1780635867.946591,
+    "trade_id": 101605442
+  },
+  {
+    "price": 63359.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635867.946591,
+    "trade_id": 101605443
+  },
+  {
+    "price": 63361.7,
+    "side": "buy",
+    "size": 0.00014357,
+    "source": "kraken_trades",
+    "timestamp": 1780635867.946591,
+    "trade_id": 101605444
+  },
+  {
+    "price": 63361.7,
+    "side": "buy",
+    "size": 0.0009612,
+    "source": "kraken_trades",
+    "timestamp": 1780635870.2062418,
+    "trade_id": 101605445
+  },
+  {
+    "price": 63361.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635870.2062418,
+    "trade_id": 101605446
+  },
+  {
+    "price": 63362.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635870.2062418,
+    "trade_id": 101605447
+  },
+  {
+    "price": 63365.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635870.206242,
+    "trade_id": 101605448
+  },
+  {
+    "price": 63368.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635870.206242,
+    "trade_id": 101605449
+  },
+  {
+    "price": 63372.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635870.206242,
+    "trade_id": 101605450
+  },
+  {
+    "price": 63376.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635875.831019,
+    "trade_id": 101605451
+  },
+  {
+    "price": 63376.8,
+    "side": "sell",
+    "size": 0.00110451,
+    "source": "kraken_trades",
+    "timestamp": 1780635875.831019,
+    "trade_id": 101605452
+  },
+  {
+    "price": 63375.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635875.831019,
+    "trade_id": 101605453
+  },
+  {
+    "price": 63368.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780635883.3887205,
+    "trade_id": 101605454
+  },
+  {
+    "price": 63365.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635883.3887205,
+    "trade_id": 101605455
+  },
+  {
+    "price": 63362.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635883.3887208,
+    "trade_id": 101605456
+  },
+  {
+    "price": 63359.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635883.3887208,
+    "trade_id": 101605457
+  },
+  {
+    "price": 63359.3,
+    "side": "sell",
+    "size": 0.03752088,
+    "source": "kraken_trades",
+    "timestamp": 1780635883.3887208,
+    "trade_id": 101605458
+  },
+  {
+    "price": 63365.6,
+    "side": "sell",
+    "size": 0.00014262,
+    "source": "kraken_trades",
+    "timestamp": 1780635887.9088445,
+    "trade_id": 101605459
+  },
+  {
+    "price": 63362.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635887.9665124,
+    "trade_id": 101605460
+  },
+  {
+    "price": 63352.7,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780635888.1495056,
+    "trade_id": 101605461
+  },
+  {
+    "price": 63350.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635888.1495056,
+    "trade_id": 101605462
+  },
+  {
+    "price": 63350.4,
+    "side": "sell",
+    "size": 0.00014265,
+    "source": "kraken_trades",
+    "timestamp": 1780635893.6375985,
+    "trade_id": 101605463
+  },
+  {
+    "price": 63350.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635893.6375985,
+    "trade_id": 101605464
+  },
+  {
+    "price": 63346.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635893.6375985,
+    "trade_id": 101605465
+  },
+  {
+    "price": 63343.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635893.6375985,
+    "trade_id": 101605466
+  },
+  {
+    "price": 63347.1,
+    "side": "buy",
+    "size": 0.00110502,
+    "source": "kraken_trades",
+    "timestamp": 1780635911.6571746,
+    "trade_id": 101605467
+  },
+  {
+    "price": 63349.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635911.6571746,
+    "trade_id": 101605468
+  },
+  {
+    "price": 63351.0,
+    "side": "buy",
+    "size": 0.00028174,
+    "source": "kraken_trades",
+    "timestamp": 1780635911.6571746,
+    "trade_id": 101605469
+  },
+  {
+    "price": 63351.0,
+    "side": "buy",
+    "size": 0.03618862,
+    "source": "kraken_trades",
+    "timestamp": 1780635914.5973792,
+    "trade_id": 101605470
+  },
+  {
+    "price": 63351.0,
+    "side": "buy",
+    "size": 0.00376841,
+    "source": "kraken_trades",
+    "timestamp": 1780635914.5973792,
+    "trade_id": 101605471
+  },
+  {
+    "price": 63366.8,
+    "side": "buy",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780635914.7325714,
+    "trade_id": 101605472
+  },
+  {
+    "price": 63369.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635914.7325714,
+    "trade_id": 101605473
+  },
+  {
+    "price": 63378.7,
+    "side": "buy",
+    "size": 0.00199412,
+    "source": "kraken_trades",
+    "timestamp": 1780635914.7325714,
+    "trade_id": 101605474
+  },
+  {
+    "price": 63380.8,
+    "side": "buy",
+    "size": 0.02542876,
+    "source": "kraken_trades",
+    "timestamp": 1780635914.7325714,
+    "trade_id": 101605475
+  },
+  {
+    "price": 63380.0,
+    "side": "buy",
+    "size": 1.882e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635916.9458647,
+    "trade_id": 101605476
+  },
+  {
+    "price": 63379.9,
+    "side": "sell",
+    "size": 0.00097236,
+    "source": "kraken_trades",
+    "timestamp": 1780635920.7055755,
+    "trade_id": 101605477
+  },
+  {
+    "price": 63378.5,
+    "side": "sell",
+    "size": 0.00150002,
+    "source": "kraken_trades",
+    "timestamp": 1780635920.7539003,
+    "trade_id": 101605478
+  },
+  {
+    "price": 63375.4,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780635921.1439424,
+    "trade_id": 101605479
+  },
+  {
+    "price": 63372.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635921.1439424,
+    "trade_id": 101605480
+  },
+  {
+    "price": 63369.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635921.1439424,
+    "trade_id": 101605481
+  },
+  {
+    "price": 63366.7,
+    "side": "buy",
+    "size": 0.00148118,
+    "source": "kraken_trades",
+    "timestamp": 1780635922.8196933,
+    "trade_id": 101605482
+  },
+  {
+    "price": 63366.7,
+    "side": "buy",
+    "size": 0.2,
+    "source": "kraken_trades",
+    "timestamp": 1780635922.8196933,
+    "trade_id": 101605483
+  },
+  {
+    "price": 63373.0,
+    "side": "buy",
+    "size": 0.43904402,
+    "source": "kraken_trades",
+    "timestamp": 1780635922.8196933,
+    "trade_id": 101605484
+  },
+  {
+    "price": 63373.1,
+    "side": "buy",
+    "size": 0.42423561,
+    "source": "kraken_trades",
+    "timestamp": 1780635922.8196933,
+    "trade_id": 101605485
+  },
+  {
+    "price": 63366.9,
+    "side": "sell",
+    "size": 2.347e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635926.3937943,
+    "trade_id": 101605486
+  },
+  {
+    "price": 63367.0,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.2901769,
+    "trade_id": 101605487
+  },
+  {
+    "price": 63371.7,
+    "side": "buy",
+    "size": 7.511e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.3408263,
+    "trade_id": 101605488
+  },
+  {
+    "price": 63371.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.3408263,
+    "trade_id": 101605489
+  },
+  {
+    "price": 63372.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.3510795,
+    "trade_id": 101605490
+  },
+  {
+    "price": 63375.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.361033,
+    "trade_id": 101605491
+  },
+  {
+    "price": 63378.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.361033,
+    "trade_id": 101605492
+  },
+  {
+    "price": 63380.9,
+    "side": "buy",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.3610332,
+    "trade_id": 101605493
+  },
+  {
+    "price": 63381.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.3610332,
+    "trade_id": 101605494
+  },
+  {
+    "price": 63388.5,
+    "side": "sell",
+    "size": 0.00157837,
+    "source": "kraken_trades",
+    "timestamp": 1780635931.4741626,
+    "trade_id": 101605495
+  },
+  {
+    "price": 63388.6,
+    "side": "buy",
+    "size": 0.0119156,
+    "source": "kraken_trades",
+    "timestamp": 1780635932.3023074,
+    "trade_id": 101605496
+  },
+  {
+    "price": 63388.6,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635932.3023074,
+    "trade_id": 101605497
+  },
+  {
+    "price": 63395.0,
+    "side": "buy",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635932.912302,
+    "trade_id": 101605498
+  },
+  {
+    "price": 63395.0,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635932.912302,
+    "trade_id": 101605499
+  },
+  {
+    "price": 63409.0,
+    "side": "buy",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780635932.9744847,
+    "trade_id": 101605500
+  },
+  {
+    "price": 63423.1,
+    "side": "buy",
+    "size": 0.00038679,
+    "source": "kraken_trades",
+    "timestamp": 1780635933.0794146,
+    "trade_id": 101605501
+  },
+  {
+    "price": 63423.1,
+    "side": "buy",
+    "size": 0.00015536,
+    "source": "kraken_trades",
+    "timestamp": 1780635933.1337626,
+    "trade_id": 101605502
+  },
+  {
+    "price": 63423.1,
+    "side": "buy",
+    "size": 0.00103385,
+    "source": "kraken_trades",
+    "timestamp": 1780635934.2677686,
+    "trade_id": 101605503
+  },
+  {
+    "price": 63432.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635941.3531306,
+    "trade_id": 101605504
+  },
+  {
+    "price": 63435.4,
+    "side": "buy",
+    "size": 0.000777,
+    "source": "kraken_trades",
+    "timestamp": 1780635947.8627784,
+    "trade_id": 101605505
+  },
+  {
+    "price": 63435.4,
+    "side": "buy",
+    "size": 0.000194,
+    "source": "kraken_trades",
+    "timestamp": 1780635951.9914947,
+    "trade_id": 101605506
+  },
+  {
+    "price": 63435.3,
+    "side": "sell",
+    "size": 0.00149288,
+    "source": "kraken_trades",
+    "timestamp": 1780635954.695536,
+    "trade_id": 101605507
+  },
+  {
+    "price": 63435.3,
+    "side": "sell",
+    "size": 7.13e-06,
+    "source": "kraken_trades",
+    "timestamp": 1780635956.9703155,
+    "trade_id": 101605508
+  },
+  {
+    "price": 63432.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635956.9703155,
+    "trade_id": 101605509
+  },
+  {
+    "price": 63429.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635956.9703155,
+    "trade_id": 101605510
+  },
+  {
+    "price": 63423.8,
+    "side": "buy",
+    "size": 0.000158,
+    "source": "kraken_trades",
+    "timestamp": 1780635957.1253448,
+    "trade_id": 101605511
+  },
+  {
+    "price": 63423.8,
+    "side": "buy",
+    "size": 0.000371,
+    "source": "kraken_trades",
+    "timestamp": 1780635957.405897,
+    "trade_id": 101605512
+  },
+  {
+    "price": 63423.8,
+    "side": "buy",
+    "size": 0.0303285,
+    "source": "kraken_trades",
+    "timestamp": 1780635957.405897,
+    "trade_id": 101605513
+  },
+  {
+    "price": 63423.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635957.9956565,
+    "trade_id": 101605514
+  },
+  {
+    "price": 63428.7,
+    "side": "buy",
+    "size": 0.00038394,
+    "source": "kraken_trades",
+    "timestamp": 1780635957.9956567,
+    "trade_id": 101605515
+  },
+  {
+    "price": 63431.3,
+    "side": "buy",
+    "size": 0.000972,
+    "source": "kraken_trades",
+    "timestamp": 1780635958.4048808,
+    "trade_id": 101605516
+  },
+  {
+    "price": 63431.3,
+    "side": "buy",
+    "size": 0.000528,
+    "source": "kraken_trades",
+    "timestamp": 1780635960.8624187,
+    "trade_id": 101605517
+  },
+  {
+    "price": 63432.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635960.8624187,
+    "trade_id": 101605518
+  },
+  {
+    "price": 63435.5,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635960.8624187,
+    "trade_id": 101605519
+  },
+  {
+    "price": 63437.2,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635960.8624187,
+    "trade_id": 101605520
+  },
+  {
+    "price": 63438.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635960.8624187,
+    "trade_id": 101605521
+  },
+  {
+    "price": 63441.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635960.8624187,
+    "trade_id": 101605522
+  },
+  {
+    "price": 63451.3,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635963.0730078,
+    "trade_id": 101605523
+  },
+  {
+    "price": 63451.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635963.0730078,
+    "trade_id": 101605524
+  },
+  {
+    "price": 63451.3,
+    "side": "buy",
+    "size": 0.0003152,
+    "source": "kraken_trades",
+    "timestamp": 1780635963.073008,
+    "trade_id": 101605525
+  },
+  {
+    "price": 63457.2,
+    "side": "buy",
+    "size": 0.0004968,
+    "source": "kraken_trades",
+    "timestamp": 1780635963.073008,
+    "trade_id": 101605526
+  },
+  {
+    "price": 63454.9,
+    "side": "sell",
+    "size": 1.893e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635964.1141243,
+    "trade_id": 101605527
+  },
+  {
+    "price": 63455.0,
+    "side": "buy",
+    "size": 0.00031518,
+    "source": "kraken_trades",
+    "timestamp": 1780635965.6025832,
+    "trade_id": 101605528
+  },
+  {
+    "price": 63455.0,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635965.6025832,
+    "trade_id": 101605529
+  },
+  {
+    "price": 63460.8,
+    "side": "buy",
+    "size": 0.00110304,
+    "source": "kraken_trades",
+    "timestamp": 1780635965.6439342,
+    "trade_id": 101605530
+  },
+  {
+    "price": 63464.0,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635965.6439342,
+    "trade_id": 101605531
+  },
+  {
+    "price": 63465.4,
+    "side": "buy",
+    "size": 0.001575,
+    "source": "kraken_trades",
+    "timestamp": 1780635965.6439342,
+    "trade_id": 101605532
+  },
+  {
+    "price": 63455.0,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780635968.0421658,
+    "trade_id": 101605533
+  },
+  {
+    "price": 63454.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635968.0421658,
+    "trade_id": 101605534
+  },
+  {
+    "price": 63429.2,
+    "side": "buy",
+    "size": 0.00138407,
+    "source": "kraken_trades",
+    "timestamp": 1780635970.141598,
+    "trade_id": 101605535
+  },
+  {
+    "price": 63429.2,
+    "side": "buy",
+    "size": 0.00011593,
+    "source": "kraken_trades",
+    "timestamp": 1780635970.6130276,
+    "trade_id": 101605536
+  },
+  {
+    "price": 63429.2,
+    "side": "buy",
+    "size": 0.00031531,
+    "source": "kraken_trades",
+    "timestamp": 1780635970.6130276,
+    "trade_id": 101605537
+  },
+  {
+    "price": 63438.8,
+    "side": "sell",
+    "size": 0.00110343,
+    "source": "kraken_trades",
+    "timestamp": 1780635974.0599706,
+    "trade_id": 101605538
+  },
+  {
+    "price": 63438.8,
+    "side": "sell",
+    "size": 0.00150013,
+    "source": "kraken_trades",
+    "timestamp": 1780635974.0599706,
+    "trade_id": 101605539
+  },
+  {
+    "price": 63426.5,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635974.3435562,
+    "trade_id": 101605540
+  },
+  {
+    "price": 63426.5,
+    "side": "buy",
+    "size": 0.00231728,
+    "source": "kraken_trades",
+    "timestamp": 1780635974.3435562,
+    "trade_id": 101605541
+  },
+  {
+    "price": 63423.2,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635977.4892435,
+    "trade_id": 101605542
+  },
+  {
+    "price": 63423.2,
+    "side": "buy",
+    "size": 0.00626516,
+    "source": "kraken_trades",
+    "timestamp": 1780635977.4892435,
+    "trade_id": 101605543
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635979.2725928,
+    "trade_id": 101605544
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.00150011,
+    "source": "kraken_trades",
+    "timestamp": 1780635979.2725928,
+    "trade_id": 101605545
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.0011037,
+    "source": "kraken_trades",
+    "timestamp": 1780635979.2725928,
+    "trade_id": 101605546
+  },
+  {
+    "price": 63422.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635979.2725928,
+    "trade_id": 101605547
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635979.2725928,
+    "trade_id": 101605548
+  },
+  {
+    "price": 63416.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635984.512845,
+    "trade_id": 101605549
+  },
+  {
+    "price": 63419.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635984.512845,
+    "trade_id": 101605550
+  },
+  {
+    "price": 63419.8,
+    "side": "buy",
+    "size": 0.00110376,
+    "source": "kraken_trades",
+    "timestamp": 1780635984.512845,
+    "trade_id": 101605551
+  },
+  {
+    "price": 63422.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605552
+  },
+  {
+    "price": 63426.0,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605553
+  },
+  {
+    "price": 63428.6,
+    "side": "buy",
+    "size": 0.0011036,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605554
+  },
+  {
+    "price": 63429.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605555
+  },
+  {
+    "price": 63432.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605556
+  },
+  {
+    "price": 63435.3,
+    "side": "buy",
+    "size": 0.23527897,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605557
+  },
+  {
+    "price": 63435.4,
+    "side": "buy",
+    "size": 0.78820427,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605558
+  },
+  {
+    "price": 63437.2,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605559
+  },
+  {
+    "price": 63440.0,
+    "side": "buy",
+    "size": 0.05762743,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605560
+  },
+  {
+    "price": 63440.1,
+    "side": "buy",
+    "size": 0.2329614,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605561
+  },
+  {
+    "price": 63440.2,
+    "side": "buy",
+    "size": 1.18159533,
+    "source": "kraken_trades",
+    "timestamp": 1780635991.0766394,
+    "trade_id": 101605562
+  },
+  {
+    "price": 63431.0,
+    "side": "buy",
+    "size": 2.394e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780635993.004888,
+    "trade_id": 101605563
+  },
+  {
+    "price": 63430.9,
+    "side": "sell",
+    "size": 0.097653,
+    "source": "kraken_trades",
+    "timestamp": 1780635993.3462088,
+    "trade_id": 101605564
+  },
+  {
+    "price": 63431.0,
+    "side": "buy",
+    "size": 0.000561,
+    "source": "kraken_trades",
+    "timestamp": 1780635997.4545996,
+    "trade_id": 101605565
+  },
+  {
+    "price": 63431.0,
+    "side": "buy",
+    "size": 0.00091506,
+    "source": "kraken_trades",
+    "timestamp": 1780635998.2710454,
+    "trade_id": 101605566
+  },
+  {
+    "price": 63431.0,
+    "side": "buy",
+    "size": 0.01214671,
+    "source": "kraken_trades",
+    "timestamp": 1780635998.2710454,
+    "trade_id": 101605567
+  },
+  {
+    "price": 63431.0,
+    "side": "buy",
+    "size": 0.00071482,
+    "source": "kraken_trades",
+    "timestamp": 1780635998.493856,
+    "trade_id": 101605568
+  },
+  {
+    "price": 63430.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636002.1297698,
+    "trade_id": 101605569
+  },
+  {
+    "price": 63430.9,
+    "side": "sell",
+    "size": 0.00110356,
+    "source": "kraken_trades",
+    "timestamp": 1780636002.1297698,
+    "trade_id": 101605570
+  },
+  {
+    "price": 63425.8,
+    "side": "sell",
+    "size": 0.00150006,
+    "source": "kraken_trades",
+    "timestamp": 1780636002.3537486,
+    "trade_id": 101605571
+  },
+  {
+    "price": 63423.1,
+    "side": "sell",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780636002.8461957,
+    "trade_id": 101605572
+  },
+  {
+    "price": 63424.0,
+    "side": "buy",
+    "size": 0.00087692,
+    "source": "kraken_trades",
+    "timestamp": 1780636006.0805166,
+    "trade_id": 101605573
+  },
+  {
+    "price": 63420.4,
+    "side": "sell",
+    "size": 0.00150005,
+    "source": "kraken_trades",
+    "timestamp": 1780636006.2774637,
+    "trade_id": 101605574
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636006.2774637,
+    "trade_id": 101605575
+  },
+  {
+    "price": 63416.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636006.2774637,
+    "trade_id": 101605576
+  },
+  {
+    "price": 63409.0,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636007.2163758,
+    "trade_id": 101605577
+  },
+  {
+    "price": 63404.6,
+    "side": "sell",
+    "size": 0.015732,
+    "source": "kraken_trades",
+    "timestamp": 1780636008.2123518,
+    "trade_id": 101605578
+  },
+  {
+    "price": 63404.5,
+    "side": "sell",
+    "size": 7.607e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636010.7061,
+    "trade_id": 101605579
+  },
+  {
+    "price": 63398.8,
+    "side": "sell",
+    "size": 0.562237,
+    "source": "kraken_trades",
+    "timestamp": 1780636011.3520684,
+    "trade_id": 101605580
+  },
+  {
+    "price": 63420.5,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636020.9218006,
+    "trade_id": 101605581
+  },
+  {
+    "price": 63423.1,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361382,
+    "trade_id": 101605582
+  },
+  {
+    "price": 63423.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361382,
+    "trade_id": 101605583
+  },
+  {
+    "price": 63426.0,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361382,
+    "trade_id": 101605584
+  },
+  {
+    "price": 63428.6,
+    "side": "buy",
+    "size": 0.06300199,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361382,
+    "trade_id": 101605585
+  },
+  {
+    "price": 63428.7,
+    "side": "buy",
+    "size": 0.0011036,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361384,
+    "trade_id": 101605586
+  },
+  {
+    "price": 63429.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361384,
+    "trade_id": 101605587
+  },
+  {
+    "price": 63431.4,
+    "side": "buy",
+    "size": 0.10794201,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.1361384,
+    "trade_id": 101605588
+  },
+  {
+    "price": 63425.1,
+    "side": "buy",
+    "size": 0.0002053,
+    "source": "kraken_trades",
+    "timestamp": 1780636031.6098843,
+    "trade_id": 101605589
+  },
+  {
+    "price": 63425.1,
+    "side": "buy",
+    "size": 0.0012947,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.329478,
+    "trade_id": 101605590
+  },
+  {
+    "price": 63426.0,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.329478,
+    "trade_id": 101605591
+  },
+  {
+    "price": 63429.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.329478,
+    "trade_id": 101605592
+  },
+  {
+    "price": 63432.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.329478,
+    "trade_id": 101605593
+  },
+  {
+    "price": 63435.5,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.329478,
+    "trade_id": 101605594
+  },
+  {
+    "price": 63441.4,
+    "side": "buy",
+    "size": 0.0004963,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.329478,
+    "trade_id": 101605595
+  },
+  {
+    "price": 63441.3,
+    "side": "sell",
+    "size": 0.00040703,
+    "source": "kraken_trades",
+    "timestamp": 1780636036.8346934,
+    "trade_id": 101605596
+  },
+  {
+    "price": 63441.4,
+    "side": "buy",
+    "size": 0.000407,
+    "source": "kraken_trades",
+    "timestamp": 1780636037.4781182,
+    "trade_id": 101605597
+  },
+  {
+    "price": 63441.2,
+    "side": "sell",
+    "size": 0.00075816,
+    "source": "kraken_trades",
+    "timestamp": 1780636041.7919557,
+    "trade_id": 101605598
+  },
+  {
+    "price": 63441.3,
+    "side": "buy",
+    "size": 0.000758,
+    "source": "kraken_trades",
+    "timestamp": 1780636042.388418,
+    "trade_id": 101605599
+  },
+  {
+    "price": 63441.3,
+    "side": "buy",
+    "size": 0.00045776,
+    "source": "kraken_trades",
+    "timestamp": 1780636042.8318148,
+    "trade_id": 101605600
+  },
+  {
+    "price": 63441.2,
+    "side": "sell",
+    "size": 0.00074185,
+    "source": "kraken_trades",
+    "timestamp": 1780636042.8754005,
+    "trade_id": 101605601
+  },
+  {
+    "price": 63429.6,
+    "side": "sell",
+    "size": 0.00150003,
+    "source": "kraken_trades",
+    "timestamp": 1780636052.650345,
+    "trade_id": 101605602
+  },
+  {
+    "price": 63429.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636052.6830094,
+    "trade_id": 101605603
+  },
+  {
+    "price": 63426.1,
+    "side": "sell",
+    "size": 0.00150005,
+    "source": "kraken_trades",
+    "timestamp": 1780636052.849505,
+    "trade_id": 101605604
+  },
+  {
+    "price": 63404.6,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636053.2534425,
+    "trade_id": 101605605
+  },
+  {
+    "price": 63404.6,
+    "side": "sell",
+    "size": 0.00150026,
+    "source": "kraken_trades",
+    "timestamp": 1780636053.2534425,
+    "trade_id": 101605606
+  },
+  {
+    "price": 63403.8,
+    "side": "sell",
+    "size": 0.01573205,
+    "source": "kraken_trades",
+    "timestamp": 1780636054.85818,
+    "trade_id": 101605607
+  },
+  {
+    "price": 63402.9,
+    "side": "sell",
+    "size": 0.00032875,
+    "source": "kraken_trades",
+    "timestamp": 1780636055.1721625,
+    "trade_id": 101605608
+  },
+  {
+    "price": 63404.5,
+    "side": "sell",
+    "size": 6.292e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636069.395454,
+    "trade_id": 101605609
+  },
+  {
+    "price": 63404.6,
+    "side": "buy",
+    "size": 0.001093,
+    "source": "kraken_trades",
+    "timestamp": 1780636073.2441905,
+    "trade_id": 101605610
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 0.001576,
+    "source": "kraken_trades",
+    "timestamp": 1780636076.7610486,
+    "trade_id": 101605611
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636076.7610486,
+    "trade_id": 101605612
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 0.016368,
+    "source": "kraken_trades",
+    "timestamp": 1780636076.7610486,
+    "trade_id": 101605613
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 0.00077312,
+    "source": "kraken_trades",
+    "timestamp": 1780636077.382129,
+    "trade_id": 101605614
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 0.001631,
+    "source": "kraken_trades",
+    "timestamp": 1780636077.4893577,
+    "trade_id": 101605615
+  },
+  {
+    "price": 63422.4,
+    "side": "buy",
+    "size": 0.003791,
+    "source": "kraken_trades",
+    "timestamp": 1780636077.7894292,
+    "trade_id": 101605616
+  },
+  {
+    "price": 63422.3,
+    "side": "sell",
+    "size": 0.00143709,
+    "source": "kraken_trades",
+    "timestamp": 1780636079.0858767,
+    "trade_id": 101605617
+  },
+  {
+    "price": 63422.3,
+    "side": "sell",
+    "size": 0.00011114,
+    "source": "kraken_trades",
+    "timestamp": 1780636079.085877,
+    "trade_id": 101605618
+  },
+  {
+    "price": 63419.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636079.085877,
+    "trade_id": 101605619
+  },
+  {
+    "price": 63416.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636079.085877,
+    "trade_id": 101605620
+  },
+  {
+    "price": 63413.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636079.085877,
+    "trade_id": 101605621
+  },
+  {
+    "price": 63411.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636081.2638693,
+    "trade_id": 101605622
+  },
+  {
+    "price": 63422.7,
+    "side": "buy",
+    "size": 0.01322664,
+    "source": "kraken_trades",
+    "timestamp": 1780636081.2638693,
+    "trade_id": 101605623
+  },
+  {
+    "price": 63419.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636084.1619513,
+    "trade_id": 101605624
+  },
+  {
+    "price": 63419.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636084.1619513,
+    "trade_id": 101605625
+  },
+  {
+    "price": 63422.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636084.1619513,
+    "trade_id": 101605626
+  },
+  {
+    "price": 63425.0,
+    "side": "buy",
+    "size": 0.00159097,
+    "source": "kraken_trades",
+    "timestamp": 1780636084.1619513,
+    "trade_id": 101605627
+  },
+  {
+    "price": 63425.1,
+    "side": "buy",
+    "size": 0.00372926,
+    "source": "kraken_trades",
+    "timestamp": 1780636084.1619513,
+    "trade_id": 101605628
+  },
+  {
+    "price": 63419.9,
+    "side": "buy",
+    "size": 0.00030765,
+    "source": "kraken_trades",
+    "timestamp": 1780636088.330635,
+    "trade_id": 101605629
+  },
+  {
+    "price": 63419.9,
+    "side": "buy",
+    "size": 0.00046835,
+    "source": "kraken_trades",
+    "timestamp": 1780636090.145252,
+    "trade_id": 101605630
+  },
+  {
+    "price": 63419.8,
+    "side": "sell",
+    "size": 0.01573112,
+    "source": "kraken_trades",
+    "timestamp": 1780636090.4705663,
+    "trade_id": 101605631
+  },
+  {
+    "price": 63419.8,
+    "side": "sell",
+    "size": 0.00786556,
+    "source": "kraken_trades",
+    "timestamp": 1780636090.5251224,
+    "trade_id": 101605632
+  },
+  {
+    "price": 63419.2,
+    "side": "sell",
+    "size": 0.00150007,
+    "source": "kraken_trades",
+    "timestamp": 1780636090.5251224,
+    "trade_id": 101605633
+  },
+  {
+    "price": 63416.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636090.5251224,
+    "trade_id": 101605634
+  },
+  {
+    "price": 63413.4,
+    "side": "sell",
+    "size": 0.00150002,
+    "source": "kraken_trades",
+    "timestamp": 1780636090.8139083,
+    "trade_id": 101605635
+  },
+  {
+    "price": 63404.6,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605636
+  },
+  {
+    "price": 63404.6,
+    "side": "sell",
+    "size": 0.00150011,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605637
+  },
+  {
+    "price": 63403.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605638
+  },
+  {
+    "price": 63400.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605639
+  },
+  {
+    "price": 63397.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605640
+  },
+  {
+    "price": 63394.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605641
+  },
+  {
+    "price": 63390.5,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605642
+  },
+  {
+    "price": 63380.3,
+    "side": "sell",
+    "size": 0.00127276,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605643
+  },
+  {
+    "price": 63380.2,
+    "side": "sell",
+    "size": 0.36406312,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605644
+  },
+  {
+    "price": 63380.2,
+    "side": "sell",
+    "size": 0.10577739,
+    "source": "kraken_trades",
+    "timestamp": 1780636092.5377295,
+    "trade_id": 101605645
+  },
+  {
+    "price": 63389.2,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636094.3388329,
+    "trade_id": 101605646
+  },
+  {
+    "price": 63386.6,
+    "side": "sell",
+    "size": 0.00150014,
+    "source": "kraken_trades",
+    "timestamp": 1780636094.375576,
+    "trade_id": 101605647
+  },
+  {
+    "price": 63384.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636094.3889458,
+    "trade_id": 101605648
+  },
+  {
+    "price": 63381.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636094.4192536,
+    "trade_id": 101605649
+  },
+  {
+    "price": 63376.5,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636094.4192536,
+    "trade_id": 101605650
+  },
+  {
+    "price": 63362.5,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636096.6781683,
+    "trade_id": 101605651
+  },
+  {
+    "price": 63351.8,
+    "side": "buy",
+    "size": 0.00821925,
+    "source": "kraken_trades",
+    "timestamp": 1780636098.2769675,
+    "trade_id": 101605652
+  },
+  {
+    "price": 63354.0,
+    "side": "buy",
+    "size": 0.0271671,
+    "source": "kraken_trades",
+    "timestamp": 1780636098.2769675,
+    "trade_id": 101605653
+  },
+  {
+    "price": 63354.1,
+    "side": "buy",
+    "size": 0.01674568,
+    "source": "kraken_trades",
+    "timestamp": 1780636098.2769675,
+    "trade_id": 101605654
+  },
+  {
+    "price": 63351.8,
+    "side": "buy",
+    "size": 0.00177286,
+    "source": "kraken_trades",
+    "timestamp": 1780636098.3611276,
+    "trade_id": 101605655
+  },
+  {
+    "price": 63351.7,
+    "side": "sell",
+    "size": 0.005,
+    "source": "kraken_trades",
+    "timestamp": 1780636099.1540709,
+    "trade_id": 101605656
+  },
+  {
+    "price": 63349.2,
+    "side": "buy",
+    "size": 0.00533959,
+    "source": "kraken_trades",
+    "timestamp": 1780636102.3790672,
+    "trade_id": 101605657
+  },
+  {
+    "price": 63349.1,
+    "side": "sell",
+    "size": 0.15785543,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605658
+  },
+  {
+    "price": 63349.1,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605659
+  },
+  {
+    "price": 63349.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605660
+  },
+  {
+    "price": 63348.5,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605661
+  },
+  {
+    "price": 63346.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605662
+  },
+  {
+    "price": 63343.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605663
+  },
+  {
+    "price": 63342.7,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605664
+  },
+  {
+    "price": 63340.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605665
+  },
+  {
+    "price": 63338.9,
+    "side": "sell",
+    "size": 0.002,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605666
+  },
+  {
+    "price": 63337.8,
+    "side": "sell",
+    "size": 0.54240079,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0143673,
+    "trade_id": 101605667
+  },
+  {
+    "price": 63337.4,
+    "side": "sell",
+    "size": 0.00013,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0994198,
+    "trade_id": 101605668
+  },
+  {
+    "price": 63337.4,
+    "side": "sell",
+    "size": 0.00150008,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0994198,
+    "trade_id": 101605669
+  },
+  {
+    "price": 63337.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0994198,
+    "trade_id": 101605670
+  },
+  {
+    "price": 63334.6,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0994198,
+    "trade_id": 101605671
+  },
+  {
+    "price": 63332.7,
+    "side": "sell",
+    "size": 0.47113078,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0994198,
+    "trade_id": 101605672
+  },
+  {
+    "price": 63332.6,
+    "side": "sell",
+    "size": 0.34429567,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.0994198,
+    "trade_id": 101605673
+  },
+  {
+    "price": 63332.6,
+    "side": "sell",
+    "size": 0.83721927,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.1010265,
+    "trade_id": 101605674
+  },
+  {
+    "price": 63334.0,
+    "side": "sell",
+    "size": 0.00150005,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.1464381,
+    "trade_id": 101605675
+  },
+  {
+    "price": 63332.6,
+    "side": "sell",
+    "size": 0.39681264,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.200865,
+    "trade_id": 101605676
+  },
+  {
+    "price": 63332.6,
+    "side": "sell",
+    "size": 0.3,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.200865,
+    "trade_id": 101605677
+  },
+  {
+    "price": 63332.6,
+    "side": "sell",
+    "size": 0.00150002,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.200865,
+    "trade_id": 101605678
+  },
+  {
+    "price": 63331.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.200865,
+    "trade_id": 101605679
+  },
+  {
+    "price": 63330.2,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.200865,
+    "trade_id": 101605680
+  },
+  {
+    "price": 63329.3,
+    "side": "sell",
+    "size": 0.13233624,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.200865,
+    "trade_id": 101605681
+  },
+  {
+    "price": 63329.3,
+    "side": "sell",
+    "size": 0.65718762,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.2068734,
+    "trade_id": 101605682
+  },
+  {
+    "price": 63328.1,
+    "side": "sell",
+    "size": 0.05900792,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.2068734,
+    "trade_id": 101605683
+  },
+  {
+    "price": 63327.3,
+    "side": "sell",
+    "size": 0.1390413,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.2068734,
+    "trade_id": 101605684
+  },
+  {
+    "price": 63327.2,
+    "side": "sell",
+    "size": 0.10384946,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.2068734,
+    "trade_id": 101605685
+  },
+  {
+    "price": 63331.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.5419014,
+    "trade_id": 101605686
+  },
+  {
+    "price": 63331.9,
+    "side": "sell",
+    "size": 0.78949155,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.5419014,
+    "trade_id": 101605687
+  },
+  {
+    "price": 63331.1,
+    "side": "sell",
+    "size": 0.014,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.5419014,
+    "trade_id": 101605688
+  },
+  {
+    "price": 63330.6,
+    "side": "sell",
+    "size": 0.10424375,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.5419014,
+    "trade_id": 101605689
+  },
+  {
+    "price": 63330.6,
+    "side": "sell",
+    "size": 0.68526288,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.5465703,
+    "trade_id": 101605690
+  },
+  {
+    "price": 63327.5,
+    "side": "sell",
+    "size": 0.01344687,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.5465703,
+    "trade_id": 101605691
+  },
+  {
+    "price": 63332.0,
+    "side": "buy",
+    "size": 0.00014501,
+    "source": "kraken_trades",
+    "timestamp": 1780636103.997593,
+    "trade_id": 101605692
+  },
+  {
+    "price": 63331.9,
+    "side": "sell",
+    "size": 0.78949155,
+    "source": "kraken_trades",
+    "timestamp": 1780636104.150372,
+    "trade_id": 101605693
+  },
+  {
+    "price": 63331.9,
+    "side": "sell",
+    "size": 0.01573461,
+    "source": "kraken_trades",
+    "timestamp": 1780636104.150372,
+    "trade_id": 101605694
+  },
+  {
+    "price": 63331.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636104.150372,
+    "trade_id": 101605695
+  },
+  {
+    "price": 63330.6,
+    "side": "sell",
+    "size": 0.03132151,
+    "source": "kraken_trades",
+    "timestamp": 1780636104.150372,
+    "trade_id": 101605696
+  },
+  {
+    "price": 63331.9,
+    "side": "sell",
+    "size": 0.01573461,
+    "source": "kraken_trades",
+    "timestamp": 1780636104.1556644,
+    "trade_id": 101605697
+  },
+  {
+    "price": 63330.6,
+    "side": "sell",
+    "size": 0.25209392,
+    "source": "kraken_trades",
+    "timestamp": 1780636104.1556644,
+    "trade_id": 101605698
+  },
+  {
+    "price": 63332.0,
+    "side": "buy",
+    "size": 0.00057899,
+    "source": "kraken_trades",
+    "timestamp": 1780636107.4500022,
+    "trade_id": 101605699
+  },
+  {
+    "price": 63349.2,
+    "side": "buy",
+    "size": 0.00073014,
+    "source": "kraken_trades",
+    "timestamp": 1780636108.4233475,
+    "trade_id": 101605700
+  },
+  {
+    "price": 63349.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636126.665202,
+    "trade_id": 101605701
+  },
+  {
+    "price": 63349.1,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636126.665202,
+    "trade_id": 101605702
+  },
+  {
+    "price": 63346.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636126.665202,
+    "trade_id": 101605703
+  },
+  {
+    "price": 63343.8,
+    "side": "sell",
+    "size": 0.00349041,
+    "source": "kraken_trades",
+    "timestamp": 1780636126.665202,
+    "trade_id": 101605704
+  },
+  {
+    "price": 63344.2,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605705
+  },
+  {
+    "price": 63344.2,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605706
+  },
+  {
+    "price": 63343.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605707
+  },
+  {
+    "price": 63340.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605708
+  },
+  {
+    "price": 63337.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605709
+  },
+  {
+    "price": 63334.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605710
+  },
+  {
+    "price": 63330.2,
+    "side": "sell",
+    "size": 0.0254988,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605711
+  },
+  {
+    "price": 63325.1,
+    "side": "sell",
+    "size": 0.0196413,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.725782,
+    "trade_id": 101605712
+  },
+  {
+    "price": 63325.0,
+    "side": "sell",
+    "size": 0.00707718,
+    "source": "kraken_trades",
+    "timestamp": 1780636133.7257822,
+    "trade_id": 101605713
+  },
+  {
+    "price": 63335.9,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636135.017742,
+    "trade_id": 101605714
+  },
+  {
+    "price": 63337.9,
+    "side": "buy",
+    "size": 0.0007471,
+    "source": "kraken_trades",
+    "timestamp": 1780636135.017742,
+    "trade_id": 101605715
+  },
+  {
+    "price": 63333.3,
+    "side": "buy",
+    "size": 0.00032671,
+    "source": "kraken_trades",
+    "timestamp": 1780636138.3307633,
+    "trade_id": 101605716
+  },
+  {
+    "price": 63333.3,
+    "side": "buy",
+    "size": 0.0140179,
+    "source": "kraken_trades",
+    "timestamp": 1780636140.4951808,
+    "trade_id": 101605717
+  },
+  {
+    "price": 63333.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636146.8036816,
+    "trade_id": 101605718
+  },
+  {
+    "price": 63334.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636146.8036816,
+    "trade_id": 101605719
+  },
+  {
+    "price": 63336.4,
+    "side": "buy",
+    "size": 0.00100966,
+    "source": "kraken_trades",
+    "timestamp": 1780636146.8036816,
+    "trade_id": 101605720
+  },
+  {
+    "price": 63333.2,
+    "side": "sell",
+    "size": 0.00150006,
+    "source": "kraken_trades",
+    "timestamp": 1780636148.0882504,
+    "trade_id": 101605721
+  },
+  {
+    "price": 63331.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636148.0882504,
+    "trade_id": 101605722
+  },
+  {
+    "price": 63329.0,
+    "side": "buy",
+    "size": 0.00014649,
+    "source": "kraken_trades",
+    "timestamp": 1780636153.4824793,
+    "trade_id": 101605723
+  },
+  {
+    "price": 63328.9,
+    "side": "sell",
+    "size": 0.0012002,
+    "source": "kraken_trades",
+    "timestamp": 1780636162.710699,
+    "trade_id": 101605724
+  },
+  {
+    "price": 63329.0,
+    "side": "buy",
+    "size": 0.00135351,
+    "source": "kraken_trades",
+    "timestamp": 1780636163.2418437,
+    "trade_id": 101605725
+  },
+  {
+    "price": 63329.0,
+    "side": "buy",
+    "size": 0.00022486,
+    "source": "kraken_trades",
+    "timestamp": 1780636163.241844,
+    "trade_id": 101605726
+  },
+  {
+    "price": 63328.9,
+    "side": "sell",
+    "size": 0.00029981,
+    "source": "kraken_trades",
+    "timestamp": 1780636168.47478,
+    "trade_id": 101605727
+  },
+  {
+    "price": 63328.9,
+    "side": "sell",
+    "size": 0.00300153,
+    "source": "kraken_trades",
+    "timestamp": 1780636168.47478,
+    "trade_id": 101605728
+  },
+  {
+    "price": 63328.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605729
+  },
+  {
+    "price": 63328.9,
+    "side": "sell",
+    "size": 0.00110534,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605730
+  },
+  {
+    "price": 63327.8,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605731
+  },
+  {
+    "price": 63324.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605732
+  },
+  {
+    "price": 63321.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605733
+  },
+  {
+    "price": 63320.6,
+    "side": "sell",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605734
+  },
+  {
+    "price": 63318.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.782726,
+    "trade_id": 101605735
+  },
+  {
+    "price": 63317.7,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.9500215,
+    "trade_id": 101605736
+  },
+  {
+    "price": 63317.7,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636176.9500217,
+    "trade_id": 101605737
+  },
+  {
+    "price": 63306.6,
+    "side": "sell",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636177.0499856,
+    "trade_id": 101605738
+  },
+  {
+    "price": 63305.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636177.049986,
+    "trade_id": 101605739
+  },
+  {
+    "price": 63305.2,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780636178.6597252,
+    "trade_id": 101605740
+  },
+  {
+    "price": 63292.7,
+    "side": "sell",
+    "size": 0.05,
+    "source": "kraken_trades",
+    "timestamp": 1780636178.7607808,
+    "trade_id": 101605741
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636179.5044127,
+    "trade_id": 101605742
+  },
+  {
+    "price": 63290.4,
+    "side": "sell",
+    "size": 0.001,
+    "source": "kraken_trades",
+    "timestamp": 1780636179.6225913,
+    "trade_id": 101605743
+  },
+  {
+    "price": 63306.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636180.6808841,
+    "trade_id": 101605744
+  },
+  {
+    "price": 63308.8,
+    "side": "buy",
+    "size": 0.00015408,
+    "source": "kraken_trades",
+    "timestamp": 1780636182.3638754,
+    "trade_id": 101605745
+  },
+  {
+    "price": 63308.7,
+    "side": "sell",
+    "size": 0.00014968,
+    "source": "kraken_trades",
+    "timestamp": 1780636183.122467,
+    "trade_id": 101605746
+  },
+  {
+    "price": 63308.8,
+    "side": "buy",
+    "size": 0.00134592,
+    "source": "kraken_trades",
+    "timestamp": 1780636184.1618423,
+    "trade_id": 101605747
+  },
+  {
+    "price": 63308.8,
+    "side": "buy",
+    "size": 0.00140114,
+    "source": "kraken_trades",
+    "timestamp": 1780636184.1618423,
+    "trade_id": 101605748
+  },
+  {
+    "price": 63308.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636188.525057,
+    "trade_id": 101605749
+  },
+  {
+    "price": 63320.6,
+    "side": "buy",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551134,
+    "trade_id": 101605750
+  },
+  {
+    "price": 63320.6,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551134,
+    "trade_id": 101605751
+  },
+  {
+    "price": 63321.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551134,
+    "trade_id": 101605752
+  },
+  {
+    "price": 63329.0,
+    "side": "buy",
+    "size": 0.01,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551136,
+    "trade_id": 101605753
+  },
+  {
+    "price": 63334.6,
+    "side": "buy",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551136,
+    "trade_id": 101605754
+  },
+  {
+    "price": 63337.0,
+    "side": "buy",
+    "size": 0.00015528,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551136,
+    "trade_id": 101605755
+  },
+  {
+    "price": 63337.1,
+    "side": "buy",
+    "size": 0.00847397,
+    "source": "kraken_trades",
+    "timestamp": 1780636189.4551136,
+    "trade_id": 101605756
+  },
+  {
+    "price": 63332.9,
+    "side": "buy",
+    "size": 0.00149067,
+    "source": "kraken_trades",
+    "timestamp": 1780636191.7919943,
+    "trade_id": 101605757
+  },
+  {
+    "price": 63332.9,
+    "side": "buy",
+    "size": 9.33e-06,
+    "source": "kraken_trades",
+    "timestamp": 1780636194.32083,
+    "trade_id": 101605758
+  },
+  {
+    "price": 63334.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636194.32083,
+    "trade_id": 101605759
+  },
+  {
+    "price": 63337.2,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636194.3208303,
+    "trade_id": 101605760
+  },
+  {
+    "price": 63337.7,
+    "side": "buy",
+    "size": 0.00012084,
+    "source": "kraken_trades",
+    "timestamp": 1780636194.3208303,
+    "trade_id": 101605761
+  },
+  {
+    "price": 63334.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636196.1990337,
+    "trade_id": 101605762
+  },
+  {
+    "price": 63334.8,
+    "side": "buy",
+    "size": 0.0001536,
+    "source": "kraken_trades",
+    "timestamp": 1780636196.1990337,
+    "trade_id": 101605763
+  },
+  {
+    "price": 63334.8,
+    "side": "buy",
+    "size": 0.0033464,
+    "source": "kraken_trades",
+    "timestamp": 1780636196.1990337,
+    "trade_id": 101605764
+  },
+  {
+    "price": 63334.7,
+    "side": "sell",
+    "size": 0.00135033,
+    "source": "kraken_trades",
+    "timestamp": 1780636198.274541,
+    "trade_id": 101605765
+  },
+  {
+    "price": 63334.7,
+    "side": "sell",
+    "size": 0.00110524,
+    "source": "kraken_trades",
+    "timestamp": 1780636198.274541,
+    "trade_id": 101605766
+  },
+  {
+    "price": 63320.2,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636202.5719342,
+    "trade_id": 101605767
+  },
+  {
+    "price": 63320.2,
+    "side": "buy",
+    "size": 0.04697402,
+    "source": "kraken_trades",
+    "timestamp": 1780636202.5719342,
+    "trade_id": 101605768
+  },
+  {
+    "price": 63320.2,
+    "side": "buy",
+    "size": 0.00958295,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648506,
+    "trade_id": 101605769
+  },
+  {
+    "price": 63320.2,
+    "side": "buy",
+    "size": 0.00700402,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648506,
+    "trade_id": 101605770
+  },
+  {
+    "price": 63320.2,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648506,
+    "trade_id": 101605771
+  },
+  {
+    "price": 63321.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648506,
+    "trade_id": 101605772
+  },
+  {
+    "price": 63324.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648506,
+    "trade_id": 101605773
+  },
+  {
+    "price": 63338.0,
+    "side": "buy",
+    "size": 0.00015192,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648508,
+    "trade_id": 101605774
+  },
+  {
+    "price": 63338.1,
+    "side": "buy",
+    "size": 0.00445858,
+    "source": "kraken_trades",
+    "timestamp": 1780636203.5648508,
+    "trade_id": 101605775
+  },
+  {
+    "price": 63331.1,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636208.3879025,
+    "trade_id": 101605776
+  },
+  {
+    "price": 63334.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636208.3879025,
+    "trade_id": 101605777
+  },
+  {
+    "price": 63337.2,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636208.3879025,
+    "trade_id": 101605778
+  },
+  {
+    "price": 63340.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636208.3879025,
+    "trade_id": 101605779
+  },
+  {
+    "price": 63343.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636208.3879025,
+    "trade_id": 101605780
+  },
+  {
+    "price": 63345.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605781
+  },
+  {
+    "price": 63346.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605782
+  },
+  {
+    "price": 63348.5,
+    "side": "buy",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605783
+  },
+  {
+    "price": 63349.2,
+    "side": "buy",
+    "size": 0.00024176,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605784
+  },
+  {
+    "price": 63349.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605785
+  },
+  {
+    "price": 63360.8,
+    "side": "buy",
+    "size": 0.00015031,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605786
+  },
+  {
+    "price": 63360.9,
+    "side": "buy",
+    "size": 0.02724048,
+    "source": "kraken_trades",
+    "timestamp": 1780636211.7333388,
+    "trade_id": 101605787
+  },
+  {
+    "price": 63354.5,
+    "side": "sell",
+    "size": 0.00150003,
+    "source": "kraken_trades",
+    "timestamp": 1780636212.002764,
+    "trade_id": 101605788
+  },
+  {
+    "price": 63353.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636212.002764,
+    "trade_id": 101605789
+  },
+  {
+    "price": 63349.3,
+    "side": "sell",
+    "size": 0.00063703,
+    "source": "kraken_trades",
+    "timestamp": 1780636214.279251,
+    "trade_id": 101605790
+  },
+  {
+    "price": 63349.4,
+    "side": "buy",
+    "size": 0.00075963,
+    "source": "kraken_trades",
+    "timestamp": 1780636215.429278,
+    "trade_id": 101605791
+  },
+  {
+    "price": 63349.3,
+    "side": "sell",
+    "size": 2.718e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636215.927991,
+    "trade_id": 101605792
+  },
+  {
+    "price": 63349.4,
+    "side": "buy",
+    "size": 0.00074037,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605793
+  },
+  {
+    "price": 63349.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605794
+  },
+  {
+    "price": 63353.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605795
+  },
+  {
+    "price": 63356.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605796
+  },
+  {
+    "price": 63359.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605797
+  },
+  {
+    "price": 63359.6,
+    "side": "buy",
+    "size": 0.00014958,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605798
+  },
+  {
+    "price": 63359.7,
+    "side": "buy",
+    "size": 0.16098754,
+    "source": "kraken_trades",
+    "timestamp": 1780636220.9754338,
+    "trade_id": 101605799
+  },
+  {
+    "price": 63355.5,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636221.0444949,
+    "trade_id": 101605800
+  },
+  {
+    "price": 63356.0,
+    "side": "buy",
+    "size": 0.00323516,
+    "source": "kraken_trades",
+    "timestamp": 1780636221.0444949,
+    "trade_id": 101605801
+  },
+  {
+    "price": 63355.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636221.3738708,
+    "trade_id": 101605802
+  },
+  {
+    "price": 63356.7,
+    "side": "buy",
+    "size": 0.00014868,
+    "source": "kraken_trades",
+    "timestamp": 1780636221.3738708,
+    "trade_id": 101605803
+  },
+  {
+    "price": 63356.8,
+    "side": "buy",
+    "size": 0.01315987,
+    "source": "kraken_trades",
+    "timestamp": 1780636221.3738708,
+    "trade_id": 101605804
+  },
+  {
+    "price": 63358.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636223.464652,
+    "trade_id": 101605805
+  },
+  {
+    "price": 63359.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636223.464652,
+    "trade_id": 101605806
+  },
+  {
+    "price": 63360.5,
+    "side": "buy",
+    "size": 0.00061515,
+    "source": "kraken_trades",
+    "timestamp": 1780636223.464652,
+    "trade_id": 101605807
+  },
+  {
+    "price": 63362.5,
+    "side": "buy",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636223.464652,
+    "trade_id": 101605808
+  },
+  {
+    "price": 63362.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636223.464652,
+    "trade_id": 101605809
+  },
+  {
+    "price": 63364.0,
+    "side": "buy",
+    "size": 0.01082613,
+    "source": "kraken_trades",
+    "timestamp": 1780636223.464652,
+    "trade_id": 101605810
+  },
+  {
+    "price": 63364.0,
+    "side": "buy",
+    "size": 0.00370418,
+    "source": "kraken_trades",
+    "timestamp": 1780636225.3425214,
+    "trade_id": 101605811
+  },
+  {
+    "price": 63364.0,
+    "side": "buy",
+    "size": 0.002476,
+    "source": "kraken_trades",
+    "timestamp": 1780636226.4611676,
+    "trade_id": 101605812
+  },
+  {
+    "price": 63364.0,
+    "side": "buy",
+    "size": 0.00029261,
+    "source": "kraken_trades",
+    "timestamp": 1780636230.4044175,
+    "trade_id": 101605813
+  },
+  {
+    "price": 63363.9,
+    "side": "sell",
+    "size": 0.0008358,
+    "source": "kraken_trades",
+    "timestamp": 1780636232.9451158,
+    "trade_id": 101605814
+  },
+  {
+    "price": 63363.9,
+    "side": "sell",
+    "size": 0.00066468,
+    "source": "kraken_trades",
+    "timestamp": 1780636232.9451158,
+    "trade_id": 101605815
+  },
+  {
+    "price": 63364.0,
+    "side": "buy",
+    "size": 0.00058893,
+    "source": "kraken_trades",
+    "timestamp": 1780636233.366538,
+    "trade_id": 101605816
+  },
+  {
+    "price": 63363.9,
+    "side": "sell",
+    "size": 0.00644909,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.292135,
+    "trade_id": 101605817
+  },
+  {
+    "price": 63363.9,
+    "side": "sell",
+    "size": 0.00110473,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.292135,
+    "trade_id": 101605818
+  },
+  {
+    "price": 63363.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.292135,
+    "trade_id": 101605819
+  },
+  {
+    "price": 63363.9,
+    "side": "sell",
+    "size": 5.764e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.292135,
+    "trade_id": 101605820
+  },
+  {
+    "price": 63360.5,
+    "side": "sell",
+    "size": 0.00149997,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.39295,
+    "trade_id": 101605821
+  },
+  {
+    "price": 63360.4,
+    "side": "buy",
+    "size": 0.00061846,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.9170277,
+    "trade_id": 101605822
+  },
+  {
+    "price": 63362.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.9170277,
+    "trade_id": 101605823
+  },
+  {
+    "price": 63365.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.9170277,
+    "trade_id": 101605824
+  },
+  {
+    "price": 63368.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.9170277,
+    "trade_id": 101605825
+  },
+  {
+    "price": 63372.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.9170277,
+    "trade_id": 101605826
+  },
+  {
+    "price": 63374.8,
+    "side": "buy",
+    "size": 0.00010588,
+    "source": "kraken_trades",
+    "timestamp": 1780636234.9170277,
+    "trade_id": 101605827
+  },
+  {
+    "price": 63362.9,
+    "side": "sell",
+    "size": 4.686e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636239.3756824,
+    "trade_id": 101605828
+  },
+  {
+    "price": 63365.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636251.192906,
+    "trade_id": 101605829
+  },
+  {
+    "price": 63365.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636251.1929061,
+    "trade_id": 101605830
+  },
+  {
+    "price": 63368.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636251.1929061,
+    "trade_id": 101605831
+  },
+  {
+    "price": 63372.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636251.1929061,
+    "trade_id": 101605832
+  },
+  {
+    "price": 63375.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636251.1929061,
+    "trade_id": 101605833
+  },
+  {
+    "price": 63376.5,
+    "side": "buy",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636251.1929061,
+    "trade_id": 101605834
+  },
+  {
+    "price": 63376.8,
+    "side": "buy",
+    "size": 0.0122703,
+    "source": "kraken_trades",
+    "timestamp": 1780636254.2158504,
+    "trade_id": 101605835
+  },
+  {
+    "price": 63376.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636254.2158504,
+    "trade_id": 101605836
+  },
+  {
+    "price": 63377.5,
+    "side": "buy",
+    "size": 0.00110449,
+    "source": "kraken_trades",
+    "timestamp": 1780636254.2158504,
+    "trade_id": 101605837
+  },
+  {
+    "price": 63378.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636254.2158504,
+    "trade_id": 101605838
+  },
+  {
+    "price": 63382.0,
+    "side": "buy",
+    "size": 0.02851906,
+    "source": "kraken_trades",
+    "timestamp": 1780636254.2158504,
+    "trade_id": 101605839
+  },
+  {
+    "price": 63380.3,
+    "side": "buy",
+    "size": 1.933e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636255.5497818,
+    "trade_id": 101605840
+  },
+  {
+    "price": 63380.3,
+    "side": "buy",
+    "size": 0.00148067,
+    "source": "kraken_trades",
+    "timestamp": 1780636255.595411,
+    "trade_id": 101605841
+  },
+  {
+    "price": 63381.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636255.595411,
+    "trade_id": 101605842
+  },
+  {
+    "price": 63383.8,
+    "side": "buy",
+    "size": 7.955e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636255.595411,
+    "trade_id": 101605843
+  },
+  {
+    "price": 63380.5,
+    "side": "buy",
+    "size": 0.00088869,
+    "source": "kraken_trades",
+    "timestamp": 1780636260.4602485,
+    "trade_id": 101605844
+  },
+  {
+    "price": 63380.5,
+    "side": "buy",
+    "size": 0.00061131,
+    "source": "kraken_trades",
+    "timestamp": 1780636260.9742,
+    "trade_id": 101605845
+  },
+  {
+    "price": 63381.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636260.9880092,
+    "trade_id": 101605846
+  },
+  {
+    "price": 63387.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636261.0373316,
+    "trade_id": 101605847
+  },
+  {
+    "price": 63390.5,
+    "side": "buy",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636261.0373316,
+    "trade_id": 101605848
+  },
+  {
+    "price": 63391.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636261.0373318,
+    "trade_id": 101605849
+  },
+  {
+    "price": 63400.5,
+    "side": "buy",
+    "size": 0.00038862,
+    "source": "kraken_trades",
+    "timestamp": 1780636261.4096236,
+    "trade_id": 101605850
+  },
+  {
+    "price": 63400.5,
+    "side": "buy",
+    "size": 0.00063703,
+    "source": "kraken_trades",
+    "timestamp": 1780636270.9607098,
+    "trade_id": 101605851
+  },
+  {
+    "price": 63400.5,
+    "side": "buy",
+    "size": 0.00015426,
+    "source": "kraken_trades",
+    "timestamp": 1780636274.3791122,
+    "trade_id": 101605852
+  },
+  {
+    "price": 63400.4,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636276.5207343,
+    "trade_id": 101605853
+  },
+  {
+    "price": 63400.4,
+    "side": "sell",
+    "size": 0.00110409,
+    "source": "kraken_trades",
+    "timestamp": 1780636276.5207343,
+    "trade_id": 101605854
+  },
+  {
+    "price": 63384.5,
+    "side": "sell",
+    "size": 0.000164,
+    "source": "kraken_trades",
+    "timestamp": 1780636280.7725604,
+    "trade_id": 101605855
+  },
+  {
+    "price": 63384.5,
+    "side": "sell",
+    "size": 0.000287,
+    "source": "kraken_trades",
+    "timestamp": 1780636284.2850366,
+    "trade_id": 101605856
+  },
+  {
+    "price": 63384.6,
+    "side": "buy",
+    "size": 0.00031553,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605857
+  },
+  {
+    "price": 63384.7,
+    "side": "buy",
+    "size": 0.00032009,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605858
+  },
+  {
+    "price": 63384.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605859
+  },
+  {
+    "price": 63385.3,
+    "side": "buy",
+    "size": 0.00019878,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605860
+  },
+  {
+    "price": 63387.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605861
+  },
+  {
+    "price": 63391.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605862
+  },
+  {
+    "price": 63394.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605863
+  },
+  {
+    "price": 63395.5,
+    "side": "buy",
+    "size": 0.05675776,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.435434,
+    "trade_id": 101605864
+  },
+  {
+    "price": 63391.6,
+    "side": "buy",
+    "size": 0.00316297,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.6770535,
+    "trade_id": 101605865
+  },
+  {
+    "price": 63391.5,
+    "side": "buy",
+    "size": 0.00017328,
+    "source": "kraken_trades",
+    "timestamp": 1780636287.9441972,
+    "trade_id": 101605866
+  },
+  {
+    "price": 63391.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636292.0223541,
+    "trade_id": 101605867
+  },
+  {
+    "price": 63394.3,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636292.0223541,
+    "trade_id": 101605868
+  },
+  {
+    "price": 63397.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636292.0223541,
+    "trade_id": 101605869
+  },
+  {
+    "price": 63399.1,
+    "side": "buy",
+    "size": 0.02516475,
+    "source": "kraken_trades",
+    "timestamp": 1780636292.0223544,
+    "trade_id": 101605870
+  },
+  {
+    "price": 63392.7,
+    "side": "buy",
+    "size": 0.00147725,
+    "source": "kraken_trades",
+    "timestamp": 1780636292.240109,
+    "trade_id": 101605871
+  },
+  {
+    "price": 63392.5,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636299.555066,
+    "trade_id": 101605872
+  },
+  {
+    "price": 63392.5,
+    "side": "sell",
+    "size": 0.00110423,
+    "source": "kraken_trades",
+    "timestamp": 1780636299.555066,
+    "trade_id": 101605873
+  },
+  {
+    "price": 63391.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636299.555066,
+    "trade_id": 101605874
+  },
+  {
+    "price": 63390.6,
+    "side": "buy",
+    "size": 2.151e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636299.5661774,
+    "trade_id": 101605875
+  },
+  {
+    "price": 63390.6,
+    "side": "buy",
+    "size": 0.00454321,
+    "source": "kraken_trades",
+    "timestamp": 1780636299.9239933,
+    "trade_id": 101605876
+  },
+  {
+    "price": 63390.5,
+    "side": "sell",
+    "size": 0.05864786,
+    "source": "kraken_trades",
+    "timestamp": 1780636302.142128,
+    "trade_id": 101605877
+  },
+  {
+    "price": 63390.5,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636302.142128,
+    "trade_id": 101605878
+  },
+  {
+    "price": 63390.4,
+    "side": "sell",
+    "size": 0.11561771,
+    "source": "kraken_trades",
+    "timestamp": 1780636302.149411,
+    "trade_id": 101605879
+  },
+  {
+    "price": 63388.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636302.149411,
+    "trade_id": 101605880
+  },
+  {
+    "price": 63384.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636302.149411,
+    "trade_id": 101605881
+  },
+  {
+    "price": 63381.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636302.149411,
+    "trade_id": 101605882
+  },
+  {
+    "price": 63378.9,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.3994484,
+    "trade_id": 101605883
+  },
+  {
+    "price": 63378.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.3994484,
+    "trade_id": 101605884
+  },
+  {
+    "price": 63376.5,
+    "side": "sell",
+    "size": 0.001577,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.3994484,
+    "trade_id": 101605885
+  },
+  {
+    "price": 63375.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.3994484,
+    "trade_id": 101605886
+  },
+  {
+    "price": 63373.6,
+    "side": "sell",
+    "size": 0.01267174,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.3994486,
+    "trade_id": 101605887
+  },
+  {
+    "price": 63373.6,
+    "side": "sell",
+    "size": 0.02459881,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.4011683,
+    "trade_id": 101605888
+  },
+  {
+    "price": 63375.2,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.7367013,
+    "trade_id": 101605889
+  },
+  {
+    "price": 63381.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.7367013,
+    "trade_id": 101605890
+  },
+  {
+    "price": 63387.8,
+    "side": "buy",
+    "size": 0.00015542,
+    "source": "kraken_trades",
+    "timestamp": 1780636304.9547513,
+    "trade_id": 101605891
+  },
+  {
+    "price": 63388.3,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636318.2983212,
+    "trade_id": 101605892
+  },
+  {
+    "price": 63388.3,
+    "side": "buy",
+    "size": 0.000357,
+    "source": "kraken_trades",
+    "timestamp": 1780636318.2983212,
+    "trade_id": 101605893
+  },
+  {
+    "price": 63388.2,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636318.3174565,
+    "trade_id": 101605894
+  },
+  {
+    "price": 63386.1,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605895
+  },
+  {
+    "price": 63386.1,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605896
+  },
+  {
+    "price": 63384.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605897
+  },
+  {
+    "price": 63381.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605898
+  },
+  {
+    "price": 63378.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605899
+  },
+  {
+    "price": 63375.4,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605900
+  },
+  {
+    "price": 63368.3,
+    "side": "sell",
+    "size": 0.00825449,
+    "source": "kraken_trades",
+    "timestamp": 1780636320.05261,
+    "trade_id": 101605901
+  },
+  {
+    "price": 63373.3,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605902
+  },
+  {
+    "price": 63372.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605903
+  },
+  {
+    "price": 63369.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605904
+  },
+  {
+    "price": 63365.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605905
+  },
+  {
+    "price": 63362.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605906
+  },
+  {
+    "price": 63362.5,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605907
+  },
+  {
+    "price": 63362.4,
+    "side": "sell",
+    "size": 0.01016075,
+    "source": "kraken_trades",
+    "timestamp": 1780636323.5233893,
+    "trade_id": 101605908
+  },
+  {
+    "price": 63364.3,
+    "side": "buy",
+    "size": 0.00030945,
+    "source": "kraken_trades",
+    "timestamp": 1780636329.1617692,
+    "trade_id": 101605909
+  },
+  {
+    "price": 63364.3,
+    "side": "buy",
+    "size": 0.00119055,
+    "source": "kraken_trades",
+    "timestamp": 1780636332.271795,
+    "trade_id": 101605910
+  },
+  {
+    "price": 63365.8,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636332.271795,
+    "trade_id": 101605911
+  },
+  {
+    "price": 63367.1,
+    "side": "buy",
+    "size": 0.00018445,
+    "source": "kraken_trades",
+    "timestamp": 1780636332.271795,
+    "trade_id": 101605912
+  },
+  {
+    "price": 63364.4,
+    "side": "sell",
+    "size": 0.00150003,
+    "source": "kraken_trades",
+    "timestamp": 1780636336.0380037,
+    "trade_id": 101605913
+  },
+  {
+    "price": 63350.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636336.9534383,
+    "trade_id": 101605914
+  },
+  {
+    "price": 63350.4,
+    "side": "buy",
+    "size": 0.00240626,
+    "source": "kraken_trades",
+    "timestamp": 1780636336.9534383,
+    "trade_id": 101605915
+  },
+  {
+    "price": 63350.4,
+    "side": "buy",
+    "size": 0.0018563,
+    "source": "kraken_trades",
+    "timestamp": 1780636338.1817787,
+    "trade_id": 101605916
+  },
+  {
+    "price": 63350.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636340.9819915,
+    "trade_id": 101605917
+  },
+  {
+    "price": 63350.4,
+    "side": "buy",
+    "size": 0.00110497,
+    "source": "kraken_trades",
+    "timestamp": 1780636340.9819915,
+    "trade_id": 101605918
+  },
+  {
+    "price": 63353.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636340.9819915,
+    "trade_id": 101605919
+  },
+  {
+    "price": 63355.2,
+    "side": "buy",
+    "size": 0.048683,
+    "source": "kraken_trades",
+    "timestamp": 1780636340.9819915,
+    "trade_id": 101605920
+  },
+  {
+    "price": 63350.4,
+    "side": "buy",
+    "size": 0.001277,
+    "source": "kraken_trades",
+    "timestamp": 1780636342.1544833,
+    "trade_id": 101605921
+  },
+  {
+    "price": 63350.9,
+    "side": "buy",
+    "size": 0.00016267,
+    "source": "kraken_trades",
+    "timestamp": 1780636344.1241138,
+    "trade_id": 101605922
+  },
+  {
+    "price": 63350.8,
+    "side": "sell",
+    "size": 0.00186863,
+    "source": "kraken_trades",
+    "timestamp": 1780636345.4373746,
+    "trade_id": 101605923
+  },
+  {
+    "price": 63350.9,
+    "side": "buy",
+    "size": 0.00133733,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.464893,
+    "trade_id": 101605924
+  },
+  {
+    "price": 63350.9,
+    "side": "buy",
+    "size": 0.01871217,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.464893,
+    "trade_id": 101605925
+  },
+  {
+    "price": 63350.8,
+    "side": "sell",
+    "size": 0.00033049,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605926
+  },
+  {
+    "price": 63350.8,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605927
+  },
+  {
+    "price": 63350.3,
+    "side": "sell",
+    "size": 0.00175516,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605928
+  },
+  {
+    "price": 63350.0,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605929
+  },
+  {
+    "price": 63348.5,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605930
+  },
+  {
+    "price": 63346.9,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605931
+  },
+  {
+    "price": 63343.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605932
+  },
+  {
+    "price": 63340.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.6210692,
+    "trade_id": 101605933
+  },
+  {
+    "price": 63337.8,
+    "side": "buy",
+    "size": 0.00077001,
+    "source": "kraken_trades",
+    "timestamp": 1780636351.7392893,
+    "trade_id": 101605934
+  },
+  {
+    "price": 63334.7,
+    "side": "buy",
+    "size": 0.00015629,
+    "source": "kraken_trades",
+    "timestamp": 1780636356.581594,
+    "trade_id": 101605935
+  },
+  {
+    "price": 63334.6,
+    "side": "sell",
+    "size": 0.001578,
+    "source": "kraken_trades",
+    "timestamp": 1780636357.1398737,
+    "trade_id": 101605936
+  },
+  {
+    "price": 63334.6,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780636357.1398737,
+    "trade_id": 101605937
+  },
+  {
+    "price": 63320.7,
+    "side": "buy",
+    "size": 1.564e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636358.159238,
+    "trade_id": 101605938
+  },
+  {
+    "price": 63320.6,
+    "side": "sell",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636359.4323006,
+    "trade_id": 101605939
+  },
+  {
+    "price": 63320.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636359.4323006,
+    "trade_id": 101605940
+  },
+  {
+    "price": 63320.3,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636359.4323008,
+    "trade_id": 101605941
+  },
+  {
+    "price": 63318.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636359.4323008,
+    "trade_id": 101605942
+  },
+  {
+    "price": 63315.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636359.4323008,
+    "trade_id": 101605943
+  },
+  {
+    "price": 63315.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636359.4323008,
+    "trade_id": 101605943
+  },
+  {
+    "price": 63312.7,
+    "side": "buy",
+    "size": 0.00053264,
+    "source": "kraken_trades",
+    "timestamp": 1780636360.5707624,
+    "trade_id": 101605944
+  },
+  {
+    "price": 63312.7,
+    "side": "buy",
+    "size": 0.000348,
+    "source": "kraken_trades",
+    "timestamp": 1780636363.143472,
+    "trade_id": 101605945
+  },
+  {
+    "price": 63312.7,
+    "side": "buy",
+    "size": 0.00038199,
+    "source": "kraken_trades",
+    "timestamp": 1780636364.693321,
+    "trade_id": 101605946
+  },
+  {
+    "price": 63315.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636364.693321,
+    "trade_id": 101605947
+  },
+  {
+    "price": 63318.2,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636364.693321,
+    "trade_id": 101605948
+  },
+  {
+    "price": 63319.0,
+    "side": "buy",
+    "size": 0.00077424,
+    "source": "kraken_trades",
+    "timestamp": 1780636367.5615873,
+    "trade_id": 101605949
+  },
+  {
+    "price": 63319.0,
+    "side": "buy",
+    "size": 0.00072576,
+    "source": "kraken_trades",
+    "timestamp": 1780636367.9201891,
+    "trade_id": 101605950
+  },
+  {
+    "price": 63319.0,
+    "side": "buy",
+    "size": 0.00110551,
+    "source": "kraken_trades",
+    "timestamp": 1780636367.9201891,
+    "trade_id": 101605951
+  },
+  {
+    "price": 63320.8,
+    "side": "buy",
+    "size": 0.00706281,
+    "source": "kraken_trades",
+    "timestamp": 1780636367.9201891,
+    "trade_id": 101605952
+  },
+  {
+    "price": 63320.0,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636373.3631463,
+    "trade_id": 101605953
+  },
+  {
+    "price": 63320.0,
+    "side": "sell",
+    "size": 5e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636373.3631463,
+    "trade_id": 101605954
+  },
+  {
+    "price": 63318.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636373.3631463,
+    "trade_id": 101605955
+  },
+  {
+    "price": 63315.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636373.3631463,
+    "trade_id": 101605956
+  },
+  {
+    "price": 63312.7,
+    "side": "buy",
+    "size": 0.00081167,
+    "source": "kraken_trades",
+    "timestamp": 1780636375.2933784,
+    "trade_id": 101605957
+  },
+  {
+    "price": 63312.7,
+    "side": "buy",
+    "size": 0.000825,
+    "source": "kraken_trades",
+    "timestamp": 1780636378.2734184,
+    "trade_id": 101605958
+  },
+  {
+    "price": 63312.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636379.8447394,
+    "trade_id": 101605959
+  },
+  {
+    "price": 63307.1,
+    "side": "buy",
+    "size": 0.00046228,
+    "source": "kraken_trades",
+    "timestamp": 1780636383.9372485,
+    "trade_id": 101605960
+  },
+  {
+    "price": 63307.1,
+    "side": "buy",
+    "size": 0.011899,
+    "source": "kraken_trades",
+    "timestamp": 1780636387.3476515,
+    "trade_id": 101605961
+  },
+  {
+    "price": 63307.1,
+    "side": "buy",
+    "size": 0.000105,
+    "source": "kraken_trades",
+    "timestamp": 1780636394.2786853,
+    "trade_id": 101605962
+  },
+  {
+    "price": 63307.1,
+    "side": "buy",
+    "size": 0.0002362,
+    "source": "kraken_trades",
+    "timestamp": 1780636402.4693465,
+    "trade_id": 101605963
+  },
+  {
+    "price": 63307.0,
+    "side": "sell",
+    "size": 0.00409117,
+    "source": "kraken_trades",
+    "timestamp": 1780636403.3025491,
+    "trade_id": 101605964
+  },
+  {
+    "price": 63307.0,
+    "side": "sell",
+    "size": 0.00150007,
+    "source": "kraken_trades",
+    "timestamp": 1780636403.3025491,
+    "trade_id": 101605965
+  },
+  {
+    "price": 63307.0,
+    "side": "sell",
+    "size": 0.00110572,
+    "source": "kraken_trades",
+    "timestamp": 1780636403.3025491,
+    "trade_id": 101605966
+  },
+  {
+    "price": 63306.6,
+    "side": "sell",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636403.3203623,
+    "trade_id": 101605967
+  },
+  {
+    "price": 63305.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636403.3203623,
+    "trade_id": 101605968
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00015563,
+    "source": "kraken_trades",
+    "timestamp": 1780636404.4646509,
+    "trade_id": 101605969
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00318108,
+    "source": "kraken_trades",
+    "timestamp": 1780636410.8030097,
+    "trade_id": 101605970
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636420.8907874,
+    "trade_id": 101605971
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00110597,
+    "source": "kraken_trades",
+    "timestamp": 1780636420.8907874,
+    "trade_id": 101605972
+  },
+  {
+    "price": 63307.5,
+    "side": "sell",
+    "size": 0.00150005,
+    "source": "kraken_trades",
+    "timestamp": 1780636425.7553647,
+    "trade_id": 101605973
+  },
+  {
+    "price": 63305.7,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636425.7553647,
+    "trade_id": 101605974
+  },
+  {
+    "price": 63302.5,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636425.7553647,
+    "trade_id": 101605975
+  },
+  {
+    "price": 63299.3,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636425.7553647,
+    "trade_id": 101605976
+  },
+  {
+    "price": 63296.2,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636425.7553647,
+    "trade_id": 101605977
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00127378,
+    "source": "kraken_trades",
+    "timestamp": 1780636425.7553647,
+    "trade_id": 101605978
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00030522,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.3796253,
+    "trade_id": 101605979
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00097225,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.3796253,
+    "trade_id": 101605980
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00052793,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.4170403,
+    "trade_id": 101605981
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00037194,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.4170403,
+    "trade_id": 101605982
+  },
+  {
+    "price": 63289.8,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.4170406,
+    "trade_id": 101605983
+  },
+  {
+    "price": 63286.6,
+    "side": "sell",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.4170406,
+    "trade_id": 101605984
+  },
+  {
+    "price": 63286.6,
+    "side": "sell",
+    "size": 0.00089887,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.4170406,
+    "trade_id": 101605985
+  },
+  {
+    "price": 63289.4,
+    "side": "sell",
+    "size": 0.02676023,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.5711112,
+    "trade_id": 101605986
+  },
+  {
+    "price": 63290.2,
+    "side": "sell",
+    "size": 0.0004391,
+    "source": "kraken_trades",
+    "timestamp": 1780636431.9345286,
+    "trade_id": 101605987
+  },
+  {
+    "price": 63290.6,
+    "side": "sell",
+    "size": 0.01573553,
+    "source": "kraken_trades",
+    "timestamp": 1780636432.9750805,
+    "trade_id": 101605988
+  },
+  {
+    "price": 63290.5,
+    "side": "sell",
+    "size": 0.15929591,
+    "source": "kraken_trades",
+    "timestamp": 1780636432.9750805,
+    "trade_id": 101605989
+  },
+  {
+    "price": 63291.5,
+    "side": "buy",
+    "size": 0.09354901,
+    "source": "kraken_trades",
+    "timestamp": 1780636433.5125906,
+    "trade_id": 101605990
+  },
+  {
+    "price": 63291.6,
+    "side": "buy",
+    "size": 0.235915,
+    "source": "kraken_trades",
+    "timestamp": 1780636433.512591,
+    "trade_id": 101605991
+  },
+  {
+    "price": 63292.4,
+    "side": "buy",
+    "size": 0.07598201,
+    "source": "kraken_trades",
+    "timestamp": 1780636433.512591,
+    "trade_id": 101605992
+  },
+  {
+    "price": 63292.6,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636433.512591,
+    "trade_id": 101605993
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636439.278614,
+    "trade_id": 101605994
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00381846,
+    "source": "kraken_trades",
+    "timestamp": 1780636439.278614,
+    "trade_id": 101605995
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00058574,
+    "source": "kraken_trades",
+    "timestamp": 1780636442.251302,
+    "trade_id": 101605996
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00030829,
+    "source": "kraken_trades",
+    "timestamp": 1780636445.3797688,
+    "trade_id": 101605997
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00060597,
+    "source": "kraken_trades",
+    "timestamp": 1780636447.0808506,
+    "trade_id": 101605998
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.01130603,
+    "source": "kraken_trades",
+    "timestamp": 1780636447.0808508,
+    "trade_id": 101605999
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 9.48e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636453.5459263,
+    "trade_id": 101606000
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.00038345,
+    "source": "kraken_trades",
+    "timestamp": 1780636454.663722,
+    "trade_id": 101606001
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.0046,
+    "source": "kraken_trades",
+    "timestamp": 1780636454.7173905,
+    "trade_id": 101606002
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.23902118,
+    "source": "kraken_trades",
+    "timestamp": 1780636454.8238642,
+    "trade_id": 101606003
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636454.8238642,
+    "trade_id": 101606004
+  },
+  {
+    "price": 63292.6,
+    "side": "sell",
+    "size": 0.00110597,
+    "source": "kraken_trades",
+    "timestamp": 1780636454.8238642,
+    "trade_id": 101606005
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.00077071,
+    "source": "kraken_trades",
+    "timestamp": 1780636457.05677,
+    "trade_id": 101606006
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.00157869,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.325286,
+    "trade_id": 101606007
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.00061487,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.6838737,
+    "trade_id": 101606008
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.04284935,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.6838737,
+    "trade_id": 101606009
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.00674999,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.6892674,
+    "trade_id": 101606010
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.05399996,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.6922395,
+    "trade_id": 101606011
+  },
+  {
+    "price": 63286.7,
+    "side": "buy",
+    "size": 0.01687497,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.697664,
+    "trade_id": 101606012
+  },
+  {
+    "price": 63289.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.7578442,
+    "trade_id": 101606013
+  },
+  {
+    "price": 63292.7,
+    "side": "buy",
+    "size": 0.06110087,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.7578442,
+    "trade_id": 101606014
+  },
+  {
+    "price": 63292.9,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.7578442,
+    "trade_id": 101606015
+  },
+  {
+    "price": 63296.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.7578442,
+    "trade_id": 101606016
+  },
+  {
+    "price": 63299.2,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.8127708,
+    "trade_id": 101606017
+  },
+  {
+    "price": 63306.6,
+    "side": "buy",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636460.9700186,
+    "trade_id": 101606018
+  },
+  {
+    "price": 63310.9,
+    "side": "sell",
+    "size": 0.00150012,
+    "source": "kraken_trades",
+    "timestamp": 1780636461.8833199,
+    "trade_id": 101606019
+  },
+  {
+    "price": 63310.7,
+    "side": "sell",
+    "size": 0.01573288,
+    "source": "kraken_trades",
+    "timestamp": 1780636462.346898,
+    "trade_id": 101606020
+  },
+  {
+    "price": 63310.8,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636466.0406125,
+    "trade_id": 101606021
+  },
+  {
+    "price": 63320.5,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636466.3674695,
+    "trade_id": 101606022
+  },
+  {
+    "price": 63320.5,
+    "side": "sell",
+    "size": 0.01573188,
+    "source": "kraken_trades",
+    "timestamp": 1780636466.3674695,
+    "trade_id": 101606023
+  },
+  {
+    "price": 63320.4,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.122046,
+    "trade_id": 101606024
+  },
+  {
+    "price": 63320.4,
+    "side": "buy",
+    "size": 0.00110549,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.122046,
+    "trade_id": 101606025
+  },
+  {
+    "price": 63320.6,
+    "side": "buy",
+    "size": 0.001579,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.122046,
+    "trade_id": 101606026
+  },
+  {
+    "price": 63321.4,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.122046,
+    "trade_id": 101606027
+  },
+  {
+    "price": 63324.6,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.122046,
+    "trade_id": 101606028
+  },
+  {
+    "price": 63325.5,
+    "side": "sell",
+    "size": 0.00157996,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.1915703,
+    "trade_id": 101606029
+  },
+  {
+    "price": 63325.5,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636469.8046944,
+    "trade_id": 101606030
+  },
+  {
+    "price": 63319.2,
+    "side": "sell",
+    "size": 0.00150008,
+    "source": "kraken_trades",
+    "timestamp": 1780636471.0995684,
+    "trade_id": 101606031
+  },
+  {
+    "price": 63319.2,
+    "side": "sell",
+    "size": 0.00150003,
+    "source": "kraken_trades",
+    "timestamp": 1780636471.3761945,
+    "trade_id": 101606032
+  },
+  {
+    "price": 63312.7,
+    "side": "buy",
+    "size": 0.0015,
+    "source": "kraken_trades",
+    "timestamp": 1780636482.1193419,
+    "trade_id": 101606033
+  },
+  {
+    "price": 63315.1,
+    "side": "buy",
+    "size": 5.1e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636482.1193419,
+    "trade_id": 101606034
+  },
+  {
+    "price": 63317.6,
+    "side": "sell",
+    "size": 0.01573214,
+    "source": "kraken_trades",
+    "timestamp": 1780636482.3693547,
+    "trade_id": 101606035
+  },
+  {
+    "price": 63317.6,
+    "side": "sell",
+    "size": 0.00150001,
+    "source": "kraken_trades",
+    "timestamp": 1780636482.3693547,
+    "trade_id": 101606036
+  },
+  {
+    "price": 63314.4,
+    "side": "sell",
+    "size": 0.00150004,
+    "source": "kraken_trades",
+    "timestamp": 1780636482.4682562,
+    "trade_id": 101606037
+  },
+  {
+    "price": 63315.3,
+    "side": "sell",
+    "size": 0.01573231,
+    "source": "kraken_trades",
+    "timestamp": 1780636482.843916,
+    "trade_id": 101606038
+  },
+  {
+    "price": 63317.1,
+    "side": "sell",
+    "size": 0.0157322,
+    "source": "kraken_trades",
+    "timestamp": 1780636485.8942072,
+    "trade_id": 101606039
+  },
+  {
+    "price": 63317.0,
+    "side": "sell",
+    "size": 0.00110555,
+    "source": "kraken_trades",
+    "timestamp": 1780636489.33889,
+    "trade_id": 101606040
+  },
+  {
+    "price": 63314.7,
+    "side": "sell",
+    "size": 0.00252705,
+    "source": "kraken_trades",
+    "timestamp": 1780636489.4397452,
+    "trade_id": 101606041
+  },
+  {
+    "price": 63316.9,
+    "side": "buy",
+    "size": 0.03261924,
+    "source": "kraken_trades",
+    "timestamp": 1780636492.1270015,
+    "trade_id": 101606042
+  },
+  {
+    "price": 63316.2,
+    "side": "buy",
+    "size": 7.742e-05,
+    "source": "kraken_trades",
+    "timestamp": 1780636498.2026796,
+    "trade_id": 101606043
+  },
+  {
+    "price": 63311.2,
+    "side": "sell",
+    "size": 0.02,
+    "source": "kraken_trades",
+    "timestamp": 1780636498.6395843,
+    "trade_id": 101606044
+  }
+]

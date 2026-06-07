@@ -1,0 +1,26 @@
+.DS_Store
+__pycache__/
+.pytest_cache/
+.claude/
+
+# secrets — never commit
+.env
+oracle_keys/
+
+# resumable data caches (22GB) — regenerate via --fetch-missing
+03_data_cache/*
+!03_data_cache/README.md
+
+# monitoring artifacts (regenerated from cache on completion)
+02_exports/**/checkpoints/
+02_exports/**/*.log
+
+# regenerable per-market dumps over GitHub's 100MB limit
+02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_exchange_window_metrics.csv
+02_exports/btc5m_hybrid_quick_unwind_mar1_apr30/hybrid_exchange_window_metrics.csv
+02_exports/btc5m_underlying_volume/matched_flat_bin_tests.csv
+02_exports/btc5m_expanded_settlement_buckets_180s_aggregate/all_5m_market_5s_buckets.csv
+02_exports/btc5m_expanded_settlement_buckets_180s/all_5m_market_5s_buckets.csv
+
+# in-flight run — un-ignore and commit when the pipeline completes
+02_exports/btc5m_event_pnl_mar1_apr30/
