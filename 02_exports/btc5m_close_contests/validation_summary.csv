@@ -1,0 +1,2 @@
+market_timeframe,market_duration_seconds,series_slug,slug_prefix,market_slots_considered,usable_market_rows,missing_or_unusable_events,gamma_cache_files_present,rows_missing_start_price,rows_missing_any_prior_price,rows_with_duplicate_late_trades,duplicate_late_trades,price_delta_rows,max_abs_final_vs_rtds_end_delta_usd,mean_abs_final_vs_rtds_end_delta_usd
+5m,300,btc-up-or-down-5m,btc-updown-5m,811,811,0,811,603,632,0,0.0,209,12.539447538954846,0.16830771886557006

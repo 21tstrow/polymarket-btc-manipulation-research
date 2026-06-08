@@ -1,0 +1,3 @@
+market_timeframe,market_duration_seconds,series_slug,slug_prefix,underlying_source,underlying_symbol,market_fetches,cache_files_present,missing_cache_files,empty_trade_fetches,total_trade_rows,fetch_missing_enabled
+5m,300,btc-up-or-down-5m,btc-updown-5m,binanceus,BTCUSDT,811,811,0,12,10287,False
+5m,300,btc-up-or-down-5m,btc-updown-5m,kraken,XBTUSD,811,811,0,0,268423,False
