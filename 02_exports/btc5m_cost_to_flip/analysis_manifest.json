@@ -1,0 +1,29 @@
+{
+ "generated_utc": "2026-06-10T19:44:50Z",
+ "script": "01_scripts/analyze_btc5m_cost_to_flip.py",
+ "inputs": {
+  "cases_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_quick_unwind_cases.csv",
+  "exchange_cache_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/btc5m_underlying_volume_cache",
+  "polymarket_cache_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache"
+ },
+ "design": {
+  "question": "Q2: cost to move settlement price vs Polymarket payout at stake",
+  "impact_model": "through-origin OLS of 5s price_move_bps on signed taker quote ($)",
+  "move_to_flip_bps": "official_margin_bps_abs (move needed to push settlement back across the threshold)",
+  "required_notional_usd": "move_to_flip_bps / effective_bps_per_dollar (position size, recovered on unwind)",
+  "cost_floor_slippage_only_usd": "required_notional * move_bps; hard lower bound, the headline feasibility number",
+  "cost_to_flip_usd": "slippage floor + taker fees on both legs (fees are an add-on, not load-bearing)",
+  "taker_fee_bps": 10.0,
+  "taker_fee_context": "Kraken spot taker is 26 bps retail down to a 10 bps floor at high 30-day volume; default 10 is generous to the attacker. Feasibility conclusion is reported at the zero-fee floor so it does not depend on this choice.",
+  "payout_definition": "late winner-side BUY profit = size*(1-price), window=payout_window_seconds",
+  "feasibility": "profit_over_cost_ratio >= 1 means flipping is self-financing from the visible late book",
+  "lambda_fallback": "per-market slope when positive, else pooled cross-market slope",
+  "not_priced": "inventory risk across the settlement print, partial unwind fills, momentum traders joining the move"
+ },
+ "product": {
+  "market_timeframe": "5m",
+  "market_duration_seconds": 300,
+  "series_slug": "btc-up-or-down-5m",
+  "slug_prefix": "btc-updown-5m"
+ }
+}

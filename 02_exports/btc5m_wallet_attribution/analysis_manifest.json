@@ -1,0 +1,36 @@
+{
+ "generated_utc": "2026-06-10T19:19:31Z",
+ "script": "01_scripts/analyze_btc5m_wallet_attribution.py",
+ "inputs": {
+  "cases_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_quick_unwind_cases.csv",
+  "metrics_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_exchange_window_metrics.csv",
+  "cache_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache"
+ },
+ "design": {
+  "question": "Q4: do flagged-market payouts concentrate in repeat wallets beyond control baseline",
+  "flagged_markets": 9,
+  "control_markets": 108,
+  "control_pool_filter": {
+   "underlying_source": "kraken",
+   "window_seconds": "5",
+   "flat_margin_bps_lte": "20.0",
+   "match_filter": "margin_plus_prior_30s_momentum",
+   "control_method": "nonoverlap",
+   "volume_regime": "all"
+  },
+  "late_windows_seconds": [
+   60,
+   300
+  ],
+  "permutations": 2000,
+  "seed": 7,
+  "pro_winner_definition": "BUY winner outcome or SELL loser outcome in the late window",
+  "profit_definition": "size*(1-price) on BUY-winner trades held to resolution"
+ },
+ "product": {
+  "market_timeframe": "5m",
+  "market_duration_seconds": 300,
+  "series_slug": "btc-up-or-down-5m",
+  "slug_prefix": "btc-updown-5m"
+ }
+}

@@ -1,0 +1,2 @@
+market_timeframe,market_duration_seconds,series_slug,slug_prefix,flagged_markets,estimable_markets,pooled_bps_per_dollar,taker_fee_bps,median_required_notional_usd,median_cost_to_flip_usd,median_profit_over_cost_ratio,self_financing_markets,self_financing_markets_at_floor,payout_window_seconds
+5m,300,btc-up-or-down-5m,btc-updown-5m,9,9,1.339096171567855e-07,10.0,2697703.9339839052,7672.800699527689,0.05715979530004243,2,3,60
