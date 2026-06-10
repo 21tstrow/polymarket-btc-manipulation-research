@@ -1,0 +1,208 @@
+{
+  "analysis_specs": [
+    {
+      "analysis_tier": "primary",
+      "control_method": "nonoverlap",
+      "design_label": "primary_thin",
+      "flat_margin_bps_lte": 10.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "thin",
+      "window_seconds": 5
+    },
+    {
+      "analysis_tier": "comparator",
+      "control_method": "nonoverlap",
+      "design_label": "primary_all",
+      "flat_margin_bps_lte": 10.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 5
+    },
+    {
+      "analysis_tier": "comparator",
+      "control_method": "nonoverlap",
+      "design_label": "primary_non_thin",
+      "flat_margin_bps_lte": 10.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "non_thin",
+      "window_seconds": 5
+    },
+    {
+      "analysis_tier": "robustness",
+      "control_method": "nonoverlap",
+      "design_label": "robust_thin_window_10s",
+      "flat_margin_bps_lte": 10.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "thin",
+      "window_seconds": 10
+    },
+    {
+      "analysis_tier": "robustness",
+      "control_method": "nonoverlap",
+      "design_label": "robust_thin_flat_20bps",
+      "flat_margin_bps_lte": 20.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "thin",
+      "window_seconds": 5
+    },
+    {
+      "analysis_tier": "robustness",
+      "control_method": "mid_window",
+      "design_label": "robust_thin_mid_window",
+      "flat_margin_bps_lte": 10.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "thin",
+      "window_seconds": 5
+    },
+    {
+      "analysis_tier": "robustness",
+      "control_method": "nonoverlap",
+      "design_label": "robust_thin_binanceus",
+      "flat_margin_bps_lte": 10.0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "underlying_source": "binanceus",
+      "underlying_symbol": "BTCUSDT",
+      "volume_regime": "thin",
+      "window_seconds": 5
+    }
+  ],
+  "input_paths": {
+    "resolution_pressure_tests": "02_exports/btc5m_resolution_pressure/resolution_pressure_tests.csv",
+    "rtds_dir": "03_data_cache/chainlink_btc_usd"
+  },
+  "input_row_counts": {
+    "resolution_pressure_tests": 14596,
+    "rtds_price_seconds": 58126
+  },
+  "mechanism_design": {
+    "claim_scope": "association_not_causal_no_actor_linkage",
+    "flow_plus_impact": "flow_spike and aligned_final_move_bps > 0",
+    "flow_spike": "existing final_spot_pressure_candidate",
+    "outcome_assistance": "already-winner margin increase or crossed-to-winner; crossing not required",
+    "post_close_price_lookup": "latest cached Chainlink/RTDS payload timestamp at or before the target horizon, allowing up to 2 seconds backward lag and no future match",
+    "quick_unwind": "positive post_close_reversion at 5s, 15s, or 30s",
+    "thesis": "large winner-aligned final-bin taker flow may increase winner margin or flip outcome, then unwind within 5s/15s/30s",
+    "thin_definition": "generated volume_regime=thin, based on below-median control_median_quote_volume in design cell"
+  },
+  "multiple_testing": "Benjamini-Hochberg FDR pooled across raw p-values in quick_unwind_tests.csv",
+  "output_row_counts": {
+    "quick_unwind_cases.csv": 32,
+    "quick_unwind_tests.csv": 7
+  },
+  "primary_spec": {
+    "analysis_tier": "primary",
+    "control_method": "nonoverlap",
+    "design_label": "primary_thin",
+    "flat_margin_bps_lte": 10.0,
+    "match_filter": "margin_plus_prior_30s_momentum",
+    "underlying_source": "kraken",
+    "underlying_symbol": "XBTUSD",
+    "volume_regime": "thin",
+    "window_seconds": 5
+  },
+  "rtds_cache_files": [
+    {
+      "bytes": 3780250,
+      "path": "03_data_cache/chainlink_btc_usd/polymarket_rtds_chainlink_btc_usd_decoded_2026-06-04.csv",
+      "sha256": "5f2cb978073c2d66b157fbe3386ff38f680b0a74a6601ce2850fe88b20b23b43"
+    },
+    {
+      "bytes": 5605509,
+      "path": "03_data_cache/chainlink_btc_usd/polymarket_rtds_chainlink_btc_usd_decoded_2026-06-05.csv",
+      "sha256": "45d5d2a56d5088a1d8a516c386ff252e75abc629569a1e24db172f6a590575ef"
+    },
+    {
+      "bytes": 7747340,
+      "path": "03_data_cache/chainlink_btc_usd/polymarket_rtds_chainlink_btc_usd_decoded_2026-06-06.csv",
+      "sha256": "7fd4f111948870446ff774130696145dca3c5755c8efdc4aab32f798cd39f274"
+    },
+    {
+      "bytes": 351722,
+      "path": "03_data_cache/chainlink_btc_usd/polymarket_rtds_chainlink_btc_usd_decoded_2026-06-07.csv",
+      "sha256": "f2d0a37a91c8a452aa13e0e53ae0a32ff1e59d1cbba94d46623d850cd8dd30a6"
+    }
+  ],
+  "rtds_price_second_bounds": {
+    "max_second": 1780837530,
+    "min_second": 1780594352
+  },
+  "run_timestamp_utc": "2026-06-08T16:28:28.713403+00:00",
+  "script_path": "01_scripts/analyze_btc5m_quick_unwind.py",
+  "validation": {
+    "product_hygiene": {
+      "forbidden_15m_patterns_found": 0,
+      "market_duration_seconds": 300,
+      "market_timeframe": "5m"
+    },
+    "selected_cell_checks": {
+      "primary_all": {
+        "eligible_markets": 59,
+        "flow_plus_impact_markets": 5,
+        "flow_spike_markets": 7,
+        "reversion_15s_available_markets": 59,
+        "reversion_30s_available_markets": 58,
+        "reversion_5s_available_markets": 59
+      },
+      "primary_non_thin": {
+        "eligible_markets": 29,
+        "flow_plus_impact_markets": 4,
+        "flow_spike_markets": 5,
+        "reversion_15s_available_markets": 29,
+        "reversion_30s_available_markets": 28,
+        "reversion_5s_available_markets": 29
+      },
+      "primary_thin": {
+        "eligible_markets": 30,
+        "flow_plus_impact_markets": 1,
+        "flow_spike_markets": 2,
+        "reversion_15s_available_markets": 30,
+        "reversion_30s_available_markets": 30,
+        "reversion_5s_available_markets": 30
+      },
+      "robust_thin_binanceus": {
+        "eligible_markets": 59,
+        "flow_plus_impact_markets": 2,
+        "flow_spike_markets": 4,
+        "reversion_15s_available_markets": 59,
+        "reversion_30s_available_markets": 58,
+        "reversion_5s_available_markets": 59
+      },
+      "robust_thin_flat_20bps": {
+        "eligible_markets": 57,
+        "flow_plus_impact_markets": 3,
+        "flow_spike_markets": 5,
+        "reversion_15s_available_markets": 57,
+        "reversion_30s_available_markets": 57,
+        "reversion_5s_available_markets": 57
+      },
+      "robust_thin_mid_window": {
+        "eligible_markets": 18,
+        "flow_plus_impact_markets": 7,
+        "flow_spike_markets": 7,
+        "reversion_15s_available_markets": 18,
+        "reversion_30s_available_markets": 18,
+        "reversion_5s_available_markets": 18
+      },
+      "robust_thin_window_10s": {
+        "eligible_markets": 23,
+        "flow_plus_impact_markets": 1,
+        "flow_spike_markets": 2,
+        "reversion_15s_available_markets": 23,
+        "reversion_30s_available_markets": 23,
+        "reversion_5s_available_markets": 23
+      }
+    }
+  }
+}

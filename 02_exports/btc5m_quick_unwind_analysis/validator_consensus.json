@@ -1,0 +1,22 @@
+[
+  {
+    "gate": "claims_trading_mechanism",
+    "status": "approved",
+    "summary": "Reviewer approved: crossing is not required, already-winner margin strengthening is separated from crossing, quick reversion uses 5s/15s/30s rather than 300s, magnitude is framed as partly selected, and claims avoid manipulation or actor-linkage."
+  },
+  {
+    "gate": "statistics",
+    "status": "approved",
+    "summary": "Reviewer approved: flow-spike magnitude is separated from downstream evidence, mechanism candidates require flow plus positive winner-aligned price impact, reversion is compared to nonimpact and nonflow rows, pooled BH is applied, and tiny-n limits are disclosed."
+  },
+  {
+    "gate": "data_microstructure_initial",
+    "status": "revised",
+    "summary": "Initial data review requested tighter auditability: RTDS cache pinning, explicit latest-at-or-before lookup documentation, raw post-close price/aligned-move fields in case rows, and regime-specific thin-definition text."
+  },
+  {
+    "gate": "data_microstructure_recheck",
+    "status": "approved",
+    "summary": "Reviewer approved after revision: RTDS cache files are pinned with paths/bytes/SHA256 and min/max price seconds, lookup rule is documented, case rows include raw post-close prices and aligned moves, thin-definition text is corrected, and recomputed 15s reversion matches existing generated rows."
+  }
+]

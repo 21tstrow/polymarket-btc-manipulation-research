@@ -1,0 +1,27 @@
+[
+  {
+    "gate": "data_lock",
+    "status": "revised",
+    "summary": "Initial data validation blocked on source close-contest coverage gaps and late-trade fetch truncation. The analysis was revised to surface source coverage in the manifest, scope Q2 reversion as available-case by horizon, report late-trade fetch truncation as a diagnostic, and verify Q1/Q4 core fields in the selected analysis universes."
+  },
+  {
+    "gate": "data_lock_recheck",
+    "status": "approved",
+    "summary": "Data validator approved after revision: 5m product hygiene, design-cell presence, duplicate checks, Q1 core coverage, Q2 available-case reversion Ns, and Q4 eligible-control coverage passed. Remaining Q4 robustness missingness is low severity and explicitly reported."
+  },
+  {
+    "gate": "primary_tables",
+    "status": "revised",
+    "summary": "Methods validator found BH FDR was initially applied per endpoint rather than pooled within each question family, and Q2 carried crossing-pressure reversion diagnostics that blurred question scope. The analysis was revised before acceptance."
+  },
+  {
+    "gate": "robustness_tables",
+    "status": "approved",
+    "summary": "Methods validator approved after revision: primary/robustness labels are explicit, BH FDR is pooled across all raw p-values in each question table, Q2 crossing-pressure diagnostics were removed, Q4 uses the eligible-control universe, and Q3/Q5 leakage is avoided in claims."
+  },
+  {
+    "gate": "final_report",
+    "status": "approved",
+    "summary": "Claims validator approved: language is association-only, causal/coordinated/manipulation claims are avoided, sample sizes and raw/BH p-values are traceable, non-significant results are not overstated, and reversion coverage is caveated."
+  }
+]

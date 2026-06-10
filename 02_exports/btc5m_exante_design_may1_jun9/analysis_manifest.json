@@ -1,0 +1,36 @@
+{
+  "date_range": {
+    "calibration_end_date_exclusive": "2026-05-21",
+    "end_date_exclusive": "2026-06-09",
+    "start_date": "2026-05-01"
+  },
+  "design": {
+    "claim_scope": "retrospective_association_not_causal_no_actor_linkage",
+    "event_window_seconds": 5,
+    "exante_close_bps_lte": 10.0,
+    "imbalance_share_threshold": 0.6,
+    "max_prior_momentum_bps_lte": 10.0,
+    "min_matched_controls": 10,
+    "primary_provider": "kraken",
+    "primary_symbol": "XBTUSD",
+    "prior_momentum_lookback_seconds": 30,
+    "rank_threshold": 0.9,
+    "thin_calibration_cutoff": 25208.602506853,
+    "thin_calibration_quantile": 0.3333333333333333,
+    "thin_metric": "pre_60s_quote_volume",
+    "unit": "unique market venue event row"
+  },
+  "exchange_cache_dir": "03_data_cache/btc5m_underlying_volume_cache",
+  "input_market_universe": "02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+  "input_market_universe_sha256": "399d49b4cd09821573ccdec0ecdfa2c943bc11468c00d2c1e6059e088cc78ba5",
+  "row_counts": {
+    "exante_market_venue_panel": 21838,
+    "placebo_panel": 32757,
+    "placebo_tests": 4,
+    "primary_flow_incidence_tests": 1,
+    "secondary_outcome_tests": 18
+  },
+  "run_timestamp_utc": "2026-06-09T12:56:24.531535+00:00",
+  "script_path": "01_scripts/analyze_btc5m_exante_design.py",
+  "venues": "kraken:XBTUSD,binanceus:BTCUSDT"
+}

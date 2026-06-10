@@ -1,0 +1,348 @@
+{
+  "analysis_specs": [
+    {
+      "control_method": "nonoverlap",
+      "design_label": "primary",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 1,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "primary",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 5
+    },
+    {
+      "control_method": "nonoverlap",
+      "design_label": "robust_window_10s",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "window_seconds",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 10
+    },
+    {
+      "control_method": "nonoverlap",
+      "design_label": "robust_flat_20bps",
+      "flat_margin_bps_lte": 20.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "flat_margin_bps_lte",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 5
+    },
+    {
+      "control_method": "mid_window",
+      "design_label": "robust_mid_window",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "control_method",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 5
+    },
+    {
+      "control_method": "nonoverlap",
+      "design_label": "robust_binanceus",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "underlying_source",
+      "underlying_source": "binanceus",
+      "underlying_symbol": "BTCUSDT",
+      "volume_regime": "all",
+      "window_seconds": 5
+    }
+  ],
+  "input_files": {
+    "market_close_contest_summary": {
+      "columns": 130,
+      "path": "02_exports/btc5m_close_contests/market_close_contest_summary.csv",
+      "rows": 811
+    },
+    "matched_flat_bin_summary": {
+      "columns": 50,
+      "path": "02_exports/btc5m_underlying_volume/matched_flat_bin_summary.csv",
+      "rows": 144
+    },
+    "matched_flat_bin_tests": {
+      "columns": 91,
+      "path": "02_exports/btc5m_underlying_volume/matched_flat_bin_tests.csv",
+      "rows": 116784
+    },
+    "resolution_pressure_summary": {
+      "columns": 96,
+      "path": "02_exports/btc5m_resolution_pressure/resolution_pressure_summary.csv",
+      "rows": 412
+    },
+    "resolution_pressure_tests": {
+      "columns": 160,
+      "path": "02_exports/btc5m_resolution_pressure/resolution_pressure_tests.csv",
+      "rows": 14596
+    }
+  },
+  "input_paths": {
+    "market_close_contest_summary": "02_exports/btc5m_close_contests/market_close_contest_summary.csv",
+    "matched_flat_bin_summary": "02_exports/btc5m_underlying_volume/matched_flat_bin_summary.csv",
+    "matched_flat_bin_tests": "02_exports/btc5m_underlying_volume/matched_flat_bin_tests.csv",
+    "resolution_pressure_summary": "02_exports/btc5m_resolution_pressure/resolution_pressure_summary.csv",
+    "resolution_pressure_tests": "02_exports/btc5m_resolution_pressure/resolution_pressure_tests.csv"
+  },
+  "input_row_counts": {
+    "market_close_contest_summary": 811,
+    "matched_flat_bin_summary": 144,
+    "matched_flat_bin_tests": 116784,
+    "resolution_pressure_summary": 412,
+    "resolution_pressure_tests": 14596
+  },
+  "output_row_counts": {
+    "candidate_case_table.csv": 10,
+    "q1_resolution_effect_tests.csv": 5,
+    "q2_pressure_reversion_tests.csv": 5,
+    "q4_threshold_crossing_tests.csv": 5
+  },
+  "primary_spec": {
+    "control_method": "nonoverlap",
+    "design_label": "primary",
+    "flat_margin_bps_lte": 10.0,
+    "is_primary": 1,
+    "match_filter": "margin_plus_prior_30s_momentum",
+    "robustness_dimension": "primary",
+    "underlying_source": "kraken",
+    "underlying_symbol": "XBTUSD",
+    "volume_regime": "all",
+    "window_seconds": 5
+  },
+  "robustness_specs": [
+    {
+      "control_method": "nonoverlap",
+      "design_label": "robust_window_10s",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "window_seconds",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 10
+    },
+    {
+      "control_method": "nonoverlap",
+      "design_label": "robust_flat_20bps",
+      "flat_margin_bps_lte": 20.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "flat_margin_bps_lte",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 5
+    },
+    {
+      "control_method": "mid_window",
+      "design_label": "robust_mid_window",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "control_method",
+      "underlying_source": "kraken",
+      "underlying_symbol": "XBTUSD",
+      "volume_regime": "all",
+      "window_seconds": 5
+    },
+    {
+      "control_method": "nonoverlap",
+      "design_label": "robust_binanceus",
+      "flat_margin_bps_lte": 10.0,
+      "is_primary": 0,
+      "match_filter": "margin_plus_prior_30s_momentum",
+      "robustness_dimension": "underlying_source",
+      "underlying_source": "binanceus",
+      "underlying_symbol": "BTCUSDT",
+      "volume_regime": "all",
+      "window_seconds": 5
+    }
+  ],
+  "run_timestamp_utc": "2026-06-08T15:39:56.092051+00:00",
+  "script_path": "01_scripts/analyze_btc5m_q1_q2_q4.py",
+  "statistical_handling": {
+    "claim_scope": "association_not_causal",
+    "multiple_testing": "Benjamini-Hochberg FDR pooled across all raw p-values in each question output table",
+    "primary_cell": "primary",
+    "rank_p_combination": "Fisher combined p-value over market-level one-sided rank p-fields",
+    "robustness_family": "primary plus one-change sensitivity cells"
+  },
+  "validation": {
+    "analysis_cell_checks": [
+      {
+        "design_label": "primary",
+        "eligible_markets": 59,
+        "eligible_markets_with_controls": 69,
+        "matched_summary_rows": 1,
+        "matched_test_rows": 811,
+        "pressure_candidates": 7,
+        "pressure_summary_rows": 1,
+        "pressure_test_rows": 59
+      },
+      {
+        "design_label": "robust_window_10s",
+        "eligible_markets": 45,
+        "eligible_markets_with_controls": 69,
+        "matched_summary_rows": 1,
+        "matched_test_rows": 811,
+        "pressure_candidates": 4,
+        "pressure_summary_rows": 1,
+        "pressure_test_rows": 45
+      },
+      {
+        "design_label": "robust_flat_20bps",
+        "eligible_markets": 113,
+        "eligible_markets_with_controls": 127,
+        "matched_summary_rows": 1,
+        "matched_test_rows": 811,
+        "pressure_candidates": 9,
+        "pressure_summary_rows": 1,
+        "pressure_test_rows": 113
+      },
+      {
+        "design_label": "robust_mid_window",
+        "eligible_markets": 36,
+        "eligible_markets_with_controls": 58,
+        "matched_summary_rows": 1,
+        "matched_test_rows": 811,
+        "pressure_candidates": 9,
+        "pressure_summary_rows": 1,
+        "pressure_test_rows": 36
+      },
+      {
+        "design_label": "robust_binanceus",
+        "eligible_markets": 59,
+        "eligible_markets_with_controls": 69,
+        "matched_summary_rows": 1,
+        "matched_test_rows": 811,
+        "pressure_candidates": 4,
+        "pressure_summary_rows": 1,
+        "pressure_test_rows": 59
+      }
+    ],
+    "condition_id_unique_matched_design_cells": 116784,
+    "condition_id_unique_pressure_design_cells": 14596,
+    "product_hygiene": {
+      "forbidden_15m_patterns_found": 0,
+      "market_duration_seconds": 300,
+      "market_timeframe": "5m"
+    },
+    "selected_cell_coverage": {
+      "q1_core_complete_by_design": {
+        "primary": {
+          "close_late_trade_fetch_truncated": 17,
+          "complete": 59,
+          "missing": 0
+        },
+        "robust_binanceus": {
+          "close_late_trade_fetch_truncated": 17,
+          "complete": 59,
+          "missing": 0
+        },
+        "robust_flat_20bps": {
+          "close_late_trade_fetch_truncated": 28,
+          "complete": 113,
+          "missing": 0
+        },
+        "robust_mid_window": {
+          "close_late_trade_fetch_truncated": 12,
+          "complete": 36,
+          "missing": 0
+        },
+        "robust_window_10s": {
+          "close_late_trade_fetch_truncated": 12,
+          "complete": 45,
+          "missing": 0
+        }
+      },
+      "q2_reversion_60s_by_design": {
+        "primary": {
+          "available": 55,
+          "candidate_available": 6,
+          "candidate_missing": 1,
+          "missing": 4
+        },
+        "robust_binanceus": {
+          "available": 55,
+          "candidate_available": 4,
+          "candidate_missing": 0,
+          "missing": 4
+        },
+        "robust_flat_20bps": {
+          "available": 108,
+          "candidate_available": 8,
+          "candidate_missing": 1,
+          "missing": 5
+        },
+        "robust_mid_window": {
+          "available": 35,
+          "candidate_available": 8,
+          "candidate_missing": 1,
+          "missing": 1
+        },
+        "robust_window_10s": {
+          "available": 42,
+          "candidate_available": 3,
+          "candidate_missing": 1,
+          "missing": 3
+        }
+      },
+      "q4_core_complete_by_design": {
+        "primary": {
+          "close_late_trade_fetch_truncated": 20,
+          "complete": 69,
+          "missing": 0
+        },
+        "robust_binanceus": {
+          "close_late_trade_fetch_truncated": 20,
+          "complete": 69,
+          "missing": 0
+        },
+        "robust_flat_20bps": {
+          "close_late_trade_fetch_truncated": 31,
+          "complete": 127,
+          "missing": 0
+        },
+        "robust_mid_window": {
+          "close_late_trade_fetch_truncated": 17,
+          "complete": 58,
+          "missing": 0
+        },
+        "robust_window_10s": {
+          "close_late_trade_fetch_truncated": 21,
+          "complete": 67,
+          "missing": 2
+        }
+      }
+    },
+    "source_close_contest_coverage": {
+      "all_reversion_horizons_available": 168,
+      "all_reversion_horizons_missing": 643,
+      "late_trade_fetch_status_counts": {
+        "ok": 661,
+        "truncated_http_400_at_offset_3500": 150
+      },
+      "missing_fields": {
+        "chainlink_end_price": 602,
+        "chainlink_start_price": 603,
+        "post_close_reversion_15s_bps": 602,
+        "post_close_reversion_300s_bps": 603,
+        "post_close_reversion_60s_bps": 615,
+        "rtds_end_price": 602
+      },
+      "rows": 811
+    }
+  }
+}
