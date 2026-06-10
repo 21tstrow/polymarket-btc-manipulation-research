@@ -1,0 +1,2 @@
+n_markets,n_already_winner_at_T5,n_loser_side_at_T5,pre5s_side_predicts_winner_accuracy,n_flips,flip_rate_among_loser_side,flip_mean_aligned_final_flow,noflip_mean_aligned_final_flow,flip_gt_noflip_flow_p,flip_mean_final_volume,noflip_mean_final_volume,flip_gt_noflip_volume_p
+1170,976,194,0.8341880341880342,99,0.5103092783505154,190123.6738357532,-25292.316915910054,0.0001999600079984003,200693.33016918885,49720.96595582504,0.0001999600079984003

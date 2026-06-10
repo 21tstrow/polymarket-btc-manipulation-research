@@ -1,0 +1,22 @@
+{
+ "generated_utc": "2026-06-10T22:27:47Z",
+ "script": "01_scripts/analyze_btc5m_wallet_sequencing.py",
+ "inputs": {
+  "event_pnl_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_event_pnl/event_pnl_per_market.csv",
+  "bucket_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_expanded_settlement_buckets_180s_aggregate/narrow_close_10bps_market_5s_buckets.csv"
+ },
+ "design": {
+  "targets": "profitable-with-push contested markets from event_pnl",
+  "suspect_position": "winner-side BUY notional >= 500.0 at vwap price <= 0.85",
+  "asymmetry_placebo": "same suspect rule on the losing side; market makers/noise are symmetric",
+  "directional_test": "binomial P(winner>=observed | n=winner+loser, p=0.5)",
+  "ordering": "winner-side position vwap time minus push time, seconds before close; >0 = position first",
+  "push_window_seconds": 60
+ },
+ "product": {
+  "market_timeframe": "5m",
+  "market_duration_seconds": 300,
+  "series_slug": "btc-up-or-down-5m",
+  "slug_prefix": "btc-updown-5m"
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "generated_utc": "2026-06-10T21:12:27Z",
+ "script": "01_scripts/analyze_btc5m_spike_detection.py",
+ "inputs": {
+  "metrics_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_exchange_window_metrics.csv",
+  "bucket_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_expanded_settlement_buckets_180s_aggregate"
+ },
+ "design": {
+  "close_population": "kraken 5s 10bps nonoverlap momentum, official_close_enough & flat & endpoint observed",
+  "final_bin_offset_s": -5,
+  "permutations": 5000,
+  "seed": 7,
+  "interpretation": "tests separate construction artifact + expiry from settlement-specific directional signal; not proof of manipulation"
+ },
+ "product": {
+  "market_timeframe": "5m",
+  "market_duration_seconds": 300,
+  "series_slug": "btc-up-or-down-5m",
+  "slug_prefix": "btc-updown-5m"
+ }
+}
