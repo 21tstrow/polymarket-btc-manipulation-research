@@ -24,3 +24,6 @@ oracle_keys/
 
 # in-flight run — un-ignore and commit when the pipeline completes
 02_exports/btc5m_event_pnl_mar1_apr30/
+
+# matplotlib cache
+02_exports/.matplotlib_cache/
