@@ -224,7 +224,8 @@ def load_universe(universe_csv: Path, contested_bps: float) -> dict[str, dict]:
     for r in csv.DictReader(open(universe_csv, newline="")):
         cid = r.get("condition_id")
         winner = r.get("winner")
-        margin = safe_float(r.get("official_margin_bps_abs"))
+        # 5m hybrid universe: official_margin_bps_abs; 15m collector: margin_bps_abs
+        margin = safe_float(r.get("official_margin_bps_abs") or r.get("margin_bps_abs"))
         end_epoch = safe_float(r.get("end_epoch"))
         if not cid or winner not in ("Up", "Down") or margin is None or end_epoch is None:
             continue
@@ -317,8 +318,9 @@ def run(args: argparse.Namespace) -> int:
                            min_markets=args.min_markets, max_suspects=args.max_suspects)
     print(f"contested markets: {len(universe)}; suspects: {len(labels)}")
 
-    classify_params = {"lookback_s": args.lookback_s, "skew_s": args.skew_s,
-                       "flat_bps": args.flat_bps, "onset_bps": args.onset_bps}
+    classify_params = {"span_s": args.span_seconds, "lookback_s": args.lookback_s,
+                       "skew_s": args.skew_s, "flat_bps": args.flat_bps,
+                       "onset_bps": args.onset_bps}
 
     # one pass over the trades cache, keeping suspect winner-side buys
     # wallet -> cid -> list[(offset_s, notional)]
@@ -362,11 +364,11 @@ def run(args: argparse.Namespace) -> int:
             market = universe[cid]
             sign = 1 if market["winner"] == "Up" else -1
             hi, lo, last = load_spot_series(exchange_cache_dir, venue_dir, symbol,
-                                            market["end_epoch"])
+                                            market["end_epoch"], args.span_seconds)
             cache[cid] = to_winner_space(hi, lo, last, sign)
         return cache[cid]
 
-    candidate_offsets = range(-290, -1, args.baseline_step_s)
+    candidate_offsets = range(-args.baseline_window_s, -1, args.baseline_step_s)
     baseline_by_cid: dict[str, dict] = {}
 
     market_rows: list[dict] = []
@@ -422,7 +424,7 @@ def run(args: argparse.Namespace) -> int:
                 observed_flat += 1 if cls == "pre_onset_flat" else 0
 
             market_rows.append({
-                **product_fields(),
+                **product_fields(args.timeframe),
                 "wallet": wallet, "label": label,
                 "slug": market["slug"], "condition_id": cid, "winner": market["winner"],
                 "official_margin_bps_abs": market["margin_bps"],
@@ -451,7 +453,7 @@ def run(args: argparse.Namespace) -> int:
             continue
         perm_p = flat_share_perm_p(flat_probs, observed_flat, args.permutations, args.seed)
         summary_rows.append({
-            **product_fields(),
+            **product_fields(args.timeframe),
             "wallet": wallet, "label": label,
             "n_markets": n_markets,
             "pre_onset_flat": counts["pre_onset_flat"],
@@ -548,6 +550,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--flat-bps", type=float, default=2.5)
     parser.add_argument("--onset-bps", type=float, default=5.0)
     parser.add_argument("--baseline-step-s", type=int, default=3)
+    parser.add_argument("--baseline-window-s", type=int, default=290,
+                        help="random-timing candidates span the final N seconds before close")
+    parser.add_argument("--span-seconds", type=int, default=SPAN_SECONDS,
+                        help="spot path coverage before close (market window + prior); 1500 for 15m")
+    parser.add_argument("--timeframe", choices=("5m", "15m"), default="5m")
     parser.add_argument("--permutations", type=int, default=2000)
     parser.add_argument("--seed", type=int, default=20260611)
     return parser.parse_args()

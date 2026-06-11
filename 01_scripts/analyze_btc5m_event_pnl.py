@@ -126,6 +126,82 @@ def load_contested_markets(metrics_csv: Path, flat_bps: float) -> list[dict]:
     return sorted(out, key=lambda m: m["slug"])
 
 
+def load_contested_markets_from_universe(universe_csv: Path, exchange_cache_dir: Path,
+                                         flat_bps: float, push_window_s: int) -> list[dict]:
+    """Universe-mode market loader: compute the exchange-side event metrics
+    directly from the cached Kraken tape instead of the 5m hybrid metrics CSV.
+    Used for products (15m) that have no hybrid backfill. Reversion sign:
+    positive = post-close move back AGAINST the winner direction."""
+    out = []
+    skipped = 0
+    for r in csv.DictReader(open(universe_csv, newline="")):
+        margin = safe_float(r.get("official_margin_bps_abs") or r.get("margin_bps_abs"))
+        winner = r.get("winner")
+        strike = safe_float(r.get("price_to_beat"))
+        end_epoch = safe_float(r.get("end_epoch"))
+        if (margin is None or margin > flat_bps or winner not in ("Up", "Down")
+                or strike is None or end_epoch is None):
+            continue
+        end_epoch = int(end_epoch)
+        trades = []
+        for start in (end_epoch - 300, end_epoch):
+            path = exchange_cache_dir / "kraken_trades" / f"XBTUSD_{start}_{start + 300}.json"
+            if path.exists():
+                try:
+                    page = json.loads(path.read_text(encoding="utf-8"))
+                except Exception:  # noqa: BLE001 - skip malformed cache files
+                    continue
+                if isinstance(page, list):
+                    trades.extend(page)
+        trades = sorted(
+            ((float(x["timestamp"]), float(x["price"]), str(x.get("side") or ""), float(x.get("size") or 0.0))
+             for x in trades if x.get("timestamp") and x.get("price")),
+            key=lambda x: x[0])
+        def last_price_at(ts_limit):
+            px = None
+            for ts, price, _, _ in trades:
+                if ts > ts_limit:
+                    break
+                px = price
+            return px
+        p_pre = last_price_at(end_epoch - push_window_s)
+        p_close = last_price_at(end_epoch)
+        if p_pre is None or p_close is None:
+            skipped += 1
+            continue
+        s = 1 if winner == "Up" else -1
+        vol = 0.0
+        signed = 0.0
+        for ts, price, side, size in trades:
+            if end_epoch - push_window_s <= ts < end_epoch:
+                q = size * price
+                vol += q
+                signed += q if side == "buy" else -q
+        p5 = last_price_at(end_epoch + 5)
+        p30 = last_price_at(end_epoch + 30)
+        already = 1 if s * (p_pre - strike) > 0 else 0
+        crossed = 1 if already == 0 and s * (p_close - strike) > 0 else 0
+        out.append({
+            "slug": r.get("slug"),
+            "condition_id": r.get("condition_id"),
+            "winner": winner,
+            "start_epoch": int(safe_float(r.get("start_epoch")) or (end_epoch - 300)),
+            "end_epoch": end_epoch,
+            "already_winner_side": already,
+            "crossed_to_winner": crossed,
+            "category": categorize(already, crossed),
+            "official_margin_bps_abs": margin,
+            "aligned_final_move_bps": s * (p_close - p_pre) / p_pre * 1e4,
+            "net_aligned_notional": s * signed,
+            "final_quote_volume": vol,
+            "reversion_5s_bps": -s * (p5 - p_close) / p_close * 1e4 if p5 is not None else None,
+            "reversion_30s_bps": -s * (p30 - p_close) / p_close * 1e4 if p30 is not None else None,
+        })
+    if skipped:
+        print(f"universe mode: skipped {skipped} contested markets without kraken coverage")
+    return sorted(out, key=lambda m: m["slug"] or "")
+
+
 def late_winner_profit(market: dict, cache_dir: Path, window_seconds: int, *, fetch_missing: bool) -> dict:
     try:
         trades, _, _, status = close_contests.fetch_late_trades(
@@ -200,7 +276,12 @@ def summarize(rows: list[dict], label: str) -> dict:
 def run(args: argparse.Namespace) -> int:
     out_dir = Path(args.out_dir)
     cache_dir = Path(args.polymarket_cache_dir)
-    markets = load_contested_markets(Path(args.metrics_csv), args.flat_bps)
+    if args.universe_csv:
+        markets = load_contested_markets_from_universe(
+            Path(args.universe_csv), Path(args.exchange_cache_dir), args.flat_bps,
+            args.push_window_seconds)
+    else:
+        markets = load_contested_markets(Path(args.metrics_csv), args.flat_bps)
     if not markets:
         print("error: no contested markets", file=sys.stderr)
         return 2
@@ -217,7 +298,7 @@ def run(args: argparse.Namespace) -> int:
             if pm["pm_late_winner_buy_profit"] is not None
             else {"realized_net_usd": None, "pm_over_spot_cost_ratio": None, "profitable": ""}
         )
-        rows.append({**product_fields(), **{k: m[k] for k in (
+        rows.append({**product_fields(args.timeframe), **{k: m[k] for k in (
             "slug", "condition_id", "winner", "category", "already_winner_side", "crossed_to_winner",
             "official_margin_bps_abs", "aligned_final_move_bps", "net_aligned_notional",
             "final_quote_volume", "reversion_5s_bps", "reversion_30s_bps")},
@@ -237,7 +318,7 @@ def run(args: argparse.Namespace) -> int:
     manifest = {
         "generated_utc": utc_now(),
         "script": "01_scripts/analyze_btc5m_event_pnl.py",
-        "inputs": {"metrics_csv": str(args.metrics_csv), "polymarket_cache_dir": str(args.polymarket_cache_dir)},
+        "inputs": {"metrics_csv": str(args.metrics_csv), "universe_csv": str(args.universe_csv), "polymarket_cache_dir": str(args.polymarket_cache_dir)},
         "design": {
             "question": "Event-level realized P&L: did the actual winner-aligned push pay off vs the Polymarket prize?",
             "spot_cost": "measured: net_aligned_notional * realized_move_bps + taker fees on both legs; no lambda",
@@ -245,7 +326,7 @@ def run(args: argparse.Namespace) -> int:
             "identification": "upper bound; assumes one actor pushed net spot flow AND captured the whole late winner-side prize",
             "taker_fee_bps": args.taker_fee_bps,
         },
-        "product": product_fields(),
+        "product": product_fields(args.timeframe),
     }
     (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
 
@@ -292,6 +373,11 @@ def run(args: argparse.Namespace) -> int:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--metrics-csv", default=str(DEFAULT_METRICS_CSV))
+    parser.add_argument("--universe-csv", default="",
+                        help="universe-mode: build the contested list + exchange metrics from this universe CSV and the kraken cache (for 15m)")
+    parser.add_argument("--exchange-cache-dir", default=str(ROOT / "03_data_cache/btc5m_underlying_volume_cache"))
+    parser.add_argument("--push-window-seconds", type=int, default=5)
+    parser.add_argument("--timeframe", choices=("5m", "15m"), default="5m")
     parser.add_argument("--polymarket-cache-dir", default=str(DEFAULT_POLYMARKET_CACHE_DIR))
     parser.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
     parser.add_argument("--flat-bps", type=float, default=10.0)

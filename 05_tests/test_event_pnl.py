@@ -68,3 +68,36 @@ def test_summarize_counts_push_and_profitable() -> None:
     assert s["with_winner_aligned_push"] == 2
     assert s["profitable_markets"] == 2
     assert s["profitable_with_push"] == 1
+
+
+def test_universe_mode_loader_computes_exchange_metrics(tmp_path) -> None:
+    import csv as _csv
+    import json as _json
+
+    universe = tmp_path / "universe.csv"
+    with open(universe, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=[
+            "slug", "condition_id", "winner", "price_to_beat",
+            "start_epoch", "end_epoch", "margin_bps_abs"])
+        w.writeheader()
+        w.writerow({"slug": "m1", "condition_id": "0xc1", "winner": "Up",
+                    "price_to_beat": "100.0", "start_epoch": "0",
+                    "end_epoch": "900", "margin_bps_abs": "2.0"})
+
+    kdir = tmp_path / "kraken_trades"
+    kdir.mkdir()
+    def kt(ts, price, side, size=1.0):
+        return {"timestamp": ts, "price": price, "side": side, "size": size}
+    (kdir / "XBTUSD_600_900.json").write_text(_json.dumps(
+        [kt(850.0, 99.99, "sell"), kt(897.0, 100.02, "buy")]))
+    (kdir / "XBTUSD_900_1200.json").write_text(_json.dumps([kt(905.0, 100.0, "sell")]))
+
+    markets = ev.load_contested_markets_from_universe(universe, tmp_path, 10.0, 5)
+    assert len(markets) == 1
+    m = markets[0]
+    assert m["already_winner_side"] == 0 and m["crossed_to_winner"] == 1
+    assert m["category"] == "flip"
+    assert abs(m["aligned_final_move_bps"] - (100.02 - 99.99) / 99.99 * 1e4) < 1e-9
+    assert abs(m["net_aligned_notional"] - 100.02) < 1e-9
+    assert abs(m["final_quote_volume"] - 100.02) < 1e-9
+    assert m["reversion_5s_bps"] > 0  # price fell back after close
