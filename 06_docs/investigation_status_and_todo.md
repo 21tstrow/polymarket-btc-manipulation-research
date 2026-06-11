@@ -8,7 +8,7 @@ Is there evidence that someone pushes BTC spot in the final seconds of a 5m Poly
 
 ## Current verdict (one paragraph)
 
-**No detected manipulation; one anomaly standing.** All population-level tests are null (no outcome-flipping crossings, no above-baseline reversion, no beneficiary cluster, no shared funding, timing indistinguishable from random). The opportunity is economically real (~$20–140 of slippage vs four-figure prizes in a ~182-market tail). The surviving anomaly: a handful of named wallets win 70–86% of genuine coin flips, Bonferroni-surviving — and the onset test localized those wins to markets decided by 1–2 bps drifts after coin-flip entries, i.e. *below the detection floor of any price-path method and exactly at the scale where Q2 says pushing is cheapest*. Remaining explanations: micro-drift prediction (legal) vs micro-drift causation (manipulation). Separating them needs the sub-second quote-state data (Oracle collector, running) — not more statistics on this dataset.
+**No detected manipulation; one anomaly standing — and it is structural, not wallet-bound.** All detection tests are null (no outcome-flipping crossings, no above-baseline reversion, no beneficiary cluster, no shared funding, timing indistinguishable from random). The opportunity is economically real (~$20–140 of slippage vs four-figure prizes in a ~182-market tail). The surviving anomaly: in *every* two-month window (Jan–Feb, Mar–Apr, May–Jun) a fresh crop of ~12–15 wallets shows z=5–21 contested-market edges with **zero identity overlap between periods** (`02_exports/btc5m_wallet_edge_jan_apr_pipeline/findings.md`). The named May–Jun wallets themselves fail backward replication (too young, z<1 in April) — the edge class persists, the wallets are disposable. The onset test localized the wins to markets decided by 1–2 bps drifts after coin-flip entries, i.e. *below the detection floor of any price-path method and exactly at the scale where Q2 says pushing is cheapest*. Remaining explanations: micro-drift prediction harvested by rotating bots (legal) vs micro-drift causation by rotating operators (manipulation). Separating them needs the sub-second quote-state data (Oracle collector, running) and the forward preregistered test — not more statistics on this dataset.
 
 ## What's built (script → output → one-line result)
 
@@ -48,17 +48,17 @@ Is there evidence that someone pushes BTC spot in the final seconds of a 5m Poly
 | `0xa6214292…`, `0x93173b86…` | bot-service clients | pay the 0.5% rake; follower-shaped |
 | `0x61e6cefb…`, `0xeb5b46…`, `0x80a260…` | edge-flagged, not ordering-tested in depth | from `top_edge_wallets.csv` / `window_dressing_candidates.csv` |
 
-## In flight right now (2026-06-11) — and what to do when each lands
+## In flight / just landed (2026-06-11)
 
-1. **Jan–Apr out-of-sample wallet pipeline** (screen `btc5m_jan_apr_wallet_pipeline`, log `02_exports/btc5m_wallet_edge_jan_apr_pipeline/pipeline_runner.log`). Evaluates the May–Jun-defined suspects on Jan–Apr markets they could not have been selected on. **When it lands:** compare each named wallet's contested-market edge in `02_exports/btc5m_wallet_edge_{jan1_feb28,mar1_apr30}/` against the May–Jun values. Edge persists → durable strategy, anomaly hardens. Edge evaporates → the anomaly was selection residue and the investigation's last open thread closes as a null.
-2. **15m trade collection** (screens `btc15m_apr1_jun9`, `btc15m_jan1_mar31`). **When it lands:** run event-P&L → wallet-edge → onset-ordering on the 15m universe (scripts are series-parameterizable). Key questions: do the same wallets appear; is the prize tail fatter (15m holds ~90× settled money per market).
+1. **Jan–Apr out-of-sample wallet pipeline — LANDED, verdict split.** Identity level: the named wallets fail backward replication (absent before April; z<1 where present). Population level: the edge class replicates in every period with all-new wallets (12/11/15 at z≥5, zero overlap). Read `02_exports/btc5m_wallet_edge_jan_apr_pipeline/findings.md`. Consequence: the unit of analysis is the **edge class**, not wallets; the git-committed May–Jun suspect list (timestamped 2026-06-11) preregisters the **forward** test — evaluate it on post-Jun-9 data in 2–4 weeks.
+2. **15m trade collection** (`btc15m_apr1_jun9` complete; `btc15m_jan1_mar31` retrying through network errors, resumable). **When usable:** run event-P&L → wallet-edge → onset-ordering on the 15m universe, population-wide (do NOT restrict to the 5m-named wallets — the crops rotate). Key questions: does the same edge class exist; is the prize tail fatter (15m holds ~90× settled money per market).
 3. **Oracle RTDS/Chainlink collector** (24/7 on OCI, see `polymarket_rtds_chainlink_collector.md`; pull with `01_scripts/pull_oracle_rtds_data.sh`). Accumulating the sub-second quote/oracle data for the decisive test.
 
 ## TODO (prioritized, post-reversal)
 
 1. **Quote-state-at-entry test (decisive).** When the Oracle collector has enough coverage: for each prime-suspect entry, was the PM quote stale vs spot at that instant (arb) or fair (prediction/causation)? Target list is small and named (table above); include `0x32ec633a…` as a should-test-arb-positive control. This is the only remaining discriminator between micro-drift prediction and causation.
-2. **Interpret the out-of-sample run** (lands today — see above).
-3. **15m pipeline** once collection completes.
+2. **Forward preregistered test:** collect post-Jun-9 5m data and evaluate (a) the committed named-wallet list, (b) the population edge class, against the git-timestamped registration. The clean out-of-sample direction now that backward is exhausted.
+3. **15m pipeline** (Apr–Jun collected; Jan–Mar finishing) — population-wide, not name-restricted.
 4. **Flow attribution in the no-push micro-margin markets:** who supplies the final-30s taker flow in the markets the prime suspects win without a visible push? Per-market flow vs matched controls; spot side is anonymous so this bounds rather than identifies.
 5. **Map the bot economy further** (see `bot_economy_map.md` § open edges): other rake collectors, leader graph over the full universe + 15m, the dynamic-fee natural experiment.
 

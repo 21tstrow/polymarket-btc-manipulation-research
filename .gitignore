@@ -22,8 +22,6 @@ oracle_keys/
 02_exports/btc5m_expanded_settlement_buckets_180s_aggregate/all_5m_market_5s_buckets.csv
 02_exports/btc5m_expanded_settlement_buckets_180s/all_5m_market_5s_buckets.csv
 
-# in-flight run — un-ignore and commit when the pipeline completes
-02_exports/btc5m_event_pnl_mar1_apr30/
 
 # matplotlib cache
 02_exports/.matplotlib_cache/
