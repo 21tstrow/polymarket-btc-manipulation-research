@@ -1,0 +1,21 @@
+{
+ "generated_utc": "2026-06-11T11:47:02Z",
+ "script": "01_scripts/analyze_btc5m_event_pnl.py",
+ "inputs": {
+  "metrics_csv": "02_exports/btc5m_hybrid_quick_unwind_jan1_feb28/hybrid_exchange_window_metrics.csv",
+  "polymarket_cache_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache"
+ },
+ "design": {
+  "question": "Event-level realized P&L: did the actual winner-aligned push pay off vs the Polymarket prize?",
+  "spot_cost": "measured: net_aligned_notional * realized_move_bps + taker fees on both legs; no lambda",
+  "pm_prize": "late winner-side BUY profit size*(1-price) in payout_window",
+  "identification": "upper bound; assumes one actor pushed net spot flow AND captured the whole late winner-side prize",
+  "taker_fee_bps": 10.0
+ },
+ "product": {
+  "market_timeframe": "5m",
+  "market_duration_seconds": 300,
+  "series_slug": "btc-up-or-down-5m",
+  "slug_prefix": "btc-updown-5m"
+ }
+}
