@@ -1,0 +1,4 @@
+market_timeframe,market_duration_seconds,series_slug,slug_prefix,wallet,label,n_winner_markets,n_with_push,pure_lead,pure_lag,mixed,lead_share_of_decided,lead_binom_p,median_last_entry_to_spike_gap_s,push_median_present_quote,push_median_absent_quote,push_ratio_present_over_absent,push_perm_p
+5m,300,btc-up-or-down-5m,btc-updown-5m,0xeebde7a0e019a63e6b476eb425505b7b3e6eba30,market_maker_control,730,456,300,1,155,0.9966777408637874,7.412731132599567e-89,13.0,7966.641444213501,6395.094904080001,1.2457424891585067,0.07596201899050475
+5m,300,btc-up-or-down-5m,btc-updown-5m,0x2bc01f3ad80e31f5bf3d80775b044f0c67797871,window_dressing,17,3,3,0,0,1.0,0.125,224.0,30531.169424505,6849.417353711,4.457484169505786,0.2383808095952024
+5m,300,btc-up-or-down-5m,btc-updown-5m,0x10c95474a829d67b6a41025da3b886f05719e999,window_dressing,104,102,77,6,19,0.927710843373494,4.2229072844414765e-17,22.5,235781.698054736,6492.933162418,36.31358773558201,0.0004997501249375312
