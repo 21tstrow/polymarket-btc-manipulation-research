@@ -87,9 +87,12 @@ target list for the quote-state test.
 3. **Size the economy.** What share of total 5m/15m volume is fee-paying
    follower flow + leader flow? (Matters for the market-quality/policy story
    and for Polymarket's fee calibration.)
-4. **The dynamic-fee natural experiment.** Follower edge and activity before
-   vs after the fee introduction — did the platform's countermeasure work?
-   Clean policy-evaluation section; needs the fee rollout date pinned.
+4. **The dynamic-fee natural experiment.** DONE 2026-06-11 — see
+   `02_exports/btc5m_fee_experiment/findings.md`: the fee takes 2–5% of the
+   edge crops' margins (breakeven 19–64× the actual rate); the crops are
+   categorically not latency-arb-sized. Remaining sub-question: did the
+   *follower/bot* population (the thin-margin segment the fee targeted)
+   shrink after rollout — needs the rollout date pinned.
 5. **`0x10c95474…`'s origin.** Its funder is a fresh PM proxy fed by the
    conditional-tokens contract (off-chain origin). On-chain tracing dead-ends;
    activity-pattern matching (server-hour fingerprints, co-activity with the
