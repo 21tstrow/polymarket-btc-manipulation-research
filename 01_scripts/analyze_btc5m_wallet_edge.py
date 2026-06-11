@@ -89,7 +89,9 @@ def load_contested_set(universe_csv: Path, contested_bps: float) -> set:
     """Markets that resolved within contested_bps - where a small push could plausibly flip the outcome."""
     out = set()
     for r in csv.DictReader(open(universe_csv, newline="")):
-        margin = safe_float(r.get("official_margin_bps_abs"))
+        # 5m hybrid universe names the column official_margin_bps_abs; the 15m
+        # collector universe names it margin_bps_abs
+        margin = safe_float(r.get("official_margin_bps_abs") or r.get("margin_bps_abs"))
         if margin is not None and margin <= contested_bps and r.get("condition_id"):
             out.add(r["condition_id"])
     return out
@@ -221,7 +223,7 @@ def run(args: argparse.Namespace) -> int:
             realized_pnl += cell["sell_cash"] - cell["buy_cost"] + payout
         z = bet_zscore(bets)
         rows.append({
-            **product_fields(),
+            **product_fields(args.timeframe),
             "wallet": wallet, "label": label,
             "n_markets": len(markets), "n_buy_trades": n_buy_trades[wallet],
             "buy_shares": buy_shares[wallet], "avg_entry_price": e["avg_entry_price"],
@@ -290,7 +292,7 @@ def run(args: argparse.Namespace) -> int:
             "z_score": "per-market-bet edge z (independent markets, expected wins = sum of entry prices)",
             "caveat": "positive edge = private advantage OR manipulation; cannot separate without spot-side identity",
         },
-        "product": product_fields(),
+        "product": product_fields(args.timeframe),
     }
     (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
 
@@ -345,6 +347,8 @@ def utc_now() -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--universe-csv", default=str(DEFAULT_UNIVERSE_CSV))
+    parser.add_argument("--timeframe", choices=("5m", "15m"), default="5m",
+                        help="product whose universe/trades are being analyzed; stamps output product fields")
     parser.add_argument("--suspects-csv", default=str(DEFAULT_SUSPECTS_CSV))
     parser.add_argument("--recurrence-csv", default=str(DEFAULT_RECURRENCE_CSV))
     parser.add_argument("--trades-dir", default=str(DEFAULT_TRADES_DIR))

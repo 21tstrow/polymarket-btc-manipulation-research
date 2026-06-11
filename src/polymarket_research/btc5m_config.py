@@ -48,13 +48,26 @@ def slug_for_start(start_epoch: int) -> str:
     return f"{SLUG_PREFIX}-{start_epoch}"
 
 
-def product_fields() -> dict[str, str | int]:
-    return {
+PRODUCTS: dict[str, dict[str, str | int]] = {
+    "5m": {
         "market_timeframe": MARKET_TIMEFRAME,
         "market_duration_seconds": MARKET_DURATION_SECONDS,
         "series_slug": SERIES_SLUG,
         "slug_prefix": SLUG_PREFIX,
-    }
+    },
+    "15m": {
+        "market_timeframe": "15m",
+        "market_duration_seconds": 900,
+        "series_slug": "btc-up-or-down-15m",
+        "slug_prefix": "btc-updown-15m",
+    },
+}
+
+
+def product_fields(timeframe: str = "5m") -> dict[str, str | int]:
+    if timeframe not in PRODUCTS:
+        raise ValueError(f"unknown market timeframe {timeframe!r}; expected one of {sorted(PRODUCTS)}")
+    return dict(PRODUCTS[timeframe])
 
 
 def validate_product_row(row: dict, *, context: str = "row") -> None:
