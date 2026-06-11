@@ -1,0 +1,2 @@
+market_timeframe,market_duration_seconds,series_slug,slug_prefix,market_rows,validation_rows,validation_warnings,missing_events,trade_page_rows,markets_with_trade_pages,trade_unique_count_total,trade_unique_count_median,market_volume_mean,market_volume_median,open_interest_mean,open_interest_median
+15m,900,btc-up-or-down-15m,btc-updown-15m,6624,6624,124,0,27859,6624,12327983,1773.0,52146.06723202811,46560.79189400012,3187.996485204237,2523.905406

@@ -57,3 +57,38 @@ def test_bet_zscore_strong_positive() -> None:
 
 def test_bet_zscore_empty() -> None:
     assert we.bet_zscore([])["z"] is None
+
+
+def test_run_end_to_end_contested_shares_per_wallet(tmp_path) -> None:
+    """Regression: contested_buy_shares must be the wallet's own contested
+    volume, not a constant leaked from another loop."""
+    import argparse
+    import csv as _csv
+    import json as _json
+
+    universe = tmp_path / "universe.csv"
+    with open(universe, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=["condition_id", "winner", "official_margin_bps_abs"])
+        w.writeheader()
+        w.writerow({"condition_id": "0xc1", "winner": "Up", "official_margin_bps_abs": "5.0"})
+        w.writerow({"condition_id": "0xc2", "winner": "Up", "official_margin_bps_abs": "50.0"})
+
+    trades_dir = tmp_path / "trades"
+    trades_dir.mkdir()
+    def trade(cid, wallet, size):
+        return {"conditionId": cid, "proxyWallet": wallet, "outcome": "Up",
+                "side": "BUY", "size": size, "price": 0.5}
+    (trades_dir / "a.json").write_text(_json.dumps(
+        [trade("0xc1", "0xaaa", 100.0), trade("0xc1", "0xbbb", 60.0), trade("0xc2", "0xbbb", 40.0)]))
+
+    out_dir = tmp_path / "out"
+    args = argparse.Namespace(
+        universe_csv=str(universe), suspects_csv=str(tmp_path / "none.csv"),
+        recurrence_csv=str(tmp_path / "none2.csv"), trades_dir=str(trades_dir),
+        out_dir=str(out_dir), min_trades=1, min_shares=0.0, contested_bps=10.0,
+        timeframe="5m")
+    assert we.run(args) == 0
+
+    rows = {r["wallet"]: r for r in _csv.DictReader(open(out_dir / "top_edge_wallets.csv"))}
+    assert float(rows["0xaaa"]["contested_buy_shares"]) == 100.0
+    assert float(rows["0xbbb"]["contested_buy_shares"]) == 60.0

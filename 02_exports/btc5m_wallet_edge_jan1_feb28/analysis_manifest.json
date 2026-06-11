@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-06-11T16:35:40Z",
+ "generated_utc": "2026-06-11T19:19:34Z",
  "script": "01_scripts/analyze_btc5m_wallet_edge.py",
  "design": {
   "edge_per_share": "realized_win_rate - avg_entry_price = profit per $1 binary share held to resolution",

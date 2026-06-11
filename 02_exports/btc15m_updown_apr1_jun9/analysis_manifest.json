@@ -1,0 +1,45 @@
+{
+  "cache_dir": "03_data_cache/polymarket_btc15m_updown_cache",
+  "generated_utc": "2026-06-11T17:06:54Z",
+  "notes": [
+    "Raw Gamma event JSON is cached under gamma/.",
+    "Raw Polymarket data-api trade pages are cached under trades/ by condition ID and offset.",
+    "Reruns reuse valid cache files and refetch malformed cache files when --fetch-missing is set."
+  ],
+  "out_dir": "02_exports/btc15m_updown_apr1_jun9",
+  "product": {
+    "market_duration_seconds": 900,
+    "market_timeframe": "15m",
+    "series_slug": "btc-up-or-down-15m",
+    "slug_prefix": "btc-updown-15m"
+  },
+  "script": "01_scripts/collect_btc15m_updown_data.py",
+  "source_urls": {
+    "gamma_event": "https://gamma-api.polymarket.com/events/slug/{slug}",
+    "trades": "https://data-api.polymarket.com/trades?market={condition_id}&limit={limit}&offset={offset}"
+  },
+  "summary": {
+    "market_duration_seconds": 900,
+    "market_rows": 6624,
+    "market_timeframe": "15m",
+    "market_volume_mean": 52146.06723202811,
+    "market_volume_median": 46560.79189400012,
+    "markets_with_trade_pages": 6624,
+    "missing_events": 0,
+    "open_interest_mean": 3187.996485204237,
+    "open_interest_median": 2523.905406,
+    "series_slug": "btc-up-or-down-15m",
+    "slug_prefix": "btc-updown-15m",
+    "trade_page_rows": 27859,
+    "trade_unique_count_median": 1773.0,
+    "trade_unique_count_total": 12327983,
+    "validation_rows": 6624,
+    "validation_warnings": 124
+  },
+  "window_utc": {
+    "end_date_exclusive": "2026-06-09",
+    "first_start_utc": "2026-04-01T00:00:00Z",
+    "last_start_utc": "2026-06-08T23:45:00Z",
+    "start_date": "2026-04-01"
+  }
+}

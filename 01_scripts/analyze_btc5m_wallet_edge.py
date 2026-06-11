@@ -261,7 +261,7 @@ def run(args: argparse.Namespace) -> int:
             "avg_entry_price": e["avg_entry_price"], "win_rate": e["win_rate"],
             "edge_per_share": e["edge_per_share"], "profit_if_held_usd": e["profit_if_held"],
             "trade_edge_z": trade_z(w),
-            "contested_buy_shares": s[0], "edge_contested": c["edge_per_share"],
+            "contested_buy_shares": seg[w][0], "edge_contested": c["edge_per_share"],
             "edge_other": o["edge_per_share"], "contested_minus_other_edge": conc,
         })
     top.sort(key=lambda r: -(r["edge_per_share"] or -9))
