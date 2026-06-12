@@ -1,0 +1,11 @@
+{
+ "generated_utc": "2026-06-12T21:37:02Z",
+ "script": "01_scripts/analyze_btc5m_durable_core_profile.py",
+ "design": {
+  "fills": "BUY fills strictly before end_epoch in contested (<=10bps) markets",
+  "labels": "universe winner overridden by on-chain ConditionResolution payouts where backfilled",
+  "timing_weights": "stake = $ spent; potential payout = shares; realized payout = winning shares",
+  "censoring": "trade caches reach ~300s before close; earlier entries invisible"
+ },
+ "wallets": 6
+}
