@@ -85,6 +85,32 @@ def load_winner_map(universe_csv: Path) -> dict[str, str]:
     return out
 
 
+def load_end_epoch_map(universe_csv: Path) -> dict[str, int]:
+    out = {}
+    for r in csv.DictReader(open(universe_csv, newline="")):
+        cid = r.get("condition_id")
+        end = safe_float(r.get("end_epoch"))
+        if cid and end:
+            out[cid] = int(end)
+    return out
+
+
+def apply_winner_overrides(winner_map: dict[str, str], override_csv: Path) -> int:
+    """Replace Gamma-derived winners with on-chain ConditionResolution payouts
+    (backfill_ctf_resolution_times.py). The universe's exchange-price fallback
+    mislabels a slice of micro-margin markets; the on-chain payout is ground
+    truth. Returns the number of flipped labels."""
+    flipped = 0
+    for r in csv.DictReader(open(override_csv, newline="")):
+        cid = r.get("condition_id")
+        onchain = r.get("onchain_winner")
+        if r.get("resolved") == "1" and cid in winner_map and onchain in ("Up", "Down"):
+            if winner_map[cid] != onchain:
+                flipped += 1
+            winner_map[cid] = onchain
+    return flipped
+
+
 def load_contested_set(universe_csv: Path, contested_bps: float) -> set:
     """Markets that resolved within contested_bps - where a small push could plausibly flip the outcome."""
     out = set()
@@ -119,11 +145,19 @@ def load_named_wallets(suspects_csv: Path, recurrence_csv: Path) -> tuple[set, d
 
 def run(args: argparse.Namespace) -> int:
     out_dir = Path(args.out_dir)
+    preclose_only = getattr(args, "preclose_only", False)
+    winner_override_csv = getattr(args, "winner_override_csv", "")
     winner_map = load_winner_map(Path(args.universe_csv))
     contested_set = load_contested_set(Path(args.universe_csv), args.contested_bps)
+    end_map = load_end_epoch_map(Path(args.universe_csv)) if preclose_only else {}
+    n_flipped = 0
+    if winner_override_csv:
+        n_flipped = apply_winner_overrides(winner_map, Path(winner_override_csv))
     suspects, labels = load_named_wallets(Path(args.suspects_csv), Path(args.recurrence_csv))
-    print(f"winner map: {len(winner_map)} markets; contested (<= {args.contested_bps}bps): "
-          f"{len(contested_set)}; named wallets: {len(labels)}")
+    print(f"winner map: {len(winner_map)} markets ({n_flipped} labels corrected on-chain); "
+          f"contested (<= {args.contested_bps}bps): {len(contested_set)}; "
+          f"named wallets: {len(labels)}; preclose_only: {preclose_only}")
+    n_postclose_dropped = 0
     # segmented edge: [c_shares, c_cost, c_win, o_shares, o_cost, o_win]
     seg: dict[str, list] = defaultdict(lambda: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
@@ -162,6 +196,14 @@ def run(args: argparse.Namespace) -> int:
             price = safe_float(t.get("price")) or 0.0
             if not wallet or outcome not in ("Up", "Down") or size <= 0:
                 continue
+            if preclose_only:
+                # drop fills at/after the window close: those trade the
+                # close->oracle-resolution gap, not the pre-close market
+                ts = safe_float(t.get("timestamp")) or 0.0
+                end = end_map.get(cid)
+                if end is None or ts >= end:
+                    n_postclose_dropped += 1
+                    continue
             won = outcome == winner
             if side == "BUY":
                 buy_shares[wallet] += size
@@ -188,6 +230,8 @@ def run(args: argparse.Namespace) -> int:
                     cell["sell_cash"] += size * price
         if i % 1000 == 0 or i == len(files):
             print(f"scanned {i}/{len(files)} files", flush=True)
+    if preclose_only:
+        print(f"dropped {n_postclose_dropped:,} post-close fills", flush=True)
 
     # baseline distribution: edge for wallets with enough volume
     baseline_edges = []
@@ -291,6 +335,10 @@ def run(args: argparse.Namespace) -> int:
             "baseline": f"all wallets with >= {args.min_trades} buy trades",
             "z_score": "per-market-bet edge z (independent markets, expected wins = sum of entry prices)",
             "caveat": "positive edge = private advantage OR manipulation; cannot separate without spot-side identity",
+            "preclose_only": preclose_only,
+            "postclose_fills_dropped": n_postclose_dropped if preclose_only else None,
+            "winner_override_csv": winner_override_csv or None,
+            "winner_labels_corrected": n_flipped,
         },
         "product": product_fields(args.timeframe),
     }
@@ -358,6 +406,12 @@ def parse_args() -> argparse.Namespace:
                         help="minimum total buy shares for the top-edge ranking (filters tiny-sample flukes)")
     parser.add_argument("--contested-bps", type=float, default=10.0,
                         help="markets resolving within this margin count as contested/manipulable")
+    parser.add_argument("--preclose-only", action="store_true",
+                        help="drop fills at/after end_epoch: pre-close prediction edge only, "
+                             "excluding the close->resolution gap trade")
+    parser.add_argument("--winner-override-csv", default="",
+                        help="resolution_times.csv from backfill_ctf_resolution_times.py; "
+                             "replaces Gamma-derived winners with on-chain payouts")
     return parser.parse_args()
 
 

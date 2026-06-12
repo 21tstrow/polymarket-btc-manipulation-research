@@ -1,0 +1,23 @@
+{
+ "generated_utc": "2026-06-12T13:03:58Z",
+ "script": "01_scripts/analyze_btc5m_resolution_gap.py",
+ "crop_wallets": 37,
+ "markets_with_resolution_times": 544,
+ "resolution_lag_s_median": 28,
+ "winner_label_disagreements": 69,
+ "by_phase": {
+  "pre_resolution": {
+   "fills": 2186,
+   "notional_usd": 65693.21,
+   "on_winner_dollar_weighted": 0.6834,
+   "pnl_if_held_usd": 7851.92
+  },
+  "post_resolution": {
+   "fills": 88,
+   "notional_usd": 1003.37,
+   "on_winner_dollar_weighted": 0.7982,
+   "pnl_if_held_usd": -31.98
+  }
+ },
+ "caveat": "pre_resolution fills are informed only for a feed-reader; the Chainlink settlement print is fixed at close and knowable seconds later, long before the on-chain event. The on-winner ramp vs time-to-resolution is the empirical knowability proxy."
+}

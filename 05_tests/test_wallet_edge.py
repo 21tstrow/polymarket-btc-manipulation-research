@@ -92,3 +92,49 @@ def test_run_end_to_end_contested_shares_per_wallet(tmp_path) -> None:
     rows = {r["wallet"]: r for r in _csv.DictReader(open(out_dir / "top_edge_wallets.csv"))}
     assert float(rows["0xaaa"]["contested_buy_shares"]) == 100.0
     assert float(rows["0xbbb"]["contested_buy_shares"]) == 60.0
+
+
+def test_run_preclose_filter_and_winner_override(tmp_path) -> None:
+    """--preclose-only drops fills at/after end_epoch; --winner-override-csv
+    replaces the Gamma-derived winner with the on-chain payout."""
+    import argparse
+    import csv as _csv
+    import json as _json
+
+    universe = tmp_path / "universe.csv"
+    with open(universe, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=["condition_id", "winner",
+                                            "official_margin_bps_abs", "end_epoch"])
+        w.writeheader()
+        w.writerow({"condition_id": "0xc1", "winner": "Up",
+                    "official_margin_bps_abs": "5.0", "end_epoch": "1000"})
+
+    trades_dir = tmp_path / "trades"
+    trades_dir.mkdir()
+    def trade(wallet, ts, outcome="Up"):
+        return {"conditionId": "0xc1", "proxyWallet": wallet, "outcome": outcome,
+                "side": "BUY", "size": 100.0, "price": 0.5, "timestamp": ts}
+    # 0xaaa: one pre-close + one post-close fill; 0xbbb: post-close only
+    (trades_dir / "a.json").write_text(_json.dumps(
+        [trade("0xaaa", 990), trade("0xaaa", 1005), trade("0xbbb", 1010)]))
+
+    override = tmp_path / "resolution_times.csv"
+    with open(override, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=["condition_id", "resolved", "onchain_winner"])
+        w.writeheader()
+        w.writerow({"condition_id": "0xc1", "resolved": "1", "onchain_winner": "Down"})
+
+    out_dir = tmp_path / "out"
+    args = argparse.Namespace(
+        universe_csv=str(universe), suspects_csv=str(tmp_path / "none.csv"),
+        recurrence_csv=str(tmp_path / "none2.csv"), trades_dir=str(trades_dir),
+        out_dir=str(out_dir), min_trades=1, min_shares=0.0, contested_bps=10.0,
+        timeframe="5m", preclose_only=True, winner_override_csv=str(override))
+    assert we.run(args) == 0
+
+    rows = {r["wallet"]: r for r in _csv.DictReader(open(out_dir / "top_edge_wallets.csv"))}
+    # post-close fills dropped: 0xbbb disappears, 0xaaa keeps only the 990 fill
+    assert "0xbbb" not in rows
+    assert float(rows["0xaaa"]["buy_shares"]) == 100.0
+    # override flipped the winner to Down, so the Up buy lost
+    assert float(rows["0xaaa"]["win_rate"]) == 0.0
