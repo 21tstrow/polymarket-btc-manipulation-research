@@ -42,7 +42,9 @@ Scripts grouped by the research question they serve (see `06_docs/research_desig
 - `analyze_btc5m_event_pnl.py` — measured spot round-trip cost vs. measured Polymarket prize per contested market. → `02_exports/btc5m_event_pnl/`.
 - `analyze_btc5m_wallet_sequencing.py` — ordering (position vs push) + directional recurrence on the profitable-with-push markets. → `02_exports/btc5m_wallet_sequencing/`.
 - `analyze_btc5m_wallet_edge.py` — full-history win-rate-vs-entry-price edge, with the segmented (contested vs elsewhere) window-dressing detector. → `02_exports/btc5m_wallet_edge/`.
-- `analyze_btc5m_onset_ordering.py` — onset-anchored sharpening of the ordering test: entry vs the START of the winner-ward move on the Kraken tick tape, flat-gap requirement, random-timing baseline per market, BinanceUS corroboration. → `02_exports/btc5m_onset_ordering/` (see its `findings.md`).
+- `analyze_btc5m_onset_ordering.py` — onset-anchored sharpening of the ordering test: entry vs the START of the winner-ward move on the Kraken tick tape, flat-gap requirement, random-timing baseline per market, BinanceUS corroboration. `--timeframe 15m` supported. → `02_exports/btc5m_onset_ordering/` (see its `findings.md`).
+- `analyze_btc5m_crop_persistence.py` — do the per-period edge crops MAINTAIN edge (recomputes each crop wallet's contested edge per period from the tape, not just top-100 presence), and WHEN in the window they place the winning bet (edge by entry-timing bucket). → `02_exports/btc5m_crop_persistence/` (see its `findings.md`).
+- `analyze_btc5m_fee_experiment.py` — dynamic-fee natural experiment: applies Polymarket's taker fee to each crop wallet's actual buys; reports net-of-fee edge and the breakeven fee multiple. → `02_exports/btc5m_fee_experiment/` (see its `findings.md`).
 - `analyze_btc5m_vs_15m_market_stats.py` — 5m vs 15m volume and open-interest (payout) comparison; `--fetch-missing` pulls a matched Gamma window. → `02_exports/btc5m_vs_15m_market_stats/`.
 
 ## Plotting

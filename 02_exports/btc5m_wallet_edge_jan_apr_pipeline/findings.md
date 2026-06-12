@@ -59,3 +59,14 @@ the contested-segment edge tail. Jan–Feb has only 285 contested markets
 - The paper's claim 3 strengthens: the detection-floor anomaly is not one
   group's signature but a standing feature of the product — reproducible in
   any window, never attributable, always freshly walleted.
+
+> **Correction (2026-06-12, `02_exports/btc5m_crop_persistence/`):** the
+> "reproducible in any window, always freshly walleted" claim above is too
+> strong. The persistence analysis showed (a) Mar–Apr's crop is mostly
+> selection residue (pooled edge ≈ 0), so it's two real windows + one noisy,
+> not all of them; (b) the wallets are NOT "freshly walleted" — 67–92% of
+> crop wallets coexist and many persist 80–110 days; the top-tier membership
+> turns over, partly because long-lived wallets surface in their best window.
+> The durable signal is a core of ~3–5 persistent high-volume wallets, not a
+> clean per-period regeneration. Read the persistence findings before citing
+> this paragraph.
