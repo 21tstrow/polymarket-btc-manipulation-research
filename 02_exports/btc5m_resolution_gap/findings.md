@@ -39,12 +39,20 @@ Consequences, in order discovered:
    such thing. Their post-close penny-scoop strategy (buy the book's
    sure-loser at $0.01 in case the print diverges) is roughly break-even to
    negative — a cheap lottery, not an edge.
-3. **Every analysis keyed on `winner` inherits some label error.** The full
-   contested universe (21,869 markets, 5m + 15m) is being re-labeled from
-   chain (`02_exports/btc5m_resolution_times_contested_all/`); early sampling
-   puts the unselected error rate well under 1% (vs 12.7% in this adversely
-   selected subset). Re-runs with `--winner-override-csv` quantify the damage
-   per export.
+3. **Every analysis keyed on `winner` inherits some label error — now
+   quantified and corrected.** All 1,914 contested fallback rows plus
+   validation samples were re-labeled from chain
+   (`02_exports/btc5m_resolution_times_contested_all/`, 3,980 markets):
+   **248 contested winner labels were wrong** (79 in the Jan–Feb universe,
+   169 in Mar–Apr, **zero** in May–Jun, **zero** in the 15m universe — the
+   fallback path was only exercised Jan–Apr). Validation: 0 errors in 1,161
+   sampled `gamma_finalPrice` rows and 0 in 807 sampled 15m rows, so the
+   correction is complete, not partial. All 21 flagged Q1 flow-spike cases
+   (including the lone Mar–Apr crossing assist, verified on-chain) sit on
+   `gamma_finalPrice` rows — **the Q1/Q2/Q4 detection chain is unaffected.**
+   The wallet-track outputs were re-run with `--winner-override-csv` +
+   `--preclose-only`; see `02_exports/btc5m_wallet_edge*_preclose/` and the
+   corrected `02_exports/btc5m_crop_persistence/findings.md`.
 
 ## The gap itself
 

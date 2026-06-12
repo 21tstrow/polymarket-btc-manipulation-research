@@ -1,4 +1,11 @@
 # Out-of-sample wallet edge (Jan–Apr) — findings
+> **Caveat (2026-06-12):** computed on all fills (including post-close) with
+> Gamma-fallback winner labels, both since shown defective — 248 contested
+> markets were mislabeled, Jan-Apr only (see
+> `02_exports/btc5m_resolution_gap/findings.md`). For the corrected picture
+> read `02_exports/btc5m_crop_persistence/findings.md` and the
+> `02_exports/btc5m_wallet_edge*_preclose/` runs. Kept for the record;
+> re-run pending (status-doc TODO #3).
 
 Pipeline: `01_scripts/run_btc5m_jan_apr_wallet_pipeline.sh` → event P&L with
 `--fetch-missing` per period (populates the contested-market trade cache),

@@ -1,90 +1,113 @@
-# Crop persistence & entry timing — findings
+# Crop persistence & entry timing — findings (corrected 2026-06-12)
 
-Two questions the per-period top-edge files could not answer, computed
-directly from the 5m tape: do the edge crops *maintain* edge across periods,
-and *when* in the window do they place the winning bet. Script:
-`01_scripts/analyze_btc5m_crop_persistence.py`. Wallet lifespans:
-`crop_wallet_spans.csv`; edge trajectories: `crop_edge_by_period.csv`;
-timing: `win_rate_by_entry_timing.csv`.
+> **CORRECTION.** The first version of this analysis (and the per-period
+> top-edge files it consumed) was contaminated by two defects discovered on
+> 2026-06-12: (a) fills at/after window close — the close→oracle-resolution
+> gap — were silently folded into every edge and P&L number, and (b) **248
+> contested markets carried the wrong winner label** (the universe's
+> `exchange_final_fallback` rows substitute the Kraken last price for the
+> Chainlink settlement print; ~13% of those rows are mislabeled — all in
+> Jan–Apr; May–Jun and the 15m universe have zero errors). See
+> `02_exports/btc5m_resolution_gap/findings.md` and
+> `02_exports/btc5m_resolution_times*/`. Everything below is computed
+> pre-close-only with on-chain winner labels; crops are selected from the
+> corrected runs (`02_exports/btc5m_wallet_edge*_preclose/`). **The previous
+> version's named durable core (`0xed86741e`, `0x08ea825d`, `0x537494c5`,
+> `0xa3d043b2`) is retracted** — under corrected labels those wallets' edges
+> evaporate (pre-close P&L −$1.2K, −$3.4K, +$2.3K at z=0.9, +$0.8K). Their
+> headline trajectories were built on mislabeled Jan–Apr fallback markets and
+> post-close penny fills that mostly lost.
 
-## This corrects the earlier "rotating disposable wallets" framing
+Two questions the per-period top-edge files cannot answer, computed directly
+from the 5m tape: do the edge crops *maintain* edge across periods, and *when*
+in the window do they place the winning bet. Script:
+`01_scripts/analyze_btc5m_crop_persistence.py`. Edge trajectories:
+`crop_edge_by_period.csv` (now with pre/post-close splits); timing:
+`win_rate_by_entry_timing.csv`; pre/post-close P&L: `crop_preclose_split.csv`.
 
-Lifespan analysis (54 crop wallets across the four cells):
+## The corrected edge class, per cell
 
-- **They coexist, heavily** — 67–92% of within-crop wallet pairs are alive
-  simultaneously. This is NOT one operator rotating one wallet at a time
-  (that would show low coexistence / baton-passing). It is a concurrent
-  population: many independent actors, or one operator running a fleet.
-- **They are not disposable** — many crop wallets live 80–110 days with
-  tens of thousands of trades. "Pop up and vanish" was wrong.
-- **Cross-period top-tier membership turns over** (only 1 wallet,
-  `0xea48fde1`, clears z≥5 in two consecutive periods) **but 18 wallets were
-  alive across ≥2 periods and only cleared the bar once** — i.e. much of the
-  apparent turnover is the same persistent wallets having one hot window, a
-  selection/variance effect, not new entrants appearing.
+Crop = z≥5, ≥10 markets, positive contested edge, **pre-close fills only,
+on-chain labels** (from the `_preclose` wallet-edge runs):
 
-## Only two of the three 5m crops are real; Mar–Apr is mostly selection
+| cell | crop size (was) | profit-if-held (was) |
+| --- | --- | --- |
+| 5m Jan–Feb | 12 (12, only 3 shared) | **$15K** ($289K) |
+| 5m Mar–Apr | 17 (11) | **$96K** ($92K) |
+| 5m May–Jun | 21 (15, all kept) | **$130K** ($88K) |
+| 15m Apr–Jun | 14 (17) | **$48K** ($71K) |
 
-Pooled contested edge by entry-timing bucket (dominant-side bets):
+The class **survives the correction in every cell** — and May–Jun (zero label
+errors) gets bigger and richer once post-close fills stop diluting it. What
+collapsed is Jan–Feb: its $289K was overwhelmingly mislabeled-market and
+post-close phantom profit. Corrected crop totals: **pre-close +$258.5K,
+post-close −$3.4K** — the money is entirely pre-close commitments; the
+post-close penny-lottery sideline loses.
+
+## Entry timing: the commitment edge survives, broader than first claimed
+
+Pooled contested edge by entry-timing bucket for the corrected crops
+(dominant-side bets, win rate − avg entry):
 
 | entry → close | Jan–Feb | Mar–Apr | May–Jun |
 | --- | ---: | ---: | ---: |
-| −300…−120s | +0.030 | +0.012 | +0.022 |
-| −120…−60s | +0.111 | +0.012 | +0.053 |
-| −60…−30s | **+0.162** | +0.001 | +0.022 |
-| −30…−10s | **+0.175** | −0.022 | +0.019 |
-| −10…0s | +0.092 | +0.022 | +0.052 |
+| −300…−120s | +0.099 | +0.029 | **+0.147** |
+| −120…−60s | **+0.171** | +0.078 | **+0.164** |
+| −60…−30s | +0.087 | **+0.124** | **+0.146** |
+| −30…−10s | +0.022 | **+0.124** | +0.028 |
+| −10…0s | −0.069 | +0.088 | +0.077 |
+| post-close buckets | ≈ 0 / negative | ≈ 0 / negative | ≈ 0 / negative |
 
-Mar–Apr's pooled edge is ≈ 0 at every timing — its z=20 names were thin,
-few-market wallets whose high z is multiple-testing residue (the lifespan
-split already showed Mar–Apr was 0/11 robust). So the honest count is **two
-real crops (Jan–Feb, May–Jun) plus one noisy one (Mar–Apr)**, not three
-clean replications. The aggregate edge-class claim still holds for Jan–Feb
-and May–Jun, and the 15m crop is separately real.
+The edge lives on bets placed **30s–5min before close** at ~0.42–0.50
+entries with 50–66% win rates, and is weakest-to-negative in the final 10s.
+That is the opposite of stale-quote reaction and the opposite of post-close
+sniping: these are commitments made while the outcome is genuinely open.
+(The previously published "peaks at 10–60s" table pooled the contaminated
+crop; the corrected window is broader and earlier.)
 
-## Entry timing: commitments, not last-tick reaction
+## Persistence: the class repeats, and two wallets carry it at volume
 
-In the strong period the edge **peaks for bets placed 10–60s before close**
-(+0.16 to +0.18 at entry prices ~0.42–0.46), and is *weaker* in the final
-10s (+0.09). They buy the side at a discount to 50/50 tens of seconds out
-and win — the opposite of a stale-quote arb, which would concentrate in the
-final seconds when the quote is most stale. This supports the suspicious
-reading (committed before settlement was decided), and is consistent with
-either prediction or causation, not reaction.
+- 19 corrected-crop wallets trade ≥20 contested shares in two periods, 3 in
+  all three; **18 hold positive pre-close edge in ≥2 periods**.
+- The standouts — both holding edge across consecutive periods at five-figure
+  share volume:
 
-## Recalibrate the headline win rate
-
-Pooled, the crop wins **55–62%** (Jan–Feb) of contested bets at ~0.45 entry,
-fading to **50–55%** by May–Jun. The earlier "70–86%" figures were
-individual z-selected wallets over their best markets — real but
-cherry-picked extremes. Lead with the pooled number; cite 80% as "the
-strongest individual wallets."
-
-## The durable-edge core (the clean target list)
-
-Crop wallets with positive contested edge in ≥2 periods at real volume —
-the wallets that actually *kept winning*, not just kept trading:
-
-| wallet | Jan–Feb | Mar–Apr | May–Jun | note |
+| wallet | Mar–Apr | May–Jun | pre-close P&L | note |
 | --- | --- | --- | --- | --- |
-| `0xed86741e` | +0.67 / 284k sh | +0.29 / 107k sh | (died Mar 27) | largest sustained edge |
-| `0x08ea825d` | +0.32 / 313k | +0.12 / 399k | (died Apr) | high-volume, positive both |
-| `0x537494c5` | +0.34 / 46k | +0.09 / 31k | +0.16 / 4k | positive all three periods |
-| `0xa3d043b2` | +0.18 / 6k | +0.08 / 117k | +0.02 / 49k | positive but decaying to zero |
-| `0x679c22f5` | +0.16 | +0.16 | −0.05 | held two, then flipped negative |
+| `0x10c95474` | +0.23 / 107k sh | +0.25 / 77k sh | $31.1K | **copy leader** ~hundreds of bots mirror; funded 04-01 with a single $9,999 from a fresh proxy |
+| `0x30be23d0` | +0.21 / 54k sh | +0.17 / 95k sh | $21.5K | prime suspect from the push-concentration era (push 48×) |
+| `0x773a2f6c` | — | May–Jun | $33.6K | largest single-period pre-close earner |
+| `0x61e6cefb` | — | May–Jun | $31.9K | 85.8% win over 11 markets, z=11.4 |
+| `0xfcefc196` | — | (15m product) | $17.0K | z=22.6, 59.7% win at 0.404 — 15m labels were never contaminated |
 
-~3–5 wallets sustain a large edge; the rest decay, flip, or are thin. This
-durable core (not the full churning crop, and not the thin Mar–Apr names) is
-the right target for the quote-state test and the forward evaluation. The
-overall fade across 2026 is consistent with a real exploit being competed or
-fee'd away.
+The corrected data lands back on the **original directional suspects**:
+`0x10c95474` and `0x30be23d0` were flagged by push-size concentration months
+before this analysis, were displaced by the (label-artifact) `0xed86741e`
+core, and now return as the only high-volume cross-period persisters. The
+May–Jun crop containing them is the git-committed preregistration list — and
+May–Jun is the cell with zero label errors.
+
+## What was retracted vs what stands
+
+Retracted (label/post-close artifacts): the `0xed86741e`/`0x08ea825d` core
+and their +0.67/+0.32 trajectories; the "$309K post-close harvest"; Jan–Feb
+as the strongest cell; `0x537494c5` as "positive all three periods" (z=0.9
+corrected); `0xea48fde1` as the only consecutive-period repeater.
+
+Stands (recomputed clean): the edge **class** at 12–21 wallets per cell with
+$15K–$130K pre-close profit; the mid-window commitment timing; cross-period
+persistence, now concentrated in `0x10c95474` and `0x30be23d0`; the 15m crop
+unchanged. The lifespan/coexistence facts (wallets coexist 67–92%, live
+80–110 days) were computed from the tape without winner labels and are
+unaffected, though they describe the original crop membership (~50% overlap
+with corrected).
 
 ## Net
 
-The anomaly is real but smaller and more concentrated than the earlier
-framing: a durable-edge core of a few high-volume wallets winning on
-mid-window commitments, embedded in a larger concurrent population that
-mixes genuine persistence, decay, and per-period selection residue. Nothing
-here resolves prediction vs causation — but it sharpens the target set and
-removes three overstatements (disposable wallets, three clean crops, 80% win
-rate as the headline).
+The anomaly is real, pre-close, and now has a clean shape: a recurring class
+of wallets winning mid-window commitments in micro-margin markets, carried
+across periods by two high-volume named wallets — both already on the
+suspect list for independent reasons. Nothing here resolves prediction vs
+causation; the quote-state-at-entry test (Oracle collector) and the
+preregistered forward test — scored pre-close with on-chain labels — remain
+the discriminators.
