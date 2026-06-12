@@ -1,0 +1,14 @@
+{
+ "generated_utc": "2026-06-12T17:10:51Z",
+ "script": "01_scripts/backfill_ctf_resolution_times.py",
+ "n_conditions": 8633,
+ "n_resolved": 8633,
+ "n_missing_resolution": 0,
+ "n_winner_disagreements": 0,
+ "resolution_lag_s": {
+  "p10": 24,
+  "median": 43,
+  "p90": 80,
+  "max": 5431
+ }
+}

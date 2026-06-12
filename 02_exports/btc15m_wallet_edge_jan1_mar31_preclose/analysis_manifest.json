@@ -1,0 +1,20 @@
+{
+ "generated_utc": "2026-06-12T19:03:26Z",
+ "script": "01_scripts/analyze_btc5m_wallet_edge.py",
+ "design": {
+  "edge_per_share": "realized_win_rate - avg_entry_price = profit per $1 binary share held to resolution",
+  "baseline": "all wallets with >= 20 buy trades",
+  "z_score": "per-market-bet edge z (independent markets, expected wins = sum of entry prices)",
+  "caveat": "positive edge = private advantage OR manipulation; cannot separate without spot-side identity",
+  "preclose_only": true,
+  "postclose_fills_dropped": 437433,
+  "winner_override_csv": "02_exports/btc15m_resolution_times_jan1_mar31/resolution_times.csv",
+  "winner_labels_corrected": 0
+ },
+ "product": {
+  "market_timeframe": "15m",
+  "market_duration_seconds": 900,
+  "series_slug": "btc-up-or-down-15m",
+  "slug_prefix": "btc-updown-15m"
+ }
+}

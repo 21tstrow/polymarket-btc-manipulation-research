@@ -13,8 +13,9 @@ PAIRS = [
     ("5m mar-apr", "btc5m_wallet_edge_mar1_apr30", "btc5m_wallet_edge_mar1_apr30_preclose"),
     ("5m may-jun", "btc5m_wallet_edge", "btc5m_wallet_edge_preclose"),
     ("15m apr-jun", "btc15m_wallet_edge_apr1_jun9", "btc15m_wallet_edge_apr1_jun9_preclose"),
+    ("15m jan-mar", "btc15m_wallet_edge_jan1_mar31", "btc15m_wallet_edge_jan1_mar31_preclose"),
 ]
-CORE = ["0xed86741e", "0x08ea825d", "0x537494c5", "0xa3d043b2", "0xfcefc196"]
+CORE = ["0xed86741e", "0x08ea825d", "0x537494c5", "0xa3d043b2", "0xfcefc196", "0x45ca1731"]
 
 
 def crop(path: Path) -> dict:

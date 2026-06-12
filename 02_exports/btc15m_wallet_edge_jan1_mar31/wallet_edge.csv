@@ -1,0 +1,6 @@
+market_timeframe,market_duration_seconds,series_slug,slug_prefix,wallet,label,n_markets,n_buy_trades,buy_shares,avg_entry_price,win_rate,edge_per_share,edge_percentile_vs_all,profit_if_held_usd,realized_pnl_usd,n_market_bets,expected_wins,observed_wins,edge_count,z_score
+15m,900,btc-up-or-down-15m,btc-updown-15m,0xeebde7a0e019a63e6b476eb425505b7b3e6eba30,directional_suspect,620,45472,2366840.165850078,0.567073632490573,0.5751435334802616,0.008069900989688628,0.6779606255115668,19100.165796828456,18030.873396781,1236,635.2878818369304,619,-16.28788183693041,-1.0636763916179908
+15m,900,btc-up-or-down-15m,btc-updown-15m,0xc5d521074e88279556836998fb2a5d2e2c1c6caa,directional_suspect,0,0,0.0,,,,,,0.0,0,,,,
+15m,900,btc-up-or-down-15m,btc-updown-15m,0x30be23d0622ae9ea3072a0091c214c78cdcbf4c1,directional_suspect,0,0,0.0,,,,,,0.0,0,,,,
+15m,900,btc-up-or-down-15m,btc-updown-15m,0x32ec633aa376cfe621e2a34e978244d61291645e,directional_suspect,0,0,0.0,,,,,,0.0,0,,,,
+15m,900,btc-up-or-down-15m,btc-updown-15m,0x6d9f6ea54a3aaac3ceee0a0a9579da944ccb5568,directional_suspect,0,0,0.0,,,,,,0.0,0,,,,
