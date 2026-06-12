@@ -1,0 +1,85 @@
+{
+ "generated_utc": "2026-06-12T17:11:28Z",
+ "script": "01_scripts/enrich_btc15m_universe.py",
+ "inputs": {
+  "universe_csv": "02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe.csv",
+  "resolution_csv": "02_exports/btc15m_resolution_times_jan1_mar31/resolution_times.csv",
+  "exchange_cache_dir": "03_data_cache/btc5m_underlying_volume_cache"
+ },
+ "design": {
+  "winner_priority": "onchain ConditionResolution > gamma official > outcome_prices",
+  "boundary_chaining": "settlement_final_price(t) == price_to_beat(t+1); validated exact on 6,498/6,498 Apr1-Jun9 pairs",
+  "margin_rule": "endpoints must share a venue (gamma+gamma or kraken+kraken); mixed pairs would embed Kraken-Chainlink basis",
+  "kraken_boundary": "last trade at-or-before boundary, max lag 120s"
+ },
+ "gamma_boundary_conflicts": 0,
+ "kraken_boundaries_unfetched": 6,
+ "coverage": {
+  "winner": {
+   "onchain": 8633,
+   "gamma_official": 0,
+   "outcome_prices": 0,
+   "missing": 0
+  },
+  "winner_agreement": {
+   "onchain_vs_gamma_official": [
+    1008,
+    1008
+   ],
+   "onchain_vs_outcome_prices": [
+    8633,
+    8633
+   ]
+  },
+  "strike": {
+   "gamma": 3863,
+   "chained": 0,
+   "kraken": 4766,
+   "missing": 4
+  },
+  "final": {
+   "gamma": 1008,
+   "chained": 2856,
+   "kraken": 4765,
+   "missing": 4
+  },
+  "margin": {
+   "gamma": 3853,
+   "kraken": 4776,
+   "missing": 4
+  },
+  "margin_winner_sign_mismatch": {
+   "gamma": 0,
+   "kraken": 251
+  },
+  "kraken_vs_gamma_contested": {
+   "2bps": {
+    "both": 3839,
+    "agree": 3539
+   },
+   "5bps": {
+    "both": 3839,
+    "agree": 3562
+   },
+   "10bps": {
+    "both": 3839,
+    "agree": 3597
+   }
+  }
+ },
+ "contested_market_counts": {
+  "2bps": {
+   "gamma": 330,
+   "kraken": 531
+  },
+  "5bps": {
+   "gamma": 809,
+   "kraken": 1282
+  },
+  "10bps": {
+   "gamma": 1590,
+   "kraken": 2189
+  }
+ },
+ "out_csv": "02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe_enriched.csv"
+}
