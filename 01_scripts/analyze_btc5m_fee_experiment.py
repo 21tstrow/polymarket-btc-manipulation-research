@@ -48,24 +48,36 @@ from polymarket_research.btc5m_config import product_fields  # noqa: E402
 
 DEFAULT_OUT_DIR = ROOT / "02_exports/btc5m_fee_experiment"
 
-# (label, timeframe, universe_csv, trades_dir, top_edge_csv)
+# (label, timeframe, universe_csv, trades_dir, top_edge_csv, winner_override_csv)
+# Crops come from the _preclose wallet-edge runs (pre-close fills, on-chain
+# labels — the post-correction standard) and every cell applies the on-chain
+# winner override; fills at/after close are dropped in the scan.
 DEFAULT_CELLS = [
     ("5m_jan1_feb28", "5m",
      "02_exports/btc5m_hybrid_quick_unwind_jan1_feb28/hybrid_market_universe.csv",
      "03_data_cache/polymarket_btc5m_close_contests_cache/trades",
-     "02_exports/btc5m_wallet_edge_jan1_feb28/top_edge_wallets.csv"),
+     "02_exports/btc5m_wallet_edge_jan1_feb28_preclose/top_edge_wallets.csv",
+     "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv"),
     ("5m_mar1_apr30", "5m",
      "02_exports/btc5m_hybrid_quick_unwind_mar1_apr30/hybrid_market_universe.csv",
      "03_data_cache/polymarket_btc5m_close_contests_cache/trades",
-     "02_exports/btc5m_wallet_edge_mar1_apr30/top_edge_wallets.csv"),
+     "02_exports/btc5m_wallet_edge_mar1_apr30_preclose/top_edge_wallets.csv",
+     "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv"),
     ("5m_may1_jun9", "5m",
      "02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
      "03_data_cache/polymarket_btc5m_close_contests_cache/trades",
-     "02_exports/btc5m_wallet_edge/top_edge_wallets.csv"),
+     "02_exports/btc5m_wallet_edge_preclose/top_edge_wallets.csv",
+     "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv"),
+    ("15m_jan1_mar31", "15m",
+     "02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe_enriched.csv",
+     "03_data_cache/polymarket_btc15m_updown_jan1_mar31_cache/trades",
+     "02_exports/btc15m_wallet_edge_jan1_mar31_preclose/top_edge_wallets.csv",
+     "02_exports/btc15m_resolution_times_jan1_mar31/resolution_times.csv"),
     ("15m_apr1_jun9", "15m",
-     "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe.csv",
+     "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe_enriched.csv",
      "03_data_cache/polymarket_btc15m_updown_cache/trades",
-     "02_exports/btc15m_wallet_edge_apr1_jun9/top_edge_wallets.csv"),
+     "02_exports/btc15m_wallet_edge_apr1_jun9_preclose/top_edge_wallets.csv",
+     "02_exports/btc15m_resolution_times_apr1_jun9/resolution_times.csv"),
 ]
 
 
@@ -90,26 +102,66 @@ def breakeven_fee_rate(edge_per_share: float, shares: float, fee_base: float) ->
     return edge_per_share * shares / fee_base
 
 
+def crop_z(row: dict) -> float:
+    """Selection z: market_bet_z (one bet per market — valid variance) where the
+    crop CSV provides it; trade_edge_z only as a legacy fallback."""
+    z = safe_float(row.get("market_bet_z"))
+    return z if z is not None else (safe_float(row.get("trade_edge_z")) or 0.0)
+
+
+def is_crop_member(row: dict, min_z: float, min_markets: int) -> bool:
+    """Prefer the wallet-edge crop_member flag (BH-significant market-bet edge);
+    fall back to the legacy market_bet_z>=min_z cut for pre-correction CSVs."""
+    if int(row.get("n_markets") or 0) < min_markets:
+        return False
+    if (safe_float(row.get("edge_contested")) or 0.0) <= 0:
+        return False
+    if row.get("crop_member") not in (None, ""):
+        return str(row.get("crop_member")) == "1"
+    return crop_z(row) >= min_z
+
+
 def load_crop(top_edge_csv: Path, *, min_z: float, min_markets: int) -> set[str]:
     crop = set()
     if not top_edge_csv.exists():
         return crop
     for r in csv.DictReader(open(top_edge_csv, newline="")):
-        if ((safe_float(r.get("trade_edge_z")) or 0.0) >= min_z
-                and int(r.get("n_markets") or 0) >= min_markets
-                and (safe_float(r.get("edge_contested")) or 0.0) > 0):
+        if is_crop_member(r, min_z, min_markets):
             crop.add(r["wallet"])
     return crop
 
 
-def load_winner_map(universe_csv: Path) -> dict[str, str]:
-    out = {}
+def load_winner_map(universe_csv: Path) -> tuple[dict[str, str], dict[str, int]]:
+    """(condition_id -> winner, condition_id -> end_epoch)."""
+    winners: dict[str, str] = {}
+    ends: dict[str, int] = {}
     for r in csv.DictReader(open(universe_csv, newline="")):
         cid = r.get("condition_id")
+        if not cid:
+            continue
         winner = r.get("winner")
-        if cid and winner in ("Up", "Down"):
-            out[cid] = winner
-    return out
+        if winner in ("Up", "Down"):
+            winners[cid] = winner
+        end = safe_float(r.get("end_epoch"))
+        if end:
+            ends[cid] = int(end)
+    return winners, ends
+
+
+def apply_winner_overrides(winner_map: dict[str, str], override_csv: Path) -> int:
+    """Replace Gamma/fallback winners with on-chain ConditionResolution payouts.
+    Returns the number of flipped labels."""
+    flipped = 0
+    if not override_csv.exists():
+        return flipped
+    for r in csv.DictReader(open(override_csv, newline="")):
+        cid = r.get("condition_id")
+        onchain = r.get("onchain_winner")
+        if r.get("resolved") == "1" and cid in winner_map and onchain in ("Up", "Down"):
+            if winner_map[cid] != onchain:
+                flipped += 1
+            winner_map[cid] = onchain
+    return flipped
 
 
 def write_csv(path: Path, rows: list[dict]) -> None:
@@ -143,14 +195,20 @@ def fmt(value, digits=3):
 def run(args: argparse.Namespace) -> int:
     out_dir = Path(args.out_dir)
     cells = []
-    for label, timeframe, universe, trades_dir, top_edge in DEFAULT_CELLS:
+    for label, timeframe, universe, trades_dir, top_edge, override in DEFAULT_CELLS:
         crop = load_crop(ROOT / top_edge, min_z=args.min_z, min_markets=args.min_markets)
+        winner_map, end_map = load_winner_map(ROOT / universe)
+        n_flipped = apply_winner_overrides(winner_map, ROOT / override)
         cells.append({
             "label": label, "timeframe": timeframe,
-            "winner_map": load_winner_map(ROOT / universe),
+            "winner_map": winner_map, "end_map": end_map,
             "trades_dir": str(ROOT / trades_dir), "crop": crop,
+            "top_edge_csv": top_edge, "universe_csv": universe,
+            "winner_override_csv": override, "winner_labels_corrected": n_flipped,
+            "postclose_fills_dropped": 0,
         })
-        print(f"{label}: crop {len(crop)} wallets, universe {len(cells[-1]['winner_map'])} markets")
+        print(f"{label}: crop {len(crop)} wallets, universe {len(winner_map)} markets, "
+              f"{n_flipped} labels corrected on-chain")
 
     # one pass per distinct trades dir; cells sharing a dir share the scan
     # acc[(cell_idx, wallet)] = [shares, cost, win_shares, fee_base]
@@ -180,9 +238,16 @@ def run(args: argparse.Namespace) -> int:
                 price = safe_float(t.get("price")) or 0.0
                 if size <= 0 or not (0.0 < price < 1.0):
                     continue
+                ts = safe_float(t.get("timestamp")) or 0.0
                 for i, c in members:
                     winner = c["winner_map"].get(cid)
                     if winner is None or wallet not in c["crop"]:
+                        continue
+                    end = c["end_map"].get(cid)
+                    if end is None or ts >= end:
+                        # pre-close standard: fills at/after close trade the
+                        # close->resolution gap, not the pre-close market
+                        c["postclose_fills_dropped"] += 1
                         continue
                     a = acc[(i, wallet)]
                     a[0] += size
@@ -247,12 +312,35 @@ def run(args: argparse.Namespace) -> int:
     write_csv(out_dir / "fee_experiment_wallets.csv", wallet_rows)
     write_csv(out_dir / "fee_experiment_summary.csv", summary_rows)
 
+    manifest = {
+        "generated_utc": utc_now(),
+        "script": "01_scripts/analyze_btc5m_fee_experiment.py",
+        "inputs": {c["label"]: {
+            "universe_csv": c["universe_csv"], "trades_dir": c["trades_dir"],
+            "top_edge_csv": c["top_edge_csv"], "winner_override_csv": c["winner_override_csv"],
+        } for c in cells},
+        "design": {
+            "fee_rate": args.fee_rate, "min_z": args.min_z, "min_markets": args.min_markets,
+            "crop_source": "_preclose wallet-edge runs (pre-close fills, on-chain labels)",
+            "fill_scope": "pre-close BUYs only; fills at/after end_epoch dropped",
+            "winner_labels": "on-chain ConditionResolution override applied per cell",
+        },
+        "per_cell": {c["label"]: {
+            "crop_wallets": len(c["crop"]),
+            "winner_labels_corrected": c["winner_labels_corrected"],
+            "postclose_fills_dropped": c["postclose_fills_dropped"],
+        } for c in cells},
+    }
+    (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
+
     lines = [
         "# Dynamic-fee experiment: does the crop's edge survive the anti-arb taker fee?",
         "",
         f"Taker fee = shares x {args.fee_rate:g} x p x (1-p) (Polymarket crypto schedule),",
-        "applied to every crop wallet's BUYs as if all were taker fills (maximal",
-        "fee). `breakeven multiple` = how many times the actual fee rate would",
+        "applied to every crop wallet's pre-close BUYs as if all were taker fills",
+        "(maximal fee). Crops are the _preclose wallet-edge screens (pre-close",
+        "fills, on-chain winner labels); fills at/after close are dropped.",
+        "`breakeven multiple` = how many times the actual fee rate would",
         "have to be charged to zero the edge. Latency-arb margins die at ~1x;",
         "an edge class at 5-30x is structurally untouched by the platform's tax.",
         "",

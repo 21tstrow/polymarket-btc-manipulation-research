@@ -236,16 +236,33 @@ def load_universe(universe_csv: Path, contested_bps: float) -> dict[str, dict]:
     return out
 
 
+def crop_z(row: dict) -> float:
+    """Selection z: market_bet_z (one bet per market — valid variance) where the
+    crop CSV provides it; trade_edge_z only as a legacy fallback."""
+    z = safe_float(row.get("market_bet_z"))
+    return z if z is not None else (safe_float(row.get("trade_edge_z")) or 0.0)
+
+
+def is_crop_member(row: dict, min_z: float, min_markets: int) -> bool:
+    """Prefer the wallet-edge crop_member flag (BH-significant market-bet edge);
+    fall back to the legacy market_bet_z>=min_z cut for pre-correction CSVs."""
+    if int(row.get("n_markets") or 0) < min_markets:
+        return False
+    if (safe_float(row.get("edge_contested")) or 0.0) <= 0:
+        return False
+    if row.get("crop_member") not in (None, ""):
+        return str(row.get("crop_member")) == "1"
+    return crop_z(row) >= min_z
+
+
 def load_suspects(window_dressing_csv: Path, directional_csv: Path, recurrence_csv: Path,
                   *, min_z: float, min_markets: int, max_suspects: int) -> dict[str, str]:
     """wallet -> label. Window-dressers + directional suspects + MM control."""
     labels: dict[str, str] = {}
     if window_dressing_csv.exists():
         rows = [r for r in csv.DictReader(open(window_dressing_csv, newline=""))
-                if (safe_float(r.get("trade_edge_z")) or 0.0) >= min_z
-                and int(r.get("n_markets") or 0) >= min_markets
-                and (safe_float(r.get("edge_contested")) or 0.0) > 0]
-        rows.sort(key=lambda r: -(safe_float(r.get("trade_edge_z")) or 0.0))
+                if is_crop_member(r, min_z, min_markets)]
+        rows.sort(key=lambda r: -crop_z(r))
         for r in rows[:max_suspects]:
             labels[r["wallet"]] = "window_dressing"
     if directional_csv.exists():
@@ -495,8 +512,10 @@ def run(args: argparse.Namespace) -> int:
         "Reading: a high flat share *above its baseline* with a low perm p says",
         "the wallet's timing is special — it enters during flatness and the move",
         "follows. That kills stale-quote reaction; it does NOT separate causing",
-        "the move from predicting it. The market-maker control calibrates what",
-        "passive two-sided behavior produces.",
+        "the move from predicting it."
+        + (" The market-maker control calibrates what passive two-sided behavior produces."
+           if any(r["label"] == "market_maker_control" for r in summary_rows)
+           else " NOTE: this run has no market-maker control row (no recurrence CSV supplied)."),
         "",
         "| wallet | label | mkts | flat | post | chop | no-push | flat share | base share | perm p | med flat gap (s) | bn corrob |",
         "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
@@ -512,7 +531,7 @@ def run(args: argparse.Namespace) -> int:
     (out_dir / "analysis_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     readme = [
-        "# BTC 5m onset-anchored ordering (entry vs move start)",
+        f"# BTC {args.timeframe} onset-anchored ordering (entry vs move start)",
         "",
         f"Generated {utc_now()} by `01_scripts/analyze_btc5m_onset_ordering.py`.",
         "",
@@ -524,9 +543,42 @@ def run(args: argparse.Namespace) -> int:
         "anchor is the ONSET of the winner-ward spot move on the Kraken tick tape,",
         "with a flat-gap requirement, a random-timing baseline per market, and",
         "BinanceUS corroboration. Parameters: flat_bps={:g}, onset_bps={:g},".format(args.flat_bps, args.onset_bps),
-        "lookback_s={}, skew_s={}, baseline_step_s={}.".format(args.lookback_s, args.skew_s, args.baseline_step_s),
+        "lookback_s={}, skew_s={}, baseline_step_s={},".format(args.lookback_s, args.skew_s, args.baseline_step_s),
+        "span_seconds={}, baseline_window_s={}.".format(args.span_seconds, args.baseline_window_s),
+        "",
+        "Random-timing candidates span the final baseline_window_s seconds, so it",
+        "must cover the product's full entry range (5m: 290; 15m: 890) or early",
+        "entries are classified against an unmatched baseline.",
     ]
     (out_dir / "README.md").write_text("\n".join(readme) + "\n", encoding="utf-8")
+
+    manifest = {
+        "generated_utc": utc_now(),
+        "script": "01_scripts/analyze_btc5m_onset_ordering.py",
+        "inputs": {
+            "universe_csv": str(args.universe_csv),
+            "trades_dir": str(args.trades_dir),
+            "exchange_cache_dir": str(args.exchange_cache_dir),
+            "window_dressing_csv": str(args.window_dressing_csv),
+            "directional_csv": str(args.directional_csv),
+            "recurrence_csv": str(args.recurrence_csv),
+        },
+        "parameters": {
+            "contested_bps": args.contested_bps, "min_z": args.min_z,
+            "min_markets": args.min_markets, "max_suspects": args.max_suspects,
+            "min_entry_notional": args.min_entry_notional,
+            "lookback_s": args.lookback_s, "skew_s": args.skew_s,
+            "flat_bps": args.flat_bps, "onset_bps": args.onset_bps,
+            "baseline_step_s": args.baseline_step_s,
+            "baseline_window_s": args.baseline_window_s,
+            "span_seconds": args.span_seconds,
+            "permutations": args.permutations, "seed": args.seed,
+        },
+        "suspect_selection": "market_bet_z >= min_z from the window-dressing CSV "
+                             "(use the _preclose crop: pre-close fills, on-chain labels)",
+        "product": product_fields(args.timeframe),
+    }
+    (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {len(summary_rows)} suspect rows, {len(market_rows)} market rows -> {out_dir}")
     return 0
 

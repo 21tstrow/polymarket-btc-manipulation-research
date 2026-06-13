@@ -15,27 +15,25 @@ also flat/no-push on BinanceUS (guards the venue-lag story).
 Reading: a high flat share *above its baseline* with a low perm p says
 the wallet's timing is special — it enters during flatness and the move
 follows. That kills stale-quote reaction; it does NOT separate causing
-the move from predicting it. The market-maker control calibrates what
-passive two-sided behavior produces.
+the move from predicting it. The market-maker control calibrates what passive two-sided behavior produces.
 
 | wallet | label | mkts | flat | post | chop | no-push | flat share | base share | perm p | med flat gap (s) | bn corrob |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `0xc5d52107…` | directional_suspect | 105 | 27 | 7 | 0 | 71 | 0.794 | 0.811 | 0.7031 | 24 | 22/24 |
-| `0x30be23d0…` | directional_suspect | 44 | 5 | 2 | 0 | 37 | 0.714 | 0.761 | 0.7976 | 60 | 5/5 |
-| `0x32ec633a…` | directional_suspect | 39 | 6 | 7 | 0 | 26 | 0.462 | 0.729 | 0.9965 | 47.5 | 5/5 |
+| `0xc5d52107…` | directional_suspect | 126 | 35 | 8 | 0 | 83 | 0.814 | 0.831 | 0.6987 | 40 | 29/32 |
+| `0x30be23d0…` | directional_suspect | 45 | 5 | 2 | 0 | 38 | 0.714 | 0.761 | 0.7976 | 60 | 5/5 |
+| `0x32ec633a…` | directional_suspect | 58 | 15 | 7 | 0 | 36 | 0.682 | 0.795 | 0.9540 | 45 | 12/13 |
 | `0x6d9f6ea5…` | directional_suspect | 28 | 2 | 0 | 1 | 24 | 1.000 | 0.839 | 0.7006 | 30.0 | 2/2 |
-| `0xeebde7a0…` | market_maker_control | 730 | 77 | 118 | 2 | 533 | 0.395 | 0.525 | 1.0000 | 15 | 64/77 |
-| `0x4d766f62…` | window_dressing | 33 | 6 | 14 | 2 | 11 | 0.300 | 0.401 | 0.9085 | 34.0 | 6/6 |
-| `0x5cfcc624…` | window_dressing | 5 | 1 | 1 | 0 | 3 | 0.500 | 0.608 | 0.8536 | 2 | 0/1 |
-| `0x8a2f4ff4…` | window_dressing | 23 | 7 | 1 | 0 | 15 | 0.875 | 0.547 | 0.0285 | 18 | 6/7 |
-| `0xbf167321…` | window_dressing | 5 | 1 | 1 | 0 | 3 | 0.500 | 0.875 | 0.8806 | 84 | 1/1 |
-| `0xfecce085…` | window_dressing | 1 | 1 | 0 | 0 | 0 | 1.000 | 0.958 | 0.9635 | 16 | 1/1 |
-| `0xc8d464a3…` | window_dressing | 7 | 1 | 2 | 0 | 4 | 0.333 | 0.807 | 0.9990 | 16 | 1/1 |
-| `0x97e16788…` | window_dressing | 8 | 2 | 0 | 0 | 6 | 1.000 | 0.872 | 0.7566 | 27.5 | 2/2 |
-| `0xf62084fb…` | window_dressing | 80 | 22 | 23 | 3 | 32 | 0.489 | 0.464 | 0.3923 | 15.0 | 20/22 |
-| `0xff37b71b…` | window_dressing | 4 | 1 | 0 | 0 | 3 | 1.000 | 0.611 | 0.6047 | 11 | 1/1 |
-| `0x2429f482…` | window_dressing | 8 | 0 | 6 | 0 | 2 | 0.000 | 0.153 | 1.0000 | - | 0/0 |
-| `0xa6214292…` | window_dressing | 39 | 7 | 1 | 2 | 29 | 0.875 | 0.836 | 0.5872 | 59 | 6/6 |
-| `0xbe9188e9…` | window_dressing | 15 | 4 | 1 | 0 | 10 | 0.800 | 0.886 | 0.8991 | 52.0 | 4/4 |
-| `0x93173b86…` | window_dressing | 41 | 8 | 1 | 1 | 31 | 0.889 | 0.892 | 0.7456 | 61.0 | 7/7 |
-| `0xd3467765…` | window_dressing | 4 | 0 | 1 | 1 | 2 | 0.000 | 0.000 | 1.0000 | - | 0/0 |
+| `0xeebde7a0…` | market_maker_control | 980 | 105 | 139 | 3 | 733 | 0.430 | 0.567 | 1.0000 | 15 | 89/104 |
+| `0xb305d384…` | window_dressing | 113 | 30 | 8 | 2 | 73 | 0.789 | 0.708 | 0.1184 | 36.5 | 26/29 |
+| `0xf6beafa7…` | window_dressing | 70 | 18 | 2 | 3 | 47 | 0.900 | 0.899 | 0.6717 | 59.5 | 15/17 |
+| `0x9dbd5ca2…` | window_dressing | 7 | 2 | 1 | 0 | 4 | 0.667 | 0.704 | 0.8526 | 15.0 | 2/2 |
+| `0xa6214292…` | window_dressing | 45 | 10 | 1 | 2 | 32 | 0.909 | 0.800 | 0.2834 | 39.0 | 9/9 |
+| `0x13289e4d…` | window_dressing | 3 | 0 | 1 | 0 | 2 | 0.000 | 0.975 | 1.0000 | - | 0/0 |
+| `0x21e6a2af…` | window_dressing | 28 | 5 | 0 | 0 | 22 | 1.000 | 0.900 | 0.5472 | 35 | 3/4 |
+| `0x453cfab7…` | window_dressing | 3 | 1 | 1 | 0 | 1 | 0.500 | 0.467 | 0.7161 | 19 | 1/1 |
+| `0xf40acbc4…` | window_dressing | 3 | 0 | 1 | 0 | 2 | 0.000 | 0.309 | 1.0000 | - | 0/0 |
+| `0x70383d41…` | window_dressing | 9 | 4 | 1 | 0 | 4 | 0.800 | 0.790 | 0.7516 | 93.5 | 4/4 |
+| `0x00d7cdc6…` | window_dressing | 24 | 7 | 2 | 0 | 15 | 0.778 | 0.790 | 0.7071 | 93 | 5/7 |
+| `0x05ddbe2e…` | window_dressing | 63 | 15 | 3 | 2 | 43 | 0.833 | 0.814 | 0.5432 | 35 | 14/14 |
+| `0x6244901b…` | window_dressing | 5 | 0 | 1 | 0 | 4 | 0.000 | 0.487 | 1.0000 | - | 0/0 |
+| `0x53208bf2…` | window_dressing | 69 | 12 | 1 | 4 | 52 | 0.923 | 0.846 | 0.3278 | 73.0 | 11/11 |

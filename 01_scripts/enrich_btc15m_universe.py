@@ -168,6 +168,27 @@ def run(args: argparse.Namespace) -> int:
     universe_csv = Path(args.universe_csv)
     rows = sorted(csv.DictReader(open(universe_csv, newline="")),
                   key=lambda r: int(float(r["start_epoch"])))
+    # validity gates mirroring the 5m close-contest panel: exact 900s timing is
+    # a hard requirement (the 5m panel rejects non-exact windows); collector
+    # validation_status is tallied for the manifest (its dominant warning —
+    # missing finalPrice — is exactly what this script repairs).
+    n_bad_timing = 0
+    kept = []
+    validation_counts: dict[str, int] = {}
+    for r in rows:
+        status = r.get("validation_status") or "absent"
+        validation_counts[status] = validation_counts.get(status, 0) + 1
+        try:
+            duration = int(float(r["end_epoch"])) - int(float(r["start_epoch"]))
+        except (KeyError, TypeError, ValueError):
+            duration = None
+        if duration != 900:
+            n_bad_timing += 1
+            continue
+        kept.append(r)
+    if n_bad_timing:
+        print(f"dropped {n_bad_timing} rows without exact 900s timing")
+    rows = kept
     fieldnames = list(rows[0].keys()) + ["winner_source", "strike_source",
                                          "final_source", "margin_source"]
 
@@ -329,6 +350,8 @@ def run(args: argparse.Namespace) -> int:
         },
         "gamma_boundary_conflicts": conflicts,
         "kraken_boundaries_unfetched": n_fetch_needed,
+        "rows_dropped_not_900s": n_bad_timing,
+        "collector_validation_status": validation_counts,
         "coverage": counts,
         "contested_market_counts": contested_counts,
         "out_csv": rel_to_root(out_csv),

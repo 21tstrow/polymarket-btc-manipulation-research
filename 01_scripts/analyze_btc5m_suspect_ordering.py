@@ -159,16 +159,33 @@ def load_universe(universe_csv: Path, contested_bps: float) -> dict[str, dict]:
     return out
 
 
+def crop_z(row: dict) -> float:
+    """Selection z: market_bet_z (one bet per market — valid variance) where the
+    crop CSV provides it; trade_edge_z only as a legacy fallback."""
+    z = safe_float(row.get("market_bet_z"))
+    return z if z is not None else (safe_float(row.get("trade_edge_z")) or 0.0)
+
+
+def is_crop_member(row: dict, min_z: float, min_markets: int) -> bool:
+    """Prefer the wallet-edge crop_member flag (BH-significant market-bet edge);
+    fall back to the legacy market_bet_z>=min_z cut for pre-correction CSVs."""
+    if int(row.get("n_markets") or 0) < min_markets:
+        return False
+    if (safe_float(row.get("edge_contested")) or 0.0) <= 0:
+        return False
+    if row.get("crop_member") not in (None, ""):
+        return str(row.get("crop_member")) == "1"
+    return crop_z(row) >= min_z
+
+
 def load_suspects(window_dressing_csv: Path, directional_csv: Path, recurrence_csv: Path,
                   *, min_z: float, min_markets: int, max_suspects: int) -> dict[str, str]:
     """wallet -> label. Window-dressers + directional suspects + MM control."""
     labels: dict[str, str] = {}
     if window_dressing_csv.exists():
         rows = [r for r in csv.DictReader(open(window_dressing_csv, newline=""))
-                if (safe_float(r.get("trade_edge_z")) or 0.0) >= min_z
-                and int(r.get("n_markets") or 0) >= min_markets
-                and (safe_float(r.get("edge_contested")) or 0.0) > 0]
-        rows.sort(key=lambda r: -(safe_float(r.get("trade_edge_z")) or 0.0))
+                if is_crop_member(r, min_z, min_markets)]
+        rows.sort(key=lambda r: -crop_z(r))
         for r in rows[:max_suspects]:
             labels[r["wallet"]] = "window_dressing"
     if directional_csv.exists():
@@ -289,6 +306,17 @@ def run(args: argparse.Namespace) -> int:
         counts = {"pure_lead": 0, "pure_lag": 0, "mixed": 0}
         gaps: list[float] = []
         winner_markets_with_push: set[str] = set()
+        # outcome-unconditioned treated set: every contested market the wallet
+        # traded >= min notional on ANY side (zero-push markets included).
+        # The winner-conditioned, push-conditioned set is kept as a legacy
+        # column: conditioning the treated set on the winner label (and on a
+        # push existing) while the control set is unconditioned builds the
+        # push-winner association into the test.
+        traded_any_side: set[str] = set()
+        for cid, by_outcome in sorted(per_market.items()):
+            total_notional = sum(w for cells in by_outcome.values() for _, w in cells)
+            if total_notional >= args.min_entry_notional and cid in push_by_cid:
+                traded_any_side.add(cid)
         for cid, by_outcome in sorted(per_market.items()):
             market = universe[cid]
             winner = market["winner"]
@@ -325,11 +353,16 @@ def run(args: argparse.Namespace) -> int:
 
         decided = counts["pure_lead"] + counts["pure_lag"]
         lead_share = counts["pure_lead"] / decided if decided else None
-        # push size: suspect's winner-bought markets vs contested markets it never touched
-        present = [push_by_cid[c]["magnitude"] for c in winner_markets_with_push]
         absent = [push_by_cid[c]["magnitude"] for c in push_by_cid
                   if c not in per_market]
-        perm_p = permutation_pvalue(present, absent, args.permutations, args.seed)
+        # PRIMARY: outcome-unconditioned — all traded contested markets
+        # (any side, zero-push included) vs untouched contested markets
+        present_any = [push_by_cid[c]["magnitude"] for c in traded_any_side]
+        perm_p_any = permutation_pvalue(present_any, absent, args.permutations, args.seed)
+        # LEGACY: winner-bought, push-present markets only (upward-biased:
+        # treated set conditioned on winner label AND on a push existing)
+        present_legacy = [push_by_cid[c]["magnitude"] for c in winner_markets_with_push]
+        perm_p_legacy = permutation_pvalue(present_legacy, absent, args.permutations, args.seed)
         summary_rows.append({
             **product_fields(),
             "wallet": wallet, "label": label,
@@ -342,11 +375,16 @@ def run(args: argparse.Namespace) -> int:
             "lead_share_of_decided": lead_share,
             "lead_binom_p": binomial_sf(counts["pure_lead"], decided) if decided else None,
             "median_last_entry_to_spike_gap_s": median(gaps) if gaps else None,
-            "push_median_present_quote": median(present) if present else None,
+            "n_traded_any_side": len(traded_any_side),
+            "push_median_traded_quote": median(present_any) if present_any else None,
             "push_median_absent_quote": median(absent) if absent else None,
-            "push_ratio_present_over_absent": (median(present) / median(absent))
-            if present and absent and median(absent) > 0 else None,
-            "push_perm_p": perm_p,
+            "push_ratio_traded_over_absent": (median(present_any) / median(absent))
+            if present_any and absent and median(absent) > 0 else None,
+            "push_perm_p": perm_p_any,
+            "push_median_present_quote_winner_conditioned": median(present_legacy) if present_legacy else None,
+            "push_ratio_winner_conditioned": (median(present_legacy) / median(absent))
+            if present_legacy and absent and median(absent) > 0 else None,
+            "push_perm_p_winner_conditioned": perm_p_legacy,
         })
 
     write_csv(out_dir / "suspect_ordering_markets.csv", market_rows)
@@ -368,8 +406,16 @@ def run(args: argparse.Namespace) -> int:
         "alone cannot prove the suspect caused the push. The market-maker control",
         "row calibrates the mechanical baseline.",
         "",
-        "| wallet | label | decided | lead | lag | mixed | lead share | binom p | median gap (s) | push ratio | perm p |",
-        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "The PRIMARY push test (`push ratio` / `perm p`) compares ALL contested",
+        "markets the wallet traded >= the notional floor on ANY side (zero-push",
+        "markets included) against untouched contested markets. The legacy",
+        "winner-conditioned columns condition the treated set on the winner label",
+        "and on a push existing — in contested markets a large final push is",
+        "mechanically associated with which side wins, so that version builds",
+        "part of the association into the test and is kept only for comparison.",
+        "",
+        "| wallet | label | decided | lead | lag | mixed | lead share | binom p | median gap (s) | push ratio | perm p | ratio (winner-cond) | perm p (winner-cond) |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for r in summary_rows:
         decided = (r["pure_lead"] or 0) + (r["pure_lag"] or 0)
@@ -377,8 +423,37 @@ def run(args: argparse.Namespace) -> int:
             f"| `{r['wallet'][:10]}…` | {r['label']} | {decided} | {r['pure_lead']} | "
             f"{r['pure_lag']} | {r['mixed']} | {fmt(r['lead_share_of_decided'])} | "
             f"{fmt(r['lead_binom_p'], 4)} | {fmt(r['median_last_entry_to_spike_gap_s'], 1)} | "
-            f"{fmt(r['push_ratio_present_over_absent'], 2)} | {fmt(r['push_perm_p'], 4)} |")
+            f"{fmt(r['push_ratio_traded_over_absent'], 2)} | {fmt(r['push_perm_p'], 4)} | "
+            f"{fmt(r['push_ratio_winner_conditioned'], 2)} | {fmt(r['push_perm_p_winner_conditioned'], 4)} |")
     (out_dir / "analysis_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    manifest = {
+        "generated_utc": utc_now(),
+        "script": "01_scripts/analyze_btc5m_suspect_ordering.py",
+        "inputs": {
+            "universe_csv": str(args.universe_csv),
+            "bucket_csv": str(args.bucket_csv),
+            "trades_dir": str(args.trades_dir),
+            "window_dressing_csv": str(args.window_dressing_csv),
+            "directional_csv": str(args.directional_csv),
+            "recurrence_csv": str(args.recurrence_csv),
+        },
+        "parameters": {
+            "contested_bps": args.contested_bps, "min_z": args.min_z,
+            "min_markets": args.min_markets, "max_suspects": args.max_suspects,
+            "min_entry_notional": args.min_entry_notional,
+            "permutations": args.permutations, "seed": args.seed,
+        },
+        "design": {
+            "push_test_primary": "outcome-unconditioned: all contested markets the wallet traded "
+                                 ">= min notional on any side (zero-push included) vs untouched",
+            "push_test_legacy": "winner-bought + push-present markets vs untouched; upward-biased "
+                                "(treated set conditioned on the winner label and on a push existing)",
+            "bucket_winner_alignment": "winner_aligned_signed_quote comes from the bucket CSV's "
+                                       "winner labels (May-Jun: 0 on-chain label flips)",
+        },
+    }
+    (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
 
     readme = [
         "# BTC 5m suspect ordering (entry vs push lead/lag)",

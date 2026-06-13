@@ -1,13 +1,27 @@
 {
- "generated_utc": "2026-06-12T14:38:36Z",
+ "generated_utc": "2026-06-13T06:15:56Z",
  "script": "01_scripts/analyze_btc5m_wallet_edge.py",
+ "inputs": {
+  "universe_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+  "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache/trades",
+  "suspects_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_wallet_sequencing/directional_recurring_suspects.csv",
+  "recurrence_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_wallet_sequencing/wallet_recurrence.csv",
+  "contested_bps": 10.0,
+  "min_trades": 20,
+  "min_shares": 2000.0,
+  "crop_fdr": 0.05,
+  "crop_z_floor": 3.0
+ },
  "design": {
   "edge_per_share": "realized_win_rate - avg_entry_price = profit per $1 binary share held to resolution",
   "baseline": "all wallets with >= 20 buy trades",
   "z_score": "per-market-bet edge z (independent markets, expected wins = sum of entry prices)",
+  "market_bet_z": "population screen z: one bet per wallet x market x outcome at the share-weighted entry price; supersedes trade_edge_z, whose per-fill variance is understated (fills within a market are perfectly correlated)",
+  "crop_member": "BH-significant (FDR 0.05) one-sided market-bet edge>0 across the volume-gated family AND market_bet_z >= 3.0; the single crop flag downstream consumers read (replaces the retired market_bet_z>=5 cut)",
+  "crop_members": 54,
   "caveat": "positive edge = private advantage OR manipulation; cannot separate without spot-side identity",
   "preclose_only": true,
-  "postclose_fills_dropped": 96992,
+  "postclose_fills_dropped": 136588,
   "winner_override_csv": "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv",
   "winner_labels_corrected": 0
  },

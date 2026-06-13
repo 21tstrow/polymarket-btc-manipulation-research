@@ -202,6 +202,28 @@ def event_final_price(event: dict) -> float | None:
     return safe_float(metadata.get("finalPrice"))
 
 
+def winner_from_outcome_prices(market: dict) -> str | None:
+    """Resolved winner from Gamma outcomePrices ([~1,~0] order matches
+    outcomes), or None if unresolved/malformed. Validated against the official
+    finalPrice-derived label on 6,500/6,500 15m Apr-Jun markets — used as the
+    winner source when finalPrice is missing, so the exchange-tape fallback
+    never decides a LABEL (it mislabels ~13% of micro-margin markets; the
+    fallback price remains a margin diagnostic only)."""
+    raw_outcomes = market.get("outcomes")
+    raw_prices = market.get("outcomePrices")
+    try:
+        outcomes = json.loads(raw_outcomes) if isinstance(raw_outcomes, str) else raw_outcomes
+        prices = [float(p) for p in (json.loads(raw_prices) if isinstance(raw_prices, str) else raw_prices)]
+    except (TypeError, ValueError):
+        return None
+    if not outcomes or len(outcomes) != 2 or len(prices) != 2:
+        return None
+    if not (max(prices) >= 0.99 and min(prices) <= 0.01):
+        return None
+    winner = outcomes[prices.index(max(prices))]
+    return winner if winner in ("Up", "Down") else None
+
+
 def apply_settlement_final_price(market: dict, final_price: float, source: str) -> None:
     price_to_beat = float(market["price_to_beat"])
     winner = "Up" if final_price >= price_to_beat else "Down"
@@ -254,6 +276,7 @@ def market_from_event(
         "settlement_final_price": "",
         "final_price_source": "pending_exchange_final_fallback" if final_price is None else "",
         "winner": "",
+        "winner_outcome_prices": winner_from_outcome_prices(market) or "",
         "official_margin_usd_signed": "",
         "official_margin_bps_abs": "",
         "market_volume": safe_float(market.get("volumeNum")) or safe_float(event.get("volume")),
@@ -487,12 +510,22 @@ def fill_exchange_final_price_fallback(
         }
     source = f"exchange_final_fallback:{provider}:{symbol}"
     apply_settlement_final_price(market, final_price, source)
+    # the exchange tape decides the MARGIN diagnostic only; the winner LABEL
+    # comes from Gamma outcomePrices when the book resolved (the tape
+    # mislabels ~13% of micro-margin fallback rows — 2026-06-12 correction)
+    op_winner = market.get("winner_outcome_prices")
+    kraken_implied_winner = market["winner"]
+    if op_winner in ("Up", "Down"):
+        market["winner"] = op_winner
+        market["final_price_source"] = source + "+outcome_prices_winner"
     return True, {
         **status,
         "status": "exchange_final_fallback_applied",
         "settlement_final_price": final_price,
-        "final_price_source": source,
+        "final_price_source": market["final_price_source"],
         "winner": market["winner"],
+        "kraken_implied_winner": kraken_implied_winner,
+        "winner_label_source": "outcome_prices" if op_winner in ("Up", "Down") else "exchange_fallback",
         "official_margin_bps_abs": market["official_margin_bps_abs"],
     }
 

@@ -123,3 +123,69 @@ def test_margin_fields_down_market():
     signed, bps = en.margin_fields(100_000.0, 99_980.0)
     assert signed == -20.0
     assert abs(bps - 2.0) < 1e-12
+
+
+# --- run()-level invariants: winner precedence, provenance, 900s gate ---
+
+def test_run_winner_precedence_and_900s_gate(tmp_path):
+    """onchain > gamma_official > outcome_prices precedence, provenance columns,
+    and the exact-900s timing gate, exercised through run()."""
+    import argparse
+    import csv as _csv
+
+    fieldnames = ["slug", "condition_id", "start_epoch", "end_epoch",
+                  "price_to_beat", "settlement_final_price", "winner",
+                  "outcomes", "outcome_prices", "margin_usd_signed",
+                  "margin_bps_abs", "validation_status"]
+    universe = tmp_path / "universe.csv"
+    with open(universe, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fieldnames)
+        w.writeheader()
+        # row 1: gamma says Up, on-chain says Down -> on-chain wins
+        w.writerow({"slug": "m1", "condition_id": "0xc1", "start_epoch": "0",
+                    "end_epoch": "900", "price_to_beat": "100.0",
+                    "settlement_final_price": "100.5", "winner": "Up",
+                    "outcomes": '["Up", "Down"]', "outcome_prices": '["1", "0"]',
+                    "validation_status": "ok"})
+        # row 2: no on-chain, gamma official present -> gamma_official
+        w.writerow({"slug": "m2", "condition_id": "0xc2", "start_epoch": "900",
+                    "end_epoch": "1800", "price_to_beat": "100.5",
+                    "settlement_final_price": "101.0", "winner": "Up",
+                    "outcomes": '["Up", "Down"]', "outcome_prices": '["1", "0"]',
+                    "validation_status": "validation_warning"})
+        # row 3: no on-chain, no gamma winner -> outcome_prices
+        w.writerow({"slug": "m3", "condition_id": "0xc3", "start_epoch": "1800",
+                    "end_epoch": "2700", "price_to_beat": "101.0",
+                    "settlement_final_price": "100.2", "winner": "",
+                    "outcomes": '["Up", "Down"]', "outcome_prices": '["0", "1"]',
+                    "validation_status": "ok"})
+        # row 4: NOT exactly 900s -> must be dropped
+        w.writerow({"slug": "m4", "condition_id": "0xc4", "start_epoch": "2700",
+                    "end_epoch": "3000", "price_to_beat": "100.2",
+                    "settlement_final_price": "100.3", "winner": "Up",
+                    "outcomes": '["Up", "Down"]', "outcome_prices": '["1", "0"]',
+                    "validation_status": "ok"})
+
+    resolution = tmp_path / "resolution_times.csv"
+    with open(resolution, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=["condition_id", "resolved", "onchain_winner"])
+        w.writeheader()
+        w.writerow({"condition_id": "0xc1", "resolved": "1", "onchain_winner": "Down"})
+
+    out_csv = tmp_path / "enriched.csv"
+    args = argparse.Namespace(
+        universe_csv=str(universe), resolution_csv=str(resolution),
+        exchange_cache_dir=str(tmp_path / "no_cache"), out_csv=str(out_csv),
+        fetch_missing=False, skip_cross_check=True, sleep_seconds=0.0)
+    assert en.run(args) == 0
+
+    rows = {r["condition_id"]: r for r in _csv.DictReader(open(out_csv))}
+    assert set(rows) == {"0xc1", "0xc2", "0xc3"}  # 0xc4 dropped: not 900s
+    assert rows["0xc1"]["winner"] == "Down" and rows["0xc1"]["winner_source"] == "onchain"
+    assert rows["0xc2"]["winner"] == "Up" and rows["0xc2"]["winner_source"] == "gamma_official"
+    assert rows["0xc3"]["winner"] == "Down" and rows["0xc3"]["winner_source"] == "outcome_prices"
+
+    import json as _json
+    manifest = _json.loads((out_csv.parent / "enrichment_manifest.json").read_text())
+    assert manifest["rows_dropped_not_900s"] == 1
+    assert manifest["collector_validation_status"]["validation_warning"] == 1

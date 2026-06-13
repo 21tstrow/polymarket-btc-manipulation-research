@@ -1,0 +1,90 @@
+{
+ "generated_utc": "2026-06-13T06:14:34Z",
+ "script": "01_scripts/enrich_btc15m_universe.py",
+ "inputs": {
+  "universe_csv": "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe.csv",
+  "resolution_csv": "02_exports/btc15m_resolution_times_apr1_jun9/resolution_times.csv",
+  "exchange_cache_dir": "03_data_cache/btc5m_underlying_volume_cache"
+ },
+ "design": {
+  "winner_priority": "onchain ConditionResolution > gamma official > outcome_prices",
+  "boundary_chaining": "settlement_final_price(t) == price_to_beat(t+1); validated exact on 6,498/6,498 Apr1-Jun9 pairs",
+  "margin_rule": "endpoints must share a venue (gamma+gamma or kraken+kraken); mixed pairs would embed Kraken-Chainlink basis",
+  "kraken_boundary": "last trade at-or-before boundary, max lag 120s"
+ },
+ "gamma_boundary_conflicts": 0,
+ "kraken_boundaries_unfetched": 154,
+ "rows_dropped_not_900s": 0,
+ "collector_validation_status": {
+  "ok": 6500,
+  "validation_warning": 124
+ },
+ "coverage": {
+  "winner": {
+   "onchain": 6624,
+   "gamma_official": 0,
+   "outcome_prices": 0,
+   "missing": 0
+  },
+  "winner_agreement": {
+   "onchain_vs_gamma_official": [
+    6500,
+    6500
+   ],
+   "onchain_vs_outcome_prices": [
+    6624,
+    6624
+   ]
+  },
+  "strike": {
+   "gamma": 6529,
+   "chained": 1,
+   "kraken": 9,
+   "missing": 85
+  },
+  "final": {
+   "gamma": 6500,
+   "chained": 30,
+   "kraken": 15,
+   "missing": 79
+  },
+  "margin": {
+   "gamma": 6517,
+   "kraken": 18,
+   "missing": 89
+  },
+  "margin_winner_sign_mismatch": {
+   "gamma": 0,
+   "kraken": 0
+  },
+  "kraken_vs_gamma_contested": {
+   "2bps": {
+    "both": 6458,
+    "agree": 5870
+   },
+   "5bps": {
+    "both": 6458,
+    "agree": 5917
+   },
+   "10bps": {
+    "both": 6458,
+    "agree": 6063
+   }
+  }
+ },
+ "contested_market_counts": {
+  "2bps": {
+   "gamma": 785,
+   "kraken": 1
+  },
+  "5bps": {
+   "gamma": 1903,
+   "kraken": 6
+  },
+  "10bps": {
+   "gamma": 3465,
+   "kraken": 6
+  }
+ },
+ "out_csv": "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe_enriched.csv"
+}

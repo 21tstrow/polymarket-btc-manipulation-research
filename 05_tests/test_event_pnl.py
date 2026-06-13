@@ -92,8 +92,9 @@ def test_universe_mode_loader_computes_exchange_metrics(tmp_path) -> None:
         [kt(850.0, 99.99, "sell"), kt(897.0, 100.02, "buy")]))
     (kdir / "XBTUSD_900_1200.json").write_text(_json.dumps([kt(905.0, 100.0, "sell")]))
 
-    markets = ev.load_contested_markets_from_universe(universe, tmp_path, 10.0, 5)
+    markets, n_flipped = ev.load_contested_markets_from_universe(universe, tmp_path, 10.0, 5)
     assert len(markets) == 1
+    assert n_flipped == 0
     m = markets[0]
     assert m["already_winner_side"] == 0 and m["crossed_to_winner"] == 1
     assert m["category"] == "flip"
@@ -101,3 +102,58 @@ def test_universe_mode_loader_computes_exchange_metrics(tmp_path) -> None:
     assert abs(m["net_aligned_notional"] - 100.02) < 1e-9
     assert abs(m["final_quote_volume"] - 100.02) < 1e-9
     assert m["reversion_5s_bps"] > 0  # price fell back after close
+
+    # on-chain winner override flips the label and every winner-relative metric
+    flipped_markets, n2 = ev.load_contested_markets_from_universe(
+        universe, tmp_path, 10.0, 5, overrides={"0xc1": "Down"})
+    assert n2 == 1
+    f = flipped_markets[0]
+    assert f["winner"] == "Down"
+    assert f["already_winner_side"] == 1 and f["crossed_to_winner"] == 0
+    assert f["category"] == "already_winner_assist"
+    assert abs(f["aligned_final_move_bps"] + m["aligned_final_move_bps"]) < 1e-9
+    assert abs(f["net_aligned_notional"] + m["net_aligned_notional"]) < 1e-9
+    assert abs(f["reversion_5s_bps"] + m["reversion_5s_bps"]) < 1e-9
+
+
+def test_metrics_mode_winner_override_recomputes_flags(tmp_path) -> None:
+    import csv as _csv
+
+    metrics = tmp_path / "metrics.csv"
+    base = {
+        "underlying_source": "kraken", "window_seconds": "5",
+        "flat_margin_bps_lte": "10.0", "match_filter": "margin_plus_prior_30s_momentum",
+        "control_method": "nonoverlap", "volume_regime": "all",
+        "official_close_enough": "1", "exchange_final_is_flat": "1",
+        "exchange_final_endpoint_observed": "1",
+        "start_epoch": "0", "end_epoch": "300",
+        "official_margin_bps_abs": "2.0",
+        "exchange_aligned_final_move_bps": "3.0",
+        "final_aligned_signed_taker_quote": "120.0",
+        "final_quote_volume": "200.0",
+        "post_close_reversion_5s_bps": "1.5",
+        "post_close_reversion_30s_bps": "0.5",
+    }
+    with open(metrics, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(base) + [
+            "slug", "condition_id", "winner",
+            "exchange_final_already_winner_side", "exchange_crossed_to_winner",
+            "exchange_final_pre_side", "exchange_final_endpoint_side"])
+        w.writeheader()
+        w.writerow({**base, "slug": "m1", "condition_id": "0xc1", "winner": "Up",
+                    "exchange_final_already_winner_side": "0",
+                    "exchange_crossed_to_winner": "1",
+                    "exchange_final_pre_side": "Down",
+                    "exchange_final_endpoint_side": "Up"})
+
+    markets, n_flipped, n_skipped = ev.load_contested_markets(metrics, 10.0, {"0xc1": "Down"})
+    assert n_flipped == 1 and n_skipped == 0
+    m = markets[0]
+    # corrected winner is Down: the pre-close price sat on the Down side, so
+    # the market was already on the winner side and the close did not cross
+    assert m["winner"] == "Down"
+    assert m["already_winner_side"] == 1 and m["crossed_to_winner"] == 0
+    assert m["category"] == "already_winner_assist"
+    assert m["aligned_final_move_bps"] == -3.0
+    assert m["net_aligned_notional"] == -120.0
+    assert m["reversion_5s_bps"] == -1.5

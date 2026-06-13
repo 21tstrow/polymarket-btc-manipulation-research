@@ -1,0 +1,35 @@
+{
+ "generated_utc": "2026-06-13T06:29:00Z",
+ "script": "01_scripts/analyze_btc5m_onset_ordering.py",
+ "inputs": {
+  "universe_csv": "02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe_enriched.csv",
+  "trades_dir": "03_data_cache/polymarket_btc15m_updown_jan1_mar31_cache/trades",
+  "exchange_cache_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/btc5m_underlying_volume_cache",
+  "window_dressing_csv": "02_exports/btc15m_wallet_edge_jan1_mar31_preclose/window_dressing_candidates.csv",
+  "directional_csv": "02_exports/btc15m_no_suspects.csv",
+  "recurrence_csv": "02_exports/btc15m_no_suspects.csv"
+ },
+ "parameters": {
+  "contested_bps": 10.0,
+  "min_z": 5.0,
+  "min_markets": 10,
+  "max_suspects": 20,
+  "min_entry_notional": 25.0,
+  "lookback_s": 30,
+  "skew_s": 1,
+  "flat_bps": 2.5,
+  "onset_bps": 5.0,
+  "baseline_step_s": 5,
+  "baseline_window_s": 890,
+  "span_seconds": 1500,
+  "permutations": 2000,
+  "seed": 20260611
+ },
+ "suspect_selection": "market_bet_z >= min_z from the window-dressing CSV (use the _preclose crop: pre-close fills, on-chain labels)",
+ "product": {
+  "market_timeframe": "15m",
+  "market_duration_seconds": 900,
+  "series_slug": "btc-up-or-down-15m",
+  "slug_prefix": "btc-updown-15m"
+ }
+}

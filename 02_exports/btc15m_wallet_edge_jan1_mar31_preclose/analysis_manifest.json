@@ -1,10 +1,24 @@
 {
- "generated_utc": "2026-06-12T19:03:26Z",
+ "generated_utc": "2026-06-13T06:23:12Z",
  "script": "01_scripts/analyze_btc5m_wallet_edge.py",
+ "inputs": {
+  "universe_csv": "02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe_enriched.csv",
+  "trades_dir": "03_data_cache/polymarket_btc15m_updown_jan1_mar31_cache/trades",
+  "suspects_csv": "02_exports/btc15m_no_suspects.csv",
+  "recurrence_csv": "02_exports/btc15m_no_suspects.csv",
+  "contested_bps": 10.0,
+  "min_trades": 20,
+  "min_shares": 2000.0,
+  "crop_fdr": 0.05,
+  "crop_z_floor": 3.0
+ },
  "design": {
   "edge_per_share": "realized_win_rate - avg_entry_price = profit per $1 binary share held to resolution",
   "baseline": "all wallets with >= 20 buy trades",
   "z_score": "per-market-bet edge z (independent markets, expected wins = sum of entry prices)",
+  "market_bet_z": "population screen z: one bet per wallet x market x outcome at the share-weighted entry price; supersedes trade_edge_z, whose per-fill variance is understated (fills within a market are perfectly correlated)",
+  "crop_member": "BH-significant (FDR 0.05) one-sided market-bet edge>0 across the volume-gated family AND market_bet_z >= 3.0; the single crop flag downstream consumers read (replaces the retired market_bet_z>=5 cut)",
+  "crop_members": 627,
   "caveat": "positive edge = private advantage OR manipulation; cannot separate without spot-side identity",
   "preclose_only": true,
   "postclose_fills_dropped": 437433,

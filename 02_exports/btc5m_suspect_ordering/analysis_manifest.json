@@ -1,0 +1,26 @@
+{
+ "generated_utc": "2026-06-13T06:57:51Z",
+ "script": "01_scripts/analyze_btc5m_suspect_ordering.py",
+ "inputs": {
+  "universe_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+  "bucket_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_expanded_settlement_buckets_180s_aggregate/narrow_close_10bps_market_5s_buckets.csv",
+  "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache/trades",
+  "window_dressing_csv": "02_exports/btc5m_wallet_edge_preclose/window_dressing_candidates.csv",
+  "directional_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_wallet_sequencing/directional_recurring_suspects.csv",
+  "recurrence_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc5m_wallet_sequencing/wallet_recurrence.csv"
+ },
+ "parameters": {
+  "contested_bps": 10.0,
+  "min_z": 5.0,
+  "min_markets": 10,
+  "max_suspects": 20,
+  "min_entry_notional": 25.0,
+  "permutations": 2000,
+  "seed": 20260611
+ },
+ "design": {
+  "push_test_primary": "outcome-unconditioned: all contested markets the wallet traded >= min notional on any side (zero-push included) vs untouched",
+  "push_test_legacy": "winner-bought + push-present markets vs untouched; upward-biased (treated set conditioned on the winner label and on a push existing)",
+  "bucket_winner_alignment": "winner_aligned_signed_quote comes from the bucket CSV's winner labels (May-Jun: 0 on-chain label flips)"
+ }
+}

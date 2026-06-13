@@ -11,7 +11,7 @@ This maps to four tracks:
 - **Q3 (reversion)**: post-close mean reversion as the signature of artificial pressure.
 - **Q4 (attribution)**: wallet(s) consistently profiting in flagged markets. *Not yet implemented.*
 
-This repo is 5m-only. Legacy 15m entrypoints fail fast; archived 15m artifacts live in `99_legacy/` and must not be read by default.
+The repo covers TWO products. The Q1–Q4 detection pipeline below is built for the 5m product; the 15m track (live since 2026-06-11) reuses the wallet-track scripts via `--timeframe 15m` and its own universe construction — see "The 15m Track" at the end of this document. The original legacy-15m entrypoints (`analyze_btc15m_{close_contests,resolution_pressure,underlying_volume}.py`) are fail-fast stubs from the era when the repo was 5m-only; archived legacy-15m artifacts live in `99_legacy/` and must not be read by default.
 
 ## Product Configuration
 
@@ -120,3 +120,44 @@ Caveats that matter: the single-factor impact fit is weak at 5s resolution, so f
 - `02_exports/btc5m_hybrid_quick_unwind_may1_present/` (current main; see its README)
 - `02_exports/btc5m_cost_to_flip/cost_to_flip_per_market.csv` and `analysis_report.md` (Q2)
 - `02_exports/btc5m_wallet_attribution/` — `repeat_wallets.csv`, `concentration_tests.csv`, `analysis_report.md` (Q4)
+
+## The 15m Track
+
+Added 2026-06-11/12; standards aligned with the 5m track per the 2026-06-12
+methodology audit (`06_docs/methodology_audit_2026-06-12.md`).
+
+**Universe construction** (`collect_btc15m_updown_data.py` →
+`enrich_btc15m_universe.py`): the collector keeps rows with
+`validation_warning` (the 5m panel would exclude them); enrichment is the
+validity gateway — it drops rows without exact 900s timing, repairs the
+dominant warning class (Gamma-pruned `priceToBeat`/`finalPrice`) by boundary
+chaining, sets winners with precedence **on-chain ConditionResolution >
+gamma official > outcome_prices**, and computes venue-consistent margins
+(gamma+gamma, else kraken+kraken; never mixed). Every enriched row carries
+`winner_source` / `strike_source` / `final_source` / `margin_source`
+provenance columns. All 15m analyses must read the **enriched** universe.
+
+**Script reuse**: `analyze_btc5m_{wallet_edge,onset_ordering,event_pnl}.py`
+run with `--timeframe 15m`. The flag stamps product fields; it does NOT
+rescale analytic constants. Two constants must be scaled at the call site:
+onset ordering needs `--span-seconds 1500 --baseline-window-s 890` (the 5m
+defaults censor early entries and mismatch the random-timing baseline).
+The contested threshold (≤10 bps) is intentionally shared, but it covers
+~75% of 5m markets vs ~44% of 15m markets — cross-product crop-size
+comparisons must report contested-share-of-universe alongside.
+
+**Standards (both products)**: wallet statistics are pre-close fills only
+(`--preclose-only`) with on-chain winner labels (`--winner-override-csv`);
+crop selection uses `market_bet_z` (one bet per wallet × market × outcome —
+the per-fill `trade_edge_z` understates variance and is legacy-only); suspect
+crops for ordering tests come from the `_preclose` screens, never full-fills.
+15m named-wallet tables must not inherit the 5m sequencing suspects
+(pipelines pass empty CSVs explicitly).
+
+**Known 15m data asymmetries** (stratify, don't ignore —
+`analyze_btc15m_stratification.py`): Jan–Mar margins are Kraken-sourced for
+~55% of the universe (pre-Feb-19 Gamma pruning); the data-api truncates
+trade pagination at offset 3,500, censoring the window head in 79.6% of
+Jan–Mar markets (vs 2.6% Apr–Jun); 15m trade caches are full-lifetime while
+the 5m cache covers the final ~300s, so cross-product "edge" comparisons
+pool different bet scopes pre-close.

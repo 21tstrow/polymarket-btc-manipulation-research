@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# SUPERSEDED 2026-06-12 by run_audit_correction_reruns.sh, which additionally
+# re-selects crops on market_bet_z, covers the >10bps fallback labels, uses
+# the enriched Apr-Jun 15m universe, and re-runs onset/event-pnl/fee cells.
+# Kept for provenance of the original label-correction rerun.
+#
 # Post label-correction pipeline: merge cached ConditionResolution logs into
 # the authoritative override CSV, then re-run the pre-close wallet-edge
 # probes (3x 5m periods + 15m) and the crop-persistence analysis with

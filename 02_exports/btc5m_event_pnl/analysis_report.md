@@ -4,23 +4,23 @@
 
 | cohort | markets | with push | median PM prize ($) | median realized net ($) | profitable | median net (push only) | profitable (push) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| all_contested | 1170 | 427 | 0.00 | 0.00 | 500/1170 | -0.07 | 185/427 |
-| flip | 99 | 87 | 0.00 | -0.46 | 33/99 | -1.32 | 29/87 |
-| already_winner_assist | 976 | 305 | 0.00 | 0.00 | 423/976 | -0.02 | 138/305 |
+| all_contested | 1170 | 427 | 1,272.02 | 1,219.06 | 1134/1170 | 1,635.37 | 408/427 |
+| flip | 99 | 87 | 3,902.80 | 3,398.32 | 96/99 | 3,398.32 | 84/87 |
+| already_winner_assist | 976 | 305 | 865.44 | 843.22 | 944/976 | 1,073.82 | 290/305 |
 
 ## Top realized-net events with a winner-aligned push
 
 | slug | category | move bps | net aligned $ | spot cost $ | PM prize $ | realized net $ |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| btc-updown-5m-1780292700 | flip | 2.33 | 483 | 1.08 | 22,029.88 | 22,028.80 |
+| btc-updown-5m-1780044000 | flip | 2.47 | 147,343 | 331.07 | 18,850.61 | 18,519.54 |
+| btc-updown-5m-1780041000 | flip | 1.80 | 146,560 | 319.52 | 16,584.48 | 16,264.96 |
+| btc-updown-5m-1778734800 | flip | 1.20 | 628,652 | 1,332.51 | 16,056.42 | 14,723.91 |
 | btc-updown-5m-1778356500 | already_winner_assist | 1.66 | 230,555 | 499.28 | 15,183.73 | 14,684.45 |
+| btc-updown-5m-1779112800 | flip | 4.77 | 616,091 | 1,526.21 | 15,970.94 | 14,444.73 |
+| btc-updown-5m-1780925700 | other | 6.57 | 171 | 0.45 | 14,119.22 | 14,118.77 |
+| btc-updown-5m-1778884200 | already_winner_assist | 0.08 | 10 | 0.02 | 13,754.39 | 13,754.37 |
 | btc-updown-5m-1778270100 | already_winner_assist | 1.29 | 318 | 0.68 | 12,030.98 | 12,030.30 |
-| btc-updown-5m-1778076300 | flip | 4.84 | 1,436 | 3.57 | 11,310.66 | 11,307.10 |
-| btc-updown-5m-1778365800 | flip | 1.37 | 216,054 | 461.81 | 10,942.48 | 10,480.68 |
-| btc-updown-5m-1777936500 | other | 2.38 | 294 | 0.66 | 10,439.97 | 10,439.31 |
-| btc-updown-5m-1778516100 | already_winner_assist | 1.08 | 5,663 | 11.94 | 9,991.61 | 9,979.67 |
-| btc-updown-5m-1778548800 | flip | 3.31 | 204 | 0.48 | 9,834.97 | 9,834.50 |
-| btc-updown-5m-1780602900 | already_winner_assist | 2.31 | 29,753 | 66.39 | 9,389.80 | 9,323.42 |
-| btc-updown-5m-1778151900 | already_winner_assist | 0.01 | 34 | 0.07 | 8,227.58 | 8,227.51 |
-| btc-updown-5m-1778019600 | already_winner_assist | 2.78 | 4 | 0.01 | 7,715.67 | 7,715.67 |
+| btc-updown-5m-1779196200 | flip | 2.20 | 230,267 | 511.23 | 12,026.42 | 11,515.19 |
 
 A market is only economically interesting if a winner-aligned push was actually present and the PM prize exceeded its measured round-trip cost. Profitable-with-push is the count that clears that bar; the top table is where to point wallet attribution next.

@@ -1,0 +1,18 @@
+{
+ "generated_utc": "2026-06-13T07:10:40Z",
+ "script": "01_scripts/analyze_btc15m_stratification.py",
+ "inputs": {
+  "universe_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe_enriched.csv",
+  "event_pnl_csv": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc15m_event_pnl_jan1_mar31/event_pnl_per_market.csv",
+  "baseline_crop": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/02_exports/btc15m_wallet_edge_jan1_mar31_preclose/window_dressing_candidates.csv"
+ },
+ "composition": {
+  "universe_markets": 8633,
+  "gamma_margin_only": 3853,
+  "fetch_complete_only": 1758
+ },
+ "strata": {
+  "gamma_margin_only": "margin_source == gamma (Chainlink-anchored margins)",
+  "fetch_complete_only": "trade_fetch_status complete (no offset-3500 truncation)"
+ }
+}

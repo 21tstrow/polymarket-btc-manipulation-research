@@ -1,4 +1,15 @@
-# Crop persistence & entry timing — findings (corrected 2026-06-12)
+# Crop persistence & entry timing — findings (corrected 2026-06-12; crop recalibrated 2026-06-13)
+
+> **2026-06-13 crop recalibration (methodology audit §1.4).** The crop is now
+> selected on `crop_member` (BH-corrected per-market-bet significance, FDR 0.05,
+> z≥3 floor) instead of the per-fill z≥5 that was inflated 4–11×. The crop
+> shrinks sharply (5m may–jun 15→7, jan–feb 12→0, mar–apr 11→3) and the
+> data-driven cross-period durable set is now **`0x62b9fad3` + `0x704ba05b`**
+> (positive pre-close edge mar–apr + may–jun, may–jun out-of-sample) — NOT the
+> previously-named `0x10c95474`/`0x30be23d0`, which no longer clear the bar.
+> "Durable in ≥2 periods" now requires ≥1 out-of-sample period. Numbers in the
+> body below predate this recalibration; see
+> `06_docs/methodology_audit_2026-06-12.md` §"Rerun results" for the current set.
 
 > **CORRECTION.** The first version of this analysis (and the per-period
 > top-edge files it consumed) was contaminated by two defects discovered on

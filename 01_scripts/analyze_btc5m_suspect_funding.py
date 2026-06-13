@@ -242,22 +242,33 @@ class EtherscanClient:
         return dedupe_transfers(transfers), truncated
 
 
-def load_tracked_wallets(ordering_csv: Path, max_perm_p: float) -> dict[str, str]:
+def load_tracked_wallets(ordering_csv: Path, max_perm_p: float,
+                         extra_wallets: str = "") -> dict[str, str]:
     out: dict[str, str] = {}
-    for r in csv.DictReader(open(ordering_csv, newline="")):
-        wallet = str(r.get("wallet") or "").lower()
-        label = r.get("label") or ""
-        if not wallet:
+    if ordering_csv.exists():
+        for r in csv.DictReader(open(ordering_csv, newline="")):
+            wallet = str(r.get("wallet") or "").lower()
+            label = r.get("label") or ""
+            if not wallet:
+                continue
+            if label == "market_maker_control":
+                out[wallet] = label
+                continue
+            try:
+                perm_p = float(r.get("push_perm_p") or "nan")
+            except ValueError:
+                continue
+            if perm_p <= max_perm_p:
+                out[wallet] = label
+    # named wallets traced regardless of the ordering screen (e.g. the
+    # corrected durable core, which the pre-correction suspect list never
+    # covered): comma-separated, each as addr or addr:label
+    for item in (extra_wallets or "").split(","):
+        item = item.strip()
+        if not item:
             continue
-        if label == "market_maker_control":
-            out[wallet] = label
-            continue
-        try:
-            perm_p = float(r.get("push_perm_p") or "nan")
-        except ValueError:
-            continue
-        if perm_p <= max_perm_p:
-            out[wallet] = label
+        addr, _, label = item.partition(":")
+        out.setdefault(addr.lower(), label or "named_core")
     return out
 
 
@@ -268,7 +279,8 @@ def run(args: argparse.Namespace) -> int:
         print("ETHERSCAN_API_KEY missing from .env", file=sys.stderr)
         return 2
     out_dir = Path(args.out_dir)
-    tracked = load_tracked_wallets(Path(args.ordering_csv), args.max_perm_p)
+    tracked = load_tracked_wallets(Path(args.ordering_csv), args.max_perm_p,
+                                   getattr(args, "extra_wallets", ""))
     control = next((w for w, l in tracked.items() if l == "market_maker_control"), "")
     print(f"tracked wallets: {len(tracked)} ({sum(1 for l in tracked.values() if l != 'market_maker_control')} suspects + control)")
     client = EtherscanClient(api_key, Path(args.cache_dir), args.sleep_seconds)
@@ -430,6 +442,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cache-dir", default=str(DEFAULT_CACHE_DIR))
     parser.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
     parser.add_argument("--max-perm-p", type=float, default=0.01)
+    parser.add_argument("--extra-wallets", default="",
+                        help="comma-separated addr[:label] traced regardless of the "
+                             "ordering screen (e.g. the corrected durable core)")
     parser.add_argument("--sleep-seconds", type=float, default=0.25)
     return parser.parse_args()
 

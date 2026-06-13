@@ -1,6 +1,6 @@
 # BTC 5m suspect ordering (entry vs push lead/lag)
 
-Generated 2026-06-11T11:27:32Z by `01_scripts/analyze_btc5m_suspect_ordering.py`.
+Generated 2026-06-13T06:57:51Z by `01_scripts/analyze_btc5m_suspect_ordering.py`.
 
 - `suspect_ordering_summary.csv` - one row per suspect wallet + the market-maker control.
 - `suspect_ordering_markets.csv` - per (wallet, market) entry/spike detail.

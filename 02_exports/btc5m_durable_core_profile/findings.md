@@ -1,5 +1,24 @@
 # Durable-core wallet profiles — findings
 
+> **2026-06-13 rerun — two corrections.** (a) The CORE list is now STALE: under
+> the BH-corrected crop (audit §1.4) the profiler resolved only 4 of its 6
+> hardcoded wallets; `0x10c95474` and `0x30be23d0` no longer clear the crop and
+> the data-driven durable set is `0x62b9fad3`+`0x704ba05b` — the hardcoded CORE
+> needs a research-lead re-pick. (b) The "~92% win" was **share-weighting**:
+> per market `0x773a2f6c` is 54% (7/13, shrunk 40%), `0x61e6cefb` 83% (shrunk
+> 57%); the grinders sit at ~54% (`market_win_rate_raw`/`_shrunk` columns).
+>
+> **Selection caveat (2026-06-12 methodology audit, §3.1).** These wallets
+> were SELECTED for extreme edge and are profiled here on the same data, so
+> raw win rates are winner's-curse inflated — most severely for the
+> hit-and-run wallets (`0x773a2f6c` 13 market bets, `0x61e6cefb` 10): their
+> "~92% share-weighted win" rows are anecdotes, not estimates.
+> `core_profiles.csv` now carries `market_bets_n`, `market_win_rate_raw`,
+> `market_win_rate_shrunk` (empirical-Bayes pull toward no-edge with 20
+> pseudo-bets) and a `small_sample_caveat` column; quote the shrunk rate for
+> any wallet with `market_bets_n` < 20. The long-runner grinders (150–500
+> markets) are essentially unaffected by shrinkage.
+
 Per-wallet anatomy of the corrected durable core (pre-close fills, on-chain
 winner labels, contested ≤10 bps markets). Script:
 `01_scripts/analyze_btc5m_durable_core_profile.py` → `core_profiles.csv`.

@@ -1,0 +1,71 @@
+{
+ "generated_utc": "2026-06-13T06:56:39Z",
+ "script": "01_scripts/analyze_btc5m_fee_experiment.py",
+ "inputs": {
+  "5m_jan1_feb28": {
+   "universe_csv": "02_exports/btc5m_hybrid_quick_unwind_jan1_feb28/hybrid_market_universe.csv",
+   "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache/trades",
+   "top_edge_csv": "02_exports/btc5m_wallet_edge_jan1_feb28_preclose/top_edge_wallets.csv",
+   "winner_override_csv": "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv"
+  },
+  "5m_mar1_apr30": {
+   "universe_csv": "02_exports/btc5m_hybrid_quick_unwind_mar1_apr30/hybrid_market_universe.csv",
+   "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache/trades",
+   "top_edge_csv": "02_exports/btc5m_wallet_edge_mar1_apr30_preclose/top_edge_wallets.csv",
+   "winner_override_csv": "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv"
+  },
+  "5m_may1_jun9": {
+   "universe_csv": "02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+   "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc5m_close_contests_cache/trades",
+   "top_edge_csv": "02_exports/btc5m_wallet_edge_preclose/top_edge_wallets.csv",
+   "winner_override_csv": "02_exports/btc5m_resolution_times_contested_all/resolution_times.csv"
+  },
+  "15m_jan1_mar31": {
+   "universe_csv": "02_exports/btc15m_updown_jan1_mar31/btc15m_market_universe_enriched.csv",
+   "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc15m_updown_jan1_mar31_cache/trades",
+   "top_edge_csv": "02_exports/btc15m_wallet_edge_jan1_mar31_preclose/top_edge_wallets.csv",
+   "winner_override_csv": "02_exports/btc15m_resolution_times_jan1_mar31/resolution_times.csv"
+  },
+  "15m_apr1_jun9": {
+   "universe_csv": "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe_enriched.csv",
+   "trades_dir": "/Users/tuckerstrow/Desktop/Vix SP Rework/BTC 15m Manipulation Polymarket/03_data_cache/polymarket_btc15m_updown_cache/trades",
+   "top_edge_csv": "02_exports/btc15m_wallet_edge_apr1_jun9_preclose/top_edge_wallets.csv",
+   "winner_override_csv": "02_exports/btc15m_resolution_times_apr1_jun9/resolution_times.csv"
+  }
+ },
+ "design": {
+  "fee_rate": 0.07,
+  "min_z": 5.0,
+  "min_markets": 10,
+  "crop_source": "_preclose wallet-edge runs (pre-close fills, on-chain labels)",
+  "fill_scope": "pre-close BUYs only; fills at/after end_epoch dropped",
+  "winner_labels": "on-chain ConditionResolution override applied per cell"
+ },
+ "per_cell": {
+  "5m_jan1_feb28": {
+   "crop_wallets": 0,
+   "winner_labels_corrected": 79,
+   "postclose_fills_dropped": 0
+  },
+  "5m_mar1_apr30": {
+   "crop_wallets": 3,
+   "winner_labels_corrected": 169,
+   "postclose_fills_dropped": 16
+  },
+  "5m_may1_jun9": {
+   "crop_wallets": 7,
+   "winner_labels_corrected": 0,
+   "postclose_fills_dropped": 22
+  },
+  "15m_jan1_mar31": {
+   "crop_wallets": 11,
+   "winner_labels_corrected": 0,
+   "postclose_fills_dropped": 149
+  },
+  "15m_apr1_jun9": {
+   "crop_wallets": 1,
+   "winner_labels_corrected": 0,
+   "postclose_fills_dropped": 15
+  }
+ }
+}

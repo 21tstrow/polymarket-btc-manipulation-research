@@ -1,12 +1,12 @@
-# BTC 5m Event-Level Realized P&L
+# BTC 15m Event-Level Realized P&L
 
-3440 contested kraken markets within 10bps. Spot cost is measured from the realized move and net winner-aligned notional (no impact model); PM prize is late winner-side BUY profit in the final 60s. Realized net is an upper bound (one actor capturing the whole prize).
+3454 contested kraken markets within 10bps. Spot cost is measured from the realized move and net winner-aligned notional (no impact model); PM prize is late winner-side BUY profit in the final 60s. Realized net is an upper bound (one actor capturing the whole prize).
 
 | cohort | markets | with push | median PM prize ($) | median realized net ($) | profitable | median net (push only) | profitable (push) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| all_contested | 3440 | 700 | 85.91 | 81.53 | 3093/3440 | 171.83 | 592/700 |
+| all_contested | 3454 | 705 | 85.76 | 81.51 | 3106/3454 | 172.36 | 597/705 |
 | flip | 77 | 73 | 1,530.99 | 1,366.28 | 75/77 | 1,366.28 | 71/73 |
-| already_winner_assist | 3114 | 561 | 65.44 | 61.93 | 2772/3114 | 103.94 | 458/561 |
+| already_winner_assist | 3128 | 566 | 65.44 | 61.93 | 2785/3128 | 106.72 | 463/566 |
 
 ## Top realized-net events with a winner-aligned push
 

@@ -1,11 +1,12 @@
 {
- "generated_utc": "2026-06-12T21:37:02Z",
+ "generated_utc": "2026-06-13T07:04:01Z",
  "script": "01_scripts/analyze_btc5m_durable_core_profile.py",
  "design": {
   "fills": "BUY fills strictly before end_epoch in contested (<=10bps) markets",
   "labels": "universe winner overridden by on-chain ConditionResolution payouts where backfilled",
   "timing_weights": "stake = $ spent; potential payout = shares; realized payout = winning shares",
-  "censoring": "trade caches reach ~300s before close; earlier entries invisible"
+  "censoring": "trade caches reach ~300s before close; earlier entries invisible",
+  "selection_caveat": "core wallets were SELECTED for extreme edge and profiled on the same data \u2014 raw win rates are winner's-curse inflated; market_win_rate_shrunk pulls toward no-edge with 20 pseudo-bets; rows with small_sample_caveat are anecdotes, not estimates"
  },
- "wallets": 6
+ "wallets": 4
 }

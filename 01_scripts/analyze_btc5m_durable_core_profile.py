@@ -54,7 +54,7 @@ PRODUCTS = {
         "trades": ROOT / "03_data_cache/polymarket_btc5m_close_contests_cache/trades",
     },
     "15m_aprjun": {
-        "universes": [ROOT / "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe.csv"],
+        "universes": [ROOT / "02_exports/btc15m_updown_apr1_jun9/btc15m_market_universe_enriched.csv"],
         "trades": ROOT / "03_data_cache/polymarket_btc15m_updown_cache/trades",
     },
     "15m_janmar": {
@@ -145,6 +145,9 @@ def weighted_median_offset(fills: list, weight) -> float | None:
     return None
 
 
+SHRINK_PSEUDO_BETS = 20  # prior weight: no-edge bets at the wallet's own entry prices
+
+
 def profile(short: str, wallet: str, product: str, note: str,
             fills: list, span: list, contested: dict) -> dict | None:
     if not fills:
@@ -154,6 +157,20 @@ def profile(short: str, wallet: str, product: str, note: str,
     cost = sum(x[4] for x in fills)
     win_shares = sum(x[3] for x in fills if won(x))
     rp_total = win_shares or 1.0
+    # market-level bets: one bet per (market, outcome) at the share-weighted
+    # entry price. These wallets were SELECTED for extreme edge, so the raw
+    # win rate is winner's-curse inflated; the shrunk rate pulls toward
+    # no-edge (win prob = entry price) with SHRINK_PSEUDO_BETS prior weight.
+    bets: dict[tuple, list] = {}
+    for x in fills:
+        b = bets.setdefault((x[0], x[1]), [0.0, 0.0])
+        b[0] += x[3]
+        b[1] += x[4]
+    n_bets = len(bets)
+    bet_wins = sum(1 for (cid, outcome) in bets if outcome == contested[cid][0])
+    bet_price_sum = sum(c / s for s, c in bets.values() if s > 0)
+    shrunk = ((bet_wins + bet_price_sum / n_bets * SHRINK_PSEUDO_BETS)
+              / (n_bets + SHRINK_PSEUDO_BETS)) if n_bets else None
     rec = {
         "wallet": wallet, "short": short, "product": product,
         "first_fill_utc": datetime.fromtimestamp(span[0], timezone.utc).strftime("%Y-%m-%d"),
@@ -164,12 +181,18 @@ def profile(short: str, wallet: str, product: str, note: str,
         "preclose_shares": round(shares, 1),
         "avg_entry_price": round(cost / shares, 4),
         "share_weighted_win_rate": round(win_shares / shares, 4),
+        "market_bets_n": n_bets,
+        "market_win_rate_raw": round(bet_wins / n_bets, 4) if n_bets else None,
+        "market_win_rate_shrunk": round(shrunk, 4) if shrunk is not None else None,
         "edge_per_share": round(win_shares / shares - cost / shares, 4),
         "pnl_if_held_usd": round(win_shares - cost, 2),
         "timing_median_by_stake_s": weighted_median_offset(fills, lambda x: x[4]),
         "timing_median_by_potential_payout_s": weighted_median_offset(fills, lambda x: x[3]),
         "timing_median_by_realized_payout_s": weighted_median_offset(
             fills, lambda x: x[3] if won(x) else 0.0),
+        "small_sample_caveat": ("ANECDOTE: selected-for-edge wallet profiled in-sample on "
+                                f"{n_bets} market bets — treat rates as upper bounds"
+                                if n_bets < SHRINK_PSEUDO_BETS else ""),
         "note": note,
     }
     for a, b in BUCKETS:
@@ -225,6 +248,10 @@ def main() -> int:
             "labels": "universe winner overridden by on-chain ConditionResolution payouts where backfilled",
             "timing_weights": "stake = $ spent; potential payout = shares; realized payout = winning shares",
             "censoring": "trade caches reach ~300s before close; earlier entries invisible",
+            "selection_caveat": "core wallets were SELECTED for extreme edge and profiled on the "
+                                "same data — raw win rates are winner's-curse inflated; "
+                                f"market_win_rate_shrunk pulls toward no-edge with {SHRINK_PSEUDO_BETS} "
+                                "pseudo-bets; rows with small_sample_caveat are anecdotes, not estimates",
         },
         "wallets": len(rows),
     }

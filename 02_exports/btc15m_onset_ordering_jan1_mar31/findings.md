@@ -1,9 +1,19 @@
 # 15m onset-anchored ordering (Jan 1 – Mar 31) — findings
 
-Third run of the onset test (5m May–Jun, 15m Apr–Jun, now 15m Jan–Mar),
-on the Jan–Mar window-dressing crop: 20 suspects, 968 (wallet, market)
-rows over 3,779 contested markets. Same parameters as Apr–Jun
-(flat_bps=2.5, onset_bps=5, lookback_s=30, skew_s=1, baseline_step_s=5).
+> **RE-RUN 2026-06-13 (methodology-audit corrections landed).** This cell was
+> re-run on the **conforming `_preclose` BH crop** (crop_member: BH FDR 0.05 +
+> z≥3 floor) at the **15m-scaled `span_seconds=1500` / `baseline_window_s=890`**,
+> fixing both §1.1 (full-fills crop) and §2.2 (5m-default parameters). Result:
+> 18 crop wallets tested, **timing null holds after multiplicity** — per-cell
+> minimum `flat_perm_p` = 0.012 (`0xe0b3115271`, 25 markets) which does NOT
+> survive BH/Bonferroni over 18 tests; `0x45ca1731` (the named 15m core leader,
+> previously untested here) tested **null at 0.84**. `0xe0b3115271` is flagged
+> for the quote-state test (uncorrected p=0.012). Numbers below are the
+> superseded original run; the live table is `analysis_report.md`.
+
+Third run of the onset test (5m May–Jun, 15m Apr–Jun, now 15m Jan–Mar).
+Original (superseded) run: full-fills crop, 5m-default span/baseline. The
+corrected run uses the pre-close BH crop at span 1500 / baseline 890.
 
 ## The timing null replicates a third time
 

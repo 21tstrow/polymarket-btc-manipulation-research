@@ -36,9 +36,20 @@ if SPANS.exists():
     for r in csv.DictReader(open(SPANS)):
         data[r['wallet']] = {'cells': r['crops'].split(';') if r['crops'] else [],
                              'first': int(r['first_ts']), 'last': int(r['last_ts']), 'n': int(r['n_trades'])}
+def crop_z(r):
+    # market_bet_z (one bet per market — valid variance); trade_edge_z only as
+    # a legacy fallback for crops generated before the z correction
+    z = r.get('market_bet_z')
+    return float(z) if z not in (None, '') else float(r.get('trade_edge_z') or 0)
+def is_crop_member(r):
+    # prefer the wallet-edge BH crop_member flag; fall back to z>=5 for old CSVs
+    if int(r['n_markets'])<10 or float(r['edge_contested'] or 0)<=0:
+        return False
+    if r.get('crop_member') not in (None, ''):
+        return str(r['crop_member'])=='1'
+    return crop_z(r)>=5
 def crop(path):
-    return {r['wallet'] for r in csv.DictReader(open(path))
-            if float(r['trade_edge_z'] or 0)>=5 and int(r['n_markets'])>=10 and float(r['edge_contested'] or 0)>0}
+    return {r['wallet'] for r in csv.DictReader(open(path)) if is_crop_member(r)}
 # crops come from the corrected runs: pre-close fills only, on-chain winner
 # labels (the original all-fills/fallback-label crops were contaminated)
 crops = {
@@ -203,9 +214,26 @@ for w,line,incrops in rows:
     nz = sum(1 for c in line if c.strip()!='.')
     held[nz]+=1
 print(f"crop wallets trading >=20 contested shares in N periods: {dict(held)}")
-print("wallets with positive PRE-CLOSE contested edge (>=20 pre-close shares) in >=2 periods:")
+# durable = positive pre-close edge in >=2 periods, AT LEAST ONE of which is
+# OUT-OF-SAMPLE (not a period the wallet was crop-selected in). Counting the
+# selection period alone would let winner's-curse selection masquerade as
+# persistence.
+PERIOD_ORDER = ('jan-feb','mar-apr','may-jun')
+print("DURABLE: positive PRE-CLOSE contested edge (>=20 pre-close shares) in >=2 periods,")
+print(">=1 of them outside the wallet's crop-selection period(s):")
+n_durable = n_selection_only = 0
 for w,line,incrops in rows:
-    pos = sum(1 for c in line if c.strip()!='.' and c.strip().startswith('+'))
-    if pos>=2:
-        print(f"  {w[:10]} | jf {line[0]} | ma {line[1]} | mj {line[2]} | crop:{incrops}")
+    pos_periods = {PERIOD_ORDER[i] for i,c in enumerate(line)
+                   if c.strip()!='.' and c.strip().startswith('+')}
+    if len(pos_periods) < 2:
+        continue
+    out_of_sample_pos = pos_periods - set(incrops)
+    if out_of_sample_pos:
+        n_durable += 1
+        print(f"  {w[:10]} | jf {line[0]} | ma {line[1]} | mj {line[2]} | crop:{incrops} | oos+:{sorted(out_of_sample_pos)}")
+    else:
+        n_selection_only += 1
+        print(f"  {w[:10]} | jf {line[0]} | ma {line[1]} | mj {line[2]} | crop:{incrops} | SELECTION-ONLY (excluded)")
+print(f"durable (with out-of-sample positive): {n_durable}; "
+      f"excluded as selection-period-only: {n_selection_only}")
 print(f"\nwrote tables -> {out}")

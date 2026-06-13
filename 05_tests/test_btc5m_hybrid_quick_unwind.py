@@ -135,3 +135,57 @@ def test_synthetic_primary_thin_quick_unwind_path_is_estimable():
     assert primary["flow_plus_impact_gt_nonimpact_reversion_5s_p_bh"] != ""
     assert primary["p_value_family"] == "primary_confirmatory_within_design"
     assert primary["bh_scope"] == "within_design_only_not_pooled_across_overlapping_cohorts"
+
+
+def test_fallback_winner_label_comes_from_outcome_prices():
+    """When Gamma finalPrice is missing, the exchange tape supplies the margin
+    DIAGNOSTIC only; the winner LABEL must come from Gamma outcomePrices when
+    the book resolved (the tape mislabels ~13% of micro-margin fallback rows
+    — the 2026-06-12 label-integrity correction's root cause)."""
+    module = load_module()
+    market = {
+        "slug": "btc-updown-5m-1000",
+        "start_epoch": 1000,
+        "end_epoch": 1300,
+        "price_to_beat": 100.0,
+        "settlement_final_price": "",
+        "final_price_source": "pending_exchange_final_fallback",
+        "winner": "",
+        # resolved book says Down won...
+        "winner_outcome_prices": "Down",
+    }
+    # ...but the last tape print sits just ABOVE the strike (kraken-implied Up)
+    trades = [{"timestamp": 1299.5, "price": 100.01, "side": "buy", "size": 1.0}]
+    ok, status = module.fill_exchange_final_price_fallback(
+        market, provider="kraken", symbol="XBTUSD", trades=trades,
+        max_price_lag_seconds=120)
+    assert ok
+    assert market["winner"] == "Down"
+    assert status["winner_label_source"] == "outcome_prices"
+    assert status["kraken_implied_winner"] == "Up"
+    assert "outcome_prices_winner" in market["final_price_source"]
+    # margin diagnostic still from the tape
+    assert abs(float(market["official_margin_bps_abs"]) - 1.0) < 0.2
+
+
+def test_fallback_without_outcome_prices_keeps_exchange_label():
+    """No resolved outcomePrices -> the exchange label survives but is marked
+    as exchange_fallback so downstream override/provenance tooling can see it."""
+    module = load_module()
+    market = {
+        "slug": "btc-updown-5m-1000",
+        "start_epoch": 1000,
+        "end_epoch": 1300,
+        "price_to_beat": 100.0,
+        "settlement_final_price": "",
+        "final_price_source": "pending_exchange_final_fallback",
+        "winner": "",
+        "winner_outcome_prices": "",
+    }
+    trades = [{"timestamp": 1299.5, "price": 100.01, "side": "buy", "size": 1.0}]
+    ok, status = module.fill_exchange_final_price_fallback(
+        market, provider="kraken", symbol="XBTUSD", trades=trades,
+        max_price_lag_seconds=120)
+    assert ok
+    assert market["winner"] == "Up"
+    assert status["winner_label_source"] == "exchange_fallback"

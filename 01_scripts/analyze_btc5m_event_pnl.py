@@ -86,8 +86,29 @@ def categorize(already_winner_side: int, crossed_to_winner: int) -> str:
     return "other"
 
 
-def load_contested_markets(metrics_csv: Path, flat_bps: float) -> list[dict]:
+def load_winner_overrides(override_csv: Path) -> dict[str, str]:
+    """condition_id -> on-chain winner (backfill_ctf_resolution_times.py output).
+    On-chain ConditionResolution payouts are ground truth; the universe's
+    exchange-price fallback mislabels a slice of micro-margin markets."""
+    out: dict[str, str] = {}
+    for r in csv.DictReader(open(override_csv, newline="")):
+        cid = r.get("condition_id")
+        winner = r.get("onchain_winner")
+        if cid and r.get("resolved") == "1" and winner in ("Up", "Down"):
+            out[cid] = winner
+    return out
+
+
+def load_contested_markets(metrics_csv: Path, flat_bps: float,
+                           overrides: dict[str, str] | None = None) -> tuple[list[dict], int, int]:
+    """Returns (markets, n_flipped, n_flip_skipped). Winner-relative metrics for
+    flipped labels are recomputed exactly: the side columns are absolute
+    (which side of the strike the exchange price sat on), and aligned
+    move/flow/reversion just change sign with the winner."""
+    overrides = overrides or {}
     out = []
+    n_flipped = 0
+    n_flip_skipped = 0
     for r in csv.DictReader(open(metrics_csv, newline="")):
         if r.get("underlying_source") != "kraken" or r.get("window_seconds") != "5":
             continue
@@ -104,39 +125,66 @@ def load_contested_markets(metrics_csv: Path, flat_bps: float) -> list[dict]:
         crossed = safe_float(r.get("exchange_crossed_to_winner"))
         if already is None or crossed is None:
             continue
+        winner = r.get("winner")
+        sign = 1.0
+        cid = r.get("condition_id")
+        onchain = overrides.get(cid)
+        if onchain and onchain != winner:
+            pre_side = r.get("exchange_final_pre_side")
+            end_side = r.get("exchange_final_endpoint_side")
+            if pre_side not in ("Up", "Down") or end_side not in ("Up", "Down"):
+                n_flip_skipped += 1
+                continue
+            winner = onchain
+            already = 1 if pre_side == winner else 0
+            crossed = 1 if already == 0 and end_side == winner else 0
+            sign = -1.0
+            n_flipped += 1
+
+        def flip(value):
+            return sign * value if value is not None else None
+
         start_epoch = int(float(r["start_epoch"]))
         out.append(
             {
                 "slug": r.get("slug"),
-                "condition_id": r.get("condition_id"),
-                "winner": r.get("winner"),
+                "condition_id": cid,
+                "winner": winner,
                 "start_epoch": start_epoch,
                 "end_epoch": int(float(r["end_epoch"])),
                 "already_winner_side": int(already),
                 "crossed_to_winner": int(crossed),
                 "category": categorize(int(already), int(crossed)),
                 "official_margin_bps_abs": safe_float(r.get("official_margin_bps_abs")),
-                "aligned_final_move_bps": safe_float(r.get("exchange_aligned_final_move_bps")),
-                "net_aligned_notional": safe_float(r.get("final_aligned_signed_taker_quote")),
+                "aligned_final_move_bps": flip(safe_float(r.get("exchange_aligned_final_move_bps"))),
+                "net_aligned_notional": flip(safe_float(r.get("final_aligned_signed_taker_quote"))),
                 "final_quote_volume": safe_float(r.get("final_quote_volume")),
-                "reversion_5s_bps": safe_float(r.get("post_close_reversion_5s_bps")),
-                "reversion_30s_bps": safe_float(r.get("post_close_reversion_30s_bps")),
+                "reversion_5s_bps": flip(safe_float(r.get("post_close_reversion_5s_bps"))),
+                "reversion_30s_bps": flip(safe_float(r.get("post_close_reversion_30s_bps"))),
             }
         )
-    return sorted(out, key=lambda m: m["slug"])
+    return sorted(out, key=lambda m: m["slug"]), n_flipped, n_flip_skipped
 
 
 def load_contested_markets_from_universe(universe_csv: Path, exchange_cache_dir: Path,
-                                         flat_bps: float, push_window_s: int) -> list[dict]:
+                                         flat_bps: float, push_window_s: int,
+                                         overrides: dict[str, str] | None = None) -> tuple[list[dict], int]:
     """Universe-mode market loader: compute the exchange-side event metrics
     directly from the cached Kraken tape instead of the 5m hybrid metrics CSV.
     Used for products (15m) that have no hybrid backfill. Reversion sign:
     positive = post-close move back AGAINST the winner direction."""
+    overrides = overrides or {}
+    n_flipped = 0
     out = []
     skipped = 0
     for r in csv.DictReader(open(universe_csv, newline="")):
         margin = safe_float(r.get("official_margin_bps_abs") or r.get("margin_bps_abs"))
         winner = r.get("winner")
+        onchain = overrides.get(r.get("condition_id") or "")
+        if onchain:
+            if winner in ("Up", "Down") and onchain != winner:
+                n_flipped += 1
+            winner = onchain
         strike = safe_float(r.get("price_to_beat"))
         end_epoch = safe_float(r.get("end_epoch"))
         if (margin is None or margin > flat_bps or winner not in ("Up", "Down")
@@ -199,7 +247,7 @@ def load_contested_markets_from_universe(universe_csv: Path, exchange_cache_dir:
         })
     if skipped:
         print(f"universe mode: skipped {skipped} contested markets without kraken coverage")
-    return sorted(out, key=lambda m: m["slug"] or "")
+    return sorted(out, key=lambda m: m["slug"] or ""), n_flipped
 
 
 def late_winner_profit(market: dict, cache_dir: Path, window_seconds: int, *, fetch_missing: bool) -> dict:
@@ -276,16 +324,22 @@ def summarize(rows: list[dict], label: str) -> dict:
 def run(args: argparse.Namespace) -> int:
     out_dir = Path(args.out_dir)
     cache_dir = Path(args.polymarket_cache_dir)
+    overrides = (load_winner_overrides(Path(args.winner_override_csv))
+                 if args.winner_override_csv else {})
+    n_flip_skipped = 0
     if args.universe_csv:
-        markets = load_contested_markets_from_universe(
+        markets, n_flipped = load_contested_markets_from_universe(
             Path(args.universe_csv), Path(args.exchange_cache_dir), args.flat_bps,
-            args.push_window_seconds)
+            args.push_window_seconds, overrides)
     else:
-        markets = load_contested_markets(Path(args.metrics_csv), args.flat_bps)
+        markets, n_flipped, n_flip_skipped = load_contested_markets(
+            Path(args.metrics_csv), args.flat_bps, overrides)
     if not markets:
         print("error: no contested markets", file=sys.stderr)
         return 2
-    print(f"contested markets ({args.flat_bps:.0f}bps): {len(markets)}")
+    print(f"contested markets ({args.flat_bps:.0f}bps): {len(markets)}"
+          + (f"; winner labels corrected on-chain: {n_flipped}" if overrides else "")
+          + (f"; flipped rows skipped (no side columns): {n_flip_skipped}" if n_flip_skipped else ""))
 
     rows = []
     for i, m in enumerate(markets, start=1):
@@ -318,19 +372,23 @@ def run(args: argparse.Namespace) -> int:
     manifest = {
         "generated_utc": utc_now(),
         "script": "01_scripts/analyze_btc5m_event_pnl.py",
-        "inputs": {"metrics_csv": str(args.metrics_csv), "universe_csv": str(args.universe_csv), "polymarket_cache_dir": str(args.polymarket_cache_dir)},
+        "inputs": {"metrics_csv": str(args.metrics_csv), "universe_csv": str(args.universe_csv),
+                   "polymarket_cache_dir": str(args.polymarket_cache_dir),
+                   "winner_override_csv": args.winner_override_csv or None},
         "design": {
             "question": "Event-level realized P&L: did the actual winner-aligned push pay off vs the Polymarket prize?",
             "spot_cost": "measured: net_aligned_notional * realized_move_bps + taker fees on both legs; no lambda",
             "pm_prize": "late winner-side BUY profit size*(1-price) in payout_window",
             "identification": "upper bound; assumes one actor pushed net spot flow AND captured the whole late winner-side prize",
             "taker_fee_bps": args.taker_fee_bps,
+            "winner_labels_corrected": n_flipped,
+            "flipped_rows_skipped": n_flip_skipped,
         },
         "product": product_fields(args.timeframe),
     }
     (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
 
-    report = "# BTC 5m Event-Level Realized P&L\n\n"
+    report = f"# BTC {args.timeframe} Event-Level Realized P&L\n\n"
     report += (
         f"{len(markets)} contested kraken markets within {args.flat_bps:.0f}bps. Spot cost is measured "
         f"from the realized move and net winner-aligned notional (no impact model); PM prize is late "
@@ -383,6 +441,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--flat-bps", type=float, default=10.0)
     parser.add_argument("--payout-window", type=int, default=60)
     parser.add_argument("--taker-fee-bps", type=float, default=10.0)
+    parser.add_argument("--winner-override-csv", default="",
+                        help="resolution_times.csv from backfill_ctf_resolution_times.py; "
+                             "replaces Gamma/fallback winners with on-chain payouts and "
+                             "recomputes winner-relative metrics for flipped rows")
     parser.add_argument("--fetch-missing", action="store_true")
     return parser.parse_args()
 

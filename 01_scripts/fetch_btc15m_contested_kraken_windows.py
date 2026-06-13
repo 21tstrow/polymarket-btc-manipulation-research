@@ -7,8 +7,10 @@ XBTUSD_{b-300}_{b}.json for every 15m boundary b, which already covers the
 slice ending at each close. The two downstream scripts need two more slices
 per contested market:
 
-  - analyze_btc5m_onset_ordering.py reads [close-600, close) (span 600s)
-    -> XBTUSD_{close-600}_{close-300}.json
+  - analyze_btc5m_onset_ordering.py at the 15m-scaled --span-seconds 1500
+    reads [close-1500, close) -> slices starting at close-1500..close-300
+    (pass --slice-offsets -1500,-1200,-900,-600; the default covers only the
+    legacy 600s span)
   - analyze_btc5m_event_pnl.py reads the post-close reversion window
     -> XBTUSD_{close}_{close+300}.json
 
@@ -59,13 +61,16 @@ def main() -> int:
     parser.add_argument("--exchange-cache-dir", default=str(DEFAULT_EXCHANGE_CACHE))
     parser.add_argument("--contested-bps", type=float, default=10.0)
     parser.add_argument("--sleep-seconds", type=float, default=1.2)
+    parser.add_argument("--slice-offsets", default=",".join(str(o) for o in EXTRA_SLICE_OFFSETS),
+                        help="comma-separated slice-start offsets relative to close")
     args = parser.parse_args()
 
     cache_dir = Path(args.exchange_cache_dir)
+    offsets = [int(o) for o in args.slice_offsets.split(",") if o.strip()]
     closes = contested_close_epochs(Path(args.universe_csv), args.contested_bps)
     targets = []
     for close in closes:
-        for offset in EXTRA_SLICE_OFFSETS:
+        for offset in offsets:
             start = close + offset
             if not (cache_dir / "kraken_trades" / f"{KRAKEN_PAIR}_{start}_{start + 300}.json").exists():
                 targets.append(start)
