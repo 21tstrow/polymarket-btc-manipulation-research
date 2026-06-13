@@ -1,12 +1,21 @@
 # Durable-core wallet profiles — findings
 
-> **2026-06-13 rerun — two corrections.** (a) The CORE list is now STALE: under
-> the BH-corrected crop (audit §1.4) the profiler resolved only 4 of its 6
-> hardcoded wallets; `0x10c95474` and `0x30be23d0` no longer clear the crop and
-> the data-driven durable set is `0x62b9fad3`+`0x704ba05b` — the hardcoded CORE
-> needs a research-lead re-pick. (b) The "~92% win" was **share-weighting**:
-> per market `0x773a2f6c` is 54% (7/13, shrunk 40%), `0x61e6cefb` 83% (shrunk
-> 57%); the grinders sit at ~54% (`market_win_rate_raw`/`_shrunk` columns).
+> **2026-06-13 — core RE-PICKED (strength-ranked across products).** The old
+> per-fill-z core (`0x10c95474`/`0x30be23d0`/`0x773a2f6c`/`0x61e6cefb`/
+> `0xfcefc196`) did not survive the BH crop. The new core is the highest
+> corrected per-market-significance (`market_bet_z`) crop members across both
+> products, anchored by `0x45ca1731` (the only cross-period crop member:
+> Jan-Mar z=5.24 / Apr-Jun z=4.03). All 9 profiled rows now have adequate
+> samples (162–542 markets, **no small-sample caveats**), honest shrunk win
+> rates **0.53–0.58**, edges +0.10 to +0.28, and payout-weighted timing all
+> mid-window (−114 to −175s) — i.e. commitment-before-close, **no late-window
+> sniper profile** (the old `0x61e6cefb` "late-window priority", a 10-market
+> anecdote, is dropped). The "~92% win" headline was **share-weighting**: per
+> market the retired hit-and-runs were `0x773a2f6c` 54% / `0x61e6cefb` 83%.
+> Highest combined significance+edge in the new core: `0x76696ac0` (z=6.15,
+> shrunk win 0.58, edge +0.28). `0x30be23d0` is retained as a push-concentration
+> suspect (z=2.95, sub-floor; 8.1× unconditioned push p=0.0005) but is not a
+> crop member.
 >
 > **Selection caveat (2026-06-12 methodology audit, §3.1).** These wallets
 > were SELECTED for extreme edge and are profiled here on the same data, so

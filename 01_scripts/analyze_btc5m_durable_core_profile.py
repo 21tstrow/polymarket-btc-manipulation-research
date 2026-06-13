@@ -29,19 +29,34 @@ OVERRIDE_CSV = ROOT / "02_exports/btc5m_resolution_times_contested_all/resolutio
 CONTESTED_BPS = 10.0
 BUCKETS = [(-300, -120), (-120, -60), (-60, -30), (-30, -10), (-10, 0)]
 
-# (short prefix, product) -> resolved from the corrected per-cell exports
+# (short prefix, product) -> resolved from the corrected per-cell exports.
+#
+# RE-PICKED 2026-06-13 (methodology audit): strength-ranked across products by
+# CORRECTED per-market significance (market_bet_z) among BH crop members, the
+# old per-fill-z core having been retired. Ranking is by significance; edge
+# magnitude is carried alongside because the highest-z 15m wallets have small
+# edges (a tiny consistent effect over many markets — latency-shaped), while
+# the meaningful-edge wallets sit a bit lower. The retired core
+# (0x10c95474/0x30be23d0/0x773a2f6c/0x61e6cefb/0xfcefc196) did not survive the
+# BH crop; 0x30be23d0 remains a push-concentration suspect (z=2.95, just under
+# the z>=3 floor, 8.1x unconditioned push p=0.0005) but is NOT a crop member.
 CORE = [
-    ("0x10c95474", "5m", "copy leader (~hundreds of mirroring bots); push 36x; funded 04-01 with one $9,999"),
-    ("0x30be23d0", "5m", "original push-concentration prime suspect (push 48x); z=33 corrected May-Jun"),
-    ("0x773a2f6c", "5m", "hit-and-run burst Mar 4-8"),
-    ("0x61e6cefb", "5m", "hit-and-run burst Jun 6-7; LATE-WINDOW payout profile (quote-state priority)"),
-    ("0xfcefc196", "15m_aprjun", "top of the 15m Apr-Jun crop"),
-    ("0x45ca1731", "15m_janmar", "top of the 15m Jan-Mar crop, spans both 15m periods"),
+    ("0x45ca1731", "15m_janmar", "ANCHOR: only cross-period crop member (z=5.24 Jan-Mar / 4.03 Apr-Jun); onset-null both; edge +0.15"),
+    ("0x45ca1731", "15m_aprjun", "same wallet, Apr-Jun leg (550 mkts, z=4.03)"),
+    ("0x8f6dc0d2", "15m_janmar", "highest corrected significance in the repo (z=7.54, 473 mkts) but small edge +0.053 (latency-shaped)"),
+    ("0x24f5bab8", "15m_janmar", "z=6.65, 309 mkts, edge +0.089"),
+    ("0x76696ac0", "15m_janmar", "z=6.15, 225 mkts, edge +0.19 (high significance AND meaningful edge)"),
+    ("0xf47bfefe", "15m_janmar", "z=5.15, 423 mkts, edge +0.088"),
+    ("0xb528de45", "15m_janmar", "z=4.89, 291 mkts, edge +0.15 (also in retired named list)"),
+    ("0xb305d384", "5m", "top 5m crop member (z=4.55, 210 mkts, edge +0.136) — 5m crop is weak post-correction"),
+    ("0xf6beafa7", "5m", "2nd 5m crop member (z=4.07, 267 mkts, edge +0.114)"),
 ]
 RESOLVE_FROM = [
     ROOT / "02_exports/btc5m_wallet_edge_preclose/top_edge_wallets.csv",
+    ROOT / "02_exports/btc5m_wallet_edge_preclose/window_dressing_candidates.csv",
     ROOT / "02_exports/btc5m_wallet_edge_mar1_apr30_preclose/top_edge_wallets.csv",
     ROOT / "02_exports/btc15m_wallet_edge_apr1_jun9_preclose/top_edge_wallets.csv",
+    ROOT / "02_exports/btc15m_wallet_edge_apr1_jun9_preclose/window_dressing_candidates.csv",
     ROOT / "02_exports/btc15m_wallet_edge_jan1_mar31_preclose/top_edge_wallets.csv",
     # high-volume moderate-edge wallets can fall outside the top-100 edge
     # ranking but still appear in the window-dressing screen

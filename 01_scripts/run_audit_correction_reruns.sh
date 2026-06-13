@@ -159,8 +159,11 @@ python3 01_scripts/analyze_btc15m_stratification.py || exit 1
 # I. funding graph: corrected 5m core + 15m core traced alongside the
 #    push-concentrated suspects from the corrected ordering run
 step "I: funding graph on corrected core"
+# strength-ranked corrected core (re-picked 2026-06-13 by market_bet_z among BH
+# crop members) + the legacy push suspect 0x30be23d0 (sub-floor but push-
+# concentrated). See analyze_btc5m_durable_core_profile.py CORE.
 python3 01_scripts/analyze_btc5m_suspect_funding.py \
   --out-dir 02_exports/btc5m_suspect_funding_corrected_core \
-  --extra-wallets "0x10c95474a829d67b6a41025da3b886f05719e999:core_5m,0x30be23d0622ae9ea3072a0091c214c78cdcbf4c1:core_5m,0x773a2f6c325621852fdfa5c83f91071e78602e81:core_5m,0x61e6cefb61ff796aec1ab7376c38eed778760e2e:core_5m,0xfcefc196f9c260705ae2434333061cc2ca43ed6c:core_15m,0x45ca17313cffdb5b596438500a2fe0c899633cef:core_15m,0xb528de45d8e0e3d11336cb3a3e1639e0e721aade:core_15m,0xa0f6f910b469cfd50155d8713f0375284d43b859:core_15m,0x06a20663cff1d3011fae399cdb063d1ce92746c9:core_15m" || exit 1
+  --extra-wallets "0x45ca17313cffdb5b596438500a2fe0c899633cef:core_15m,0x8f6dc0d2e2d881fac8c2d189b78233b2b3dc6993:core_15m,0x24f5bab872129fde97221b3b69ca9eb2013398d2:core_15m,0x76696ac0c8f6058fb1f7e0983a198aef1da28390:core_15m,0xf47bfefe39ef77c4301670c7831026b0cd61418e:core_15m,0xb528de45d8e0e3d11336cb3a3e1639e0e721aade:core_15m,0xb305d384400e3d7a15780216a55368ea677eca4e:core_5m,0xf6beafa72d6416525c4cf039c9c122883dbef6a3:core_5m,0x30be23d0622ae9ea3072a0091c214c78cdcbf4c1:push_suspect_5m" || exit 1
 
 echo "AUDIT_CORRECTION_RERUNS_DONE"

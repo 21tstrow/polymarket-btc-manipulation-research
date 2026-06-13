@@ -213,7 +213,9 @@ Window-dressing crop (from `window_dressing_candidates.csv`, the set onset consu
 
 ## Cross-period durable core is NOT stable under the correction
 
-The data-driven persistence criterion (positive pre-close edge in ≥2 periods, ≥1 out-of-sample, BH crop member) now yields **`0x62b9fad3` + `0x704ba05b`** (both mar-apr crop, positive mar-apr + may-jun) — NOT the previously-headlined `0x10c95474` (copy leader) + `0x30be23d0`, which no longer clear the bar. `analyze_btc5m_durable_core_profile.py`'s hardcoded `CORE` list is now **stale**: it resolved only 4 of its 6 wallets against the BH crops (`0x10c95474`, `0x30be23d0` dropped out). **This needs a research-lead decision on the named target list — I did not re-pick it.**
+The data-driven 5m persistence criterion (positive pre-close edge in ≥2 periods, ≥1 out-of-sample, BH crop member) yields **`0x62b9fad3` + `0x704ba05b`** — NOT the previously-headlined `0x10c95474` (copy leader) + `0x30be23d0`, which no longer clear the bar. But that 5m-only set omits the strongest wallet in the corrected data and includes a 13-market fluke (`0x62b9fad3`).
+
+**RESOLVED 2026-06-13 (Tucker's call: strength-ranked across products).** The named core is re-picked as the highest corrected per-market-significance (`market_bet_z`) BH crop members across both products, anchored by **`0x45ca1731`** (only cross-period crop member, Jan-Mar z=5.24 / Apr-Jun z=4.03) and including `0x76696ac0` (z=6.15, edge +0.28 — best combined), `0x8f6dc0d2` (z=7.54, small edge), `0x24f5bab8`, `0xf47bfefe`, `0xb528de45` on 15m, and `0xb305d384`/`0xf6beafa7` on 5m. `0x30be23d0` retained as a push-concentration suspect (sub-floor). `analyze_btc5m_durable_core_profile.py` `CORE` updated and re-run: 9 rows, all 162–542 markets, no small-sample caveats, shrunk win 0.53–0.58, all mid-window timing (no late-window sniper — the old `0x61e6cefb` priority retired). Status doc named-wallets table, quote-state TODO, and funding `--extra-wallets` updated to match.
 
 ## Durable-core "92% win" was share-weighting (§3.1 vindicated)
 
@@ -260,7 +262,7 @@ Edge survives the tax in every cell with a crop: median-wallet breakeven 27× (m
 
 ## Corrected-core funding (gap #3)
 
-All 9 corrected-core wallets traced (`btc5m_suspect_funding_corrected_core/`): **0 suspect-to-suspect transfers**; 3 weak shared counterparties (each 2 of 19 wallets, common node `0x53208bf2`, none touch the control) flagged as candidate links pending the same fanout disambiguation the prior trace applied — consistent with the standing no-shared-operator finding, now extended to the corrected core.
+The re-picked core wallets traced (`btc5m_suspect_funding_corrected_core/`, re-run 2026-06-13 on the strength-ranked core): **0 suspect-to-suspect transfers**; 4 weak shared counterparties (each 2–3 of 18 wallets, none touch the control) flagged as candidate links pending the same fanout disambiguation the prior trace applied. One (`0x1510565e`) links two core 15m wallets (`0x76696ac0`+`0x8f6dc0d2`) — mildly more interesting than the rest, but at 3-of-18 with no control contact it is most likely a shared CEX/onramp. No-shared-operator finding holds on the corrected core.
 
 ## Net effect on the program's conclusions
 
