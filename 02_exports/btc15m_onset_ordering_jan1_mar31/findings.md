@@ -19,7 +19,9 @@ corrected run uses the pre-close BH crop at span 1500 / baseline 890.
 
 No wallet's pre-onset-flat share beats random timestamp placement in its
 own markets: **minimum flat_perm_p = 0.094** uncorrected across 19 testable
-wallets (median 0.74) — chance-consistent at 20 tests. Median
+wallets (median 0.74) — chance-consistent at 20 tests. *(Superseded: the
+corrected `_preclose` BH-crop rerun gives minimum flat_perm_p = 0.012 across
+18 wallets — see the banner above and `analysis_report.md`.)* Median
 no-push-after-entry share 66.7% (Apr–Jun: 76%): as in every prior cell,
 the crop's wins concentrate in markets with **no visible winner-ward push
 after their entry** — micro-margin markets (median contested margin

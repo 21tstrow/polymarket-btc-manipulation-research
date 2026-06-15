@@ -13,16 +13,16 @@ Replaces the modeled cost-to-flip (Q2) with **measured** economics on actual eve
 
 | cohort | markets | with push | median prize | median net | profitable | median net (push) | profitable (push) |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| all contested | 1,170 | 427 | $0 | $0 | 491/1170 | −$0.07 | 182/427 |
-| flip | 99 | 87 | $0 | −$0.46 | 33/99 | −$1.32 | 29/87 |
-| already-winner assist | 976 | 305 | $0 | $0 | 414/976 | −$0.02 | 135/305 |
+| all contested | 1,170 | 427 | $1,272 | $1,219 | 1134/1170 | $1,635 | 408/427 |
+| flip | 99 | 87 | $3,903 | $3,398 | 96/99 | $3,398 | 84/87 |
+| already-winner assist | 976 | 305 | $865 | $843 | 944/976 | $1,074 | 290/305 |
 
-Two facts, in tension, and both true:
+Two facts, both true (numbers corrected 2026-06-13 with on-chain winner labels):
 
-1. **The median contested market has nothing in it.** Median prize is $0 — most contested closes have no late winner-side Polymarket buying at all, so there is nothing to profit from and the median realized net is ~$0. The "opportunity" does not exist in the typical market.
-2. **A real, large tail does exist.** 268 of 1,170 markets had a late winner-side prize over $1,000, and in 182 markets a winner-aligned push was present *and* the prize exceeded its measured round-trip cost. The top events net $7K–$15K against spot costs of $0.01–$500 — profit/cost ratios in the hundreds-to-thousands. See `analysis_report.md` for the top-10 table.
+1. **The typical contested market carries a real prize.** Under on-chain labels the median contested-market prize is **$1,272** — 1,144 of 1,170 markets have a positive late winner-side prize and 1,134 are profitable net of measured spot cost. The earlier "$0 median / nothing in the typical market" reading was a stale-label artifact (Jan–Apr Gamma-fallback winners), now corrected via `--winner-override-csv`.
+2. **A real, large tail dominates the upside.** 641 of 1,170 markets had a late winner-side prize over $1,000, and in 408 markets a winner-aligned push was present *and* the prize exceeded its measured round-trip cost. The top events net **$12K–$22K** against spot costs of $0.02–$1,500 — profit/cost ratios in the hundreds-to-thousands. See `analysis_report.md` for the top-10 table.
 
-So the economics are **wildly favorable when a large late Polymarket position coincides with a cheap spot push** — exactly the conditions in the tail — and absent everywhere else. The binding constraint is not spot cost; it is whether a valuable late winner-side Polymarket position exists.
+So the economics are favorable across most contested markets and **wildly favorable in the tail**, where a large late Polymarket position coincides with a cheap spot push. The binding constraint is not spot cost (trivial — dollars to low-thousands even on the biggest events); it is the size of the late winner-side Polymarket position that exists.
 
 ## What this does and does not show
 
