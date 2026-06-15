@@ -4,6 +4,8 @@ This repo exists to answer one question and its follow-ons:
 
 > **Is there evidence of market manipulation in the final seconds of BTC 5-minute windows that influences the Polymarket outcome and shifts payouts?**
 
+**Bottom line up front (2026-06-14) — start here, not with the Q1–Q4 detection table below.** The strongest evidence says **yes, on the wallet track.** After a small set of high-volume "leader" wallets place their pre-close Polymarket bets, Kraken spot taker flow turns one-sided toward their side — beyond volume-matched markets they never bet (pooled post-bet DiD **+0.32** [5m] / **+0.12** [15m], all six 15m wallets positive; total-volume placebo null; pre-bet flow runs *against* them until they commit). Under Ockham this is **self/cluster supply of the closing flow**; the only thing missing is address-level attribution on the anonymous spot tape (forward collector, running). See the **⭑ Headline finding** section below for the full result and the named wallets. The Q1–Q4 table and "Current Answer" that follow are a **separate, deliberately conservative track** — the final-seconds-flow-spike *detection battery* — which is an underpowered null; do not mistake it for the project's answer.
+
 If yes:
 
 | # | Question | Status |
