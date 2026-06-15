@@ -1,0 +1,7 @@
+wallet,product,n_markets,pre_onset_flat,post_onset,choppy_gap,no_push_after_entry,no_spot_data,flat_share_of_decided,baseline_flat_share_of_decided,post_move_share_of_decided,flat_perm_p,flat_perm_p_lowmom,n_lowmom_decided,flat_perm_p_contested,n_contested_decided,n_in_basis_band,timing_vs_spot,flat_perm_bh_reject
+0x24f5bab872129fde97221b3b69ca9eb2013398d2,15m_janmar,104,25,16,9,54,0,0.6098,0.659,0.3902,0.8125937031484258,0.9540229885057471,34,0.9485257371314343,25,,no_timing_edge_vs_random,0
+0x45ca17313cffdb5b596438500a2fe0c899633cef,15m_janmar,123,31,15,5,72,0,0.6739,0.714,0.3261,0.8120939530234883,0.6351824087956022,39,0.815592203898051,24,,no_timing_edge_vs_random,0
+0x76696ac0c8f6058fb1f7e0983a198aef1da28390,15m_janmar,31,12,0,3,16,0,1.0,0.725,0.0,0.008995502248875561,0.06546726636681659,10,0.16591704147926037,7,,pre_move_raw_only_fails_correction,0
+0x8f6dc0d2e2d881fac8c2d189b78233b2b3dc6993,15m_janmar,99,13,20,1,65,0,0.3939,0.6521,0.6061,1.0,0.9995002498750625,25,0.9865067466266867,12,,no_timing_edge_vs_random,0
+0xb528de45d8e0e3d11336cb3a3e1639e0e721aade,15m_janmar,65,15,6,3,41,0,0.7143,0.691,0.2857,0.5022488755622189,0.5942028985507246,17,0.4267866066966517,13,,no_timing_edge_vs_random,0
+0xf47bfefe39ef77c4301670c7831026b0cd61418e,15m_janmar,125,33,31,9,52,0,0.5156,0.6605,0.4844,0.9975012493753124,0.9700149925037481,52,0.7396301849075462,29,,no_timing_edge_vs_random,0

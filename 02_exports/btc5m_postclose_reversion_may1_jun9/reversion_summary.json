@@ -1,0 +1,61 @@
+{
+  "product": "5m_mayjun",
+  "n_won": 144,
+  "n_lost": 46,
+  "n_absent": 918,
+  "horizons": {
+    "5": {
+      "mean_reversion_won": 0.0422,
+      "mean_reversion_absent": -0.2281,
+      "mean_reversion_lost": -0.5917,
+      "n_won": 144,
+      "n_absent": 917,
+      "n_lost": 46,
+      "matched_diff_won_minus_absent": 0.287,
+      "perm_p_won_gt_absent": 0.03948025987006497,
+      "matched_diff_won_minus_lost": 0.6014,
+      "perm_p_won_gt_lost": 0.006496751624187906
+    },
+    "15": {
+      "mean_reversion_won": 0.082,
+      "mean_reversion_absent": -0.4378,
+      "mean_reversion_lost": -0.8047,
+      "n_won": 144,
+      "n_absent": 909,
+      "n_lost": 45,
+      "matched_diff_won_minus_absent": 0.5661,
+      "perm_p_won_gt_absent": 0.031484257871064465,
+      "matched_diff_won_minus_lost": 0.8898,
+      "perm_p_won_gt_lost": 0.01999000499750125
+    },
+    "30": {
+      "mean_reversion_won": -0.1134,
+      "mean_reversion_absent": -0.6956,
+      "mean_reversion_lost": -0.3287,
+      "n_won": 121,
+      "n_absent": 830,
+      "n_lost": 42,
+      "matched_diff_won_minus_absent": 0.5916,
+      "perm_p_won_gt_absent": 0.10094952523738131,
+      "matched_diff_won_minus_lost": 0.2726,
+      "perm_p_won_gt_lost": 0.33183408295852074
+    }
+  },
+  "flow_descriptive": {
+    "cohort_won": {
+      "median_concentration_f5_f30": 0.2222,
+      "median_flow_per_move": 62546.825,
+      "median_flow30_usd": 165191.4121
+    },
+    "cohort_lost": {
+      "median_concentration_f5_f30": 0.1089,
+      "median_flow_per_move": 413.302,
+      "median_flow30_usd": 462.4717
+    },
+    "cohort_absent": {
+      "median_concentration_f5_f30": 0.0001,
+      "median_flow_per_move": 708.1653,
+      "median_flow30_usd": 1626.8472
+    }
+  }
+}

@@ -1,0 +1,423 @@
+{
+  "product": "15m_janmar",
+  "primary": "concentration_f5_f30",
+  "pooled_concentration": {
+    "att": -0.0166,
+    "ci": [
+      -0.1317,
+      0.0985
+    ],
+    "n_wallets": 6
+  },
+  "n_wallets": 6,
+  "per_wallet": [
+    {
+      "wallet": "0x24f5bab872129fde97221b3b69ca9eb2013398d2",
+      "n_won_usable": 120,
+      "n_matched": 119,
+      "n_off_support": 1,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.102,
+          "post": -0.014
+        },
+        "pre_vol_bps": {
+          "pre": 0.109,
+          "post": 0.049
+        },
+        "pre_drift_bps": {
+          "pre": -0.007,
+          "post": -0.004
+        }
+      },
+      "concentration": {
+        "att": -0.3196,
+        "ci": [
+          -1.136,
+          0.1916
+        ],
+        "n": 119
+      },
+      "flow30_usd": {
+        "att": -16148.2757,
+        "ci": [
+          -59209.7843,
+          18846.8153
+        ],
+        "n": 119
+      },
+      "PLACEBO_volume": {
+        "att": -3992.2713,
+        "ci": [
+          -19722.2885,
+          12608.5532
+        ],
+        "n": 119
+      },
+      "impact_residual": {
+        "att": 0.5822,
+        "ci": [
+          0.0061,
+          1.2078
+        ],
+        "n": 119
+      },
+      "reversion_15": {
+        "att": -0.4794,
+        "ci": [
+          -1.18,
+          0.2807
+        ],
+        "n": 111
+      },
+      "reversion_30": {
+        "att": -0.7773,
+        "ci": [
+          -1.7466,
+          0.1698
+        ],
+        "n": 97
+      }
+    },
+    {
+      "wallet": "0x45ca17313cffdb5b596438500a2fe0c899633cef",
+      "n_won_usable": 140,
+      "n_matched": 139,
+      "n_off_support": 1,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.117,
+          "post": 0.004
+        },
+        "pre_vol_bps": {
+          "pre": 0.11,
+          "post": 0.062
+        },
+        "pre_drift_bps": {
+          "pre": 0.043,
+          "post": -0.027
+        }
+      },
+      "concentration": {
+        "att": -3.2225,
+        "ci": [
+          -9.7421,
+          0.0592
+        ],
+        "n": 139
+      },
+      "flow30_usd": {
+        "att": 12206.1959,
+        "ci": [
+          -7420.9783,
+          32882.7118
+        ],
+        "n": 139
+      },
+      "PLACEBO_volume": {
+        "att": 14506.4553,
+        "ci": [
+          -6498.0464,
+          46594.4768
+        ],
+        "n": 139
+      },
+      "impact_residual": {
+        "att": 0.5814,
+        "ci": [
+          0.0313,
+          1.1604
+        ],
+        "n": 139
+      },
+      "reversion_15": {
+        "att": -0.0086,
+        "ci": [
+          -0.592,
+          0.5582
+        ],
+        "n": 129
+      },
+      "reversion_30": {
+        "att": -0.2831,
+        "ci": [
+          -1.1122,
+          0.5258
+        ],
+        "n": 112
+      }
+    },
+    {
+      "wallet": "0x76696ac0c8f6058fb1f7e0983a198aef1da28390",
+      "n_won_usable": 96,
+      "n_matched": 95,
+      "n_off_support": 1,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.078,
+          "post": 0.008
+        },
+        "pre_vol_bps": {
+          "pre": 0.088,
+          "post": 0.027
+        },
+        "pre_drift_bps": {
+          "pre": -0.055,
+          "post": 0.001
+        }
+      },
+      "concentration": {
+        "att": -0.0135,
+        "ci": [
+          -0.2319,
+          0.187
+        ],
+        "n": 95
+      },
+      "flow30_usd": {
+        "att": -2699.0661,
+        "ci": [
+          -26289.7054,
+          20940.8797
+        ],
+        "n": 95
+      },
+      "PLACEBO_volume": {
+        "att": 8167.863,
+        "ci": [
+          -7786.7571,
+          25339.8368
+        ],
+        "n": 95
+      },
+      "impact_residual": {
+        "att": 0.964,
+        "ci": [
+          0.2553,
+          1.7606
+        ],
+        "n": 95
+      },
+      "reversion_15": {
+        "att": -0.2125,
+        "ci": [
+          -1.0033,
+          0.5378
+        ],
+        "n": 90
+      },
+      "reversion_30": {
+        "att": -0.1356,
+        "ci": [
+          -1.2641,
+          0.918
+        ],
+        "n": 82
+      }
+    },
+    {
+      "wallet": "0x8f6dc0d2e2d881fac8c2d189b78233b2b3dc6993",
+      "n_won_usable": 166,
+      "n_matched": 165,
+      "n_off_support": 1,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.017,
+          "post": -0.001
+        },
+        "pre_vol_bps": {
+          "pre": 0.127,
+          "post": 0.032
+        },
+        "pre_drift_bps": {
+          "pre": 0.137,
+          "post": 0.014
+        }
+      },
+      "concentration": {
+        "att": -0.0535,
+        "ci": [
+          -0.2479,
+          0.129
+        ],
+        "n": 165
+      },
+      "flow30_usd": {
+        "att": 5451.1399,
+        "ci": [
+          -15873.7721,
+          27297.7937
+        ],
+        "n": 165
+      },
+      "PLACEBO_volume": {
+        "att": 4479.501,
+        "ci": [
+          -5733.3351,
+          16785.1788
+        ],
+        "n": 165
+      },
+      "impact_residual": {
+        "att": 0.4853,
+        "ci": [
+          -0.0174,
+          1.0467
+        ],
+        "n": 165
+      },
+      "reversion_15": {
+        "att": 0.1384,
+        "ci": [
+          -0.4167,
+          0.7118
+        ],
+        "n": 151
+      },
+      "reversion_30": {
+        "att": 0.3537,
+        "ci": [
+          -0.3949,
+          1.0973
+        ],
+        "n": 130
+      }
+    },
+    {
+      "wallet": "0xb528de45d8e0e3d11336cb3a3e1639e0e721aade",
+      "n_won_usable": 114,
+      "n_matched": 112,
+      "n_off_support": 2,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.002,
+          "post": 0.003
+        },
+        "pre_vol_bps": {
+          "pre": 0.172,
+          "post": 0.074
+        },
+        "pre_drift_bps": {
+          "pre": 0.141,
+          "post": 0.034
+        }
+      },
+      "concentration": {
+        "att": 0.0057,
+        "ci": [
+          -0.245,
+          0.2304
+        ],
+        "n": 112
+      },
+      "flow30_usd": {
+        "att": -4114.4397,
+        "ci": [
+          -32164.3854,
+          23305.3936
+        ],
+        "n": 112
+      },
+      "PLACEBO_volume": {
+        "att": 5931.5395,
+        "ci": [
+          -7752.6936,
+          21357.8835
+        ],
+        "n": 112
+      },
+      "impact_residual": {
+        "att": 0.5232,
+        "ci": [
+          -0.2097,
+          1.217
+        ],
+        "n": 112
+      },
+      "reversion_15": {
+        "att": -0.1403,
+        "ci": [
+          -0.8109,
+          0.4798
+        ],
+        "n": 100
+      },
+      "reversion_30": {
+        "att": -0.1676,
+        "ci": [
+          -1.1168,
+          0.7892
+        ],
+        "n": 89
+      }
+    },
+    {
+      "wallet": "0xf47bfefe39ef77c4301670c7831026b0cd61418e",
+      "n_won_usable": 159,
+      "n_matched": 158,
+      "n_off_support": 1,
+      "balance_smd": {
+        "log_vol": {
+          "pre": 0.009,
+          "post": 0.006
+        },
+        "pre_vol_bps": {
+          "pre": 0.34,
+          "post": 0.087
+        },
+        "pre_drift_bps": {
+          "pre": -0.018,
+          "post": -0.023
+        }
+      },
+      "concentration": {
+        "att": 0.2915,
+        "ci": [
+          -0.0575,
+          0.8817
+        ],
+        "n": 158
+      },
+      "flow30_usd": {
+        "att": 9371.7341,
+        "ci": [
+          -14105.7773,
+          32715.7962
+        ],
+        "n": 158
+      },
+      "PLACEBO_volume": {
+        "att": 11164.6026,
+        "ci": [
+          -3162.8662,
+          31100.8117
+        ],
+        "n": 158
+      },
+      "impact_residual": {
+        "att": 0.5979,
+        "ci": [
+          0.081,
+          1.0668
+        ],
+        "n": 158
+      },
+      "reversion_15": {
+        "att": -0.1688,
+        "ci": [
+          -0.7918,
+          0.4566
+        ],
+        "n": 149
+      },
+      "reversion_30": {
+        "att": -0.0351,
+        "ci": [
+          -0.7853,
+          0.7484
+        ],
+        "n": 132
+      }
+    }
+  ]
+}

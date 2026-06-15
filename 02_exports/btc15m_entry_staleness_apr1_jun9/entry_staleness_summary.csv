@@ -1,0 +1,2 @@
+wallet,product,n_markets,pre_onset_flat,post_onset,choppy_gap,no_push_after_entry,no_spot_data,flat_share_of_decided,baseline_flat_share_of_decided,post_move_share_of_decided,flat_perm_p,flat_perm_p_lowmom,n_lowmom_decided,flat_perm_p_contested,n_contested_decided,n_in_basis_band,timing_vs_spot,flat_perm_bh_reject
+0x45ca17313cffdb5b596438500a2fe0c899633cef,15m_aprjun,167,30,12,0,125,0,0.7143,0.7265,0.2857,0.6696651674162919,0.41529235382308843,37,0.5687156421789106,24,111,no_timing_edge_vs_random,0

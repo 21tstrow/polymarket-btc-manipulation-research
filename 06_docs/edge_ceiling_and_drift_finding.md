@@ -38,8 +38,9 @@ spot-reactor. Primary = basis-clean gamma strikes, conservative last-pre-close s
 
 All perm p ≤ 0.001 and BH-reject. They buy the side spot **disfavors** at entry (`E[g] < 0.5`;
 entry price 0.33–0.40 underdog) and win above what the public spot level predicts. Removing
-core markets from `g` and dropping the ≤10 bps contested cut both **raise** R — so headline R is
-conservative. Adversarial artifact audit (exact-offset `g`, 1-bps fine bins, all-margin `g`,
+core markets from `g` (decontam) **raises** R for all 6 wallets (+0.097…+0.174); dropping the
+≤10 bps contested cut (all-strikes) **slightly lowers** R for 5 of 6 (+0.087…+0.157) but it stays
+positive and BH-significant — so R is robust to both reconstructions. Adversarial artifact audit (exact-offset `g`, 1-bps fine bins, all-margin `g`,
 hand-check of `frac_against`, median spot ≈ −2.25 bps among against-wins): **R survives every
 reconstruction.** R>0 is real.
 
@@ -250,18 +251,30 @@ beyond matched wallet-absent markets at the same relative time. The flow **follo
   control-clustered + RE rerun widened CIs ~20–40%. The **pooled 5m and 15m effects survive**; the 4
   marginal 15m singletons do not individually (report the pooled sign + the 5m>15m ordering, not the
   six singletons).
-- **Cannot establish (anonymous tape):** that the post-bet flow is *W's own* spot orders. It cannot
-  separate (a) W/cluster supplying the flow (manufacture) from (b) third parties copying/anticipating
-  W's PM order on spot from (c) W timing entries onto an exogenous reversal onset. The drift evidence
-  (spot moves *against* them at +15/30/60s, reverting only by close) tilts **away from continuous**
-  self-pushing.
+- **Cannot establish (anonymous tape):** that the post-bet flow is *W's own* spot orders — the address
+  is not on the Kraken tape. It separates the live hypotheses only by plausibility: **(a) W/cluster
+  supplying the flow (manufacture)** vs **(c) W timing an exogenous move it predicted.** A third
+  hypothesis — (b) unaffiliated parties spending money to push spot in W's favor — has no economic
+  incentive and is **not a serious alternative** (any such actor is either the same operator → (a) or
+  trading shared information → (c)). The drift evidence (spot moves *against* them at +15/30/60 s,
+  reverting by close) argues against *continuous* pushing from entry — **not** against a *final-seconds*
+  push, which is exactly where the footprint's last-5s concentration sits. (c) requires forecasting
+  1–2 bps drifts over ~2 min accurately enough to win repeatedly, and the **negative pre-bet directional
+  share** means there is no move to predict at the commitment instant — so under Ockham (a) is the
+  parsimonious reading.
 
 ## Calibrated bottom line
 **A robust, cross-product, manufacture-SHAPED timing signature: spot flow turns one-sided toward these
 wallets' side immediately after they commit on Polymarket, beyond volume-matched controls, and it is
-not the mechanical or volume artifact.** This is the strongest live signal in the program and it is
-**consistent with — not proof of — self-supply of late directional flow.** It does not exonerate and it
-does not convict. Decisive separators (next): (1) **abruptness RD at the bet second** — a discontinuous
+not the mechanical or volume artifact.** This is the **affirmative result of the program.** The flow
+that decides these markets materializes *after* the wallet commits and *on its side*, with the pre-bet
+directional share negative (no move to predict yet). Under Ockham the candidate sources reduce to
+**(a) self/cluster supply (manufacture)** — the parsimonious reading — versus the much weaker **(c)
+exogenous-move prediction** (implausible at 1–2 bps over ~2 min, and contradicted by the negative
+pre-bet drift); unaffiliated third-party supply has no incentive and collapses into (a) or (c). The one
+thing the anonymous Kraken tape still cannot do is bind the flow to the wallet's *address* — that
+attribution is the remaining step, **not** the existence of the effect. Decisive separators (next):
+(1) **abruptness RD at the bet second** — a discontinuous
 Kraken-flow jump exactly at the PM-bet timestamp (which is exogenous to Kraken) is manufacture; a smooth
 pre-existing reversal is prediction; (2) **stake-scaling** — does post-bet flow scale with W's PM
 notional; (3) **spot-actor identity** (forward collector) — the clean separator.

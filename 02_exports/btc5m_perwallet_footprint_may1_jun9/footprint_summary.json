@@ -1,0 +1,151 @@
+{
+  "product": "5m_mayjun",
+  "primary": "concentration_f5_f30",
+  "pooled_concentration": {
+    "att": 0.226,
+    "ci": [
+      0.0619,
+      0.39
+    ],
+    "n_wallets": 2
+  },
+  "n_wallets": 2,
+  "per_wallet": [
+    {
+      "wallet": "0xb305d384400e3d7a15780216a55368ea677eca4e",
+      "n_won_usable": 136,
+      "n_matched": 134,
+      "n_off_support": 2,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.119,
+          "post": 0.005
+        },
+        "pre_vol_bps": {
+          "pre": -0.197,
+          "post": 0.044
+        },
+        "pre_drift_bps": {
+          "pre": -0.779,
+          "post": -0.033
+        }
+      },
+      "concentration": {
+        "att": 0.1925,
+        "ci": [
+          0.0209,
+          0.3714
+        ],
+        "n": 134
+      },
+      "flow30_usd": {
+        "att": 215988.0212,
+        "ci": [
+          85604.0159,
+          380043.4497
+        ],
+        "n": 134
+      },
+      "PLACEBO_volume": {
+        "att": 15842.6673,
+        "ci": [
+          -5625.4044,
+          45328.9136
+        ],
+        "n": 134
+      },
+      "impact_residual": {
+        "att": 0.0275,
+        "ci": [
+          -0.4397,
+          0.4771
+        ],
+        "n": 134
+      },
+      "reversion_15": {
+        "att": -0.1836,
+        "ci": [
+          -0.7506,
+          0.3281
+        ],
+        "n": 130
+      },
+      "reversion_30": {
+        "att": -0.4744,
+        "ci": [
+          -1.4004,
+          0.3608
+        ],
+        "n": 111
+      }
+    },
+    {
+      "wallet": "0xf6beafa72d6416525c4cf039c9c122883dbef6a3",
+      "n_won_usable": 134,
+      "n_matched": 133,
+      "n_off_support": 1,
+      "balance_smd": {
+        "log_vol": {
+          "pre": -0.205,
+          "post": -0.006
+        },
+        "pre_vol_bps": {
+          "pre": -0.165,
+          "post": 0.021
+        },
+        "pre_drift_bps": {
+          "pre": -0.752,
+          "post": -0.036
+        }
+      },
+      "concentration": {
+        "att": 0.4633,
+        "ci": [
+          0.0844,
+          1.0176
+        ],
+        "n": 133
+      },
+      "flow30_usd": {
+        "att": 236949.6889,
+        "ci": [
+          110664.8537,
+          403300.3757
+        ],
+        "n": 133
+      },
+      "PLACEBO_volume": {
+        "att": -7343.0343,
+        "ci": [
+          -29525.7794,
+          13479.2884
+        ],
+        "n": 133
+      },
+      "impact_residual": {
+        "att": 0.3462,
+        "ci": [
+          -0.1532,
+          0.827
+        ],
+        "n": 133
+      },
+      "reversion_15": {
+        "att": 0.1974,
+        "ci": [
+          -0.1613,
+          0.5588
+        ],
+        "n": 130
+      },
+      "reversion_30": {
+        "att": 0.3966,
+        "ci": [
+          -0.1908,
+          0.974
+        ],
+        "n": 110
+      }
+    }
+  ]
+}

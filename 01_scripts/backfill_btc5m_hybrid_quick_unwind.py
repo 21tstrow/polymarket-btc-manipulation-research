@@ -1259,6 +1259,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prior-momentum-lookback-seconds", type=int, default=DEFAULT_PRIOR_MOMENTUM_LOOKBACK_SECONDS)
     parser.add_argument("--max-price-lag-seconds", type=int, default=2)
     parser.add_argument("--permutations", type=int, default=20_000)
+    parser.add_argument(
+        "--min-matched-controls",
+        type=int,
+        default=MIN_MATCHED_CONTROLS,
+        help="minimum same-market matched controls a market needs to be flow-spike-eligible "
+        "(default 20; lower to estimate the thin-volume primary cell — sensitivity rerun only, "
+        "use a _minctrl<N> out-dir).",
+    )
     parser.add_argument("--print-every", type=int, default=250)
     parser.add_argument(
         "--checkpoint-every",
@@ -1271,6 +1279,11 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    # Allow relaxing the same-market matched-control floor for the thin-volume
+    # sensitivity rerun. build_exchange_metrics_for_market reads MIN_MATCHED_CONTROLS
+    # as a module global at call time (single-process), so rebinding here suffices.
+    global MIN_MATCHED_CONTROLS
+    MIN_MATCHED_CONTROLS = args.min_matched_controls
     cache_dir = Path(args.cache_dir)
     args.gamma_cache_dir = args.gamma_cache_dir or str(cache_dir)
     args.exchange_cache_dir = args.exchange_cache_dir or str(cache_dir)

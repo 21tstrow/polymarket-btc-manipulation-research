@@ -1,0 +1,122 @@
+{
+  "product": "5m_mayjun",
+  "primary": "did_dshare (post-bet minus pre-bet directional share, vs matched control)",
+  "pooled_did": {
+    "att": 0.3222,
+    "ci": [
+      0.1795,
+      0.4649
+    ],
+    "tau2": 0.00472,
+    "n_wallets": 2,
+    "method": "DL random-effects, control-clustered boot"
+  },
+  "per_wallet": [
+    {
+      "wallet": "0xb305d384400e3d7a15780216a55368ea677eca4e",
+      "anchor_s": -141,
+      "n_treated": 161,
+      "n_matched": 160,
+      "n_off_support": 1,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.027
+        },
+        "dshare_pre": {
+          "post": -0.01
+        }
+      },
+      "did_dshare": {
+        "att": 0.2469,
+        "ci": [
+          0.0776,
+          0.3877
+        ],
+        "se": 0.0791,
+        "n": 160
+      },
+      "dshare_post": {
+        "att": 0.2426,
+        "ci": [
+          0.0721,
+          0.3891
+        ],
+        "se": 0.08087,
+        "n": 160
+      },
+      "aligned_post_usd": {
+        "att": 213391.5264,
+        "ci": [
+          68719.313,
+          363793.0686
+        ],
+        "se": 75273.91723,
+        "n": 160
+      },
+      "PLACEBO_pre_vol": {
+        "att": 130.7065,
+        "ci": [
+          -10327.3637,
+          14840.1652
+        ],
+        "se": 6420.28801,
+        "n": 160
+      },
+      "treated_dshare_pre_mean": -0.0505,
+      "treated_dshare_post_mean": 0.3902
+    },
+    {
+      "wallet": "0xf6beafa72d6416525c4cf039c9c122883dbef6a3",
+      "anchor_s": -187,
+      "n_treated": 164,
+      "n_matched": 162,
+      "n_off_support": 2,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.005
+        },
+        "dshare_pre": {
+          "post": -0.006
+        }
+      },
+      "did_dshare": {
+        "att": 0.3926,
+        "ci": [
+          0.2261,
+          0.5178
+        ],
+        "se": 0.0744,
+        "n": 162
+      },
+      "dshare_post": {
+        "att": 0.3883,
+        "ci": [
+          0.2227,
+          0.5145
+        ],
+        "se": 0.07446,
+        "n": 162
+      },
+      "aligned_post_usd": {
+        "att": 312416.7383,
+        "ci": [
+          172283.9176,
+          479796.4723
+        ],
+        "se": 78447.08027,
+        "n": 162
+      },
+      "PLACEBO_pre_vol": {
+        "att": -544.1337,
+        "ci": [
+          -8279.2229,
+          13677.4352
+        ],
+        "se": 5601.18829,
+        "n": 162
+      },
+      "treated_dshare_pre_mean": -0.0714,
+      "treated_dshare_post_mean": 0.4414
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "product": "15m_janmar",
+  "primary": "did_dshare (post-bet minus pre-bet directional share, vs matched control)",
+  "pooled_did": {
+    "att": 0.1156,
+    "ci": [
+      0.0624,
+      0.1687
+    ],
+    "tau2": 0.0,
+    "n_wallets": 6,
+    "method": "DL random-effects, control-clustered boot"
+  },
+  "per_wallet": [
+    {
+      "wallet": "0x24f5bab872129fde97221b3b69ca9eb2013398d2",
+      "anchor_s": -217,
+      "n_treated": 145,
+      "n_matched": 143,
+      "n_off_support": 2,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.026
+        },
+        "dshare_pre": {
+          "post": -0.011
+        }
+      },
+      "did_dshare": {
+        "att": 0.1741,
+        "ci": [
+          0.0619,
+          0.3371
+        ],
+        "se": 0.07022,
+        "n": 143
+      },
+      "dshare_post": {
+        "att": 0.1689,
+        "ci": [
+          0.0652,
+          0.3327
+        ],
+        "se": 0.06825,
+        "n": 143
+      },
+      "aligned_post_usd": {
+        "att": 32820.8954,
+        "ci": [
+          -41787.0109,
+          103765.9035
+        ],
+        "se": 37130.84553,
+        "n": 143
+      },
+      "PLACEBO_pre_vol": {
+        "att": 2623.7137,
+        "ci": [
+          -5150.9197,
+          13605.7819
+        ],
+        "se": 4784.87287,
+        "n": 143
+      },
+      "treated_dshare_pre_mean": -0.182,
+      "treated_dshare_post_mean": 0.2538
+    },
+    {
+      "wallet": "0x45ca17313cffdb5b596438500a2fe0c899633cef",
+      "anchor_s": -193,
+      "n_treated": 172,
+      "n_matched": 168,
+      "n_off_support": 4,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.029
+        },
+        "dshare_pre": {
+          "post": -0.013
+        }
+      },
+      "did_dshare": {
+        "att": 0.1198,
+        "ci": [
+          -0.0299,
+          0.2203
+        ],
+        "se": 0.06384,
+        "n": 168
+      },
+      "dshare_post": {
+        "att": 0.1182,
+        "ci": [
+          -0.0274,
+          0.2224
+        ],
+        "se": 0.0637,
+        "n": 168
+      },
+      "aligned_post_usd": {
+        "att": -63607.6459,
+        "ci": [
+          -211621.2088,
+          49749.7957
+        ],
+        "se": 66676.27666,
+        "n": 168
+      },
+      "PLACEBO_pre_vol": {
+        "att": 7548.7243,
+        "ci": [
+          -3457.2088,
+          25403.691
+        ],
+        "se": 7362.47444,
+        "n": 168
+      },
+      "treated_dshare_pre_mean": 0.0556,
+      "treated_dshare_post_mean": 0.1948
+    },
+    {
+      "wallet": "0x76696ac0c8f6058fb1f7e0983a198aef1da28390",
+      "anchor_s": -195,
+      "n_treated": 115,
+      "n_matched": 113,
+      "n_off_support": 2,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.031
+        },
+        "dshare_pre": {
+          "post": -0.015
+        }
+      },
+      "did_dshare": {
+        "att": 0.1172,
+        "ci": [
+          -0.0542,
+          0.2791
+        ],
+        "se": 0.08502,
+        "n": 113
+      },
+      "dshare_post": {
+        "att": 0.1113,
+        "ci": [
+          -0.0529,
+          0.2779
+        ],
+        "se": 0.08439,
+        "n": 113
+      },
+      "aligned_post_usd": {
+        "att": -47706.5299,
+        "ci": [
+          -199364.1151,
+          67250.483
+        ],
+        "se": 68013.92809,
+        "n": 113
+      },
+      "PLACEBO_pre_vol": {
+        "att": -1400.7944,
+        "ci": [
+          -15271.1433,
+          14194.5112
+        ],
+        "se": 7516.7486,
+        "n": 113
+      },
+      "treated_dshare_pre_mean": -0.1035,
+      "treated_dshare_post_mean": 0.2187
+    },
+    {
+      "wallet": "0x8f6dc0d2e2d881fac8c2d189b78233b2b3dc6993",
+      "anchor_s": -249,
+      "n_treated": 203,
+      "n_matched": 198,
+      "n_off_support": 5,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.04
+        },
+        "dshare_pre": {
+          "post": -0.007
+        }
+      },
+      "did_dshare": {
+        "att": 0.0931,
+        "ci": [
+          -0.0218,
+          0.2259
+        ],
+        "se": 0.06318,
+        "n": 198
+      },
+      "dshare_post": {
+        "att": 0.0932,
+        "ci": [
+          -0.0219,
+          0.2246
+        ],
+        "se": 0.06289,
+        "n": 198
+      },
+      "aligned_post_usd": {
+        "att": 4618.0808,
+        "ci": [
+          -133941.1593,
+          79229.116
+        ],
+        "se": 54380.17227,
+        "n": 198
+      },
+      "PLACEBO_pre_vol": {
+        "att": 2983.652,
+        "ci": [
+          -7059.3404,
+          19086.9165
+        ],
+        "se": 6669.96347,
+        "n": 198
+      },
+      "treated_dshare_pre_mean": 0.0048,
+      "treated_dshare_post_mean": 0.1845
+    },
+    {
+      "wallet": "0xb528de45d8e0e3d11336cb3a3e1639e0e721aade",
+      "anchor_s": -192,
+      "n_treated": 133,
+      "n_matched": 132,
+      "n_off_support": 1,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.018
+        },
+        "dshare_pre": {
+          "post": -0.001
+        }
+      },
+      "did_dshare": {
+        "att": 0.1658,
+        "ci": [
+          0.0091,
+          0.2797
+        ],
+        "se": 0.06903,
+        "n": 132
+      },
+      "dshare_post": {
+        "att": 0.1681,
+        "ci": [
+          0.0126,
+          0.2836
+        ],
+        "se": 0.06913,
+        "n": 132
+      },
+      "aligned_post_usd": {
+        "att": -22615.4302,
+        "ci": [
+          -213371.8301,
+          63260.8883
+        ],
+        "se": 70569.57101,
+        "n": 132
+      },
+      "PLACEBO_pre_vol": {
+        "att": 2240.4217,
+        "ci": [
+          -4393.0667,
+          14859.8647
+        ],
+        "se": 4911.46208,
+        "n": 132
+      },
+      "treated_dshare_pre_mean": -0.1332,
+      "treated_dshare_post_mean": 0.1943
+    },
+    {
+      "wallet": "0xf47bfefe39ef77c4301670c7831026b0cd61418e",
+      "anchor_s": -223,
+      "n_treated": 194,
+      "n_matched": 189,
+      "n_off_support": 5,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.031
+        },
+        "dshare_pre": {
+          "post": -0.004
+        }
+      },
+      "did_dshare": {
+        "att": 0.0582,
+        "ci": [
+          -0.0519,
+          0.1691
+        ],
+        "se": 0.05638,
+        "n": 189
+      },
+      "dshare_post": {
+        "att": 0.0555,
+        "ci": [
+          -0.055,
+          0.1654
+        ],
+        "se": 0.05623,
+        "n": 189
+      },
+      "aligned_post_usd": {
+        "att": 18041.6097,
+        "ci": [
+          -47372.8574,
+          71727.8024
+        ],
+        "se": 30382.82137,
+        "n": 189
+      },
+      "PLACEBO_pre_vol": {
+        "att": 4455.0781,
+        "ci": [
+          -4618.1997,
+          19811.0902
+        ],
+        "se": 6231.9617,
+        "n": 189
+      },
+      "treated_dshare_pre_mean": 0.0326,
+      "treated_dshare_post_mean": 0.2015
+    }
+  ]
+}

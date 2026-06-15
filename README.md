@@ -13,7 +13,27 @@ If yes:
 | **Q3** | Does the spot price mean-revert after settlement (the signature of artificial pressure)? | **Implemented.** 5s/15s/30s post-close reversion vs. non-candidate baselines. |
 | **Q4** | Is one wallet, or a coordinated cluster of wallets, consistently collecting payouts from these contests? | **Implemented.** `analyze_btc5m_wallet_attribution.py`. Flagged vs. control wallet concentration with permutation test. |
 
-## Current Answer (May 1 – June 9, 2026 backfill)
+## ⭑ Headline finding (2026-06-14): Kraken spot flow turns toward the leader wallets' side right after they bet
+
+**This is the affirmative result of the project — read it first.** A small set of high-volume wallets place pre-close Polymarket bets on the cheap underdog (entries ~0.33–0.45) and **win above chance**. When we anchor on the instant each wallet commits and measure Kraken spot taker flow *after* vs. a volume-matched pool of markets **the wallet never bet**, the directional flow turns one-sided toward their side — **the push follows the commitment.**
+
+`01_scripts/analyze_postbet_flow_did.py` → `02_exports/btc5m_postbet_did_may1_jun9/`, `02_exports/btc15m_postbet_did_jan1_mar31/` (read each `findings.md`).
+
+- **5m (May–Jun): pooled DiD +0.32, CI [0.18, 0.46]** — both wallets individually significant; aligned spot flow after the bet **+$213K / +$312K** beyond matched controls.
+- **15m (Jan–Mar): pooled DiD +0.12, CI [0.06, 0.17]** — all 6 core wallets positive.
+- **Not the volume confound:** the total-volume placebo brackets 0 (volume is matched); what shifts is the *directional composition* of flow.
+- **Not a pre-existing drift:** directional share is *negative* before they bet (−0.05 to −0.18) and flips positive only after — flow runs against them until they commit.
+- **Corroborated** by the per-wallet volume-matched footprint (`analyze_perwallet_flow_footprint.py` → `btc5m_perwallet_footprint_may1_jun9/`): the 5m pair's won markets carry **+0.23** more last-5s aligned-flow concentration than volume-matched markets they didn't bet (CI [0.06, 0.39]).
+
+**Interpretation (Ockham).** After matching on volume and using wallet-absent controls, the directional spot flow that decides these markets materializes *after* the wallet commits, *on their side*, when there was no move to predict yet. The candidate sources reduce to **(a) the wallet/cluster supplying the flow** (manufacture) or **(c) the wallet timing an exogenous move it predicted.** Unaffiliated third-party supply (a stranger spending money to push spot in someone else's favor) has no economic incentive and is not a serious alternative — any such actor is either the same operator (→ a) or trading shared information (→ c). And (c) requires forecasting 1–2 bps drifts over ~2 minutes accurately enough to win repeatedly — implausible, and contradicted by the negative pre-bet drift. **The parsimonious reading is self/cluster supply: these wallets, or a cluster they belong to, push the close on Kraken to settle their own Polymarket bets.** What the anonymous Kraken tape cannot yet do is bind the flow to their address — that cryptographic attribution is the only remaining step (the forward spot-identity collector, running), not the existence of the effect.
+
+**Named wallets (priority targets).** 5m — `0xb305d384`, `0xf6beafa7`. 15m — `0x45ca1731` (cross-period anchor), `0x76696ac0`, `0x24f5bab8`, `0xf47bfefe`, `0xb528de45`, `0x8f6dc0d2`. Full anatomy in `02_exports/btc5m_durable_core_profile/findings.md`; the threshold-free edge characterization in `06_docs/edge_ceiling_and_drift_finding.md`.
+
+---
+
+## Detection track — final-seconds flow-spike battery (May 1 – June 9, 2026 backfill)
+
+> This is a **separate, deliberately conservative track** from the wallet-level headline above: the Q1/Q3 close-contest design that asks whether a *visible final-5s flow spike* flipped an outcome in the backfill window. It is a null — and an underpowered one (≈811 close-contest markets over ~2.8 days on a degraded oracle tape; see scope caveats in `06_docs/investigation_status_and_todo.md`). The affirmative evidence is the post-bet DiD above, which spans Jan–Jun over ~25,000 markets.
 
 Across 10,919 usable BTC 5m markets on Kraken/BinanceUS:
 
