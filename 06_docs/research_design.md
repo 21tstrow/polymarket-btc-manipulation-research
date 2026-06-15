@@ -7,9 +7,9 @@ For BTC Up/Down 5m Polymarket markets: when BTC is flat and near the strike befo
 This maps to four tracks:
 
 - **Q1 (detection)**: final-window flow spikes that influence the winning side.
-- **Q2 (economics)**: cost to move the settlement price vs. Polymarket payout at stake. *Not yet implemented.*
+- **Q2 (economics)**: cost to move the settlement price vs. Polymarket payout at stake. *Implemented — see Section 5.*
 - **Q3 (reversion)**: post-close mean reversion as the signature of artificial pressure.
-- **Q4 (attribution)**: wallet(s) consistently profiting in flagged markets. *Not yet implemented.*
+- **Q4 (attribution)**: wallet(s) consistently profiting in flagged markets. *Implemented — see Section 6.*
 
 The repo covers TWO products. The Q1–Q4 detection pipeline below is built for the 5m product; the 15m track (live since 2026-06-11) reuses the wallet-track scripts via `--timeframe 15m` and its own universe construction — see "The 15m Track" at the end of this document. The original legacy-15m entrypoints (`analyze_btc15m_{close_contests,resolution_pressure,underlying_volume}.py`) are fail-fast stubs from the era when the repo was 5m-only; archived legacy-15m artifacts live in `99_legacy/` and must not be read by default.
 

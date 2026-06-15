@@ -1,11 +1,17 @@
 # Dynamic-fee experiment — findings
-> **Caveat (2026-06-12):** computed on all fills (including post-close) with
-> Gamma-fallback winner labels, both since shown defective — 248 contested
-> markets were mislabeled, Jan-Apr only (see
-> `02_exports/btc5m_resolution_gap/findings.md`). For the corrected picture
-> read `02_exports/btc5m_crop_persistence/findings.md` and the
-> `02_exports/btc5m_wallet_edge*_preclose/` runs. Kept for the record;
-> re-run pending (status-doc TODO #3).
+> **Corrected rerun LANDED (2026-06-13) — read `analysis_report.md` in this dir
+> for the current numbers.** The tables in this narrative are the original
+> 2026-06-12 *all-fills, Gamma-fallback-label* reading and are SUPERSEDED: 248
+> contested markets were mislabeled (Jan–Apr only) and post-close fills inflated
+> the crops. The corrected run uses the BH `_preclose` crops (3 / 7 / 11 / 1
+> wallets for 5m mar–apr / 5m may–jun / 15m jan–mar / 15m apr–jun — the 15m
+> jan–mar 11 is the 12-member BH crop minus `0x36946572d7`, which has only 9
+> contested markets, below the n_markets>=10 crop-membership gate), pre-close fills, and on-chain labels: the edge still
+> survives the fee in every cell — median-wallet breakeven **27× / 24× / 19× /
+> 14×**, 93–98% retained, ~$131K pooled net-of-fee profit-if-held. **The
+> conclusion (the crop's margin is categorically not latency-arb-sized) is
+> unchanged; only the magnitudes shrink.** The all-fills numbers below (55
+> wallets, $527K, 63–64× breakeven) are kept for the record.
 
 Question: Polymarket sized a dynamic taker fee (fee = shares × 0.07 × p(1−p),
 peaking ~1.75¢/share at 50/50) specifically to make latency arbitrage

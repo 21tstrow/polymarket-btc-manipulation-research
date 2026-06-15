@@ -5,6 +5,7 @@ __pycache__/
 
 # secrets — never commit
 .env
+.env.chainlink
 oracle_keys/
 
 # resumable data caches (22GB) — regenerate via --fetch-missing

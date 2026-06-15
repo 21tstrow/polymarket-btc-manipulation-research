@@ -1,17 +1,19 @@
 # Durable-core wallet profiles — findings
 
-> **2026-06-13 — core RE-PICKED (strength-ranked across products).** The old
-> per-fill-z core (`0x10c95474`/`0x30be23d0`/`0x773a2f6c`/`0x61e6cefb`/
-> `0xfcefc196`) did not survive the BH crop. The new core is the highest
+> **2026-06-13 — core RE-PICKED (strength-ranked across products).** Four of
+> the five old per-fill-z core wallets
+> (`0x10c95474`/`0x30be23d0`/`0x773a2f6c`/`0x61e6cefb`) did not survive the BH
+> crop; `0xfcefc196` survived BH (market_bet_z≈3.84, n_markets≈398, crop
+> member) but ranked below the top-9 and was not re-selected. The new core is the highest
 > corrected per-market-significance (`market_bet_z`) crop members across both
 > products, anchored by `0x45ca1731` (the only cross-period crop member:
 > Jan-Mar z=5.24 / Apr-Jun z=4.03). All 9 profiled rows now have adequate
-> samples (162–542 markets, **no small-sample caveats**), honest shrunk win
+> samples (~162–608 markets, **no small-sample caveats**), honest shrunk win
 > rates **0.53–0.58**, edges +0.10 to +0.28, and payout-weighted timing all
 > mid-window (−114 to −175s) — i.e. commitment-before-close, **no late-window
-> sniper profile** (the old `0x61e6cefb` "late-window priority", a 10-market
+> sniper profile** (the old `0x61e6cefb` "late-window priority", an 11-market
 > anecdote, is dropped). The "~92% win" headline was **share-weighting**: per
-> market the retired hit-and-runs were `0x773a2f6c` 54% / `0x61e6cefb` 83%.
+> market the retired hit-and-runs were `0x773a2f6c` 54% / `0x61e6cefb` ~86%.
 > Highest combined significance+edge in the new core: `0x76696ac0` (z=6.15,
 > shrunk win 0.58, edge +0.28). `0x30be23d0` is retained as a push-concentration
 > suspect (z=2.95, sub-floor; 8.1× unconditioned push p=0.0005) but is not a
@@ -20,7 +22,7 @@
 > **Selection caveat (2026-06-12 methodology audit, §3.1).** These wallets
 > were SELECTED for extreme edge and are profiled here on the same data, so
 > raw win rates are winner's-curse inflated — most severely for the
-> hit-and-run wallets (`0x773a2f6c` 13 market bets, `0x61e6cefb` 10): their
+> hit-and-run wallets (`0x773a2f6c` 13 market bets, `0x61e6cefb` 14 market bets across 11 markets): their
 > "~92% share-weighted win" rows are anecdotes, not estimates.
 > `core_profiles.csv` now carries `market_bets_n`, `market_win_rate_raw`,
 > `market_win_rate_shrunk` (empirical-Bayes pull toward no-edge with 20
@@ -34,51 +36,56 @@ winner labels, contested ≤10 bps markets). Script:
 z-scores quoted from the corrected per-cell runs
 (`02_exports/btc5m_wallet_edge*_preclose/`, `btc15m_wallet_edge_*_preclose/`).
 
-| wallet | cell | active span | mkts | shares | entry | win (sh-wt) | edge/sh | z | P&L-if-held | payout-wt median timing |
+| wallet | cell | active span | mkts | shares | entry | win/mkt (shrunk) | edge/sh | market_bet_z | P&L-if-held | payout-wt median timing |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `0x30be23d0` | 5m | Apr 12 → Jun 6 (55d) | 172 | 162k | 0.464 | 59.6% | +0.132 | 33.2 | $21.5K | **−112s** |
-| `0x10c95474` | 5m | Apr 2 → May 13 (41d) | 512 | 211k | 0.420 | 56.7% | +0.147 | 12.0 | $31.1K | **−91s** |
-| `0xfcefc196` | 15m Apr–Jun | Apr 29 → Jun 8 (40d) | 327 | 77k | 0.401 | 61.1% | +0.210 | 22.6 | $16.3K | **−162s** |
-| `0x45ca1731` | 15m Jan–Mar | (spans both 15m periods) | 269 | — | ~0.33 | 54.4% | +0.216 | 29.7 | $15.3K (Jan–Mar cell) | **−127s** |
-| `0x773a2f6c` | 5m | Mar 4 → Mar 8 (4d) | 13 | 56k | 0.323 | **92.5%** | +0.602 | 20.7 | $33.6K | −103s |
-| `0x61e6cefb` | 5m | Jun 6 → Jun 7 (2d) | 8 | 54k | 0.331 | **92.0%** | +0.589 | 11.4 | $31.9K | **−17s** |
+| `0x45ca1731` ⚓ | 15m Jan–Mar | Feb 16 → Mar 31 (43d) | 269 | 71k | 0.328 | 0.529 | +0.216 | 5.24 | $15.3K | **−127s** |
+| `0x45ca1731` ⚓ | 15m Apr–Jun | Apr 1 → Jun 8 (68d) | 455 | 62k | 0.400 | 0.570 | +0.147 | 4.03 | $9.2K | **−117s** |
+| `0x76696ac0` | 15m Jan–Mar | Mar 1 → Mar 31 (30d) | 162 | 8k | 0.338 | 0.584 | +0.280 | 6.15 | $2.2K | **−149s** |
+| `0x8f6dc0d2` | 15m Jan–Mar | Feb 25 → Mar 31 (34d) | 303 | 35k | 0.395 | 0.536 | +0.103 | 7.54 | $3.6K | **−141s** |
+| `0x24f5bab8` | 15m Jan–Mar | Feb 12 → Mar 31 (47d) | 215 | 78k | 0.367 | 0.557 | +0.149 | 6.65 | $11.6K | **−163s** |
+| `0xf47bfefe` | 15m Jan–Mar | Feb 2 → Mar 25 (51d) | 259 | 30k | 0.352 | 0.560 | +0.144 | 5.15 | $4.3K | **−175s** |
+| `0xb528de45` | 15m Jan–Mar | Jan 5 → Mar 31 (85d) | 203 | 25k | 0.360 | 0.553 | +0.216 | 4.89 | $5.4K | **−141s** |
+| `0xb305d384` | 5m | May 3 → Jun 8 (36d) | 258 | 80k | 0.403 | 0.535 | +0.121 | 4.55 | $9.7K | **−114s** |
+| `0xf6beafa7` | 5m | Apr 4 → Jun 8 (65d) | 542 | 45k | 0.378 | 0.546 | +0.136 | 4.07 | $6.1K | **−129s** |
 
-## Two phenotypes
+(⚓ = `0x45ca1731`, the cross-period anchor — the only wallet that is a BH crop member in both 15m periods. `market_bet_z` is the corrected per-market-bet significance from the matching `_preclose` cell; `win/mkt (shrunk)` is the empirical-Bayes-shrunk per-market win rate — quote this, not the share-weighted figure that produced the retired "~92%" headline.)
 
-**Long-runners** (`30be23d0`, `10c95474`, `fcefc196`, `45ca1731`): 150–500
-contested markets over 40–55 days, 54–61% of share-dollars winning at
-0.33–0.46 entries — +0.13 to +0.22 per share sustained for over a month. The
-winning money is committed early: half of `30be23d0`'s realized payout sits on
-bets placed >112s before close (71% from >60s out); the 15m wallets' medians
-are −127s to −162s with 85% of winning payout from >60s out. A correction to
-the "cross-period persistence" framing in the crop-persistence findings: the
-5m pair are **continuous runs that straddle the Apr 30 calendar cut**, not
-wallets that resurfaced — `10c95474` ran Apr 2–May 13 then went silent;
-`30be23d0` ran Apr 12–Jun 6.
+## One phenotype: mid-window grinders
 
-**Hit-and-runs** (`773a2f6c`, `61e6cefb`): 2–4 days, 8–13 contested markets,
-~92% share-weighted win at 0.32–0.33 entries, ~$32–34K each — as much
-extracted in days as the grinders made in weeks, then gone. They differ on the
-dimension that matters:
+The corrected core is a single behavioural type — **sustained mid-window
+commitment grinders**. Every wallet places ~162–608 contested bets over 30–85
+active days, wins **0.53–0.58 of markets** (empirical-Bayes-shrunk; the
+share-weighted figures run higher but are dominated by a few large bets — the
+artifact that produced the retired "~92%" headline), at **0.33–0.40 entry
+prices** with **+0.10 to +0.28 edge per share** sustained for over a month.
 
-- `773a2f6c` (Mar 4–8) won on **early** money — payout-weighted median −103s,
-  3% of winning payout inside the last 30s. The grinder commitment shape,
-  compressed, at extreme hit rate.
-- `61e6cefb` (Jun 6–7) is **the outlier of the entire core**: payout-weighted
-  median **−17s**, with **85% of realized payout from bets placed 10–30s
-  before close**. The only profile consistent with last-half-minute
-  information — seeing the settlement drift form faster than the book, or
-  causing it. **Priority target for the quote-state-at-entry test** (with
-  `0x32ec633a` as the arb-shaped positive control).
+The winning money is committed **mid-window, not at the buzzer**: every
+wallet's payout-weighted median entry sits between **−114s and −175s**, and the
+−10..0s bucket carries near-zero realized payout for all of them (0–11%). **No
+late-window sniper profile remains** — the old `0x61e6cefb` "−17s, 85%-of-
+payout-in-the-last-30s" outlier was an 11-market anecdote and is dropped from the
+core, so its former quote-state priority is retired.
 
-## The fade pattern
+`0x45ca1731` is the **anchor**: the only wallet that is a BH crop member in both
+15m periods (Jan–Mar z=5.24 → Apr–Jun z=4.03), onset-null in both. Among the
+rest, significance and edge diverge — `0x8f6dc0d2` has the highest significance
+in the repo (z=7.54) but the smallest edge (+0.10) and the highest last-10s
+payout share (11%): a structural/latency signature, not a sniper one.
+`0x76696ac0` is the opposite (z=6.15, edge +0.28), the best combined
+significance-and-edge.
 
-The strongest per-share edges appear in short bursts on fresh wallets
-(+0.59/+0.60 over days); sustained operation settles to +0.13–0.22. Consistent
-with an exploitable signal that decays with exposure — or operators who rotate
-wallets before their footprint accumulates. The funding-graph null (no shared
-operator) predates this six-wallet list; **re-running the funding trace on
-exactly these six is open** (status-doc TODO).
+## Significance is not edge
+
+The spread between the highest-z wallet (`0x8f6dc0d2`, +0.10/share) and the
+highest-edge wallet (`0x76696ac0`, +0.28/share) is the core tension: a small,
+extremely consistent per-market effect is more consistent with a structural or
+latency advantage than with a few manufactured wins, but at this magnitude it is
+indistinguishable from micro-drift causation by price-path methods. The
+funding-graph trace on exactly this core has now landed
+(`02_exports/btc5m_suspect_funding_corrected_core/`, 2026-06-13): **0
+suspect-to-suspect transfers, no shared operator** — of four candidate operator
+links, the largest counterparty (`0x1510565e`) links three 15m wallets
+(`0x76696ac0`+`0x8f6dc0d2`+`0xb528de45`) but touches no control.
 
 ## Caveats
 
@@ -87,7 +94,8 @@ exactly these six is open** (status-doc TODO).
 - P&L is profit-if-held to resolution; no sell-side netting.
 - Spans are first/last fills in the contested-market caches, not on-chain
   wallet lifetimes.
-- The burst wallets' z-scores ride on few markets — the evidence is the
-  magnitude per share-dollar, not the market count.
-- `0x45ca1731` is profiled on its Jan–Mar cell only here; its Apr–Jun
-  continuation is documented in `02_exports/btc15m_wallet_edge_jan1_mar31/findings.md`.
+- **In-sample (audit §3.1):** these wallets were selected for extreme corrected
+  edge and profiled on the same data, so even the shrunk win rates carry some
+  winner's-curse inflation — treat the per-market win rates as upper bounds.
+- `0x45ca1731`'s two rows are its Jan–Mar and Apr–Jun legs profiled separately;
+  the continuation is documented in `02_exports/btc15m_wallet_edge_jan1_mar31/findings.md`.

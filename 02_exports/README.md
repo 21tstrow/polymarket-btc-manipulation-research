@@ -53,7 +53,7 @@ Important files:
 - `btc5m_suspicious_window_scan/`  
   Cross-venue ranked suspicious-window scan.
 - `btc5m_expanded_settlement_buckets/`  
-  Mean/median Kraken XBTUSD 5-second bucket graphs for all May 1-present 5m markets, the low-volume close-20bps subset, and the all-volume narrow close-10bps subset.
+  Mean/median Kraken XBTUSD 5-second bucket graphs for all May 1-present 5m markets and the low-volume close-20bps subset.
 - `btc5m_candidate_volume_buckets/` and `btc5m_all_nonquarter_volume_buckets/`  
   5-second bucket summaries for plots.
 

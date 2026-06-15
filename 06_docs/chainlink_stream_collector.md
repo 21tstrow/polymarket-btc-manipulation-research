@@ -26,7 +26,7 @@ If you leave `CHAINLINK_BTC_USD_STREAM_ID` blank, discovery is attempted at star
 01_scripts/start_chainlink_btc_stream_collector.sh
 ```
 
-That starts a background process through macOS `caffeinate -dimsu`, so the laptop should stay awake while the collector is running.
+That starts a background process, wrapped in macOS `caffeinate -dimsu` when `caffeinate` is available, so the laptop should stay awake while the collector is running.
 When `screen` is installed, the launcher uses a detached screen session named `chainlink_btc_stream`, which is the preferred all-day/all-night mode.
 
 Foreground alternative:

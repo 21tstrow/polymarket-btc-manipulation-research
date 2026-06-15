@@ -467,7 +467,7 @@ def parse_args() -> argparse.Namespace:
         "--taker-fee-bps",
         type=float,
         default=10.0,
-        help="exchange taker fee per leg in bps (Kraken ~10 bps at volume tiers, 25 bps retail)",
+        help="exchange taker fee per leg in bps (Kraken ~10 bps at volume tiers, 26 bps retail)",
     )
     parser.add_argument("--fetch-missing", action="store_true")
     return parser.parse_args()

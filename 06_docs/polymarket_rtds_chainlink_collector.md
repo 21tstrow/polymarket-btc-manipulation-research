@@ -13,7 +13,7 @@ This is useful while waiting for sponsored Chainlink Data Streams credentials. I
 By default this subscribes to:
 
 ```json
-{"topic":"crypto_prices_chainlink","type":"*","filters":"{\"symbol\":\"btc/usd\"}"}
+{"action":"subscribe","subscriptions":[{"topic":"crypto_prices_chainlink","type":"*","filters":"{\"symbol\":\"btc/usd\"}"}]}
 ```
 
 The launcher uses macOS `caffeinate -dimsu` when available.
