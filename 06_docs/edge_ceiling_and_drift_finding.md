@@ -214,18 +214,30 @@ control.** The 15m core shows nothing (pooled null, every wallet NS). Mechanical
 
 ---
 
-# Post-bet directional-flow DiD — the strongest live signal (2026-06-14)
+# Post-bet directional-flow DiD — corrected 2026-06-16, extended to bet level 2026-06-23
 
-Script: `01_scripts/analyze_postbet_flow_did.py`. Outputs: `02_exports/btc5m_postbet_did_may1_jun9/`,
-`02_exports/btc15m_postbet_did_jan1_mar31/`. Built on the research lead's reframe: **don't fix a last-5s
+> **2026-06-16 correction:** the original section below was win-conditioned. The script now defaults
+> to outcome-unconditioned `treatment=all`, signs treated rows to the first pre-close BUY side,
+> excludes SELL-only pre-close participation from wallet-absent controls, uses both Up/Down
+> control perspectives for `all`/`lost`, and writes a manifest. At market level the corrected read
+> is **5m live, 15m not significant**. The **2026-06-23 bet-level P&L-weighted extension** (below)
+> then shows the 15m signal concentrates in the bets carrying the money: **suspicious wallets in
+> both products**, cleanest in 5m.
+
+Scripts: `01_scripts/analyze_postbet_flow_did.py` (market-level),
+`01_scripts/analyze_postbet_flow_betlevel_did.py` (bet-level). Outputs:
+`02_exports/btc{5m,15m}_postbet_did_*_alltraded/` (market-level primary),
+`02_exports/btc{5m,15m}_postbet_betlevel_did_*/` (bet-level; read `findings.md`); the won-conditioned
+`02_exports/btc5m_postbet_did_may1_jun9/` and `02_exports/btc15m_postbet_did_jan1_mar31/` are
+superseded diagnostics. Built on the research lead's reframe: **don't fix a last-5s
 window — anchor on WHEN each wallet bets, then measure spot flow AFTER, comparing overall volume to the
-directional ("narrow") flow; and re-examine 15m, not just 5m.** That correction turned a 5m-only,
-window-biased non-result into a robust cross-product signal.
+directional ("narrow") flow; and re-examine 15m, not just 5m.**
 
 **Metric.** For each suspect W: anchor on W's first pre-close BUY (offset `o_e`). Directional share =
 aligned-to-W's-side Kraken $-flow / overall $-volume. **DiD = directional share in the post-bet window
-`(o_e, close]` minus the equal-length pre-bet window `(o_e−L, o_e]`** — treated (W-won contested
-markets) vs **wallet-absent** controls, matched on exact spot-volume-decile × margin + kNN on
+`(o_e, close]` minus the equal-length pre-bet window `(o_e−L, o_e]`** — primary treated set is all
+first pre-close BUY entries, with `won`/`lost` diagnostics; **wallet-absent** controls exclude any
+pre-close wallet trade, matched on exact spot-volume-decile × margin + kNN on
 pre-bet covariates. Inference (corrected per a 4-person econometrics/asset-pricing review panel):
 **control-clustered two-way bootstrap** + **DerSimonian–Laird random-effects pool**. PLACEBO =
 pre-bet overall volume.
@@ -234,12 +246,36 @@ pre-bet overall volume.
 
 | cell | pooled DiD [95% CI] | per-wallet DiD | within-market pre→post |
 | --- | --- | --- | --- |
-| **5m May–Jun** | **+0.32 [0.18, 0.46]** (τ²=0.005) | `0xb305d384` +0.25 [0.08, 0.39]; `0xf6beafa7` +0.39 [0.23, 0.52] — both sig | −0.05→+0.39; −0.07→+0.44 |
-| **15m Jan–Mar** | **+0.12 [0.06, 0.17]** (τ²=0, homogeneous) | 2/6 individually sig (`0x24f5bab8` +0.17 [0.06,0.34]; `0xb528de45` +0.17 [0.01,0.28]); **all 6 positive** | e.g. −0.18→+0.25, −0.13→+0.19, −0.10→+0.22 |
+| **5m May–Jun, all first-BUY entries** | **about +0.33 [0.24, 0.41]** in the dirty all-entry rerun | both 5m wallets remain positive | live lead |
+| **15m Jan–Mar, all first-BUY entries** | **+0.0313 [-0.0093, 0.0719]** | lost-market flow negative | not significant; won-only result is diagnostic |
 
-In **both products**, at matched pre-bet volume (placebo-vol CIs bracket 0; |SMD|≤0.04), spot flow is
-**neutral-to-against their side before they bet, then turns one-sided toward their side after** —
-beyond matched wallet-absent markets at the same relative time. The flow **follows the commitment.**
+In **5m**, at matched pre-bet volume, spot flow remains anomalously directional after the wallet pair
+commits. In **15m**, the outcome-unconditioned result no longer clears zero at the market level.
+
+## Bet-level P&L-weighted extension (2026-06-23)
+
+Equal-weighting every wallet-market is not how the money is placed. The bet-level runner makes every
+pre-close BUY fill one treated observation, signed to its own side and weighted by its **realized
+P&L magnitude if held** (win: size×(1−p); lose: size×p), with market- and wallet-cluster bootstrap
+validation:
+
+| cell | weighted DiD [naive CI] | market-cluster CI | per-wallet | placebo |
+| --- | --- | --- | --- | --- |
+| **5m May–Jun** (1,624 bets) | **+0.412 [0.336, 0.486]** | **[0.323, 0.499]** | `0xb305d384` +0.43, `0xf6beafa7` +0.35 | null in every split ✓ |
+| **15m Jan–Mar** (15,158 bets) | +0.178 [0.151, 0.204] | [0.078, 0.279] | **all six core wallets positive** +0.09..+0.21 | **FAILS** (+$2.6–8.9K) ✗ |
+
+The 15m money-weighted signal the market level dilutes is real in the data but **gated twice**: the
+pre-bet volume placebo fails (bet-level matching is imbalanced on volume — fix the match before
+quoting the CI), and the lost split is −0.175 (flow goes against them in markets they lose —
+prediction/selection-shaped). The 5m cell passes its placebo and is the clean result.
+
+**Won/lost basis caveat (2026-06-15 audit, applies to every won/lost split in this section):** in
+sub-2bp ties the oracle winner label (Gamma `finalPrice`/Chainlink) and the Kraken tape that defines
+the flow can disagree; oracle-lost-but-tape-won markets mechanically carry bet-side flow and inflate
+the lost split. Classified on a tape-consistent outcome, lost-market directional share is ≈0 in both
+products. This contaminates the lost-split *manufacture-vs-prediction discriminator* — not the
+pooled all-entry estimates, which never touch the outcome label. Productizing the tape-consistent
+split in both scripts is TODO #0 in the status doc.
 
 ## What the review panel established (and didn't)
 - **NOT a mechanical artifact.** Two reviewers empirically re-ran the fixed-anchor mechanical DiD on the
@@ -264,24 +300,20 @@ beyond matched wallet-absent markets at the same relative time. The flow **follo
   parsimonious reading.
 
 ## Calibrated bottom line
-**A robust, cross-product, manufacture-SHAPED timing signature: spot flow turns one-sided toward these
-wallets' side immediately after they commit on Polymarket, beyond volume-matched controls, and it is
-not the mechanical or volume artifact.** This is the **affirmative result of the program.** The flow
-that decides these markets materializes *after* the wallet commits and *on its side*, with the pre-bet
-directional share negative (no move to predict yet). Under Ockham the candidate sources reduce to
-**(a) self/cluster supply (manufacture)** — the parsimonious reading — versus the much weaker **(c)
-exogenous-move prediction** (implausible at 1–2 bps over ~2 min, and contradicted by the negative
-pre-bet drift); unaffiliated third-party supply has no incentive and collapses into (a) or (c). The one
-thing the anonymous Kraken tape still cannot do is bind the flow to the wallet's *address* — that
-attribution is the remaining step, **not** the existence of the effect. Decisive separators (next):
-(1) **abruptness RD at the bet second** — a discontinuous
+**Flows follow these wallets' commitments beyond volume-matched controls — cleanest for the 5m pair,
+dollar-for-dollar of stake; positive for the 15m core at bet level pending the placebo fix.** The
+corrected design keeps `0xb305d384`/`0xf6beafa7` the priority suspects and the six 15m core wallets
+live (they also stand independently on the wallet-edge/edge-ceiling track). What the DiD cannot do:
+bind the flow to the wallets' addresses (anonymous tape), or separate manufacture from prescient
+selection via the lost split (≈0 in 5m, negative in 15m, plus the tape-basis caveat). Decisive
+separators: (1) **abruptness RD at the bet second** — a discontinuous
 Kraken-flow jump exactly at the PM-bet timestamp (which is exogenous to Kraken) is manufacture; a smooth
 pre-existing reversal is prediction; (2) **stake-scaling** — does post-bet flow scale with W's PM
-notional; (3) **spot-actor identity** (forward collector) — the clean separator.
+notional; (3) **spot-actor identity** (forward collector) — the clean separator; (4) **quote-state at
+entry** (forward collector) — stale-vs-fair PM quotes at the commitment instant.
 
 ## Bottom line
-This is a **positive narrowing, not a null**: there is a real, volume-matched manufactured-pressure-
-shaped footprint in the 5m pair's won markets that public-volume selection does not explain. It does
-not by itself prove they (vs others) supply the flow, but it is the strongest existing-data signal in
-the program and makes `0xb305d384`/`0xf6beafa7` the priority for the stake-flow test and the forward
-spot-identity data.
+**Suspicious wallets in both products.** The 5m pair `0xb305d384`/`0xf6beafa7` — bet, then flows
+follow, P&L-weighted and placebo-clean — is the strongest existing-data signal and the priority for
+stake-flow and forward spot-identity tests. The 15m core is positive at bet level (all six wallets)
+behind two stated gates. The won-conditioned DiD reports are retained only as diagnostics.

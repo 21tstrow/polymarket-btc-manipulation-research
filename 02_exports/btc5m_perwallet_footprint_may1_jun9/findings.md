@@ -1,5 +1,10 @@
 # Per-wallet manufactured-pressure footprint — 5m_mayjun
 
+> **SUPERSEDED 2026-06-16 pending rerun:** this report was generated before the implementation
+> enforced the close-30 first-entry guard and before CIs were changed to a rematched clustered
+> bootstrap. The script now exact-matches on volume-decile × margin × period and no longer promises
+> a separate placebo window. Keep the 5m result as a live lead, but rerun before quoting intervals.
+
 > Primary: last-5s aligned-flow concentration (F5/F30), per-wallet vs **wallet-absent** matched controls (CEM on margin×period + kNN on log-spot-volume, pre-30s vol & drift — NOT on the late move). Effect sizes + 95% bootstrap CIs; flow30 and impact-residual confirmatory; reversion secondary (underpowered). PLACEBO_volume ATT should be ≈0 (proves the raw volume gap was selection). Contested ≤20.0bps. 2000 boots.
 
 ## Pooled primary (concentration): ATT = 0.226 CI [0.0619, 0.39] across 2 wallets
@@ -17,4 +22,4 @@
 ## Honest limits
 - Anonymous tape: a footprint is consistent-with manufacture AND with prescient selection of markets prone to a late push (residual selection-on-unobservables survives volume matching). Not proof; not exoneration.
 - balance post-SMD must be <0.1 to trust an ATT; wallets with poor overlap or n_won<min are reported as inconclusive, never 'no effect'.
-- NOT YET IMPLEMENTED (next): entry-timing DiD (footprint after vs before W's order — the cleanest manufacture-vs-selection separator), burst-coordination, midpoint-reversion.
+- Superseded design note: rerun with the current script before quoting; it now enforces the close-30 entry guard and rematches inside bootstrap CIs.

@@ -1,5 +1,11 @@
 # Post-bet directional-flow DiD — 5m_mayjun
 
+> **SUPERSEDED 2026-06-16:** generated before the corrected primary design. The script now defaults
+> to `treatment=all`, treats `won` as diagnostic, excludes SELL-only pre-close wallet participation
+> from wallet-absent controls, uses both Up/Down control perspectives for `all`/`lost`, and writes a
+> manifest. This 5m won-conditioned result remains directionally consistent with the corrected 5m
+> live lead but should not be quoted as the primary estimand.
+
 > Anchor = when W places its bet (first pre-close BUY). Directional share = aligned (toward W's side) / overall $-volume. **DiD = post-bet [entry,close] minus pre-bet [entry-L,entry] directional share**, treated vs WALLET-ABSENT controls (matched on pre-bet volume decile × margin + kNN on log-vol & pre-bet directional share, at the wallet's median anchor). PLACEBO = pre-bet overall volume (must match ~0). Effect sizes + 95% bootstrap CI.
 
 ## Pooled DiD ATT = 0.3222 CI [0.1795, 0.4649] (2 wallets)

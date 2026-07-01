@@ -1,5 +1,10 @@
 # Post-bet directional-flow DiD — 15m_janmar
 
+> **SUPERSEDED 2026-06-16:** this report is win-conditioned and is no longer a headline result.
+> The corrected primary all-entry rerun is **+0.0313 [-0.0093, 0.0719]** with negative lost-market
+> flow, so the 15m cross-product manufacture-shaped claim is retracted/demoted. Use `won` only as
+> a diagnostic.
+
 > Anchor = when W places its bet (first pre-close BUY). Directional share = aligned (toward W's side) / overall $-volume. **DiD = post-bet [entry,close] minus pre-bet [entry-L,entry] directional share**, treated vs WALLET-ABSENT controls (matched on pre-bet volume decile × margin + kNN on log-vol & pre-bet directional share, at the wallet's median anchor). PLACEBO = pre-bet overall volume (must match ~0). Effect sizes + 95% bootstrap CI.
 
 ## Pooled DiD ATT = 0.1156 CI [0.0624, 0.1687] (6 wallets)
