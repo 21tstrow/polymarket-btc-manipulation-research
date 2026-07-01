@@ -7,7 +7,7 @@ confounded by W selecting high-volume markets, and not biased by conditioning on
 late move). Effect-size-led; multiplicity annotates, it does not nullify.
 
 Design (per the econometrics/asset-pricing review panel):
-- Treated(W) = contested markets W bet AND won, with W's PM entry BEFORE close-30 (reverse-causality
+- Treated(W) = contested markets W's first BUY entry bet AND won, with that PM entry no later than close-30 (reverse-causality
   guard), sign-aligned to the side W bought.
 - Control(W) = contested markets W did NOT bet (per-wallet pool, recomputed per W).
 - FLOW ARM matches ONLY on pre-close-30s covariates: log(spot $-volume in [close-300,close-30]),
@@ -17,13 +17,13 @@ Design (per the econometrics/asset-pricing review panel):
   IMPACT-CURVE RESIDUAL (move beyond what flow+liquidity predict = injection signature).
 - REVERSION ARM (secondary, underpowered): matches additionally on |late move|; outcome reversion 15/30s.
 - PLACEBO-Y: spot-volume and pre-30s flow must give ATT~0 after matching (proves the volume gap is
-  selection, now removed). PLACEBO WINDOW [close-90,close-60] must show no footprint.
-- Per-wallet ATT + cluster bootstrap CI; pooled precision-weighted across wallets; BH-q annotation.
+  selection, now removed).
+- Per-wallet ATT + clustered/rematched bootstrap CI; pooled precision-weighted across wallets.
 
 HONEST LIMIT: the Kraken tape is anonymous — no trade is attributable to a wallet. A non-zero ATT
-means "W's won markets carry an anomalous late footprint vs matched W-absent markets" — consistent
+means "W's first-entry won markets carry an anomalous late footprint vs matched W-absent markets" — consistent
 with manufacture AND with prescient selection of markets prone to a late push. It is neither dead
-nor proven; the entry-timing DiD (flagged, partial) and forward quote data are the next separators.
+nor proven; the post-bet DiD and forward quote data are the complementary separators.
 """
 from __future__ import annotations
 import argparse
@@ -62,7 +62,13 @@ def load_universe(p: Path, flat_bps: float):
 
 
 def scan_wallets(trades_glob, targets: set[str], universe):
-    """One pass: {wallet: {cid: {'won':bool,'side':'Up/Down','first_ts':int}}} for target wallets."""
+    """One pass over target wallet-market participation.
+
+    `first_ts` / `side` / `won` describe only the first pre-close BUY entry.
+    Later opposite-side buys do not relabel the treatment side. Any pre-close
+    wallet trade, including SELL-only activity, keeps the market out of the
+    wallet-absent control pool.
+    """
     bets = {w: {} for w in targets}
     for path in sorted(glob.glob(trades_glob)):
         try:
@@ -76,19 +82,24 @@ def scan_wallets(trades_glob, targets: set[str], universe):
             if w not in targets:
                 continue
             cid = t.get("conditionId"); m = universe.get(cid)
-            if m is None or str(t.get("side") or "").upper() != "BUY":
-                continue
-            outcome = str(t.get("outcome") or "")
-            if outcome not in ("Up", "Down"):
+            if m is None:
                 continue
             ts = int(safe_float(t.get("timestamp")) or 0)
             if ts <= 0 or ts - m["end"] >= 0:
                 continue
-            rec = bets[w].get(cid)
-            if rec is None or ts < rec["first_ts"]:
-                bets[w][cid] = {"won": outcome == m["winner"], "side": outcome, "first_ts": ts}
-            else:
-                rec["won"] = rec["won"] or (outcome == m["winner"])
+            rec = bets[w].setdefault(
+                cid,
+                {"won": None, "side": None, "first_ts": None, "preclose_trade_count": 0, "buy_sides": set()},
+            )
+            rec["preclose_trade_count"] += 1
+            outcome = str(t.get("outcome") or "")
+            if str(t.get("side") or "").upper() != "BUY" or outcome not in ("Up", "Down"):
+                continue
+            rec["buy_sides"].add(outcome)
+            if rec["first_ts"] is None or ts < rec["first_ts"]:
+                rec["won"] = outcome == m["winner"]
+                rec["side"] = outcome
+                rec["first_ts"] = ts
     return bets
 
 
@@ -171,6 +182,8 @@ def smd(t, c):
 def cem_knn_match(treated, controls, cov_keys, cell_keys, k, caliper):
     """CEM on EXACT cell_keys (incl volume decile) + kNN on standardized continuous covs within cell,
     with replacement. Returns matches and the count of treated off common support (no in-cell control)."""
+    if not treated or not controls:
+        return [], len(treated), {}, {}
     means = {kk: st.mean([c[kk] for c in controls]) for kk in cov_keys}
     sds = {kk: (st.pstdev([c[kk] for c in controls]) or 1.0) for kk in cov_keys}
     def z(rec, kk): return (rec[kk] - means[kk]) / sds[kk]
@@ -193,21 +206,58 @@ def cem_knn_match(treated, controls, cov_keys, cell_keys, k, caliper):
     return matches, off_support, means, sds
 
 
-def att_ci(matches, ykey, rng, nboot):
+def att_point(matches, ykey):
     pairs = [(tr[ykey], st.mean([c[ykey] for c in cs if c.get(ykey) is not None]))
              for tr, cs in matches if tr.get(ykey) is not None and any(c.get(ykey) is not None for c in cs)]
     if len(pairs) < 8:
-        return None, None, None, len(pairs)
+        return None, len(pairs)
     diffs = [a - b for a, b in pairs]
-    att = st.mean(diffs)
+    return st.mean(diffs), len(diffs)
+
+
+def rematched_att_ci(treated, controls, cov_keys, cell_keys, k, caliper, ykey, rng, nboot):
+    """Clustered bootstrap that resamples treated and control pools, then reruns matching.
+
+    This carries match uncertainty, reused controls, shared-market/control-pool correlation,
+    and common-support instability into the interval instead of conditioning on one fixed
+    matched table.
+    """
+    matches, off_support, _, _ = cem_knn_match(treated, controls, cov_keys, cell_keys, k, caliper)
+    att, n = att_point(matches, ykey)
+    if att is None:
+        return {"att": None, "ci": [None, None], "n": n, "n_off_support": off_support}
+    if not treated or not controls:
+        return {"att": round(att, 4), "ci": [None, None], "n": n, "n_off_support": off_support}
     boots = []
-    n = len(diffs)
+    nt, nc = len(treated), len(controls)
     for _ in range(nboot):
-        s = [diffs[rng.randrange(n)] for _ in range(n)]
-        boots.append(st.mean(s))
+        tb = [treated[rng.randrange(nt)] for _ in range(nt)]
+        cb = [controls[rng.randrange(nc)] for _ in range(nc)]
+        bm, _, _, _ = cem_knn_match(tb, cb, cov_keys, cell_keys, k, caliper)
+        b, _ = att_point(bm, ykey)
+        if b is not None:
+            boots.append(b)
+    if len(boots) < 20:
+        return {"att": round(att, 4), "ci": [None, None], "n": n, "n_off_support": off_support}
     boots.sort()
-    lo = boots[int(0.025 * nboot)]; hi = boots[int(0.975 * nboot)]
-    return round(att, 4), round(lo, 4), round(hi, 4), n
+    lo = boots[int(0.025 * len(boots))]; hi = boots[int(0.975 * len(boots))]
+    return {"att": round(att, 4), "ci": [round(lo, 4), round(hi, 4)], "n": n, "n_off_support": off_support}
+
+
+def select_guarded_won_treated(wb, feat, universe, entry_guard_seconds: int):
+    """First-BUY won markets with features and entry outside the outcome window."""
+    treated = []
+    n_guard_excluded = 0
+    n_first_buy_won_with_features = 0
+    for cid, r in wb.items():
+        if not r.get("won") or r.get("first_ts") is None or cid not in feat:
+            continue
+        n_first_buy_won_with_features += 1
+        if r["first_ts"] > universe[cid]["end"] - entry_guard_seconds:
+            n_guard_excluded += 1
+            continue
+        treated.append(feat[cid])
+    return treated, n_first_buy_won_with_features, n_guard_excluded
 
 
 def run(args):
@@ -247,44 +297,57 @@ def run(args):
 
     cov = ["log_vol", "pre_vol_bps", "pre_drift_bps"]
     rev_cov = cov + ["final_move_bps"]
+    flow_cell = ["vol_decile", "margin_bin", "period"]
     per_wallet = []
     for w in sorted(targets):
         wb = bets.get(w, {})
         if not wb:
             print(f"{w[:10]}: no bets found", flush=True); continue
-        treated = [feat[cid] for cid, r in wb.items() if r["won"] and cid in feat]
+        treated, n_first_buy_won_with_features, n_guard_excluded = select_guarded_won_treated(
+            wb, feat, universe, args.entry_guard_seconds
+        )
         control = [feat[cid] for cid in feat if cid not in wb]
         if len(treated) < args.min_treated:
-            per_wallet.append({"wallet": w, "n_won_usable": len(treated), "note": "underpowered (CI only)"})
-            print(f"{w[:10]}: n_treated={len(treated)} underpowered", flush=True); continue
+            per_wallet.append({"wallet": w, "n_won_usable": len(treated),
+                               "n_first_buy_won_with_features": n_first_buy_won_with_features,
+                               "n_entry_guard_excluded": n_guard_excluded,
+                               "note": "underpowered (CI only)"})
+            print(f"{w[:10]}: n_treated={len(treated)} guard_excluded={n_guard_excluded} underpowered", flush=True); continue
         # FLOW ARM (exact volume-decile + margin cell; kNN on pre-30s covariates only)
-        matches, off_support, means, sds = cem_knn_match(treated, control, cov, ["vol_decile", "margin_bin"], args.k, args.caliper)
+        matches, off_support, means, sds = cem_knn_match(treated, control, cov, flow_cell, args.k, args.caliper)
         # balance
         bal = {kk: {"pre": round(smd([t[kk] for t in treated], [c[kk] for c in control]) or 0, 3),
                     "post": round(smd([tr[kk] for tr, _ in matches],
                                       [c[kk] for _, cs in matches for c in cs]) or 0, 3)} for kk in cov}
         rec = {"wallet": w, "n_won_usable": len(treated), "n_matched": len(matches),
+               "n_first_buy_won_with_features": n_first_buy_won_with_features,
+               "n_entry_guard_excluded": n_guard_excluded,
+               "entry_guard_seconds": args.entry_guard_seconds,
                "n_off_support": off_support, "balance_smd": bal}
         for ykey, label in [("concentration", "concentration"), ("flow30", "flow30_usd"),
                             ("spot_vol_usd", "PLACEBO_volume")]:
-            att, lo, hi, n = att_ci(matches, ykey, rng, args.bootstrap)
-            rec[label] = {"att": att, "ci": [lo, hi], "n": n}
+            rec[label] = rematched_att_ci(treated, control, cov, flow_cell, args.k, args.caliper,
+                                          ykey, rng, args.bootstrap)
         # impact-curve residual: move ~ a*signed_flow + b*sqrt(vol) on controls, score treated residual
-        rec["impact_residual"] = impact_residual_att(matches, rng, args.bootstrap)
+        rec["impact_residual"] = rematched_impact_residual_ci(treated, control, cov, flow_cell,
+                                                              args.k, args.caliper, rng, args.bootstrap)
         # REVERSION ARM (adds |move| to matching)
-        rmatch, _, _, _ = cem_knn_match(treated, control, rev_cov, ["vol_decile", "margin_bin"], args.k, args.caliper)
+        rmatch, _, _, _ = cem_knn_match(treated, control, rev_cov, flow_cell, args.k, args.caliper)
         for h in (15, 30):
-            att, lo, hi, n = att_ci(rmatch, f"reversion_{h}", rng, args.bootstrap)
-            rec[f"reversion_{h}"] = {"att": att, "ci": [lo, hi], "n": n}
+            rec[f"reversion_{h}"] = rematched_att_ci(treated, control, rev_cov, flow_cell, args.k, args.caliper,
+                                                     f"reversion_{h}", rng, args.bootstrap)
         per_wallet.append(rec)
         c = rec["concentration"]; f = rec["flow30_usd"]; pl = rec["PLACEBO_volume"]
-        print(f"{w[:10]}: nT={len(treated)} matched={len(matches)} off_support={off_support} "
+        print(f"{w[:10]}: nT={len(treated)} guard_excluded={n_guard_excluded} matched={len(matches)} off_support={off_support} "
               f"logvol post-SMD={bal['log_vol']['post']} | conc ATT={c['att']} CI{c['ci']} "
               f"| flow30 ATT={f['att']} | PLACEBO vol ATT={pl['att']} CI{pl['ci']} (want~0)", flush=True)
 
     # pooled (precision-weighted) on concentration primary
     pooled = pool_estimate([r for r in per_wallet if r.get("concentration", {}).get("att") is not None], "concentration")
     summary = {"product": args.product, "primary": "concentration_f5_f30", "pooled_concentration": pooled,
+               "design": {"entry_guard_seconds": args.entry_guard_seconds,
+                          "matching_exact_cells": flow_cell,
+                          "ci": "clustered/rematched bootstrap over treated and control pools"},
                "n_wallets": len([r for r in per_wallet if r.get("n_matched")]), "per_wallet": per_wallet}
     (out_dir / "footprint_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     _findings(out_dir / "findings.md", args, summary)
@@ -292,28 +355,53 @@ def run(args):
     return 0
 
 
-def impact_residual_att(matches, rng, nboot):
-    """move beyond flow+liquidity prediction: fit move~a*flow+b*sqrt(vol) on controls, ATT of treated residual."""
+def impact_residual_point(matches):
+    """Move beyond flow+liquidity prediction.
+
+    Fit move ~ flow + sqrt(volume) on matched controls, then score treated
+    residuals against that fitted impact curve.
+    """
     cx, cy = [], []
     for tr, cs in matches:
         for c in cs:
             cx.append((c["signed_flow30"], math.sqrt(max(c["spot_vol_usd"], 1.0)))); cy.append(c["final_move_bps"])
     if len(cx) < 20:
-        return {"att": None, "ci": [None, None], "n": 0}
+        return None, 0
     # OLS via normal equations (2 predictors + intercept)
     import numpy as np  # noqa
     X = np.array([[1.0, a, b] for a, b in cx]); Y = np.array(cy)
     try:
         beta, *_ = np.linalg.lstsq(X, Y, rcond=None)
     except Exception:  # noqa: BLE001
-        return {"att": None, "ci": [None, None], "n": 0}
+        return None, 0
     diffs = []
     for tr, cs in matches:
         pred = beta[0] + beta[1] * tr["signed_flow30"] + beta[2] * math.sqrt(max(tr["spot_vol_usd"], 1.0))
         diffs.append(tr["final_move_bps"] - pred)
-    att = float(st.mean(diffs)); n = len(diffs)
-    boots = sorted(st.mean([diffs[rng.randrange(n)] for _ in range(n)]) for _ in range(nboot))
-    return {"att": round(att, 4), "ci": [round(boots[int(0.025 * nboot)], 4), round(boots[int(0.975 * nboot)], 4)], "n": n}
+    return float(st.mean(diffs)), len(diffs)
+
+
+def rematched_impact_residual_ci(treated, controls, cov_keys, cell_keys, k, caliper, rng, nboot):
+    matches, off_support, _, _ = cem_knn_match(treated, controls, cov_keys, cell_keys, k, caliper)
+    att, n = impact_residual_point(matches)
+    if att is None:
+        return {"att": None, "ci": [None, None], "n": n, "n_off_support": off_support}
+    if not treated or not controls:
+        return {"att": round(att, 4), "ci": [None, None], "n": n, "n_off_support": off_support}
+    boots = []
+    nt, nc = len(treated), len(controls)
+    for _ in range(nboot):
+        tb = [treated[rng.randrange(nt)] for _ in range(nt)]
+        cb = [controls[rng.randrange(nc)] for _ in range(nc)]
+        bm, _, _, _ = cem_knn_match(tb, cb, cov_keys, cell_keys, k, caliper)
+        b, _ = impact_residual_point(bm)
+        if b is not None:
+            boots.append(b)
+    if len(boots) < 20:
+        return {"att": round(att, 4), "ci": [None, None], "n": n, "n_off_support": off_support}
+    boots.sort()
+    lo = boots[int(0.025 * len(boots))]; hi = boots[int(0.975 * len(boots))]
+    return {"att": round(att, 4), "ci": [round(lo, 4), round(hi, 4)], "n": n, "n_off_support": off_support}
 
 
 def pool_estimate(recs, ykey):
@@ -340,25 +428,26 @@ def _findings(path, args, s):
         f"# Per-wallet manufactured-pressure footprint — {s['product']}",
         "",
         f"> Primary: last-5s aligned-flow concentration (F5/F30), per-wallet vs **wallet-absent** matched "
-        f"controls (CEM on margin×period + kNN on log-spot-volume, pre-30s vol & drift — NOT on the late "
-        f"move). Effect sizes + 95% bootstrap CIs; flow30 and impact-residual confirmatory; reversion "
-        f"secondary (underpowered). PLACEBO_volume ATT should be ≈0 (proves the raw volume gap was "
-        f"selection). Contested ≤{args.flat_bps}bps. {args.bootstrap} boots.",
+        f"controls (CEM on volume-decile×margin×period + kNN on log-spot-volume, pre-30s vol & drift — "
+        f"NOT on the late move). Treated entries must be no later than close-{args.entry_guard_seconds}s. "
+        f"Effect sizes + 95% clustered/rematched bootstrap CIs; flow30 and impact-residual confirmatory; "
+        f"reversion secondary (underpowered). PLACEBO_volume ATT should be ≈0 (proves the raw volume gap "
+        f"was selection). Contested ≤{args.flat_bps}bps. {args.bootstrap} boots.",
         "",
         f"## Pooled primary (concentration): ATT = {P['att'] if P else 'NA'} "
         f"CI {P['ci'] if P else 'NA'} across {P['n_wallets'] if P else 0} wallets",
         "",
-        "| wallet | n_won | matched | conc ATT [CI] | flow30 ATT [CI] | impact-resid ATT [CI] | rev30 ATT [CI] | PLACEBO vol ATT (want~0) | balance post-SMD (logvol) |",
-        "| --- | ---: | ---: | --- | --- | --- | --- | --- | --- |",
+        "| wallet | n_won | guard-excl | matched | conc ATT [CI] | flow30 ATT [CI] | impact-resid ATT [CI] | rev30 ATT [CI] | PLACEBO vol ATT (want~0) | balance post-SMD (logvol) |",
+        "| --- | ---: | ---: | ---: | --- | --- | --- | --- | --- | --- |",
     ]
     for r in s["per_wallet"]:
         if not r.get("n_matched"):
-            lines.append(f"| `{r['wallet'][:10]}` | {r.get('n_won_usable','-')} | — | underpowered | | | | | |")
+            lines.append(f"| `{r['wallet'][:10]}` | {r.get('n_won_usable','-')} | {r.get('n_entry_guard_excluded','-')} | — | underpowered | | | | | |")
             continue
         def cell(k):
             d = r.get(k, {})
             return f"{d.get('att')} {d.get('ci')}" if d.get("att") is not None else "—"
-        lines.append(f"| `{r['wallet'][:10]}` | {r['n_won_usable']} | {r['n_matched']} | {cell('concentration')} | "
+        lines.append(f"| `{r['wallet'][:10]}` | {r['n_won_usable']} | {r.get('n_entry_guard_excluded', 0)} | {r['n_matched']} | {cell('concentration')} | "
                      f"{cell('flow30_usd')} | {cell('impact_residual')} | {cell('reversion_30')} | "
                      f"{cell('PLACEBO_volume')} | {r['balance_smd']['log_vol']['post']} |")
     lines += [
@@ -375,10 +464,12 @@ def _findings(path, args, s):
         "- Anonymous tape: a footprint is consistent-with manufacture AND with prescient selection of "
         "markets prone to a late push (residual selection-on-unobservables survives volume matching). "
         "Not proof; not exoneration.",
+        "- Entry guard is enforced in code: first BUY entry must be outside the measured close-30s outcome "
+        "window. Late or SELL-only participation is excluded from treatment and from wallet-absent controls.",
         "- balance post-SMD must be <0.1 to trust an ATT; wallets with poor overlap or n_won<min are "
         "reported as inconclusive, never 'no effect'.",
-        "- NOT YET IMPLEMENTED (next): entry-timing DiD (footprint after vs before W's order — the cleanest "
-        "manufacture-vs-selection separator), burst-coordination, midpoint-reversion.",
+        "- Not included here: a separate placebo window such as close-90 to close-60. The implemented "
+        "placebo is pre-treatment volume after the same matched design.",
         "",
     ]
     path.write_text("\n".join(lines), encoding="utf-8")
@@ -397,6 +488,8 @@ def parse_args():
     p.add_argument("--caliper", type=float, default=0.5)
     p.add_argument("--min-treated", type=int, default=25)
     p.add_argument("--max-lag", type=int, default=20)
+    p.add_argument("--entry-guard-seconds", type=int, default=30,
+                   help="first BUY entry must be at or before close minus this many seconds")
     p.add_argument("--bootstrap", type=int, default=2000)
     p.add_argument("--seed", type=int, default=20260614)
     return p.parse_args()

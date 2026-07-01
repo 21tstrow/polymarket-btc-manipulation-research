@@ -1,0 +1,160 @@
+{
+  "product": "5m_mayjun_betlevel",
+  "primary": "bet-level weighted DiD, BUY fills only, realized-P&L weights",
+  "n_scanned_bets": 1702,
+  "n_matched_bets": 1624,
+  "weight_basis": "realized-pnl",
+  "trade_scope": "BUY",
+  "estimates": {
+    "all": {
+      "did": {
+        "att": 0.412081,
+        "ci": [
+          0.33558,
+          0.485551
+        ],
+        "n": 1624
+      },
+      "dshare_post": {
+        "att": 0.412419,
+        "ci": [
+          0.338791,
+          0.48171
+        ],
+        "n": 1624
+      },
+      "aligned_post": {
+        "att": 292212.969835,
+        "ci": [
+          232088.423604,
+          353306.261415
+        ],
+        "n": 1624
+      },
+      "PLACEBO_total_pre": {
+        "att": 786.447462,
+        "ci": [
+          -477.250666,
+          2432.569525
+        ],
+        "n": 1624
+      }
+    },
+    "won": {
+      "did": {
+        "att": 0.617817,
+        "ci": [
+          0.534276,
+          0.69827
+        ],
+        "n": 902
+      },
+      "dshare_post": {
+        "att": 0.619108,
+        "ci": [
+          0.54106,
+          0.693166
+        ],
+        "n": 902
+      },
+      "aligned_post": {
+        "att": 382261.710101,
+        "ci": [
+          310311.242821,
+          456382.918129
+        ],
+        "n": 902
+      },
+      "PLACEBO_total_pre": {
+        "att": -141.802646,
+        "ci": [
+          -1148.91607,
+          908.209213
+        ],
+        "n": 902
+      }
+    },
+    "lost": {
+      "did": {
+        "att": 0.060139,
+        "ci": [
+          -0.058414,
+          0.182918
+        ],
+        "n": 722
+      },
+      "dshare_post": {
+        "att": 0.058847,
+        "ci": [
+          -0.069528,
+          0.180754
+        ],
+        "n": 722
+      },
+      "aligned_post": {
+        "att": 138171.244445,
+        "ci": [
+          46230.843653,
+          238250.548581
+        ],
+        "n": 722
+      },
+      "PLACEBO_total_pre": {
+        "att": 2374.356942,
+        "ci": [
+          -342.147539,
+          6541.487251
+        ],
+        "n": 722
+      }
+    }
+  },
+  "cluster_validation": {
+    "market": {
+      "did_cluster_ci": {
+        "att": 0.412081,
+        "ci": [
+          0.323278,
+          0.498642
+        ],
+        "n": 1624,
+        "n_clusters": 428
+      },
+      "diagnostics": {
+        "n_clusters": 428,
+        "top_cluster": "0x26e81bbd4f96733ffad8e509de231daf1865423ba0841e38ee0b48d9bdad6d45",
+        "top_weight_share": 0.01538,
+        "top_abs_contribution_share": 0.021055,
+        "top5_abs_contribution_share": 0.094427,
+        "abs_contribution_hhi": 0.006745,
+        "leave_one_out_att_min": 0.40076,
+        "leave_one_out_att_max": 0.421296,
+        "leave_one_out_max_abs_delta": 0.011322,
+        "capped_5pct_weight_att": 0.412081
+      }
+    },
+    "wallet": {
+      "did_cluster_ci": {
+        "att": 0.412081,
+        "ci": [
+          0.350264,
+          0.434689
+        ],
+        "n": 1624,
+        "n_clusters": 2
+      },
+      "diagnostics": {
+        "n_clusters": 2,
+        "top_cluster": "0xb305d384400e3d7a15780216a55368ea677eca4e",
+        "top_weight_share": 0.732214,
+        "top_abs_contribution_share": 0.747424,
+        "top5_abs_contribution_share": 1.0,
+        "abs_contribution_hhi": 0.622437,
+        "leave_one_out_att_min": 0.350264,
+        "leave_one_out_att_max": 0.434689,
+        "leave_one_out_max_abs_delta": 0.061817,
+        "capped_5pct_weight_att": 0.392477
+      }
+    }
+  }
+}

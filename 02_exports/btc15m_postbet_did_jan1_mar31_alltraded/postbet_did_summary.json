@@ -1,0 +1,371 @@
+{
+  "product": "15m_janmar",
+  "treatment": "all",
+  "primary": "did_dshare (post-bet minus pre-bet directional share, vs matched control)",
+  "pooled_did": {
+    "att": 0.0313,
+    "ci": [
+      -0.0093,
+      0.0719
+    ],
+    "tau2": 0.0,
+    "n_wallets": 6,
+    "method": "DL random-effects, control-clustered boot"
+  },
+  "per_wallet": [
+    {
+      "wallet": "0x24f5bab872129fde97221b3b69ca9eb2013398d2",
+      "anchor_s": -223,
+      "n_treated": 269,
+      "n_matched": 266,
+      "n_off_support": 3,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.027
+        },
+        "dshare_pre": {
+          "post": -0.004
+        }
+      },
+      "did_dshare": {
+        "att": 0.0746,
+        "ci": [
+          -0.0404,
+          0.1686
+        ],
+        "se": 0.0533,
+        "n": 266
+      },
+      "dshare_post": {
+        "att": 0.0763,
+        "ci": [
+          -0.0422,
+          0.1682
+        ],
+        "se": 0.05368,
+        "n": 266
+      },
+      "aligned_post_usd": {
+        "att": -8662.2083,
+        "ci": [
+          -78313.2704,
+          46440.9307
+        ],
+        "se": 31825.0513,
+        "n": 266
+      },
+      "PLACEBO_pre_vol": {
+        "att": 3418.4174,
+        "ci": [
+          -7800.4226,
+          13735.5468
+        ],
+        "se": 5493.86973,
+        "n": 266
+      },
+      "treated_dshare_pre_mean": -0.1127,
+      "treated_dshare_post_mean": 0.0377,
+      "n_won": 145,
+      "n_lost": 124,
+      "dshare_post_won_mean": 0.2571,
+      "dshare_post_lost_mean": -0.2189,
+      "did_won_mean": 0.4417,
+      "did_lost_mean": -0.1995
+    },
+    {
+      "wallet": "0x45ca17313cffdb5b596438500a2fe0c899633cef",
+      "anchor_s": -201,
+      "n_treated": 334,
+      "n_matched": 324,
+      "n_off_support": 10,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.024
+        },
+        "dshare_pre": {
+          "post": -0.002
+        }
+      },
+      "did_dshare": {
+        "att": 0.0293,
+        "ci": [
+          -0.0596,
+          0.1446
+        ],
+        "se": 0.0521,
+        "n": 324
+      },
+      "dshare_post": {
+        "att": 0.0296,
+        "ci": [
+          -0.0596,
+          0.1451
+        ],
+        "se": 0.05221,
+        "n": 324
+      },
+      "aligned_post_usd": {
+        "att": -32452.4436,
+        "ci": [
+          -86168.3188,
+          34530.8852
+        ],
+        "se": 30790.61326,
+        "n": 324
+      },
+      "PLACEBO_pre_vol": {
+        "att": 5107.5646,
+        "ci": [
+          -3780.9247,
+          15046.4802
+        ],
+        "se": 4802.90941,
+        "n": 324
+      },
+      "treated_dshare_pre_mean": -0.0177,
+      "treated_dshare_post_mean": 0.0293,
+      "n_won": 172,
+      "n_lost": 162,
+      "dshare_post_won_mean": 0.1849,
+      "dshare_post_lost_mean": -0.1427,
+      "did_won_mean": 0.1243,
+      "did_lost_mean": -0.0438
+    },
+    {
+      "wallet": "0x76696ac0c8f6058fb1f7e0983a198aef1da28390",
+      "anchor_s": -202,
+      "n_treated": 194,
+      "n_matched": 189,
+      "n_off_support": 5,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.026
+        },
+        "dshare_pre": {
+          "post": 0.001
+        }
+      },
+      "did_dshare": {
+        "att": 0.068,
+        "ci": [
+          -0.0563,
+          0.2014
+        ],
+        "se": 0.06574,
+        "n": 189
+      },
+      "dshare_post": {
+        "att": 0.0676,
+        "ci": [
+          -0.0579,
+          0.1971
+        ],
+        "se": 0.06505,
+        "n": 189
+      },
+      "aligned_post_usd": {
+        "att": -3655.3314,
+        "ci": [
+          -151837.2035,
+          78029.3646
+        ],
+        "se": 58639.43065,
+        "n": 189
+      },
+      "PLACEBO_pre_vol": {
+        "att": 1637.0895,
+        "ci": [
+          -4601.162,
+          13806.1759
+        ],
+        "se": 4695.74948,
+        "n": 189
+      },
+      "treated_dshare_pre_mean": -0.0883,
+      "treated_dshare_post_mean": 0.074,
+      "n_won": 115,
+      "n_lost": 79,
+      "dshare_post_won_mean": 0.2068,
+      "dshare_post_lost_mean": -0.1495,
+      "did_won_mean": 0.3092,
+      "did_lost_mean": -0.0974
+    },
+    {
+      "wallet": "0x8f6dc0d2e2d881fac8c2d189b78233b2b3dc6993",
+      "anchor_s": -239,
+      "n_treated": 390,
+      "n_matched": 379,
+      "n_off_support": 11,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.022
+        },
+        "dshare_pre": {
+          "post": -0.012
+        }
+      },
+      "did_dshare": {
+        "att": -0.008,
+        "ci": [
+          -0.0878,
+          0.0801
+        ],
+        "se": 0.04284,
+        "n": 379
+      },
+      "dshare_post": {
+        "att": -0.0124,
+        "ci": [
+          -0.0912,
+          0.0762
+        ],
+        "se": 0.0427,
+        "n": 379
+      },
+      "aligned_post_usd": {
+        "att": -8099.7534,
+        "ci": [
+          -62489.9708,
+          43499.6339
+        ],
+        "se": 27038.16446,
+        "n": 379
+      },
+      "PLACEBO_pre_vol": {
+        "att": 29890.372,
+        "ci": [
+          -295.7992,
+          81598.9257
+        ],
+        "se": 20891.51146,
+        "n": 379
+      },
+      "treated_dshare_pre_mean": -0.0698,
+      "treated_dshare_post_mean": -0.0071,
+      "n_won": 203,
+      "n_lost": 187,
+      "dshare_post_won_mean": 0.1701,
+      "dshare_post_lost_mean": -0.1994,
+      "did_won_mean": 0.1668,
+      "did_lost_mean": -0.0449
+    },
+    {
+      "wallet": "0xb528de45d8e0e3d11336cb3a3e1639e0e721aade",
+      "anchor_s": -203,
+      "n_treated": 248,
+      "n_matched": 243,
+      "n_off_support": 5,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.019
+        },
+        "dshare_pre": {
+          "post": -0.001
+        }
+      },
+      "did_dshare": {
+        "att": 0.0073,
+        "ci": [
+          -0.0787,
+          0.1318
+        ],
+        "se": 0.05371,
+        "n": 243
+      },
+      "dshare_post": {
+        "att": 0.007,
+        "ci": [
+          -0.0792,
+          0.1337
+        ],
+        "se": 0.05433,
+        "n": 243
+      },
+      "aligned_post_usd": {
+        "att": -12915.0862,
+        "ci": [
+          -72193.5424,
+          54147.3491
+        ],
+        "se": 32229.81927,
+        "n": 243
+      },
+      "PLACEBO_pre_vol": {
+        "att": 4318.7647,
+        "ci": [
+          -2541.2495,
+          13856.7267
+        ],
+        "se": 4183.15719,
+        "n": 243
+      },
+      "treated_dshare_pre_mean": -0.1212,
+      "treated_dshare_post_mean": 0.0055,
+      "n_won": 133,
+      "n_lost": 115,
+      "dshare_post_won_mean": 0.1929,
+      "dshare_post_lost_mean": -0.2124,
+      "did_won_mean": 0.3233,
+      "did_lost_mean": -0.1088
+    },
+    {
+      "wallet": "0xf47bfefe39ef77c4301670c7831026b0cd61418e",
+      "anchor_s": -227,
+      "n_treated": 359,
+      "n_matched": 348,
+      "n_off_support": 11,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.036
+        },
+        "dshare_pre": {
+          "post": -0.002
+        }
+      },
+      "did_dshare": {
+        "att": 0.0453,
+        "ci": [
+          -0.0411,
+          0.1368
+        ],
+        "se": 0.04538,
+        "n": 348
+      },
+      "dshare_post": {
+        "att": 0.0476,
+        "ci": [
+          -0.0381,
+          0.1392
+        ],
+        "se": 0.04522,
+        "n": 348
+      },
+      "aligned_post_usd": {
+        "att": 399.2628,
+        "ci": [
+          -43451.9337,
+          59905.7295
+        ],
+        "se": 26366.75082,
+        "n": 348
+      },
+      "PLACEBO_pre_vol": {
+        "att": 5082.5889,
+        "ci": [
+          -7415.257,
+          20997.5094
+        ],
+        "se": 7248.15469,
+        "n": 348
+      },
+      "treated_dshare_pre_mean": -0.0139,
+      "treated_dshare_post_mean": 0.0443,
+      "n_won": 194,
+      "n_lost": 165,
+      "dshare_post_won_mean": 0.2094,
+      "dshare_post_lost_mean": -0.1508,
+      "did_won_mean": 0.1983,
+      "did_lost_mean": -0.1071
+    }
+  ]
+}

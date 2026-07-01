@@ -11,7 +11,7 @@ W's bought side. Two comparisons:
      who bets then pushes shows directional share JUMP UP after the bet; a predictor/selector shows no
      jump at the bet instant.
   2. vs WALLET-ABSENT matched controls (same anchor offset, matched on pre-bet volume & directionality):
-     is the post-bet directional flow anomalously large/one-sided in W's won markets?
+     is the post-bet directional flow anomalously large/one-sided in W's first-entry markets?
 
 Run on BOTH 5m and 15m. Effect sizes + bootstrap CIs; PLACEBO = pre-bet overall volume (must match ~0).
 
@@ -21,9 +21,12 @@ that the push FOLLOWS the commitment (manufacture-shaped); it is consistent-with
 W (vs the market) supplying that flow.
 """
 from __future__ import annotations
-import argparse, bisect, csv, glob, json, math, random, statistics as st
+import argparse, csv, glob, hashlib, json, math, random, statistics as st
 from collections import defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,6 +50,12 @@ def load_universe(p, flat_bps):
 
 
 def scan_wallets(trades_glob, targets, universe):
+    """Per wallet-market participation.
+
+    `first_ts` / `side` / `won` refer to the first pre-close BUY entry only.
+    Any pre-close trade, including SELL-only activity, keeps the market out of
+    wallet-absent controls.
+    """
     bets = {w: {} for w in targets}
     for path in sorted(glob.glob(trades_glob)):
         try:
@@ -60,19 +69,24 @@ def scan_wallets(trades_glob, targets, universe):
             if w not in targets:
                 continue
             cid = t.get("conditionId"); m = universe.get(cid)
-            if m is None or str(t.get("side") or "").upper() != "BUY":
-                continue
-            o = str(t.get("outcome") or "")
-            if o not in ("Up", "Down"):
+            if m is None:
                 continue
             ts = int(safe_float(t.get("timestamp")) or 0)
             if ts <= 0 or ts - m["end"] >= 0:
                 continue
-            rec = bets[w].get(cid)
-            if rec is None or ts < rec["first_ts"]:
-                bets[w][cid] = {"won": o == m["winner"], "side": o, "first_ts": ts}
-            elif o == m["winner"]:
-                rec["won"] = True
+            rec = bets[w].setdefault(
+                cid,
+                {"first_ts": None, "side": None, "won": None, "preclose_trade_count": 0, "buy_sides": set()},
+            )
+            rec["preclose_trade_count"] += 1
+            o = str(t.get("outcome") or "")
+            if str(t.get("side") or "").upper() != "BUY" or o not in ("Up", "Down"):
+                continue
+            rec["buy_sides"].add(o)
+            if rec["first_ts"] is None or ts < rec["first_ts"]:
+                rec["first_ts"] = ts
+                rec["side"] = o
+                rec["won"] = o == m["winner"]
     return bets
 
 
@@ -143,7 +157,10 @@ def match(treated, controls, cov, cell_keys, k, caliper):
         pool = cells.get(tuple(tr[kk] for kk in cell_keys), [])
         if not pool:
             off += 1; continue
-        scored = sorted((sum((z(tr, kk) - z(c, kk)) ** 2 for kk in cov) ** 0.5, c) for c in pool)
+        scored = sorted(
+            ((sum((z(tr, kk) - z(c, kk)) ** 2 for kk in cov) ** 0.5, c) for c in pool),
+            key=lambda x: x[0],
+        )
         chosen = [c for d, c in scored[:k] if d <= caliper * len(cov) ** 0.5]
         if chosen:
             out.append((tr, chosen))
@@ -202,6 +219,32 @@ def dl_pool(recs, yk):
             "tau2": round(tau2, 5), "n_wallets": len(pts), "method": "DL random-effects, control-clustered boot"}
 
 
+def sha256_file(path: str | Path) -> str | None:
+    p = Path(path)
+    if not p.exists() or not p.is_file():
+        return None
+    h = hashlib.sha256()
+    with p.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def git_meta() -> dict:
+    def run_git(cmd: list[str]) -> str | None:
+        try:
+            return subprocess.check_output(cmd, cwd=ROOT, text=True, stderr=subprocess.DEVNULL).strip()
+        except Exception:  # noqa: BLE001
+            return None
+
+    status = run_git(["git", "status", "--short"])
+    return {
+        "commit": run_git(["git", "rev-parse", "HEAD"]),
+        "dirty": bool(status),
+        "status_short": status,
+    }
+
+
 def run(args):
     out_dir = Path(args.out_dir); out_dir.mkdir(parents=True, exist_ok=True)
     exch = Path(args.exchange_cache_dir)
@@ -214,33 +257,50 @@ def run(args):
     per_wallet = []
     for w in sorted(targets):
         wb = bets.get(w, {})
-        won = {cid: r for cid, r in wb.items() if r["won"] and cid in universe}
+        # Which of W's first-BUY-entry markets enter the treated set. `won` is
+        # win-conditioned and therefore descriptive only. `all` is the primary
+        # outcome-unconditioned estimand over every usable first BUY entry.
+        # SELL-only wallet participation is excluded from controls but has no
+        # clean BUY-entry anchor, so it is not treated.
+        if args.treatment == "won":
+            sel = {cid: r for cid, r in wb.items() if r["first_ts"] is not None and r["won"] and cid in universe}
+        elif args.treatment == "lost":
+            sel = {cid: r for cid, r in wb.items() if r["first_ts"] is not None and (not r["won"]) and cid in universe}
+        else:  # "all"
+            sel = {cid: r for cid, r in wb.items() if r["first_ts"] is not None and cid in universe}
         # treated entry offsets, valid range (need a pre-window inside the tape)
         treated_raw = []
-        for cid, r in won.items():
+        for cid, r in sel.items():
             m = universe[cid]; o = r["first_ts"] - m["end"]
             if -args.preload + 60 < o < -args.min_offset:
-                treated_raw.append((cid, o, 1 if r["side"] == "Up" else -1, m))
+                treated_raw.append((cid, o, 1 if r["side"] == "Up" else -1, m, bool(r["won"])))
         if len(treated_raw) < args.min_treated:
             per_wallet.append({"wallet": w, "n_treated": len(treated_raw), "note": "underpowered"});
             print(f"{w[:10]}: n_treated={len(treated_raw)} underpowered", flush=True); continue
-        anchor = int(st.median(o for _, o, _, _ in treated_raw))
-        # treated features at own offset
+        anchor = int(st.median(o for _, o, _, _, _ in treated_raw))
+        # treated features at own offset; sign = BET side (NOT the realized winner)
         treated = []
-        for cid, o, sgn, m in treated_raw:
+        for cid, o, sgn, m, won_flag in treated_raw:
             tr = load_window(exch, m["end"], args.preload, 40, fc)
             fx = market_features(tr, m["end"], o, sgn)
             if fx:
-                fx["margin_bin"] = min(int(m["margin"] // 5), 4); treated.append(fx)
-        # controls (W-absent) at the wallet's median anchor, winner-aligned
+                fx["margin_bin"] = min(int(m["margin"] // 5), 4); fx["won"] = won_flag; treated.append(fx)
+        # controls (W-absent) at the wallet's median anchor. For the
+        # win-conditioned legacy mode keep the winner-aligned sign. Otherwise
+        # include BOTH Up and Down pseudo-sides for every wallet-absent market,
+        # avoiding an unreported random-side Monte Carlo component.
         controls = []
         for cid, m in universe.items():
             if cid in wb:
                 continue
             tr = load_window(exch, m["end"], args.preload, 40, fc)
-            fx = market_features(tr, m["end"], anchor, 1 if m["winner"] == "Up" else -1)
-            if fx:
-                fx["margin_bin"] = min(int(m["margin"] // 5), 4); controls.append(fx)
+            csgns = [1 if m["winner"] == "Up" else -1] if args.treatment == "won" else [1, -1]
+            for csgn in csgns:
+                fx = market_features(tr, m["end"], anchor, csgn)
+                if fx:
+                    fx["margin_bin"] = min(int(m["margin"] // 5), 4)
+                    fx["control_side"] = "Up" if csgn == 1 else "Down"
+                    controls.append(fx)
         # vol deciles from controls
         lv = sorted(c["log_total_pre"] for c in controls)
         thr = [lv[int(q * (len(lv) - 1))] for q in (.1, .2, .3, .4, .5, .6, .7, .8, .9)]
@@ -258,15 +318,50 @@ def run(args):
         # within-market raw before/after (treated only, no control) for context
         rec["treated_dshare_pre_mean"] = round(st.mean(t["dshare_pre"] for t, _ in m_), 4)
         rec["treated_dshare_post_mean"] = round(st.mean(t["dshare_post"] for t, _ in m_), 4)
+        # DECISIVE de-confounding cut: raw within-market post-bet directional share (toward the BET
+        # side), split won vs lost over ALL treated units (control-free). If the "push follows the
+        # commitment" reading is manufacture, lost markets should still show post-bet flow toward the
+        # bet side (>0); if it is win-selection/prediction, lost markets flip negative.
+        won_t = [t for t in treated if t.get("won")]
+        lost_t = [t for t in treated if not t.get("won")]
+        _m = lambda xs, k: (round(st.mean(x[k] for x in xs), 4) if xs else None)
+        rec["n_won"], rec["n_lost"] = len(won_t), len(lost_t)
+        rec["dshare_post_won_mean"], rec["dshare_post_lost_mean"] = _m(won_t, "dshare_post"), _m(lost_t, "dshare_post")
+        rec["did_won_mean"], rec["did_lost_mean"] = _m(won_t, "did"), _m(lost_t, "did")
         per_wallet.append(rec)
         d = rec["did_dshare"]; dp = rec["dshare_post"]; pl = rec["PLACEBO_pre_vol"]
-        print(f"{w[:10]}: anchor={anchor}s nT={len(treated)} matched={len(m_)} balSMD={bal['log_total_pre']['post']} | "
+        print(f"{w[:10]}: anchor={anchor}s nT={len(treated)} (won={rec['n_won']} lost={rec['n_lost']}) matched={len(m_)} balSMD={bal['log_total_pre']['post']} | "
               f"DiD dshare ATT={d['att']} CI{d['ci']} | dshare_post ATT={dp['att']} CI{dp['ci']} | "
-              f"pre→post {rec['treated_dshare_pre_mean']}→{rec['treated_dshare_post_mean']} | PLACEBO vol ATT={pl['att']} CI{pl['ci']}", flush=True)
+              f"pre→post {rec['treated_dshare_pre_mean']}→{rec['treated_dshare_post_mean']} | "
+              f"dshare_post WON={rec['dshare_post_won_mean']} LOST={rec['dshare_post_lost_mean']} | "
+              f"DiD WON={rec['did_won_mean']} LOST={rec['did_lost_mean']} | PLACEBO vol ATT={pl['att']} CI{pl['ci']}", flush=True)
     pooled = dl_pool([r for r in per_wallet if r.get("did_dshare", {}).get("att") is not None], "did_dshare")
-    summary = {"product": args.product, "primary": "did_dshare (post-bet minus pre-bet directional share, vs matched control)",
+    summary = {"product": args.product, "treatment": args.treatment,
+               "primary": "did_dshare (post-bet minus pre-bet directional share, vs matched control)",
                "pooled_did": pooled, "per_wallet": per_wallet}
     (out_dir / "postbet_did_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    manifest = {
+        "generated_utc": datetime.now(tz=timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "script": "01_scripts/analyze_postbet_flow_did.py",
+        "argv": sys.argv,
+        "args": vars(args),
+        "git": git_meta(),
+        "inputs": {
+            "universe_csv": str(args.universe_csv),
+            "universe_csv_sha256": sha256_file(args.universe_csv),
+            "trades_glob": args.trades_glob,
+            "exchange_cache_dir": str(args.exchange_cache_dir),
+        },
+        "design": {
+            "treatment": args.treatment,
+            "default_primary": "all first-BUY-entry markets; won/lost are diagnostics",
+            "wallet_absent_controls": "exclude every market with any pre-close wallet trade, including SELL-only activity",
+            "control_side_rule": "winner side for treatment=won; both Up and Down pseudo-sides for all/lost",
+            "seed": args.seed,
+            "bootstrap": args.bootstrap,
+        },
+    }
+    (out_dir / "analysis_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     _findings(out_dir / "findings.md", args, summary)
     print(f"\npooled DiD={pooled}\nwrote {out_dir}/postbet_did_summary.json + findings.md")
     return 0
@@ -290,29 +385,31 @@ def pool(recs, yk):
 
 def _findings(path, args, s):
     P = s["pooled_did"]
-    L = [f"# Post-bet directional-flow DiD — {s['product']}", "",
+    L = [f"# Post-bet directional-flow DiD — {s['product']} (treatment={s.get('treatment','won')})", "",
          "> Anchor = when W places its bet (first pre-close BUY). Directional share = aligned (toward W's "
          "side) / overall $-volume. **DiD = post-bet [entry,close] minus pre-bet [entry-L,entry] directional "
          "share**, treated vs WALLET-ABSENT controls (matched on pre-bet volume decile × margin + kNN on "
          "log-vol & pre-bet directional share, at the wallet's median anchor). PLACEBO = pre-bet overall "
          "volume (must match ~0). Effect sizes + 95% bootstrap CI.", "",
          f"## Pooled DiD ATT = {P['att'] if P else 'NA'} CI {P['ci'] if P else 'NA'} ({P['n_wallets'] if P else 0} wallets)", "",
-         "| wallet | anchor | nT | matched | DiD dshare ATT [CI] | dshare_post ATT [CI] | aligned_post$ ATT [CI] | treated pre→post | PLACEBO vol ATT (≈0) | bal SMD |",
-         "| --- | ---: | ---: | ---: | --- | --- | --- | --- | --- | ---: |"]
+         "| wallet | anchor | nT (won/lost) | matched | DiD dshare ATT [CI] | dshare_post ATT [CI] | aligned_post$ ATT [CI] | treated pre→post | dshare_post WON / LOST | DiD WON / LOST | PLACEBO vol ATT (≈0) | bal SMD logvol / dshare |",
+         "| --- | ---: | ---: | ---: | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for r in s["per_wallet"]:
         if not r.get("n_matched"):
-            L.append(f"| `{r['wallet'][:10]}` | — | {r.get('n_treated','-')} | — | underpowered | | | | | |"); continue
+            L.append(f"| `{r['wallet'][:10]}` | — | {r.get('n_treated','-')} | — | underpowered | | | | | | | |"); continue
         c = lambda k: (f"{r[k]['att']} {r[k]['ci']}" if r.get(k, {}).get('att') is not None else "—")
-        L.append(f"| `{r['wallet'][:10]}` | {r['anchor_s']}s | {r['n_treated']} | {r['n_matched']} | {c('did_dshare')} | "
+        L.append(f"| `{r['wallet'][:10]}` | {r['anchor_s']}s | {r['n_treated']} ({r.get('n_won','-')}/{r.get('n_lost','-')}) | {r['n_matched']} | {c('did_dshare')} | "
                  f"{c('dshare_post')} | {c('aligned_post_usd')} | {r['treated_dshare_pre_mean']}→{r['treated_dshare_post_mean']} | "
-                 f"{c('PLACEBO_pre_vol')} | {r['balance']['log_total_pre']['post']} |")
+                 f"{r.get('dshare_post_won_mean')} / {r.get('dshare_post_lost_mean')} | {r.get('did_won_mean')} / {r.get('did_lost_mean')} | "
+                 f"{c('PLACEBO_pre_vol')} | {r['balance']['log_total_pre']['post']} / {r['balance']['dshare_pre']['post']} |")
     L += ["", "## Read", "- **PLACEBO pre-bet volume ATT ≈ 0** ⇒ matching balanced volume; any DiD/dshare_post effect is not the volume confound.",
-          "- **DiD dshare > 0, CI excludes 0** ⇒ flow turns MORE one-sided toward W's side AFTER W bets than before, beyond matched controls — the push FOLLOWS the commitment (manufacture-shaped).",
-          "- **dshare_post > matched control** ⇒ post-bet flow is more directional in W's won markets.",
+          "- **Primary mode is `treatment=all`**: all usable first-BUY-entry markets, signed to the first bought side. `won` is a win-conditioned diagnostic and is not a primary causal/manufacture estimand.",
+          "- **DiD dshare > 0, CI excludes 0** ⇒ flow turns MORE one-sided toward W's first-entry side AFTER W bets than before, beyond matched controls.",
+          "- **dshare_post WON vs LOST** is the de-confounding cut: direction is the first BUY side, so an outcome-unconditioned push should keep post-bet flow toward that side even in LOST markets (LOST > 0); win-selection/prediction shows LOST < 0.",
           "- treated pre→post shows the within-market shift; compare to the control (DiD).", "",
           "## Limits", "- Anonymous tape: consistent-with, not proof-of, W supplying the flow.",
           "- 15m PM entries are truncated to ~last 300s in cache; anchor reflects observed (late) entries.",
-          "- Underpowered wallets reported as effect+CI, never 'no effect'.", ""]
+          "- Underpowered wallets are marked underpowered and excluded from the pooled estimate.", ""]
     path.write_text("\n".join(L), encoding="utf-8")
 
 
@@ -324,6 +421,8 @@ def parse_args():
     p.add_argument("--wallets", required=True)
     p.add_argument("--exchange-cache-dir", default=str(ROOT / "03_data_cache/btc5m_underlying_volume_cache"))
     p.add_argument("--out-dir", required=True)
+    p.add_argument("--treatment", choices=["all", "won", "lost"], default="all",
+                   help="treated set over first pre-close BUY entries: all=primary outcome-unconditioned; won/lost=diagnostics. Controls exclude any pre-close wallet trade, including SELL-only.")
     p.add_argument("--flat-bps", type=float, default=20.0)
     p.add_argument("--preload", type=int, default=1600)
     p.add_argument("--min-offset", type=int, default=10)

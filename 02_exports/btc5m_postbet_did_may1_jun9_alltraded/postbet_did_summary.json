@@ -1,0 +1,135 @@
+{
+  "product": "5m_mayjun",
+  "treatment": "all",
+  "primary": "did_dshare (post-bet minus pre-bet directional share, vs matched control)",
+  "pooled_did": {
+    "att": 0.3271,
+    "ci": [
+      0.2441,
+      0.4102
+    ],
+    "tau2": 0.0,
+    "n_wallets": 2,
+    "method": "DL random-effects, control-clustered boot"
+  },
+  "per_wallet": [
+    {
+      "wallet": "0xb305d384400e3d7a15780216a55368ea677eca4e",
+      "anchor_s": -126,
+      "n_treated": 260,
+      "n_matched": 258,
+      "n_off_support": 2,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.023
+        },
+        "dshare_pre": {
+          "post": -0.006
+        }
+      },
+      "did_dshare": {
+        "att": 0.3055,
+        "ci": [
+          0.1787,
+          0.4214
+        ],
+        "se": 0.06192,
+        "n": 258
+      },
+      "dshare_post": {
+        "att": 0.3038,
+        "ci": [
+          0.1744,
+          0.4182
+        ],
+        "se": 0.06219,
+        "n": 258
+      },
+      "aligned_post_usd": {
+        "att": 268660.772,
+        "ci": [
+          156870.5976,
+          375988.5329
+        ],
+        "se": 55897.43248,
+        "n": 258
+      },
+      "PLACEBO_pre_vol": {
+        "att": 1020.6522,
+        "ci": [
+          -6099.4157,
+          7005.0624
+        ],
+        "se": 3342.97911,
+        "n": 258
+      },
+      "treated_dshare_pre_mean": -0.0719,
+      "treated_dshare_post_mean": 0.2937,
+      "n_won": 161,
+      "n_lost": 99,
+      "dshare_post_won_mean": 0.3817,
+      "dshare_post_lost_mean": 0.1451,
+      "did_won_mean": 0.4381,
+      "did_lost_mean": 0.2206
+    },
+    {
+      "wallet": "0xf6beafa72d6416525c4cf039c9c122883dbef6a3",
+      "anchor_s": -185,
+      "n_treated": 287,
+      "n_matched": 280,
+      "n_off_support": 7,
+      "balance": {
+        "log_total_pre": {
+          "post": -0.012
+        },
+        "dshare_pre": {
+          "post": -0.005
+        }
+      },
+      "did_dshare": {
+        "att": 0.3462,
+        "ci": [
+          0.2259,
+          0.4538
+        ],
+        "se": 0.05813,
+        "n": 280
+      },
+      "dshare_post": {
+        "att": 0.3443,
+        "ci": [
+          0.2216,
+          0.4501
+        ],
+        "se": 0.05829,
+        "n": 280
+      },
+      "aligned_post_usd": {
+        "att": 271915.8161,
+        "ci": [
+          162479.6396,
+          382802.7705
+        ],
+        "se": 56204.88033,
+        "n": 280
+      },
+      "PLACEBO_pre_vol": {
+        "att": 10357.9985,
+        "ci": [
+          -8080.5744,
+          36840.8036
+        ],
+        "se": 11459.5352,
+        "n": 280
+      },
+      "treated_dshare_pre_mean": -0.0334,
+      "treated_dshare_post_mean": 0.2938,
+      "n_won": 164,
+      "n_lost": 123,
+      "dshare_post_won_mean": 0.4366,
+      "dshare_post_lost_mean": 0.0946,
+      "did_won_mean": 0.5089,
+      "did_lost_mean": 0.0808
+    }
+  ]
+}

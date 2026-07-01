@@ -252,6 +252,9 @@ def fetch_late_trades(
     status = "ok"
     while True:
         path = cache_dir / "trades" / f"{condition_id}_{offset}.json"
+        if not path.exists() and not fetch_missing:
+            status = f"missing_cache_at_offset_{offset}"
+            break
         try:
             page = request_json(
                 TRADES_URL.format(condition_id=condition_id, limit=TRADE_LIMIT, offset=offset),
@@ -263,6 +266,12 @@ def fetch_late_trades(
                 status = f"truncated_http_400_at_offset_{offset}"
                 break
             raise
+        except json.JSONDecodeError:
+            status = f"malformed_cache_at_offset_{offset}"
+            break
+        if page is None:
+            status = f"null_page_at_offset_{offset}"
+            break
         if not page:
             break
         page_trades = page if isinstance(page, list) else page.get("trades", [])

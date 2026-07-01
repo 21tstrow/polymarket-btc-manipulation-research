@@ -459,8 +459,11 @@ def fetch_trade_pages(
                 break
             raise
 
-        trades = page_trades(page)
         page_rows.append(summarize_page(slug, condition_id, offset, cache_path, page, cache_status))
+        if page is None:
+            status = f"{cache_status}_at_offset_{offset}"
+            break
+        trades = page_trades(page)
         if not trades:
             break
 

@@ -1,0 +1,59 @@
+{
+  "generated_utc": "2026-06-23T22:39:30Z",
+  "script": "01_scripts/analyze_postbet_flow_betlevel_did.py",
+  "argv": [
+    "01_scripts/analyze_postbet_flow_betlevel_did.py",
+    "--product",
+    "5m_mayjun_betlevel",
+    "--universe-csv",
+    "02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+    "--trades-glob",
+    "03_data_cache/polymarket_btc5m_close_contests_cache/trades/*.json",
+    "--wallets",
+    "0xb305d384400e3d7a15780216a55368ea677eca4e,0xf6beafa72d6416525c4cf039c9c122883dbef6a3",
+    "--exchange-cache-dir",
+    "03_data_cache/btc5m_underlying_volume_cache",
+    "--out-dir",
+    "02_exports/btc5m_postbet_betlevel_did_may1_jun9",
+    "--no-sell-sensitivity"
+  ],
+  "args": {
+    "product": "5m_mayjun_betlevel",
+    "universe_csv": "02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+    "trades_glob": "03_data_cache/polymarket_btc5m_close_contests_cache/trades/*.json",
+    "wallets": "0xb305d384400e3d7a15780216a55368ea677eca4e,0xf6beafa72d6416525c4cf039c9c122883dbef6a3",
+    "exchange_cache_dir": "03_data_cache/btc5m_underlying_volume_cache",
+    "out_dir": "02_exports/btc5m_postbet_betlevel_did_may1_jun9",
+    "trade_scope": "buy",
+    "weight_basis": "realized-pnl",
+    "min_weight_usd": 0.0,
+    "flat_bps": 20.0,
+    "preload": 1600,
+    "min_offset": 10,
+    "k": 4,
+    "caliper": 0.5,
+    "bootstrap": 2000,
+    "seed": 20260623,
+    "sell_sensitivity": false
+  },
+  "git": {
+    "commit": "c359986f0bce342f67ebf1c3b5857dcb00ae981f",
+    "dirty": true,
+    "status_short": "M 01_scripts/analyze_btc5m_close_contests.py\n M 01_scripts/analyze_btc5m_wallet_edge.py\n M 01_scripts/analyze_perwallet_flow_footprint.py\n M 01_scripts/analyze_postbet_flow_did.py\n M 01_scripts/collect_btc15m_updown_data.py\n M 02_exports/btc15m_perwallet_footprint_jan1_mar31/findings.md\n M 02_exports/btc15m_postbet_did_jan1_mar31/findings.md\n M 02_exports/btc5m_perwallet_footprint_may1_jun9/findings.md\n M 02_exports/btc5m_postbet_did_may1_jun9/findings.md\n M 05_tests/test_wallet_edge.py\n M 06_docs/edge_ceiling_and_drift_finding.md\n M 06_docs/investigation_status_and_todo.md\n M README.md\n?? 01_scripts/analyze_postbet_flow_betlevel_did.py\n?? 02_exports/btc15m_postbet_did_jan1_mar31_alltraded/\n?? 02_exports/btc5m_postbet_betlevel_did_may1_jun9/\n?? 02_exports/btc5m_postbet_did_may1_jun9_alltraded/\n?? 05_tests/test_perwallet_flow_footprint.py\n?? 05_tests/test_postbet_flow_betlevel_did.py\n?? 05_tests/test_postbet_flow_did.py\n?? 05_tests/test_trade_cache_status.py"
+  },
+  "inputs": {
+    "universe_csv": "02_exports/btc5m_hybrid_quick_unwind_may1_present/hybrid_market_universe.csv",
+    "universe_csv_sha256": "399d49b4cd09821573ccdec0ecdfa2c943bc11468c00d2c1e6059e088cc78ba5",
+    "trades_glob": "03_data_cache/polymarket_btc5m_close_contests_cache/trades/*.json",
+    "exchange_cache_dir": "03_data_cache/btc5m_underlying_volume_cache"
+  },
+  "design": {
+    "primary_observation": "one target-wallet pre-close BUY fill",
+    "weight_basis": "realized P&L magnitude if held to resolution",
+    "winner_buy_weight": "size * (1 - price)",
+    "loser_buy_weight": "size * price",
+    "sell_sensitivity": false,
+    "controls": "wallet-absent markets at same anchor offset and side perspective",
+    "cluster_validation": "market and wallet cluster bootstrap plus contribution diagnostics"
+  }
+}

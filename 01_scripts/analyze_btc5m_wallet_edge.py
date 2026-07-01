@@ -197,8 +197,10 @@ def run(args: argparse.Namespace) -> int:
     trade_price_sum: dict[str, float] = defaultdict(float)
     trade_win_count: dict[str, int] = defaultdict(int)
     trade_var_sum: dict[str, float] = defaultdict(float)
-    # market-bet edge screen (one bet per wallet x market x outcome at the
-    # share-weighted entry price — the valid selection statistic)
+    # market-bet edge screen (one directional bet per wallet x market at the
+    # dominant bought side's share-weighted entry price). Buying both outcomes
+    # in the same market is collapsed before scoring; exact ties are skipped as
+    # directionally hedged.
     mkt_bet_n: dict[str, int] = defaultdict(int)
     mkt_bet_price_sum: dict[str, float] = defaultdict(float)
     mkt_bet_var_sum: dict[str, float] = defaultdict(float)
@@ -211,14 +213,19 @@ def run(args: argparse.Namespace) -> int:
 
     # market-bet fold: trade pages are named {cid}_{offset}.json, so sorted()
     # groups every page of a market consecutively; buffer one market's
-    # (wallet, outcome) -> [shares, cost] and fold it into the bet
+    # wallet -> outcome -> [shares, cost] and fold it into the bet
     # accumulators when the filename cid changes.
-    bet_buffer: dict[tuple, list] = {}
+    bet_buffer: dict[tuple, dict[str, list]] = {}
 
     def fold_bet_buffer() -> None:
-        for (cid, wallet, outcome), (shares, cost) in bet_buffer.items():
-            if shares <= 0:
+        for (cid, wallet), by_outcome in bet_buffer.items():
+            candidates = [(outcome, vals[0], vals[1]) for outcome, vals in by_outcome.items() if vals[0] > 0]
+            if not candidates:
                 continue
+            candidates.sort(key=lambda x: x[1], reverse=True)
+            if len(candidates) > 1 and candidates[0][1] == candidates[1][1]:
+                continue
+            outcome, shares, cost = candidates[0]
             p = cost / shares
             mkt_bet_n[wallet] += 1
             mkt_bet_price_sum[wallet] += p
@@ -267,7 +274,8 @@ def run(args: argparse.Namespace) -> int:
                 n_buy_trades[wallet] += 1
                 trade_price_sum[wallet] += price
                 trade_var_sum[wallet] += price * (1 - price)
-                bet_cell = bet_buffer.setdefault((cid, wallet, outcome), [0.0, 0.0])
+                by_outcome = bet_buffer.setdefault((cid, wallet), {})
+                bet_cell = by_outcome.setdefault(outcome, [0.0, 0.0])
                 bet_cell[0] += size
                 bet_cell[1] += size * price
                 markets_seen[wallet].add(cid)
@@ -316,15 +324,25 @@ def run(args: argparse.Namespace) -> int:
         bets = []
         realized_pnl = 0.0
         markets = set()
+        detail_by_market: dict[str, dict[str, dict]] = defaultdict(dict)
         for (cid, outcome), cell in detail[wallet].items():
             markets.add(cid)
+            detail_by_market[cid][outcome] = cell
             winner = winner_map.get(cid)
             won = outcome == winner
-            if cell["buy_shares"] > 0:
-                bets.append((cell["buy_cost"] / cell["buy_shares"], won))
             net_shares = cell["buy_shares"] - cell["sell_shares"]
             payout = net_shares if won else 0.0
             realized_pnl += cell["sell_cash"] - cell["buy_cost"] + payout
+        for cid, by_outcome in detail_by_market.items():
+            candidates = [(outcome, cell["buy_shares"], cell["buy_cost"])
+                          for outcome, cell in by_outcome.items() if cell["buy_shares"] > 0]
+            if not candidates:
+                continue
+            candidates.sort(key=lambda x: x[1], reverse=True)
+            if len(candidates) > 1 and candidates[0][1] == candidates[1][1]:
+                continue
+            outcome, shares, cost = candidates[0]
+            bets.append((cost / shares, outcome == winner_map.get(cid)))
         z = bet_zscore(bets)
         rows.append({
             **product_fields(args.timeframe),
@@ -390,7 +408,7 @@ def run(args: argparse.Namespace) -> int:
         r["crop_member"] = int(member)
         n_crop_member += member
     top.sort(key=lambda r: -(r["edge_per_share"] or -9))
-    write_csv(out_dir / "top_edge_wallets.csv", top[:100])
+    write_csv(out_dir / "top_edge_wallets.csv", top)
     # window-dressing screen: clean overall but edge concentrated in contested markets
     dressers = [r for r in top
                 if r["edge_contested"] is not None and r["edge_other"] is not None
@@ -430,13 +448,15 @@ def run(args: argparse.Namespace) -> int:
             "edge_per_share": "realized_win_rate - avg_entry_price = profit per $1 binary share held to resolution",
             "baseline": f"all wallets with >= {args.min_trades} buy trades",
             "z_score": "per-market-bet edge z (independent markets, expected wins = sum of entry prices)",
-            "market_bet_z": "population screen z: one bet per wallet x market x outcome at the share-weighted "
-                            "entry price; supersedes trade_edge_z, whose per-fill variance is understated "
+            "market_bet_z": "population screen z: one dominant bought side per wallet x market at the "
+                            "share-weighted entry price; exact two-sided ties are skipped; supersedes "
+                            "trade_edge_z, whose per-fill variance is understated "
                             "(fills within a market are perfectly correlated)",
             "crop_member": f"BH-significant (FDR {crop_fdr}) one-sided market-bet edge>0 across the "
                            f"volume-gated family AND market_bet_z >= {crop_z_floor}; the single crop "
                            "flag downstream consumers read (replaces the retired market_bet_z>=5 cut)",
             "crop_members": n_crop_member,
+            "top_edge_wallets_rows": len(top),
             "caveat": "positive edge = private advantage OR manipulation; cannot separate without spot-side identity",
             "preclose_only": preclose_only,
             "postclose_fills_dropped": n_postclose_dropped if preclose_only else None,

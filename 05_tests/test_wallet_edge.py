@@ -191,6 +191,79 @@ def test_market_bet_z_collapses_correlated_fills(tmp_path) -> None:
     assert float(many["market_bet_z"]) > 5
 
 
+def test_market_bet_z_collapses_two_sided_wallet_market_to_dominant_side(tmp_path) -> None:
+    """A wallet that buys both outcomes in one market should contribute one
+    directional market bet, not one Up bet plus one Down bet."""
+    import argparse
+    import csv as _csv
+    import json as _json
+
+    universe = tmp_path / "universe.csv"
+    with open(universe, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=["condition_id", "winner", "official_margin_bps_abs"])
+        w.writeheader()
+        w.writerow({"condition_id": "0xc1", "winner": "Up", "official_margin_bps_abs": "5.0"})
+
+    trades_dir = tmp_path / "trades"
+    trades_dir.mkdir()
+    (trades_dir / "0xc1_0.json").write_text(_json.dumps([
+        {"conditionId": "0xc1", "proxyWallet": "0xtwo", "outcome": "Up",
+         "side": "BUY", "size": 11.0, "price": 0.5, "timestamp": 100},
+        {"conditionId": "0xc1", "proxyWallet": "0xtwo", "outcome": "Down",
+         "side": "BUY", "size": 10.0, "price": 0.5, "timestamp": 101},
+    ]))
+
+    out_dir = tmp_path / "out"
+    args = argparse.Namespace(
+        universe_csv=str(universe), suspects_csv=str(tmp_path / "none.csv"),
+        recurrence_csv=str(tmp_path / "none2.csv"), trades_dir=str(trades_dir),
+        out_dir=str(out_dir), min_trades=1, min_shares=0.0, contested_bps=10.0,
+        timeframe="5m")
+    assert we.run(args) == 0
+
+    rows = {r["wallet"]: r for r in _csv.DictReader(open(out_dir / "top_edge_wallets.csv"))}
+    assert int(rows["0xtwo"]["n_market_bets"]) == 1
+    assert abs(float(rows["0xtwo"]["market_bet_z"]) - 1.0) < 1e-9
+
+
+def test_top_edge_wallets_persists_full_volume_gated_family(tmp_path) -> None:
+    """The BH crop family is computed over every volume-gated wallet, so the
+    persisted CSV must not truncate to the display top 100."""
+    import argparse
+    import csv as _csv
+    import json as _json
+
+    universe = tmp_path / "universe.csv"
+    cids = [f"0xc{i:03d}" for i in range(105)]
+    with open(universe, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=["condition_id", "winner", "official_margin_bps_abs"])
+        w.writeheader()
+        for cid in cids:
+            w.writerow({"condition_id": cid, "winner": "Up", "official_margin_bps_abs": "5.0"})
+
+    trades_dir = tmp_path / "trades"
+    trades_dir.mkdir()
+    for i, cid in enumerate(cids):
+        wallet = f"0xwallet{i:03d}"
+        (trades_dir / f"{cid}_0.json").write_text(_json.dumps([
+            {"conditionId": cid, "proxyWallet": wallet, "outcome": "Up",
+             "side": "BUY", "size": 10.0, "price": 0.5, "timestamp": 100}
+        ]))
+
+    out_dir = tmp_path / "out"
+    args = argparse.Namespace(
+        universe_csv=str(universe), suspects_csv=str(tmp_path / "none.csv"),
+        recurrence_csv=str(tmp_path / "none2.csv"), trades_dir=str(trades_dir),
+        out_dir=str(out_dir), min_trades=1, min_shares=0.0, contested_bps=10.0,
+        timeframe="5m")
+    assert we.run(args) == 0
+
+    rows = list(_csv.DictReader(open(out_dir / "top_edge_wallets.csv")))
+    assert len(rows) == 105
+    manifest = _json.loads((out_dir / "analysis_manifest.json").read_text())
+    assert manifest["design"]["top_edge_wallets_rows"] == 105
+
+
 def test_benjamini_hochberg_and_market_bet_p() -> None:
     # one-sided normal p-values
     assert abs(we.market_bet_p(0.0) - 0.5) < 1e-9
